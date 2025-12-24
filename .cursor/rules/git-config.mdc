@@ -1,0 +1,56 @@
+---
+description: Git configuration for this repository - use charmas3r identity for all commits and pushes.
+alwaysApply: true
+---
+# Git Configuration
+
+Always use the following git identity for commits and pushes in this repository.
+
+<rule>
+name: git_config_identity
+description: Enforce consistent git user configuration for all commits
+
+actions:
+  - type: suggest
+    message: |
+      ### Git Identity for This Repository
+
+      **Always use these credentials when committing or pushing:**
+
+      ```bash
+      git config user.name "charmas3r"
+      git config user.email "evansmith0115@gmail.com"
+      ```
+
+      ### Commit & Push Workflow
+
+      When committing changes:
+      ```bash
+      git add .
+      git commit -m "Your commit message"
+      git push origin main
+      ```
+
+      ### Remote Repository
+      - **Repository:** https://github.com/charmas3r/cursor-website.git
+      - **Branch:** main
+
+      ### Important
+      - Always verify the git config is set before committing
+      - Use descriptive commit messages
+      - Push to the `main` branch
+
+examples:
+  - input: |
+      # Committing changes
+      git config user.name "charmas3r"
+      git config user.email "evansmith0115@gmail.com"
+      git add .
+      git commit -m "Add new feature"
+      git push origin main
+    output: "Correctly configured git push"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>
