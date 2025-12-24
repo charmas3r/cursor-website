@@ -1,0 +1,183 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Heart } from "lucide-react";
+
+const footerLinks = {
+  services: [
+    { label: "Full Service Planning", href: "#" },
+    { label: "Day-of Coordination", href: "#" },
+    { label: "Design & Styling", href: "#" },
+    { label: "Destination Weddings", href: "#" },
+  ],
+  company: [
+    { label: "About Us", href: "#about" },
+    { label: "Our Team", href: "#" },
+    { label: "Portfolio", href: "#" },
+    { label: "Testimonials", href: "#" },
+  ],
+  resources: [
+    { label: "Blog", href: "#" },
+    { label: "Wedding Tips", href: "#" },
+    { label: "Vendor Directory", href: "#" },
+    { label: "FAQs", href: "#" },
+  ],
+  legal: [
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
+  ],
+};
+
+const socialLinks = [
+  { label: "Instagram", href: "#", icon: "IG" },
+  { label: "Pinterest", href: "#", icon: "PI" },
+  { label: "Facebook", href: "#", icon: "FB" },
+  { label: "TikTok", href: "#", icon: "TK" },
+];
+
+export default function Footer(): JSX.Element {
+  return (
+    <footer className="bg-charcoal-900 text-white">
+      {/* Main Footer */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12">
+          {/* Brand Column */}
+          <div className="col-span-2">
+            <Link
+              href="/"
+              className="text-2xl font-serif font-bold tracking-tight"
+            >
+              Wedding Agency
+              <span className="block text-blush-400">San Diego</span>
+            </Link>
+            <p className="mt-4 text-charcoal-400 leading-relaxed max-w-sm">
+              Where creativity, passion, and attention to detail come together
+              to craft unforgettable weddings in Southern California.
+            </p>
+
+            {/* Social Links */}
+            <div className="flex gap-3 mt-6">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="w-10 h-10 rounded-full bg-charcoal-800 flex items-center justify-center hover:bg-blush-500 transition-colors duration-300"
+                  aria-label={social.label}
+                >
+                  <span className="text-xs font-medium">{social.icon}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              Services
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-charcoal-400 hover:text-white transition-colors duration-300 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              Company
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-charcoal-400 hover:text-white transition-colors duration-300 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              Resources
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-charcoal-400 hover:text-white transition-colors duration-300 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-1">
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              Newsletter
+            </h4>
+            <p className="text-charcoal-400 text-sm mb-4">
+              Wedding tips & inspiration delivered to your inbox.
+            </p>
+            <form className="flex flex-col gap-3">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="px-4 py-3 rounded-xl bg-charcoal-800 border border-charcoal-700 focus:border-blush-500 outline-none text-sm transition-colors duration-300"
+              />
+              <button
+                type="submit"
+                className="px-4 py-3 rounded-xl bg-blush-500 hover:bg-blush-600 text-white text-sm font-medium transition-colors duration-300"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-charcoal-800">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-charcoal-500 text-sm flex items-center gap-1">
+              © {new Date().getFullYear()} Wedding Agency San Diego. Made with
+              <Heart className="w-4 h-4 text-blush-500 fill-blush-500" />
+              in Southern California
+            </p>
+
+            <div className="flex gap-6">
+              {footerLinks.legal.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-charcoal-500 hover:text-white transition-colors duration-300 text-sm"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+

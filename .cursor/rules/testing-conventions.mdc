@@ -1,0 +1,56 @@
+---
+description: Enforce unit testing standards and 100% code coverage for all changes.
+globs: **/*.{ts,tsx}
+---
+# Testing and Code Coverage
+
+Standards for unit testing and ensuring full code coverage for every change.
+
+<rule>
+name: testing_and_coverage
+description: Rules for unit testing and 100% code coverage enforcement
+filters:
+  - type: file_extension
+    pattern: "\\.(ts|tsx)$"
+
+actions:
+  - type: suggest
+    message: |
+      ### Testing Requirements
+      - **100% Code Coverage**: Every new feature, bug fix, or refactor must be accompanied by unit tests that achieve 100% code coverage for the affected files.
+      - **Test Framework**: Use `vitest` or `jest` for unit testing.
+      - **Test Location**: Place test files adjacent to the source file using the `.test.ts` or `.test.tsx` suffix (e.g., `utils/math.ts` -> `utils/math.test.ts`).
+      - **Mocking**: Use appropriate mocking libraries (e.g., `msw` for API calls, `vi.mock` for modules) to isolate units under test.
+
+      ### Quality Standards
+      - **Clear Descriptions**: Use descriptive `describe` and `it`/`test` blocks that explain the expected behavior.
+      - **Edge Cases**: Explicitly test edge cases, error states, and boundary conditions.
+      - **React Testing Library**: For UI components, use React Testing Library to test behavior from the user's perspective rather than implementation details.
+
+      ### Workflow
+      - Run tests locally before committing (`npm test` or `vitest run`).
+      - Ensure coverage reports are generated and verified.
+      - Do not merge changes that decrease the overall coverage percentage.
+
+examples:
+  - input: |
+      // Bad (No unit tests for a new utility function)
+      export const add = (a: number, b: number) => a + b;
+
+      // Good (New utility with comprehensive tests)
+      // math.ts
+      export const add = (a: number, b: number) => a + b;
+      
+      // math.test.ts
+      import { add } from './math';
+      describe('add', () => {
+        it('should correctly add two numbers', () => {
+          expect(add(2, 3)).toBe(5);
+        });
+      });
+    output: "Follows testing and coverage standards"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

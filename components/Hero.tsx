@@ -1,0 +1,259 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      delay: delay,
+      ease: [0.25, 0.4, 0.25, 1],
+    },
+  }),
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 1,
+      delay: delay,
+      ease: [0.25, 0.4, 0.25, 1],
+    },
+  }),
+};
+
+export default function Hero(): JSX.Element {
+  return (
+    <section className="relative min-h-screen overflow-hidden bg-hero-gradient">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-10 w-64 h-64 bg-blush-200/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 left-10 w-96 h-96 bg-cream-300/40 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-start">
+          {/* Left Content */}
+          <div className="pt-8 lg:pt-16">
+            <motion.h1
+              custom={0.2}
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-charcoal-900 leading-[1.1] tracking-tight"
+            >
+              Your Happily
+              <br />
+              Ever After
+              <br />
+              <span className="text-blush-500">Starts Here</span>
+            </motion.h1>
+
+            <motion.p
+              custom={0.4}
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              className="mt-8 text-lg md:text-xl text-charcoal-600 max-w-md leading-relaxed"
+            >
+              Where creativity, passion, and attention to detail come together
+              to craft unforgettable weddings in Southern California.
+            </motion.p>
+
+            <motion.div
+              custom={0.6}
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              className="mt-10 flex flex-wrap gap-4"
+            >
+              <Button size="lg">Start Planning</Button>
+              <Button variant="outline" size="lg">
+                View Packages
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Right Content - Stats/Info */}
+          <motion.div
+            custom={0.5}
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            className="hidden lg:flex justify-end pt-8"
+          >
+            <div className="max-w-sm">
+              <p className="text-lg text-charcoal-600 leading-relaxed">
+                We specialize in transforming your unique vision into a
+                beautifully tailored celebration, blending elegance with
+                personal touches.
+              </p>
+
+              <div className="mt-8 flex items-center gap-8">
+                <div>
+                  <p className="text-4xl font-serif font-semibold text-charcoal-900">
+                    500+
+                  </p>
+                  <p className="text-sm text-charcoal-500 mt-1">
+                    Weddings Planned
+                  </p>
+                </div>
+                <div className="w-px h-12 bg-charcoal-200" />
+                <div>
+                  <p className="text-4xl font-serif font-semibold text-charcoal-900">
+                    15+
+                  </p>
+                  <p className="text-sm text-charcoal-500 mt-1">
+                    Years Experience
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Feature Cards */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          className="mt-16 grid md:grid-cols-3 gap-6"
+        >
+          {[
+            {
+              icon: (
+                <svg
+                  className="w-10 h-10 text-blush-400"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              ),
+              title: "Full-Service Planning",
+              description:
+                "From intimate beachfront ceremonies to lavish desert affairs, our dedicated team guides you every step of the way.",
+            },
+            {
+              icon: (
+                <svg
+                  className="w-10 h-10 text-blush-400"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+              ),
+              title: "Stress-Free Experience",
+              description:
+                "We ensure a seamless, stress-free experience so you can enjoy every moment of your special day.",
+            },
+            {
+              icon: (
+                <svg
+                  className="w-10 h-10 text-cream-600"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z" />
+                </svg>
+              ),
+              title: "Personalized Care",
+              description:
+                "Let us bring your wedding dreams to life with unparalleled excellence and personalized care.",
+            },
+          ].map((card, index) => (
+            <motion.div
+              key={card.title}
+              custom={0.7 + index * 0.15}
+              variants={scaleIn}
+              className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
+            >
+              <div className="flex justify-end mb-12">
+                <div className="opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                  {card.icon}
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-charcoal-900 font-serif">
+                {card.title}
+              </h3>
+              <p className="mt-3 text-sm text-charcoal-600 leading-relaxed">
+                {card.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Hero Images Section */}
+        <div className="relative mt-16">
+          {/* Dashed line connector */}
+          <motion.div
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, delay: 1 }}
+            className="absolute top-0 right-64 hidden lg:block"
+          >
+            <svg
+              width="200"
+              height="150"
+              viewBox="0 0 200 150"
+              fill="none"
+              className="text-charcoal-300"
+            >
+              <path
+                d="M0 0 C50 0, 100 50, 100 100 C100 150, 150 150, 200 150"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeDasharray="8 8"
+              />
+            </svg>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8 items-end">
+            {/* Main Hero Image */}
+            <motion.div
+              custom={1}
+              initial="hidden"
+              animate="visible"
+              variants={scaleIn}
+              className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
+                alt="Beautiful wedding couple walking in golden fields"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/20 to-transparent" />
+            </motion.div>
+
+            {/* Secondary Image */}
+            <motion.div
+              custom={1.2}
+              initial="hidden"
+              animate="visible"
+              variants={scaleIn}
+              className="relative h-[300px] lg:h-[350px] rounded-3xl overflow-hidden shadow-xl lg:-mb-20 lg:ml-auto lg:w-4/5 border-4 border-white"
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?q=80&w=2070"
+                alt="Elegant wedding table setting"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+

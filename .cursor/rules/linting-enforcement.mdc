@@ -1,0 +1,46 @@
+---
+description: Enforce linting standards and code quality checks across the codebase.
+globs: **/*.{js,ts,tsx}
+---
+# Linting Enforcement
+
+Rules to ensure code quality through consistent linting and automated checks.
+
+<rule>
+name: linting_enforcement
+description: Standards for code quality and linting adherence
+filters:
+  - type: file_extension
+    pattern: "\\.(js|ts|tsx)$"
+
+actions:
+  - type: suggest
+    message: |
+      ### Linting Best Practices
+      - **Automatic Linting**: Always ensure that ESLint and Prettier are configured correctly.
+      - **Pre-commit Checks**: Encourage the use of `husky` and `lint-staged` to catch errors before they reach the repository.
+      - **Fix Lint Errors**: If you encounter linting errors or warnings, prioritize fixing them before proceeding with new feature development.
+      - **Rules Adherence**:
+        - No unused variables (`no-unused-vars`).
+        - Enforce consistent import ordering (`eslint-plugin-import`).
+        - Prefer `const` over `let` when possible.
+
+      ### Workflow
+      - Run `npm run lint` or `yarn lint` frequently during development.
+      - In Cursor, pay attention to the linter feedback and use the `read_lints` tool after making significant changes.
+
+examples:
+  - input: |
+      // Bad (Unused variable, let instead of const)
+      let x = 10;
+      const result = fetchData();
+
+      // Good
+      const result = await fetchData();
+      console.log(result);
+    output: "Follows linting and quality standards"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

@@ -1,0 +1,59 @@
+---
+description: Conventions for Next.js App Router, React best practices, and performance optimizations.
+globs: **/*.{ts,tsx}
+---
+# Next.js and Performance Optimizations
+
+Standards for building high-performance web applications using Next.js App Router and React.
+
+<rule>
+name: nextjs_performance_optimizations
+description: Rules for Next.js App Router and performance-focused development
+filters:
+  - type: file_extension
+    pattern: "\\.(ts|tsx)$"
+
+actions:
+  - type: suggest
+    message: |
+      ### Next.js App Router Conventions
+      - **Server Components by Default**: Use Server Components whenever possible to reduce client-side bundle size. Only use `'use client'` when interactivity (hooks like `useState`, `useEffect`) is required.
+      - **Data Fetching**: Fetch data in Server Components using `async/await`. Utilize Next.js `fetch` cache options (`force-cache`, `no-store`, `next: { revalidate: 60 }`).
+      - **Metadata API**: Use the Metadata API (`generateMetadata`) for SEO instead of manually adding tags to `layout.tsx` or `page.tsx`.
+      - **File Organization**: Group related routes using Route Groups `(group-name)` and use Private Folders `_folder` for internal logic.
+
+      ### Performance Optimizations
+      - **Image Optimization**: Always use the `next/image` component for automatic optimization (format, sizing, lazy loading).
+      - **Dynamic Imports**: Use `next/dynamic` or `React.lazy` for heavy components or those not needed on initial load.
+      - **Font Optimization**: Use `next/font` for local or Google fonts to prevent Layout Shift.
+      - **Caching**: Leverage `revalidatePath` and `revalidateTag` for efficient cache invalidation.
+      - **Bundle Size**: Avoid large third-party libraries; prefer native browser APIs or lightweight alternatives.
+
+      ### React Best Practices
+      - Use `useCallback` and `useMemo` sparingly, only when performance profiling indicates a need.
+      - Prefer composition over large, complex components with many props.
+
+examples:
+  - input: |
+      // Bad (Client component by default, no image optimization)
+      'use client'
+      export default function Page() {
+        return <img src="/hero.jpg" />;
+      }
+
+      // Good (Server component, optimized image, metadata)
+      import Image from 'next/image';
+      export const metadata = { title: 'Home' };
+      export default function Page() {
+        return (
+          <main>
+            <Image src="/hero.jpg" alt="Hero" width={800} height={400} priority />
+          </main>
+        );
+      }
+    output: "Follows Next.js and performance optimizations"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

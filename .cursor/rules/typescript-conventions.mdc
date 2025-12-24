@@ -1,0 +1,54 @@
+---
+description: Enforce TypeScript best practices, strict typing, and clear naming conventions across the project.
+globs: **/*.{ts,tsx}
+---
+# TypeScript and Naming Conventions
+
+Enforce strict TypeScript usage and consistent naming patterns for improved maintainability and type safety.
+
+<rule>
+name: typescript_and_naming_conventions
+description: Rules for TypeScript usage and naming standards
+filters:
+  - type: file_extension
+    pattern: "\\.(ts|tsx)$"
+
+actions:
+  - type: suggest
+    message: |
+      ### TypeScript Best Practices
+      - **Strict Typing**: Avoid the `any` type at all costs. Use `unknown` if the type is truly unknown, or define a proper interface/type.
+      - **Explicit Return Types**: Always define explicit return types for exported functions and complex logic.
+      - **Interface vs Type**: Use `interface` for object structures that might be extended, and `type` for unions, intersections, and primitives.
+      - **Enums**: Avoid `enum`; use `const enum` or literal unions (`'option1' | 'option2'`) for better performance and type safety.
+
+      ### Naming Conventions
+      - **Components**: Use PascalCase for React components and their filenames (e.g., `UserProfile.tsx`).
+      - **Files/Directories**: Use kebab-case for non-component files and all directory names (e.g., `auth-utils.ts`, `api/v1/`).
+      - **Variables/Functions**: Use camelCase for variables and functions (e.g., `getUserData`).
+      - **Constants**: Use UPPER_SNAKE_CASE for global constants.
+      - **Interfaces/Types**: Use PascalCase. Do not prefix interfaces with `I`.
+
+      ### Code Style
+      - Prefer functional programming patterns (immutability, pure functions).
+      - Use `zod` for runtime validation when dealing with external data.
+
+examples:
+  - input: |
+      // Bad
+      function get_data(id: any) { return fetch(`/api/${id}`).then(r => r.json()); }
+      const User_component = () => <div>...</div>;
+
+      // Good
+      interface User { id: string; name: string; }
+      async function getUserData(id: string): Promise<User> {
+        const response = await fetch(`/api/${id}`);
+        return response.json();
+      }
+      const UserProfile = () => <div>...</div>;
+    output: "Follows TypeScript and naming conventions"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

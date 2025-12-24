@@ -1,0 +1,51 @@
+---
+description: Standards for UI development using Shadcn UI, Radix UI, and Tailwind CSS.
+globs: **/*.tsx
+---
+# UI and Styling Conventions
+
+Best practices for building accessible and maintainable UI components using Shadcn UI, Radix UI, and Tailwind CSS.
+
+<rule>
+name: ui_styling_conventions
+description: Rules for UI development and styling standards
+filters:
+  - type: file_extension
+    pattern: "\\.tsx$"
+
+actions:
+  - type: suggest
+    message: |
+      ### Shadcn UI & Radix UI
+      - **Component Customization**: Prefer extending Shadcn components via their `className` prop using `cn()` utility.
+      - **Accessibility**: Ensure all interactive components leverage Radix UI's primitive behaviors for ARIA support and keyboard navigation.
+      - **Modularity**: Keep Shadcn components in the `components/ui` directory and your custom features in `components/features`.
+
+      ### Tailwind CSS
+      - **Utility-First**: Use Tailwind classes for all styling. Avoid custom CSS files or inline styles unless absolutely necessary for complex animations.
+      - **Class Ordering**: Follow a consistent order for Tailwind classes (Layout -> Spacing -> Sizing -> Typography -> Colors -> Effects). Use the `prettier-plugin-tailwindcss` if available.
+      - **Responsive Design**: Use mobile-first breakpoints (`sm:`, `md:`, `lg:`, `xl:`).
+      - **Theming**: Use CSS variables for colors and design tokens to support dark mode and consistent branding.
+
+      ### Design System
+      - **Consistency**: Use the `cn()` utility from `lib/utils` to merge Tailwind classes safely (handling conflicts).
+      - **Avoid Hardcoding**: Use defined colors and spacing from `tailwind.config.js`.
+
+examples:
+  - input: |
+      // Bad
+      <div style={{ color: 'red' }} className="flex p-4 mt-2">...</div>
+
+      // Good
+      import { cn } from "@/lib/utils";
+      const CustomButton = ({ className }) => (
+        <button className={cn("flex items-center p-4 text-red-500", className)}>
+          Click me
+        </button>
+      );
+    output: "Follows UI and styling conventions"
+
+metadata:
+  priority: medium
+  version: 1.0
+</rule>
