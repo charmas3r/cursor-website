@@ -40,18 +40,18 @@ export default function Footer(): JSX.Element {
   return (
     <footer className="bg-charcoal-900 text-white">
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Column */}
-          <div className="col-span-2">
+          <div className="col-span-1 sm:col-span-2">
             <Link
               href="/"
-              className="text-2xl font-serif font-bold tracking-tight"
+              className="text-xl sm:text-2xl font-serif font-bold tracking-tight"
             >
               Wedding Agency
               <span className="block text-blush-400">San Diego</span>
             </Link>
-            <p className="mt-4 text-charcoal-400 leading-relaxed max-w-sm">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base text-charcoal-400 leading-relaxed max-w-sm">
               Where creativity, passion, and attention to detail come together
               to craft unforgettable weddings in Southern California.
             </p>
@@ -129,7 +129,7 @@ export default function Footer(): JSX.Element {
           </div>
 
           {/* Newsletter */}
-          <div className="col-span-2 md:col-span-4 lg:col-span-1">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
               Newsletter
             </h4>
@@ -155,7 +155,7 @@ export default function Footer(): JSX.Element {
 
       {/* Bottom Bar */}
       <div className="border-t border-charcoal-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-charcoal-500 text-sm flex items-center gap-1">
               © {new Date().getFullYear()} Wedding Agency San Diego. Made with

@@ -42,22 +42,22 @@ export default function Gallery(): JSX.Element {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="portfolio" className="py-24 lg:py-32 bg-white" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="portfolio" className="py-16 sm:py-20 lg:py-32 bg-white" ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16"
         >
-          <span className="text-blush-500 text-sm font-medium uppercase tracking-wider">
+          <span className="text-blush-500 text-xs sm:text-sm font-medium uppercase tracking-wider">
             Portfolio
           </span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-serif font-medium text-charcoal-900 leading-tight">
+          <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900 leading-tight">
             Our Recent Celebrations
           </h2>
-          <p className="mt-6 text-lg text-charcoal-600 leading-relaxed">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-charcoal-600 leading-relaxed px-4 sm:px-0">
             Every wedding tells a unique love story. Here are some of the
             beautiful moments we&apos;ve had the honor of creating.
           </p>
@@ -68,7 +68,7 @@ export default function Gallery(): JSX.Element {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px]"
+          className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[200px]"
         >
           {galleryImages.map((image, index) => (
             <motion.div
@@ -76,7 +76,7 @@ export default function Gallery(): JSX.Element {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className={`relative rounded-2xl overflow-hidden group cursor-pointer ${image.span}`}
+              className={`relative rounded-xl sm:rounded-2xl overflow-hidden group cursor-pointer ${image.span}`}
             >
               <Image
                 src={image.src}

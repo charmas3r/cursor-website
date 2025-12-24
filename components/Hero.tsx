@@ -33,22 +33,22 @@ const scaleIn = {
 export default function Hero(): JSX.Element {
   return (
     <section className="relative min-h-screen overflow-hidden bg-hero-gradient">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-64 h-64 bg-blush-200/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-40 left-10 w-96 h-96 bg-cream-300/40 rounded-full blur-3xl" />
+      {/* Decorative elements - hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
+        <div className="absolute top-20 right-10 w-32 sm:w-64 h-32 sm:h-64 bg-blush-200/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 left-10 w-48 sm:w-96 h-48 sm:h-96 bg-cream-300/40 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-start">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-start">
           {/* Left Content */}
-          <div className="pt-8 lg:pt-16">
+          <div className="pt-4 sm:pt-8 lg:pt-16">
             <motion.h1
               custom={0.2}
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
-              className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-charcoal-900 leading-[1.1] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-charcoal-900 leading-[1.1] tracking-tight"
             >
               Your Happily
               <br />
@@ -62,7 +62,7 @@ export default function Hero(): JSX.Element {
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
-              className="mt-8 text-lg md:text-xl text-charcoal-600 max-w-md leading-relaxed"
+              className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-charcoal-600 max-w-md leading-relaxed"
             >
               Where creativity, passion, and attention to detail come together
               to craft unforgettable weddings in Southern California.
@@ -73,16 +73,45 @@ export default function Hero(): JSX.Element {
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
-              className="mt-10 flex flex-wrap gap-4"
+              className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
-              <Button size="lg">Start Planning</Button>
-              <Button variant="outline" size="lg">
+              <Button size="lg" className="w-full sm:w-auto">
+                Start Planning
+              </Button>
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
                 View Packages
               </Button>
             </motion.div>
+
+            {/* Stats - visible on mobile */}
+            <motion.div
+              custom={0.7}
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              className="mt-8 flex items-center gap-6 sm:gap-8 lg:hidden"
+            >
+              <div>
+                <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900">
+                  500+
+                </p>
+                <p className="text-xs sm:text-sm text-charcoal-500 mt-1">
+                  Weddings Planned
+                </p>
+              </div>
+              <div className="w-px h-10 sm:h-12 bg-charcoal-200" />
+              <div>
+                <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900">
+                  15+
+                </p>
+                <p className="text-xs sm:text-sm text-charcoal-500 mt-1">
+                  Years Experience
+                </p>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Right Content - Stats/Info */}
+          {/* Right Content - Stats/Info (Desktop only) */}
           <motion.div
             custom={0.5}
             initial="hidden"
@@ -124,13 +153,13 @@ export default function Hero(): JSX.Element {
         <motion.div
           initial="hidden"
           animate="visible"
-          className="mt-16 grid md:grid-cols-3 gap-6"
+          className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
         >
           {[
             {
               icon: (
                 <svg
-                  className="w-10 h-10 text-blush-400"
+                  className="w-8 h-8 sm:w-10 sm:h-10 text-blush-400"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -144,7 +173,7 @@ export default function Hero(): JSX.Element {
             {
               icon: (
                 <svg
-                  className="w-10 h-10 text-blush-400"
+                  className="w-8 h-8 sm:w-10 sm:h-10 text-blush-400"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -158,7 +187,7 @@ export default function Hero(): JSX.Element {
             {
               icon: (
                 <svg
-                  className="w-10 h-10 text-cream-600"
+                  className="w-8 h-8 sm:w-10 sm:h-10 text-cream-600"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -174,17 +203,20 @@ export default function Hero(): JSX.Element {
               key={card.title}
               custom={0.7 + index * 0.15}
               variants={scaleIn}
-              className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
+              className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
             >
-              <div className="flex justify-end mb-12">
+              <div className="flex justify-between items-start sm:flex-col sm:items-end mb-4 sm:mb-12">
+                <h3 className="text-lg sm:text-xl font-semibold text-charcoal-900 font-serif sm:hidden">
+                  {card.title}
+                </h3>
                 <div className="opacity-70 group-hover:opacity-100 transition-opacity duration-300">
                   {card.icon}
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-charcoal-900 font-serif">
+              <h3 className="hidden sm:block text-xl font-semibold text-charcoal-900 font-serif">
                 {card.title}
               </h3>
-              <p className="mt-3 text-sm text-charcoal-600 leading-relaxed">
+              <p className="mt-2 sm:mt-3 text-sm text-charcoal-600 leading-relaxed">
                 {card.description}
               </p>
             </motion.div>
@@ -192,8 +224,8 @@ export default function Hero(): JSX.Element {
         </motion.div>
 
         {/* Hero Images Section */}
-        <div className="relative mt-16">
-          {/* Dashed line connector */}
+        <div className="relative mt-12 sm:mt-16">
+          {/* Dashed line connector - desktop only */}
           <motion.div
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
@@ -216,14 +248,14 @@ export default function Hero(): JSX.Element {
             </svg>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-end">
             {/* Main Hero Image */}
             <motion.div
               custom={1}
               initial="hidden"
               animate="visible"
               variants={scaleIn}
-              className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+              className="relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl"
             >
               <Image
                 src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
@@ -231,6 +263,7 @@ export default function Hero(): JSX.Element {
                 fill
                 className="object-cover"
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/20 to-transparent" />
             </motion.div>
@@ -241,13 +274,14 @@ export default function Hero(): JSX.Element {
               initial="hidden"
               animate="visible"
               variants={scaleIn}
-              className="relative h-[300px] lg:h-[350px] rounded-3xl overflow-hidden shadow-xl lg:-mb-20 lg:ml-auto lg:w-4/5 border-4 border-white"
+              className="relative h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl lg:-mb-20 lg:ml-auto lg:w-4/5 border-2 sm:border-4 border-white"
             >
               <Image
                 src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?q=80&w=2070"
                 alt="Elegant wedding table setting"
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
               />
             </motion.div>
           </div>
@@ -256,4 +290,3 @@ export default function Hero(): JSX.Element {
     </section>
   );
 }
-
