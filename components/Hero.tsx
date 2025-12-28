@@ -50,11 +50,11 @@ export default function Hero(): JSX.Element {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-charcoal-900 leading-[1.1] tracking-tight"
             >
-              Your Happily
+              San Diego&apos;s Premier
               <br />
-              Ever After
+              <span className="text-blush-500">Wedding Planning</span>
               <br />
-              <span className="text-blush-500">Starts Here</span>
+              Agency
             </motion.h1>
 
             <motion.p
@@ -69,7 +69,7 @@ export default function Hero(): JSX.Element {
             </motion.p>
 
             <motion.div
-              custom={0.6}
+              custom={0.65}
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
@@ -85,7 +85,7 @@ export default function Hero(): JSX.Element {
 
             {/* Stats - visible on mobile */}
             <motion.div
-              custom={0.7}
+              custom={0.8}
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
@@ -108,7 +108,54 @@ export default function Hero(): JSX.Element {
                   Years Experience
                 </p>
               </div>
+              <div className="w-px h-10 sm:h-12 bg-charcoal-200" />
+              <a
+                href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900 group-hover:text-blush-500 transition-colors">
+                  2×
+                </p>
+                <p className="text-xs sm:text-sm text-charcoal-500 mt-1 group-hover:text-blush-500 transition-colors">
+                  Award Winner
+                </p>
+              </a>
             </motion.div>
+
+            {/* Brand Phrase - Mobile */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
+              className="mt-10 lg:hidden text-2xl sm:text-3xl font-serif italic text-charcoal-400"
+            >
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.6 }}
+                className="inline-block"
+              >
+                We&apos;ll be your something
+              </motion.span>{" "}
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                transition={{ duration: 1, delay: 2.2, ease: [0.25, 0.4, 0.25, 1] }}
+                className="inline-block text-[#5B9BD5] not-italic font-medium"
+              >
+                blue
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 2.6 }}
+                className="inline-block text-[#5B9BD5] not-italic font-medium"
+              >
+                .
+              </motion.span>
+            </motion.p>
           </div>
 
           {/* Right Content - Stats/Info (Desktop only) */}
@@ -144,7 +191,54 @@ export default function Hero(): JSX.Element {
                     Years Experience
                   </p>
                 </div>
+                <div className="w-px h-12 bg-charcoal-200" />
+                <a
+                  href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  <p className="text-4xl font-serif font-semibold text-charcoal-900 group-hover:text-blush-500 transition-colors">
+                    2×
+                  </p>
+                  <p className="text-sm text-charcoal-500 mt-1 group-hover:text-blush-500 transition-colors">
+                    Award Winner
+                  </p>
+                </a>
               </div>
+
+              {/* Brand Phrase - Desktop */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
+                className="mt-12 text-2xl font-serif italic text-charcoal-400"
+              >
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.6 }}
+                  className="inline-block"
+                >
+                  We&apos;ll be your something
+                </motion.span>{" "}
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  transition={{ duration: 1, delay: 2.2, ease: [0.25, 0.4, 0.25, 1] }}
+                  className="inline-block text-[#5B9BD5] not-italic font-medium"
+                >
+                  blue
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 2.6 }}
+                  className="inline-block text-[#5B9BD5] not-italic font-medium"
+                >
+                  .
+                </motion.span>
+              </motion.p>
             </div>
           </motion.div>
         </div>
@@ -162,6 +256,7 @@ export default function Hero(): JSX.Element {
                   className="w-8 h-8 sm:w-10 sm:h-10 text-blush-400"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  aria-hidden="true"
                 >
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
@@ -176,6 +271,7 @@ export default function Hero(): JSX.Element {
                   className="w-8 h-8 sm:w-10 sm:h-10 text-blush-400"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  aria-hidden="true"
                 >
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                 </svg>
@@ -190,6 +286,7 @@ export default function Hero(): JSX.Element {
                   className="w-8 h-8 sm:w-10 sm:h-10 text-cream-600"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  aria-hidden="true"
                 >
                   <path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z" />
                 </svg>

@@ -81,9 +81,9 @@ export default function Contact(): JSX.Element {
               Get In Touch
             </span>
             <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900 leading-tight">
-              Let&apos;s Plan Your
+              Contact Our Wedding
               <br />
-              Dream Wedding
+              Planning Team
             </h2>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-charcoal-600 leading-relaxed">
               Ready to start planning? We&apos;d love to hear from you. Fill out the

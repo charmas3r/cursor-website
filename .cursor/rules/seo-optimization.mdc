@@ -1,0 +1,106 @@
+---
+description: Standards and best practices for SEO optimization in Next.js applications
+globs: ["**/*.tsx", "**/*.ts", "app/**/page.tsx", "app/**/layout.tsx"]
+---
+
+# SEO Optimization Standards
+
+Treat SEO as a first-class priority during the development of any task. These rules ensure high search engine visibility and performance.
+
+<rule>
+name: seo_standards
+description: Enforce SEO best practices for all pages and components
+filters:
+  - type: file_extension
+    pattern: "\\.tsx?$"
+  - type: content
+    pattern: "(?i)metadata|generateMetadata|NextSeo|<head>"
+
+actions:
+  - type: suggest
+    message: |
+      ## SEO Priority Checklist
+
+      ### 1. Metadata Configuration
+      - **Titles**: Unique, descriptive, under 60 characters. Format: `Page Title | Brand Name`.
+      - **Descriptions**: Compelling summary, under 160 characters, includes keywords.
+      - **Open Graph**: Always include `og:title`, `og:description`, `og:image`, `og:url`.
+      - **Twitter Cards**: Include `twitter:card`, `twitter:creator`, `twitter:site`.
+      - **Canonical URLs**: Always define a canonical URL to prevent duplicate content issues.
+
+      ### 2. Semantic HTML
+      - Use **one** `<h1>` per page (usually in the main content area).
+      - Use correct heading hierarchy (`<h2>` follows `<h1>`, etc.).
+      - Use semantic tags: `<header>`, `<main>`, `<footer>`, `<article>`, `<aside>`, `<nav>`.
+      - Buttons are for actions, Links (`<a>`) are for navigation.
+
+      ### 3. Image Optimization
+      - Always use `next/image` for internal images.
+      - **Alt Text**: Mandatory for all images. Descriptive for informative images, empty string (`alt=""`) for decorative.
+      - **Dimensions**: Specify `width` and `height` or use `fill` with appropriate container aspect ratio to prevent CLS.
+      - **Priority**: Use `priority` prop for LCP elements (images above the fold).
+
+      ### 4. Performance & Core Web Vitals
+      - **LCP (Largest Contentful Paint)**: Optimize hero images and text blocks.
+      - **CLS (Cumulative Layout Shift)**: Reserve space for images, ads, and embeds.
+      - **FID/INP (Interaction to Next Paint)**: Minimize main thread work, defer non-critical JS.
+
+      ### 5. Structured Data (JSON-LD)
+      - Implement Schema.org structured data for rich snippets (Product, Article, Organization, BreadcrumbList).
+      - Use `next-seo` or Next.js built-in Metadata API for structured data injection.
+
+      ### 6. URLs and Routing
+      - Use descriptive, kebab-case URLs (e.g., `/services/web-development`).
+      - Avoid deep nesting where possible.
+      - Implement 301 redirects for changed URLs immediately.
+
+      ### Example (Next.js App Router Metadata):
+      ```typescript
+      import type { Metadata } from 'next'
+
+      export const metadata: Metadata = {
+        title: 'About Us | My Company',
+        description: 'Learn more about our mission and values.',
+        openGraph: {
+          title: 'About Us | My Company',
+          description: 'Learn more about our mission and values.',
+          url: 'https://example.com/about',
+          siteName: 'My Company',
+          images: [
+            {
+              url: 'https://example.com/og-about.png',
+              width: 1200,
+              height: 630,
+            },
+          ],
+          locale: 'en_US',
+          type: 'website',
+        },
+        alternates: {
+          canonical: 'https://example.com/about',
+        },
+      }
+      ```
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>
+
+<rule>
+name: image_alt_text
+description: Ensure all images have alt text
+filters:
+  - type: content
+    pattern: "<Image"
+
+actions:
+  - type: reject
+    conditions:
+      - pattern: "<Image(?!.*alt=)"
+        message: "All <Image> components must have an 'alt' prop. Use alt=\"\" for decorative images."
+
+metadata:
+  priority: critical
+  version: 1.0
+</rule>

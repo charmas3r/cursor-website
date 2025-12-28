@@ -7,12 +7,15 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+// Navigation links configuration
+// When dedicated pages are added, simply update the href to the page path
+// e.g., change "/#about" to "/about" when the About page is created
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "#about", label: "About Us" },
-  { href: "#packages", label: "Packages" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About Us" },       // TODO: Update to "/about" when page is created
+  { href: "/packages", label: "Packages" },     // Dedicated page
+  { href: "/portfolio", label: "Portfolio" },   // Dedicated page
+  { href: "/#contact", label: "Contact" },      // TODO: Update to "/contact" when page is created
 ];
 
 export default function Navigation(): JSX.Element {
@@ -46,7 +49,7 @@ export default function Navigation(): JSX.Element {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full",
         isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-sm py-3 md:py-4"
           : "bg-transparent py-4 md:py-6"
@@ -129,9 +132,11 @@ export default function Navigation(): JSX.Element {
                 transition={{ delay: 0.3 }}
                 className="pt-4"
               >
-                <Button className="w-full" size="lg">
-                  Get Started
-                </Button>
+                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button className="w-full" size="lg">
+                    Get Started
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

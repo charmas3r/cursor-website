@@ -97,9 +97,9 @@ export default function Services(): JSX.Element {
             Our Packages
           </span>
           <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900 leading-tight">
-            Beautifully Tailored
+            Wedding Planning
             <br />
-            Celebrations
+            Packages & Services
           </h2>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg text-charcoal-600 leading-relaxed px-4 sm:px-0">
             Blending elegance with personal touches, we offer tailored packages
@@ -153,6 +153,7 @@ export default function Services(): JSX.Element {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -173,9 +174,11 @@ export default function Services(): JSX.Element {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-10 sm:mt-12 lg:mt-16 text-center"
         >
-          <Button size="lg" className="w-full sm:w-auto">
-            View All Packages
-          </Button>
+          <a href="/packages">
+            <Button size="lg" className="w-full sm:w-auto">
+              View All Packages
+            </Button>
+          </a>
         </motion.div>
       </div>
     </section>

@@ -66,9 +66,9 @@ export default function About(): JSX.Element {
               About Us
             </span>
             <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900 leading-tight">
-              Creativity, Passion
+              About Our Wedding
               <br />
-              & Attention to Detail
+              Planning Services
             </h2>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-charcoal-600 leading-relaxed">
               Welcome to Wedding Agency San Diego, where creativity, passion, and

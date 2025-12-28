@@ -7,33 +7,39 @@ import Image from "next/image";
 const galleryImages = [
   {
     src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
-    alt: "Couple walking in golden fields",
+    alt: "Romantic wedding couple walking through golden sunset fields in San Diego",
     span: "col-span-2 row-span-2",
+    sizes: "(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw",
   },
   {
     src: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?q=80&w=2070",
-    alt: "Elegant table setting",
+    alt: "Elegant wedding reception table setting with floral centerpiece",
     span: "col-span-1 row-span-1",
+    sizes: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
   },
   {
     src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070",
-    alt: "Wedding florals",
+    alt: "Beautiful wedding floral arrangement with roses and greenery",
     span: "col-span-1 row-span-1",
+    sizes: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
   },
   {
     src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070",
-    alt: "Beach wedding ceremony",
+    alt: "Intimate beachfront wedding ceremony in Southern California",
     span: "col-span-1 row-span-2",
+    sizes: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
   },
   {
     src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070",
-    alt: "Bride portrait",
+    alt: "Stunning bride portrait in elegant wedding dress",
     span: "col-span-1 row-span-1",
+    sizes: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
   },
   {
     src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=2070",
-    alt: "Wedding rings",
+    alt: "Wedding rings detail shot on floral background",
     span: "col-span-1 row-span-1",
+    sizes: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
   },
 ];
 
@@ -55,7 +61,7 @@ export default function Gallery(): JSX.Element {
             Portfolio
           </span>
           <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900 leading-tight">
-            Our Recent Celebrations
+            Wedding Portfolio Gallery
           </h2>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg text-charcoal-600 leading-relaxed px-4 sm:px-0">
             Every wedding tells a unique love story. Here are some of the
@@ -82,19 +88,21 @@ export default function Gallery(): JSX.Element {
                 src={image.src}
                 alt={image.alt}
                 fill
+                sizes={image.sizes}
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               {/* Overlay */}
               <div className="absolute inset-0 bg-charcoal-900/0 group-hover:bg-charcoal-900/30 transition-all duration-500" />
 
               {/* Hover Content */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
                   <svg
                     className="w-5 h-5 text-charcoal-900"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -116,13 +124,17 @@ export default function Gallery(): JSX.Element {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-12 text-center"
         >
-          <button className="inline-flex items-center gap-2 text-charcoal-900 font-medium hover:text-blush-500 transition-colors group">
+          <a 
+            href="/portfolio"
+            className="inline-flex items-center gap-2 text-charcoal-900 font-medium hover:text-blush-500 transition-colors group"
+          >
             View Full Portfolio
             <svg
               className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -131,7 +143,7 @@ export default function Gallery(): JSX.Element {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

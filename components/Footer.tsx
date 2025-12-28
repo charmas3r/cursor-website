@@ -4,28 +4,29 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Heart } from "lucide-react";
 
+// Footer links - update hrefs when dedicated pages are created
 const footerLinks = {
   services: [
-    { label: "Full Service Planning", href: "#" },
-    { label: "Day-of Coordination", href: "#" },
-    { label: "Design & Styling", href: "#" },
-    { label: "Destination Weddings", href: "#" },
+    { label: "Full Service Planning", href: "/packages#full-service" },
+    { label: "Day-of Coordination", href: "/packages#day-of" },
+    { label: "Design & Styling", href: "/packages" },
+    { label: "Destination Weddings", href: "/packages" },
   ],
   company: [
-    { label: "About Us", href: "#about" },
-    { label: "Our Team", href: "#" },
-    { label: "Portfolio", href: "#" },
-    { label: "Testimonials", href: "#" },
+    { label: "About Us", href: "/#about" },         // TODO: Update to "/about"
+    { label: "Our Team", href: "/#about" },         // TODO: Update to "/about#team"
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Testimonials", href: "/portfolio" },
   ],
   resources: [
-    { label: "Blog", href: "#" },
-    { label: "Wedding Tips", href: "#" },
-    { label: "Vendor Directory", href: "#" },
-    { label: "FAQs", href: "#" },
+    { label: "Blog", href: "/blog" },               // Future page
+    { label: "Wedding Tips", href: "/blog" },       // Future page
+    { label: "Vendor Directory", href: "/#packages" },
+    { label: "FAQs", href: "/#contact" },           // TODO: Update to "/contact#faq"
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "/privacy" },  // Future page
+    { label: "Terms of Service", href: "/terms" },  // Future page
   ],
 };
 
