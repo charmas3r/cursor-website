@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import Vision from "@/components/Vision";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
@@ -12,6 +13,7 @@ export default function HomePage(): JSX.Element {
     <main className="relative">
       <Navigation />
       <Hero />
+      <Vision />
       <Services />
       <Testimonials />
       <About />

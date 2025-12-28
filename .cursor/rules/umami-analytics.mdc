@@ -1,0 +1,342 @@
+# Umami Analytics & Telemetry
+
+Standards for tracking user interactions and behavior using Umami analytics. Every user-facing action must be instrumented with telemetry.
+
+<rule>
+name: umami_analytics
+description: Enforce comprehensive Umami event tracking for all user interactions
+filters:
+  - type: file_extension
+    pattern: "\\.(tsx|ts)$"
+  - type: content
+    pattern: "(onClick|onSubmit|onChange|href=|Link|Button|form)"
+
+actions:
+  - type: suggest
+    message: |
+      ### Umami Analytics Implementation
+
+      **Every user-facing interaction MUST be tracked.** Use the `umami.track()` function for custom events.
+
+      ---
+
+      ## Setup
+
+      Add Umami script to `app/layout.tsx`:
+      ```tsx
+      <script
+        defer
+        src="https://analytics.yourdomain.com/script.js"
+        data-website-id="your-website-id"
+      />
+      ```
+
+      ---
+
+      ## Event Naming Convention
+
+      Use **snake_case** with a consistent structure:
+      ```
+      {category}_{action}_{target}
+      ```
+
+      ### Categories
+      - `nav_` - Navigation events
+      - `btn_` - Button clicks
+      - `form_` - Form interactions
+      - `link_` - Link clicks
+      - `cta_` - Call-to-action events
+      - `modal_` - Modal interactions
+      - `toggle_` - Toggle/switch events
+      - `scroll_` - Scroll events
+      - `view_` - Page/section views
+      - `download_` - Download events
+      - `share_` - Social share events
+      - `filter_` - Filter/sort actions
+      - `search_` - Search interactions
+      - `error_` - Error events
+
+      ### Actions
+      - `click` - User clicked
+      - `submit` - Form submitted
+      - `open` - Opened (modal, menu)
+      - `close` - Closed (modal, menu)
+      - `expand` - Expanded (accordion, details)
+      - `collapse` - Collapsed
+      - `select` - Selected option
+      - `change` - Value changed
+      - `view` - Viewed/scrolled into view
+      - `hover` - Hovered (use sparingly)
+      - `copy` - Copied to clipboard
+
+      ---
+
+      ## Implementation Examples
+
+      ### Button Clicks
+      ```tsx
+      <Button
+        onClick={() => {
+          umami.track("btn_click_start_planning");
+          // ... action
+        }}
+      >
+        Start Planning
+      </Button>
+      ```
+
+      ### Navigation Links
+      ```tsx
+      <Link
+        href="/portfolio"
+        onClick={() => umami.track("nav_click_portfolio")}
+      >
+        Portfolio
+      </Link>
+      ```
+
+      ### Form Submissions
+      ```tsx
+      <form
+        onSubmit={(e) => {
+          umami.track("form_submit_contact", {
+            source: "homepage",
+          });
+          handleSubmit(e);
+        }}
+      >
+      ```
+
+      ### CTA Buttons
+      ```tsx
+      <Button
+        onClick={() => {
+          umami.track("cta_click_get_started", {
+            location: "hero",
+            package: selectedPackage,
+          });
+        }}
+      >
+        Get Started
+      </Button>
+      ```
+
+      ### External Links
+      ```tsx
+      <a
+        href="https://theknot.com/..."
+        target="_blank"
+        onClick={() => umami.track("link_click_external_theknot")}
+      >
+        View on The Knot
+      </a>
+      ```
+
+      ### Mobile Menu
+      ```tsx
+      <button
+        onClick={() => {
+          setIsOpen(!isOpen);
+          umami.track(isOpen ? "nav_close_mobile_menu" : "nav_open_mobile_menu");
+        }}
+      >
+        Menu
+      </button>
+      ```
+
+      ### Package/Plan Selection
+      ```tsx
+      <Card
+        onClick={() => {
+          setSelectedPackage(pkg.id);
+          umami.track("btn_select_package", {
+            package_id: pkg.id,
+            package_name: pkg.name,
+            price: pkg.price,
+          });
+        }}
+      >
+      ```
+
+      ### Gallery/Portfolio Interactions
+      ```tsx
+      <Image
+        onClick={() => {
+          umami.track("btn_click_gallery_image", {
+            image_id: image.id,
+            category: image.category,
+          });
+          openLightbox(image);
+        }}
+      />
+      ```
+
+      ### Accordion/FAQ Expansion
+      ```tsx
+      <AccordionTrigger
+        onClick={() => {
+          umami.track(isOpen ? "toggle_collapse_faq" : "toggle_expand_faq", {
+            question: faq.question,
+          });
+        }}
+      >
+      ```
+
+      ### Scroll-to-Section
+      ```tsx
+      <Button
+        onClick={() => {
+          umami.track("nav_click_scroll_to", { section: "contact" });
+          scrollToSection("contact");
+        }}
+      >
+        Contact Us
+      </Button>
+      ```
+
+      ### Social Links
+      ```tsx
+      <a
+        href="https://instagram.com/..."
+        onClick={() => umami.track("link_click_social_instagram")}
+      >
+        Instagram
+      </a>
+      ```
+
+      ### Newsletter Signup
+      ```tsx
+      <form
+        onSubmit={(e) => {
+          umami.track("form_submit_newsletter");
+          handleNewsletterSubmit(e);
+        }}
+      >
+      ```
+
+      ### Download Actions
+      ```tsx
+      <a
+        href="/brochure.pdf"
+        download
+        onClick={() => umami.track("download_click_brochure")}
+      >
+        Download Brochure
+      </a>
+      ```
+
+      ---
+
+      ## Event Properties
+
+      Include relevant context as event properties:
+      ```tsx
+      umami.track("event_name", {
+        location: "hero" | "footer" | "nav" | "page_name",
+        source: "homepage" | "portfolio" | "packages",
+        item_id: "unique_identifier",
+        item_name: "Human Readable Name",
+        value: 1500,  // for pricing/numeric values
+        category: "wedding" | "elopement",
+      });
+      ```
+
+      ---
+
+      ## TypeScript Declaration
+
+      Add to `types/umami.d.ts`:
+      ```typescript
+      interface UmamiTracker {
+        track: (event: string, properties?: Record<string, string | number | boolean>) => void;
+      }
+
+      declare global {
+        interface Window {
+          umami?: UmamiTracker;
+        }
+        const umami: UmamiTracker;
+      }
+
+      export {};
+      ```
+
+      ---
+
+      ## Required Tracking Checklist
+
+      Every page/component should track:
+
+      ### Navigation
+      - [ ] Logo click → `nav_click_logo`
+      - [ ] Menu item clicks → `nav_click_{page_name}`
+      - [ ] Mobile menu open/close → `nav_open_mobile_menu` / `nav_close_mobile_menu`
+      - [ ] Footer links → `nav_click_footer_{link_name}`
+
+      ### Buttons & CTAs
+      - [ ] Primary CTA → `cta_click_{action_name}`
+      - [ ] Secondary buttons → `btn_click_{action_name}`
+      - [ ] "Get Started" → `cta_click_get_started`
+      - [ ] "Learn More" → `btn_click_learn_more`
+      - [ ] "View Portfolio" → `btn_click_view_portfolio`
+
+      ### Forms
+      - [ ] Form submission → `form_submit_{form_name}`
+      - [ ] Form field focus → `form_focus_{field_name}` (optional)
+      - [ ] Form errors → `error_form_validation`
+
+      ### Content Interactions
+      - [ ] Image clicks → `btn_click_image_{context}`
+      - [ ] Video plays → `btn_click_video_play`
+      - [ ] Accordion expand/collapse → `toggle_expand_{item}` / `toggle_collapse_{item}`
+      - [ ] Tab switches → `btn_click_tab_{tab_name}`
+      - [ ] Carousel navigation → `btn_click_carousel_{prev|next}`
+
+      ### External Links
+      - [ ] Social media → `link_click_social_{platform}`
+      - [ ] External reviews → `link_click_external_{site}`
+      - [ ] Phone/email → `link_click_contact_{type}`
+
+      ### E-commerce/Packages
+      - [ ] Package selection → `btn_select_package`
+      - [ ] Price view → `view_pricing`
+      - [ ] Add-on selection → `btn_select_addon`
+
+examples:
+  - input: |
+      // Bad - No tracking
+      <Button onClick={() => router.push("/contact")}>
+        Contact Us
+      </Button>
+
+      // Good - With tracking
+      <Button
+        onClick={() => {
+          umami.track("cta_click_contact_us", { location: "hero" });
+          router.push("/contact");
+        }}
+      >
+        Contact Us
+      </Button>
+    output: "Properly instrumented with Umami tracking"
+
+  - input: |
+      // Bad - No tracking on external link
+      <a href="https://theknot.com/..." target="_blank">
+        View Reviews
+      </a>
+
+      // Good - External link tracked
+      <a
+        href="https://theknot.com/..."
+        target="_blank"
+        onClick={() => umami.track("link_click_external_theknot")}
+      >
+        View Reviews
+      </a>
+    output: "External link properly tracked"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

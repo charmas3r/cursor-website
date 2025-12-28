@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Heart,
@@ -10,50 +10,157 @@ import {
   MapPin,
   Users,
   Sparkles,
+  X,
+  Check,
+  ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 const services = [
   {
+    id: "full-service",
     icon: Heart,
     title: "Full Service Planning",
     description:
       "From engagement to 'I do,' we handle every detail. Our comprehensive planning service includes vendor sourcing, timeline creation, budget management, and complete coordination.",
     features: ["Vendor Management", "Budget Planning", "Timeline Creation"],
+    fullDescription:
+      "Our signature full-service planning is for couples who want a truly hands-off experience. From the moment you say 'yes' to the moment you say 'I do,' we're by your side, transforming your vision into reality with meticulous attention to every detail.",
+    extendedFeatures: [
+      "Unlimited planning consultations",
+      "Complete vendor sourcing & management",
+      "Budget creation & ongoing tracking",
+      "Detailed timeline development",
+      "Design concept & styling direction",
+      "Guest list & RSVP management",
+      "Rehearsal dinner coordination",
+      "Full day-of coordination included",
+    ],
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
+    priceRange: "$$$",
+    startingAt: "Starting at $5,500",
+    idealFor: "Couples wanting a completely stress-free planning experience",
   },
   {
+    id: "day-of",
     icon: Calendar,
     title: "Day-of Coordination",
     description:
       "Already planned your dream wedding? Let us execute it flawlessly. We'll manage vendors, handle logistics, and ensure your day runs smoothly while you enjoy every moment.",
     features: ["Vendor Coordination", "Timeline Management", "Crisis Control"],
+    fullDescription:
+      "You've done the planning—now let us handle the execution. Our day-of coordination ensures every vendor, timeline, and detail comes together seamlessly so you can be fully present on your wedding day.",
+    extendedFeatures: [
+      "Pre-wedding planning meeting",
+      "Detailed timeline finalization",
+      "Vendor confirmation & coordination",
+      "Ceremony rehearsal direction",
+      "Up to 10 hours of coverage",
+      "Setup & breakdown oversight",
+      "Emergency kit on standby",
+      "Point of contact for all vendors",
+    ],
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
+    priceRange: "$$",
+    startingAt: "Starting at $1,800",
+    idealFor: "DIY couples who want professional execution",
   },
   {
+    id: "design-styling",
     icon: Palette,
     title: "Design & Styling",
     description:
       "Transform your vision into reality with our expert design team. From florals to tablescapes, we create cohesive aesthetics that tell your unique love story.",
     features: ["Floral Design", "Tablescapes", "Décor Styling"],
+    fullDescription:
+      "Our design team creates cohesive, stunning aesthetics that reflect your personal style and love story. From color palettes to the smallest details, we craft an atmosphere that's uniquely yours.",
+    extendedFeatures: [
+      "Design consultation & mood boarding",
+      "Color palette development",
+      "Floral concept & vendor coordination",
+      "Tablescape & centerpiece design",
+      "Ceremony backdrop styling",
+      "Stationery design direction",
+      "Day-of styling setup",
+      "Rental coordination",
+    ],
+    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070",
+    priceRange: "$$",
+    startingAt: "Starting at $2,500",
+    idealFor: "Couples with a vision but need design expertise",
   },
   {
+    id: "destination",
     icon: MapPin,
     title: "Destination Weddings",
     description:
       "Dreaming of saying 'I do' somewhere special? We specialize in destination weddings, handling all the logistics so you can focus on the romance.",
     features: ["Travel Coordination", "Local Vendors", "Guest Management"],
+    fullDescription:
+      "Say 'I do' with the backdrop of your dreams. We handle all the complexities of destination weddings—from local vendor relationships to guest travel coordination—so you can focus on the romance.",
+    extendedFeatures: [
+      "Destination scouting & selection",
+      "Local vendor sourcing & management",
+      "Guest travel coordination",
+      "Welcome event planning",
+      "Site visits & inspections",
+      "Legal requirements guidance",
+      "Multi-day itinerary creation",
+      "On-site coordination",
+    ],
+    image: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=2070",
+    priceRange: "$$$+",
+    startingAt: "Starting at $8,000",
+    idealFor: "Couples dreaming of a wedding away from home",
   },
   {
+    id: "elopement",
     icon: Users,
     title: "Elopement Packages",
     description:
       "Intimate celebrations deserve the same attention to detail. Our elopement packages create magical moments for just the two of you.",
     features: ["Ceremony Planning", "Photography", "Special Touches"],
+    fullDescription:
+      "Intimate doesn't mean less special. Our elopement packages are designed for couples who want a meaningful, beautifully curated ceremony—whether it's just the two of you or a small gathering of your closest loved ones.",
+    extendedFeatures: [
+      "Location scouting & permits",
+      "Officiant coordination",
+      "Photographer recommendations",
+      "Ceremony styling & florals",
+      "Champagne & celebration setup",
+      "Vow writing assistance",
+      "Private dinner reservation",
+      "Adventure elopement options",
+    ],
+    image: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=2071",
+    priceRange: "$",
+    startingAt: "Starting at $1,200",
+    idealFor: "Couples wanting an intimate, meaningful ceremony",
   },
   {
+    id: "custom",
     icon: Sparkles,
     title: "Custom Experiences",
     description:
       "Every love story is unique. We create bespoke wedding experiences tailored to your personality, culture, and dreams.",
     features: ["Personalized Planning", "Unique Venues", "Cultural Touches"],
+    fullDescription:
+      "Your love story is one-of-a-kind, and your wedding should be too. Our custom experiences are built from scratch around your unique vision, cultural traditions, and personal style.",
+    extendedFeatures: [
+      "Fully customized planning approach",
+      "Cultural ceremony incorporation",
+      "Unique venue sourcing",
+      "Themed event design",
+      "Personalized guest experiences",
+      "Custom timeline & pacing",
+      "Specialty vendor coordination",
+      "Bespoke detail creation",
+    ],
+    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=2187",
+    priceRange: "Custom",
+    startingAt: "Pricing varies",
+    idealFor: "Couples with a unique vision or cultural traditions",
   },
 ];
 
@@ -81,6 +188,9 @@ const itemVariants = {
 export default function Services(): JSX.Element {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
+  const activeService = services.find((s) => s.id === selectedService);
 
   return (
     <section id="packages" className="py-16 sm:py-20 lg:py-32 bg-white" ref={ref}>
@@ -114,10 +224,11 @@ export default function Services(): JSX.Element {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
         >
           {services.map((service) => (
-            <motion.div
+            <motion.button
               key={service.title}
               variants={itemVariants}
-              className="group relative bg-cream-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-white hover:shadow-xl transition-all duration-500"
+              onClick={() => setSelectedService(service.id)}
+              className="group relative text-left bg-cream-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer"
             >
               {/* Icon */}
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-blush-50 transition-colors duration-300">
@@ -145,6 +256,14 @@ export default function Services(): JSX.Element {
                 ))}
               </ul>
 
+              {/* Price indicator */}
+              <div className="mt-4 pt-4 border-t border-cream-200">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-charcoal-500">{service.startingAt}</span>
+                  <span className="text-sm font-medium text-blush-500">{service.priceRange}</span>
+                </div>
+              </div>
+
               {/* Hover Arrow */}
               <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-charcoal-900 flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
                 <svg
@@ -162,7 +281,7 @@ export default function Services(): JSX.Element {
                   />
                 </svg>
               </div>
-            </motion.div>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -173,14 +292,128 @@ export default function Services(): JSX.Element {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-10 sm:mt-12 lg:mt-16 text-center"
         >
-          <a href="/packages">
+          <Link href="/packages">
             <Button size="lg" className="w-full sm:w-auto">
               View All Packages
             </Button>
-          </a>
+          </Link>
         </motion.div>
       </div>
+
+      {/* Service Detail Modal */}
+      <AnimatePresence>
+        {selectedService && activeService && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal-900/60 backdrop-blur-sm"
+            onClick={() => setSelectedService(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedService(null)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg hover:bg-white transition-colors"
+              >
+                <X className="w-5 h-5 text-charcoal-700" />
+              </button>
+
+              <div className="overflow-y-auto max-h-[90vh]">
+                {/* Header Image */}
+                <div className="relative h-48 sm:h-64">
+                  <Image
+                    src={activeService.image}
+                    alt={activeService.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/70 via-charcoal-900/20 to-transparent" />
+                  
+                  {/* Icon overlay */}
+                  <div className="absolute top-6 left-6">
+                    <div className="w-14 h-14 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                      <activeService.icon className="w-7 h-7 text-blush-500" />
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="px-3 py-1 bg-blush-500 text-white text-xs font-medium rounded-full">
+                        {activeService.priceRange}
+                      </span>
+                      <span className="text-white/90 text-sm font-medium">
+                        {activeService.startingAt}
+                      </span>
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-serif font-medium text-white">
+                      {activeService.title}
+                    </h2>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-8">
+                  {/* Ideal For Badge */}
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-cream-100 rounded-full text-sm text-charcoal-700 mb-6">
+                    <Sparkles className="w-4 h-4 text-blush-500" />
+                    <span className="font-medium">Ideal for:</span> {activeService.idealFor}
+                  </div>
+
+                  <p className="text-charcoal-600 leading-relaxed text-lg">
+                    {activeService.fullDescription}
+                  </p>
+
+                  {/* Features */}
+                  <div className="mt-8">
+                    <h3 className="text-lg font-serif font-semibold text-charcoal-900 mb-4">
+                      What&apos;s Included
+                    </h3>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {activeService.extendedFeatures.map((feature) => (
+                        <div
+                          key={feature}
+                          className="flex items-start gap-3 text-sm text-charcoal-600"
+                        >
+                          <Check className="w-5 h-5 text-blush-500 flex-shrink-0 mt-0.5" />
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                    <Link href="/packages" className="flex-1">
+                      <Button size="lg" className="w-full">
+                        View Full Pricing
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                    <Link href="/#contact" className="flex-1">
+                      <Button variant="outline" size="lg" className="w-full">
+                        Get a Free Quote
+                      </Button>
+                    </Link>
+                  </div>
+
+                  <p className="mt-4 text-center text-xs text-charcoal-500">
+                    All packages are customizable to fit your unique vision and budget.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
-

@@ -12,16 +12,16 @@ const footerLinks = {
     { label: "Destination Weddings", href: "/packages" },
   ],
   company: [
-    { label: "About Us", href: "/#about" },         // TODO: Update to "/about"
-    { label: "Our Team", href: "/#about" },         // TODO: Update to "/about#team"
+    { label: "About Us", href: "/about" },
+    { label: "Our Team", href: "/about#team" },   // Links to "The Dreammakers" section
     { label: "Portfolio", href: "/portfolio" },
     { label: "Testimonials", href: "/portfolio" },
   ],
   resources: [
-    { label: "Blog", href: "/blog" },               // Future page
-    { label: "Wedding Tips", href: "/blog" },       // Future page
+    { label: "Blog", href: "/wedding-tips" },
+    { label: "Wedding Tips", href: "/wedding-tips" },
     { label: "Vendor Directory", href: "/#packages" },
-    { label: "FAQs", href: "/#contact" },           // TODO: Update to "/contact#faq"
+    { label: "FAQs", href: "/packages#faq" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },  // Future page
@@ -160,7 +160,7 @@ export default function Footer(): JSX.Element {
             <p className="text-charcoal-500 text-sm flex items-center gap-1">
               © {new Date().getFullYear()} Wedding Agency San Diego. Made with
               <Heart className="w-4 h-4 text-blush-500 fill-blush-500" />
-              in Southern California
+              by <Link href="https://www.linkedin.com/in/evan-smith-93bb43154/" className="text-blush-500 hover:text-blush-600 transition-colors duration-300">Evan</Link>.
             </p>
 
             <div className="flex gap-6">
