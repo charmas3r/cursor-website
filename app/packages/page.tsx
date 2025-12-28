@@ -10,15 +10,12 @@ import { Button } from "@/components/ui/button";
 import {
   Heart,
   Calendar,
-  Palette,
   MapPin,
-  Users,
   Sparkles,
   Check,
   Star,
   Crown,
   Gem,
-  ArrowRight,
   Phone,
   ChevronDown,
 } from "lucide-react";
@@ -459,7 +456,7 @@ export default function PackagesPage(): JSX.Element {
                           ? "bg-blush-500 hover:bg-blush-600 text-white"
                           : ""
                       )}
-                      variant={pkg.popular ? "default" : "outline"}
+                      variant={pkg.popular ? "primary" : "outline"}
                       size="lg"
                     >
                       Get Started
