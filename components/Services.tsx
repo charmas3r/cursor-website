@@ -258,8 +258,7 @@ export default function Services(): JSX.Element {
 
               {/* Price indicator */}
               <div className="mt-4 pt-4 border-t border-cream-200">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-charcoal-500">{service.startingAt}</span>
+                <div className="flex items-center justify-start">
                   <span className="text-sm font-medium text-blush-500">{service.priceRange}</span>
                 </div>
               </div>

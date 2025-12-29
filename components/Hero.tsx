@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { X, Check, ArrowRight, DollarSign } from "lucide-react";
+import { X, ArrowRight, DollarSign, Sparkles, Heart, Users } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -33,10 +33,10 @@ const scaleIn = {
   }),
 };
 
-// Detailed service data
-const services = [
+// Feature cards - exploratory content about the company
+const featureCards = [
   {
-    id: "wedding-planners",
+    id: "our-approach",
     icon: (
       <svg
         className="w-8 h-8 sm:w-10 sm:h-10 text-blush-400"
@@ -47,27 +47,23 @@ const services = [
         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
       </svg>
     ),
-    title: "Wedding Planners",
+    title: "Our Approach",
     shortDescription:
-      "Our dedicated team guides you every step of the way, from venue selection to your dream ceremony.",
-    fullDescription:
-      "Our full-service wedding planning transforms your vision into reality. From the first consultation to the final farewell, we handle every detail with care and precision.",
-    features: [
-      "Unlimited planning consultations",
-      "Venue scouting & selection",
-      "Vendor recommendations & management",
-      "Budget creation & tracking",
-      "Design & aesthetic development",
-      "Timeline creation & management",
-      "Guest list management",
-      "Day-of coordination included",
+      "We believe every love story deserves a celebration that's as unique as the couple at its heart.",
+    modalTitle: "A Personal Touch in Every Detail",
+    modalDescription:
+      "At Wedding Agency San Diego, we don't believe in cookie-cutter weddings. Our approach begins with truly understanding you—your story, your style, and your dreams. From there, we craft a celebration that feels authentically, beautifully yours.",
+    highlights: [
+      "In-depth discovery sessions to understand your vision",
+      "Personalized planning tailored to your unique style",
+      "Dedicated planner as your single point of contact",
+      "Stress-free experience from start to finish",
     ],
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
-    priceRange: "$$$",
-    startingAt: "Starting at $5,500",
+    cta: { label: "Meet Our Team", href: "/about#team" },
   },
   {
-    id: "day-of-coordination",
+    id: "what-we-do",
     icon: (
       <svg
         className="w-8 h-8 sm:w-10 sm:h-10 text-blush-400"
@@ -78,27 +74,23 @@ const services = [
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
       </svg>
     ),
-    title: "Day-of Coordination",
+    title: "What We Do",
     shortDescription:
-      "Stress-free experience so you can enjoy every moment of your special day with loved ones.",
-    fullDescription:
-      "Perfect for couples who've planned their wedding but want a professional to execute on the big day. We step in to ensure everything runs seamlessly.",
-    features: [
-      "Detailed timeline creation",
-      "Vendor confirmation & coordination",
-      "Ceremony rehearsal direction",
-      "Up to 10 hours of coverage",
-      "Setup & breakdown supervision",
-      "Emergency kit on standby",
-      "Point of contact for all vendors",
-      "Guest & family coordination",
+      "Full-service planning, day-of coordination, and everything in between—we've got you covered.",
+    modalTitle: "Comprehensive Wedding Services",
+    modalDescription:
+      "Whether you need someone to handle every detail or just want support on the big day, we offer flexible services designed to meet you where you are in your planning journey.",
+    highlights: [
+      "Full-service planning from engagement to honeymoon",
+      "Day-of coordination for DIY couples",
+      "Design & styling to bring your vision to life",
+      "Destination weddings & intimate elopements",
     ],
     image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
-    priceRange: "$$",
-    startingAt: "Starting at $1,800",
+    cta: { label: "View Our Packages", href: "/packages" },
   },
   {
-    id: "more-services",
+    id: "why-us",
     icon: (
       <svg
         className="w-8 h-8 sm:w-10 sm:h-10 text-blush-400"
@@ -109,24 +101,20 @@ const services = [
         <path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z" />
       </svg>
     ),
-    title: "More Than You Think ...",
+    title: "Why Choose Us",
     shortDescription:
-      "Vendor coordination, design styling, budget management, and personalized care throughout.",
-    fullDescription:
-      "Beyond traditional planning, we offer specialized services to make your celebration truly unique—from destination weddings to elopements and everything in between.",
-    features: [
-      "Destination wedding coordination",
-      "Elopement packages",
-      "Design & styling consultation",
-      "Proposal planning",
-      "Rehearsal dinner planning",
-      "Post-wedding brunch coordination",
-      "Vendor-only management",
-      "À la carte services available",
+      "500+ weddings, 15+ years experience, and a 2× Best of Weddings winner. Your day is in expert hands.",
+    modalTitle: "Experience You Can Trust",
+    modalDescription:
+      "With over 15 years of experience and 500+ weddings under our belt, we've seen it all—and planned it all. Our track record speaks for itself, but it's the relationships we build with our couples that truly set us apart.",
+    highlights: [
+      "500+ weddings successfully planned",
+      "15+ years of industry experience",
+      "2× Best of Weddings winner (The Knot)",
+      "50+ trusted vendor partnerships",
     ],
     image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070",
-    priceRange: "$-$$$",
-    startingAt: "Customized pricing",
+    cta: { label: "See Our Work", href: "/portfolio" },
   },
 ];
 
@@ -159,10 +147,10 @@ const packagesOverview = [
 ];
 
 export default function Hero(): JSX.Element {
-  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const [showPackagesModal, setShowPackagesModal] = useState(false);
 
-  const activeService = services.find((s) => s.id === selectedService);
+  const activeCard = featureCards.find((c) => c.id === selectedCard);
 
   return (
     <section className="relative min-h-screen overflow-hidden">
@@ -316,24 +304,24 @@ export default function Hero(): JSX.Element {
               animate="visible"
               className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6"
             >
-              {services.map((service, index) => (
+              {featureCards.map((card, index) => (
                 <motion.button
-                  key={service.id}
+                  key={card.id}
                   custom={0.6 + index * 0.15}
                   variants={scaleIn}
-                  onClick={() => setSelectedService(service.id)}
+                  onClick={() => setSelectedCard(card.id)}
                   className="text-left bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group border border-white/50 cursor-pointer"
                 >
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-lg sm:text-xl font-semibold text-charcoal-900 font-serif">
-                      {service.title}
+                      {card.title}
                     </h3>
                     <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                      {service.icon}
+                      {card.icon}
                     </div>
                   </div>
                   <p className="text-sm text-charcoal-600 leading-relaxed">
-                    {service.shortDescription}
+                    {card.shortDescription}
                   </p>
                   <div className="mt-4 flex items-center gap-2 text-blush-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                     Learn more <ArrowRight className="w-4 h-4" />
@@ -345,15 +333,15 @@ export default function Hero(): JSX.Element {
         </div>
       </div>
 
-      {/* Service Detail Modal */}
+      {/* Learn More Modal */}
       <AnimatePresence>
-        {selectedService && activeService && (
+        {selectedCard && activeCard && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal-900/60 backdrop-blur-sm"
-            onClick={() => setSelectedService(null)}
+            onClick={() => setSelectedCard(null)}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -365,7 +353,7 @@ export default function Hero(): JSX.Element {
             >
               {/* Close button */}
               <button
-                onClick={() => setSelectedService(null)}
+                onClick={() => setSelectedCard(null)}
                 className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg hover:bg-white transition-colors"
               >
                 <X className="w-5 h-5 text-charcoal-700" />
@@ -375,62 +363,59 @@ export default function Hero(): JSX.Element {
                 {/* Header Image */}
                 <div className="relative h-48 sm:h-64">
                   <Image
-                    src={activeService.image}
-                    alt={activeService.title}
+                    src={activeCard.image}
+                    alt={activeCard.title}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 800px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/70 via-charcoal-900/30 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="px-3 py-1 bg-blush-500 text-white text-xs font-medium rounded-full">
-                        {activeService.priceRange}
-                      </span>
-                      <span className="text-white/80 text-sm">
-                        {activeService.startingAt}
-                      </span>
-                    </div>
                     <h2 className="text-2xl sm:text-3xl font-serif font-medium text-white">
-                      {activeService.title}
+                      {activeCard.modalTitle}
                     </h2>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 sm:p-8">
-                  <p className="text-charcoal-600 leading-relaxed">
-                    {activeService.fullDescription}
+                  <p className="text-charcoal-600 leading-relaxed text-lg">
+                    {activeCard.modalDescription}
                   </p>
 
-                  {/* Features */}
-                  <div className="mt-8">
-                    <h3 className="text-lg font-serif font-semibold text-charcoal-900 mb-4">
-                      What&apos;s Included
-                    </h3>
-                    <div className="grid sm:grid-cols-2 gap-3">
-                      {activeService.features.map((feature) => (
-                        <div
-                          key={feature}
-                          className="flex items-start gap-3 text-sm text-charcoal-600"
-                        >
-                          <Check className="w-5 h-5 text-blush-500 flex-shrink-0 mt-0.5" />
-                          {feature}
+                  {/* Highlights */}
+                  <div className="mt-8 grid sm:grid-cols-2 gap-4">
+                    {activeCard.highlights.map((highlight, index) => (
+                      <div
+                        key={highlight}
+                        className="flex items-start gap-3 p-4 bg-cream-50 rounded-xl"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-blush-100 flex items-center justify-center flex-shrink-0">
+                          {index === 0 && <Heart className="w-4 h-4 text-blush-500" />}
+                          {index === 1 && <Sparkles className="w-4 h-4 text-blush-500" />}
+                          {index === 2 && <Users className="w-4 h-4 text-blush-500" />}
+                          {index === 3 && (
+                            <svg className="w-4 h-4 text-blush-500" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                            </svg>
+                          )}
                         </div>
-                      ))}
-                    </div>
+                        <p className="text-sm text-charcoal-700">{highlight}</p>
+                      </div>
+                    ))}
                   </div>
 
                   {/* CTA */}
                   <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                    <Link href="/packages" className="flex-1">
+                    <Link href={activeCard.cta.href} className="flex-1">
                       <Button size="lg" className="w-full">
-                        View Full Details
+                        {activeCard.cta.label}
+                        <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>
                     <Link href="/#contact" className="flex-1">
                       <Button variant="outline" size="lg" className="w-full">
-                        Get a Quote
+                        Get in Touch
                       </Button>
                     </Link>
                   </div>

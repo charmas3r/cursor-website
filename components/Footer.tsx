@@ -157,10 +157,13 @@ export default function Footer(): JSX.Element {
       <div className="border-t border-charcoal-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-charcoal-500 text-sm flex items-center gap-1">
-              © {new Date().getFullYear()} Wedding Agency San Diego. Made with
-              <Heart className="w-4 h-4 text-blush-500 fill-blush-500" />
-              by <Link href="https://www.linkedin.com/in/evan-smith-93bb43154/" className="text-blush-500 hover:text-blush-600 transition-colors duration-300">Evan</Link>.
+            <p className="text-charcoal-500 text-sm flex flex-wrap items-center justify-center md:justify-start gap-x-1">
+              <span>© {new Date().getFullYear()} Wedding Agency San Diego.</span>
+              <span className="inline-flex items-center gap-1">
+                Made with
+                <Heart className="w-4 h-4 text-blush-500 fill-blush-500" />
+                by <Link href="https://www.linkedin.com/in/evan-smith-93bb43154/" className="text-blush-500 hover:text-blush-600 transition-colors duration-300">E.S.</Link>
+              </span>
             </p>
 
             <div className="flex gap-6">
