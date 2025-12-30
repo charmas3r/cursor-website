@@ -164,6 +164,7 @@ const services = [
     idealFor: "Couples wanting to feel their best on their wedding day",
     partnerLink: "https://azadihealing.com/about-me-%26-azadi",
     partnerName: "Azadi Healing",
+    featured: true,
   },
 ];
 
@@ -231,8 +232,18 @@ export default function Services(): JSX.Element {
               key={service.title}
               variants={itemVariants}
               onClick={() => setSelectedService(service.id)}
-              className="group relative text-left bg-cream-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer"
+              className={`group relative text-left rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer ${
+                service.featured
+                  ? "bg-sage-50 ring-2 ring-sage-300"
+                  : "bg-cream-50"
+              }`}
             >
+              {/* Featured Badge */}
+              {service.featured && (
+                <span className="absolute -top-3 left-6 px-3 py-1 bg-sage-500 text-white text-xs font-medium rounded-full">
+                  Featured
+                </span>
+              )}
               {/* Icon */}
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-blush-50 transition-colors duration-300">
                 <service.icon className="w-6 h-6 sm:w-7 sm:h-7 text-blush-500" />
