@@ -9,122 +9,9 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Heart, Calendar, MapPin, ArrowRight, Star } from "lucide-react";
 
-// Portfolio couples data based on https://weddingagencysandiego.com/portfolio
-const couples = [
-  {
-    id: "zoe-byron",
-    names: "Zoe & Byron",
-    tagline: "A Romantic Garden Celebration",
-    venue: "Rancho Valencia Resort",
-    date: "Spring 2024",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
-    featured: true,
-    testimonial: "Wedding Agency San Diego made our dream wedding a reality. Every detail was perfect.",
-  },
-  {
-    id: "ally-tyler",
-    names: "Ally & Tyler",
-    tagline: "Beachside Elegance",
-    venue: "Hotel del Coronado",
-    date: "Summer 2024",
-    image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070",
-    featured: true,
-    testimonial: "From start to finish, the team was incredible. Our beach wedding was magical.",
-  },
-  {
-    id: "catherine-mitchell",
-    names: "Catherine & Mitchell",
-    tagline: "Vineyard Dreams",
-    venue: "Bernardo Winery",
-    date: "Fall 2024",
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
-    featured: true,
-    testimonial: "The attention to detail was extraordinary. We couldn't have asked for more.",
-  },
-  {
-    id: "carly-jonathan",
-    names: "Carly & Jonathan",
-    tagline: "Modern Sophistication",
-    venue: "The Lodge at Torrey Pines",
-    date: "Winter 2023",
-    image: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070",
-    featured: false,
-  },
-  {
-    id: "camryn-mitchell",
-    names: "Camryn & Mitchell",
-    tagline: "Desert Romance",
-    venue: "Anza-Borrego Desert",
-    date: "Spring 2023",
-    image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=2070",
-    featured: false,
-  },
-  {
-    id: "jessica-kevin",
-    names: "Jessica & Kevin",
-    tagline: "Classic Glamour",
-    venue: "US Grant Hotel",
-    date: "Summer 2023",
-    image: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?q=80&w=2070",
-    featured: false,
-  },
-  {
-    id: "vanessa-phil",
-    names: "Vanessa & Phil",
-    tagline: "Rustic Charm",
-    venue: "Mount Palomar Winery",
-    date: "Fall 2023",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070",
-    featured: false,
-  },
-  {
-    id: "wendy-justin",
-    names: "Wendy & Justin",
-    tagline: "Sunset Serenade",
-    venue: "Sunset Cliffs",
-    date: "Summer 2023",
-    image: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=2070",
-    featured: false,
-  },
-  {
-    id: "isabela-roberto",
-    names: "Isabela & Roberto",
-    tagline: "Cultural Fusion",
-    venue: "The Prado at Balboa Park",
-    date: "Spring 2023",
-    image: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=2071",
-    featured: false,
-  },
-  {
-    id: "mindy-errick",
-    names: "Mindy & Errick",
-    tagline: "Intimate Elopement",
-    venue: "La Jolla Cove",
-    date: "Winter 2022",
-    image: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=2070",
-    featured: false,
-  },
-  {
-    id: "katelyn-zach",
-    names: "Katelyn & Zach",
-    tagline: "Garden Party Perfection",
-    venue: "Estancia La Jolla",
-    date: "Fall 2022",
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2098",
-    featured: false,
-  },
-  {
-    id: "amanda-phillip",
-    names: "Amanda & Phillip",
-    tagline: "Timeless Elegance",
-    venue: "Fairmont Grand Del Mar",
-    date: "Summer 2022",
-    image: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?q=80&w=2090",
-    featured: false,
-  },
-];
+import { couples, getFeaturedCouples, type CoupleData } from "@/data/couples";
 
-const featuredCouples = couples.filter((c) => c.featured);
+const featuredCouples = getFeaturedCouples();
 const allCouples = couples.filter((c) => !c.featured);
 
 const containerVariants = {
@@ -267,58 +154,60 @@ export default function PortfolioPage(): JSX.Element {
                   index === 0 ? "lg:col-span-2 lg:row-span-2" : ""
                 }`}
               >
-                <div
-                  className={`relative ${
-                    index === 0 ? "h-[400px] lg:h-[600px]" : "h-[350px]"
-                  }`}
-                >
-                  <Image
-                    src={couple.image}
-                    alt={`${couple.names} wedding at ${couple.venue} - San Diego Wedding Photography`}
-                    fill
-                    sizes={index === 0 ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    priority={index === 0}
-                  />
+                <Link href={`/portfolio/${couple.id}`} className="block">
+                  <div
+                    className={`relative ${
+                      index === 0 ? "h-[400px] lg:h-[600px]" : "h-[350px]"
+                    }`}
+                  >
+                    <Image
+                      src={couple.heroImage}
+                      alt={`${couple.names} wedding at ${couple.venue} - San Diego Wedding Photography`}
+                      fill
+                      sizes={index === 0 ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      priority={index === 0}
+                    />
 
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/20 to-transparent" />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/20 to-transparent" />
 
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
-                    <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-                      <div className="flex items-center gap-4 text-white/80 text-sm mb-3">
-                        <span className="flex items-center gap-1.5">
-                          <MapPin className="w-4 h-4" aria-hidden="true" />
-                          {couple.venue}
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                          <Calendar className="w-4 h-4" aria-hidden="true" />
-                          {couple.date}
+                    {/* Content */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
+                      <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
+                        <div className="flex items-center gap-4 text-white/80 text-sm mb-3">
+                          <span className="flex items-center gap-1.5">
+                            <MapPin className="w-4 h-4" aria-hidden="true" />
+                            {couple.venue}
+                          </span>
+                          <span className="flex items-center gap-1.5">
+                            <Calendar className="w-4 h-4" aria-hidden="true" />
+                            {couple.date}
+                          </span>
+                        </div>
+
+                        <h3 className="text-2xl sm:text-3xl font-serif font-semibold text-white mb-2">
+                          {couple.names}
+                        </h3>
+                        <p className="text-blush-300 font-medium mb-4">{couple.tagline}</p>
+
+                        {couple.review && (
+                          <blockquote className="text-white/90 text-sm italic leading-relaxed mb-4 max-w-md">
+                            &ldquo;{couple.review.text.slice(0, 120)}...&rdquo;
+                          </blockquote>
+                        )}
+
+                        <span className="inline-flex items-center gap-2 text-white font-medium text-sm group/link">
+                          View Gallery
+                          <ArrowRight
+                            className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
+                            aria-hidden="true"
+                          />
                         </span>
                       </div>
-
-                      <h3 className="text-2xl sm:text-3xl font-serif font-semibold text-white mb-2">
-                        {couple.names}
-                      </h3>
-                      <p className="text-blush-300 font-medium mb-4">{couple.tagline}</p>
-
-                      {couple.testimonial && (
-                        <blockquote className="text-white/90 text-sm italic leading-relaxed mb-4 max-w-md">
-                          &ldquo;{couple.testimonial}&rdquo;
-                        </blockquote>
-                      )}
-
-                      <span className="inline-flex items-center gap-2 text-white font-medium text-sm group/link">
-                        View Gallery
-                        <ArrowRight
-                          className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
-                          aria-hidden="true"
-                        />
-                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </motion.article>
             ))}
           </motion.div>
@@ -359,37 +248,39 @@ export default function PortfolioPage(): JSX.Element {
                 variants={itemVariants}
                 className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500"
               >
-                <div className="relative h-[280px] overflow-hidden">
-                  <Image
-                    src={couple.image}
-                    alt={`${couple.names} wedding at ${couple.venue} - San Diego Wedding`}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                <Link href={`/portfolio/${couple.id}`} className="block">
+                  <div className="relative h-[280px] overflow-hidden">
+                    <Image
+                      src={couple.heroImage}
+                      alt={`${couple.names} wedding at ${couple.venue} - San Diego Wedding`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
 
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-charcoal-900/0 group-hover:bg-charcoal-900/40 transition-all duration-500 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300">
-                      <ArrowRight className="w-5 h-5 text-charcoal-900" aria-hidden="true" />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-charcoal-900/0 group-hover:bg-charcoal-900/40 transition-all duration-500 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300">
+                        <ArrowRight className="w-5 h-5 text-charcoal-900" aria-hidden="true" />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Card Content */}
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-charcoal-500 text-sm mb-3">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
-                      {couple.venue}
-                    </span>
+                  {/* Card Content */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 text-charcoal-500 text-sm mb-3">
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
+                        {couple.venue}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-serif font-semibold text-charcoal-900 mb-1 group-hover:text-blush-600 transition-colors">
+                      {couple.names}
+                    </h3>
+                    <p className="text-blush-500 text-sm font-medium">{couple.tagline}</p>
                   </div>
-
-                  <h3 className="text-xl font-serif font-semibold text-charcoal-900 mb-1 group-hover:text-blush-600 transition-colors">
-                    {couple.names}
-                  </h3>
-                  <p className="text-blush-500 text-sm font-medium">{couple.tagline}</p>
-                </div>
+                </Link>
               </motion.article>
             ))}
           </motion.div>

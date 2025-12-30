@@ -153,7 +153,7 @@ export default function Hero(): JSX.Element {
   const activeCard = featureCards.find((c) => c.id === selectedCard);
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -170,9 +170,9 @@ export default function Hero(): JSX.Element {
       </div>
 
       {/* Content */}
-      <div className="relative min-h-screen flex flex-col">
+      <div className="relative flex flex-col">
         {/* Main Content Area */}
-        <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-8">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             {/* Left Content */}
             <div>
@@ -297,7 +297,7 @@ export default function Hero(): JSX.Element {
         </div>
 
         {/* Feature Cards - Bottom */}
-        <div className="relative mt-auto pb-8 sm:pb-12">
+        <div className="relative mt-8 sm:mt-12 pb-8 sm:pb-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"

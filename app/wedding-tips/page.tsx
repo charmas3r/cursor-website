@@ -14,7 +14,6 @@ import {
   Heart,
   Clock,
   Sparkles,
-  CheckCircle,
   ArrowRight,
   Lightbulb,
   Star,
@@ -416,43 +415,6 @@ export default function WeddingTipsPage(): JSX.Element {
                 </div>
               </motion.article>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Checklist Download CTA */}
-      <section className="py-16 sm:py-24 bg-charcoal-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blush-500/20 mb-6">
-              <CheckCircle className="w-8 h-8 text-blush-400" />
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white">
-              Free Wedding Planning Checklist
-            </h2>
-            <p className="mt-4 text-lg text-charcoal-300 max-w-2xl mx-auto">
-              Download our comprehensive 12-month planning checklist used by
-              500+ couples to plan their perfect San Diego wedding.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blush-500 hover:bg-blush-600">
-                Download Free Checklist
-              </Button>
-              <Link href="/#contact">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-white text-white hover:bg-white hover:text-charcoal-900"
-                >
-                  Talk to a Planner
-                </Button>
-              </Link>
-            </div>
           </motion.div>
         </div>
       </section>
