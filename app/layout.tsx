@@ -122,7 +122,6 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     sameAs: [
       "https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439",
       "https://www.instagram.com/weddingagencysd",
-      "https://www.pinterest.com/weddingagencysd",
       "https://www.facebook.com/weddingagencysd",
     ],
     award: [

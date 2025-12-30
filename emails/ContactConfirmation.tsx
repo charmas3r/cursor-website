@@ -151,8 +151,6 @@ export default function ContactConfirmationEmail({
             <Section style={socialLinks}>
               <Link href="#" style={socialLink}>Instagram</Link>
               <Text style={socialDivider}>•</Text>
-              <Link href="#" style={socialLink}>Pinterest</Link>
-              <Text style={socialDivider}>•</Text>
               <Link href="#" style={socialLink}>Facebook</Link>
             </Section>
             <Text style={footerSmall}>
