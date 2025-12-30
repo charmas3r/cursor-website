@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | Meet the Wedding Agency San Diego Team",
   description:
-    "Meet the passionate team behind Wedding Agency San Diego. With 20+ years in hospitality and events and 150+ weddings planned, discover why couples trust us to create their perfect day.",
+    "Meet the passionate team behind Wedding Agency San Diego. With 20+ years in hospitality and events and 100+ weddings planned, discover why couples trust us to create their perfect day.",
   keywords: [
     "wedding planner San Diego",
     "wedding planning team",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us | Meet the Wedding Agency San Diego Team",
     description:
-      "Meet the passionate team behind Wedding Agency San Diego. With 20+ years in hospitality and events and 150+ weddings planned, discover why couples trust us to create their perfect day.",
+      "Meet the passionate team behind Wedding Agency San Diego. With 20+ years in hospitality and events and 100+ weddings planned, discover why couples trust us to create their perfect day.",
     type: "website",
     locale: "en_US",
     url: "https://weddingagencysandiego.com/about",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About Us | Meet the Wedding Agency San Diego Team",
     description:
-      "Meet the passionate team behind Wedding Agency San Diego. 20+ years in hospitality, 150+ weddings planned.",
+      "Meet the passionate team behind Wedding Agency San Diego. 20+ years in hospitality, 100+ weddings planned.",
     images: [
       "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
     ],

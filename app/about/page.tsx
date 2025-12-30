@@ -180,7 +180,7 @@ export default function AboutPage(): JSX.Element {
               {/* Quick Stats */}
               <div className="mt-10 flex flex-wrap gap-8">
                 {[
-                  { value: "150+", label: "Weddings" },
+                  { value: "100+", label: "Weddings" },
                   { value: "20+", label: "Years in Hospitality" },
                   { value: "2×", label: "Award Winner" },
                 ].map((stat) => (
@@ -279,7 +279,7 @@ export default function AboutPage(): JSX.Element {
                   </p>
                   <p>
                     With seamless execution and uncompromising excellence from start to finish, 
-                    we&apos;ve already planned 150+ weddings across Southern California. Each one 
+                    we&apos;ve already planned 100+ weddings across Southern California. Each one 
                     intentional. Each one balanced. Each one crafted with genuine care.
                   </p>
                 </div>
