@@ -460,7 +460,7 @@ export default function Hero(): JSX.Element {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden"
+              className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button */}
@@ -471,7 +471,7 @@ export default function Hero(): JSX.Element {
                 <X className="w-5 h-5 text-charcoal-700" />
               </button>
 
-              <div className="p-6 sm:p-8">
+              <div className="p-6 sm:p-8 overflow-y-auto">
                 {/* Header */}
                 <div className="text-center mb-8">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blush-100 mb-4">
@@ -516,8 +516,15 @@ export default function Hero(): JSX.Element {
                           <p className="text-sm text-charcoal-600 mt-0.5">
                             {pkg.description}
                           </p>
+                          <Link
+                            href="/packages"
+                            className="inline-flex items-center gap-1 text-xs text-blush-500 hover:text-blush-600 font-medium mt-2"
+                          >
+                            View Package Details
+                            <ArrowRight className="w-3 h-3" />
+                          </Link>
                         </div>
-                        <div className="text-right">
+                        <div className="text-right flex-shrink-0">
                           <p className="text-xl sm:text-2xl font-serif font-bold text-charcoal-900">
                             {pkg.price || "Let's Talk"}
                           </p>
