@@ -78,3 +78,36 @@ export interface SiteAsset {
   description?: string;
 }
 
+// Couple Portfolio types
+export interface Vendor {
+  role: string;
+  name: string;
+  url?: string;
+}
+
+export interface CoupleReview {
+  text: string;
+  rating: number;
+}
+
+export interface Couple {
+  _id: string;
+  names: string;
+  slug: SanitySlug;
+  tagline: string;
+  venue: string;
+  venueUrl?: string;
+  location: string;
+  displayDate: string;
+  weddingDate: string;
+  heroImage: SanityImage;
+  featured: boolean;
+  guestCount?: number;
+  style?: string;
+  colors?: string[];
+  review?: CoupleReview;
+  vendors?: Vendor[];
+  highlights?: string[];
+  galleryImages: SanityImage[];
+}
+

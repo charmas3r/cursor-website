@@ -42,10 +42,10 @@ export default function BlogGrid({ posts }: Props) {
       className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
     >
       {posts.map((post) => (
-        <motion.article key={post._id} variants={itemVariants}>
+        <motion.article key={post._id} variants={itemVariants} className="h-full">
           <Link
             href={`/blog/${post.slug.current}`}
-            className="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500"
+            className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500"
           >
             {/* Image */}
             <div className="relative h-52 overflow-hidden">
@@ -69,7 +69,7 @@ export default function BlogGrid({ posts }: Props) {
             </div>
 
             {/* Content */}
-            <div className="p-6">
+            <div className="p-6 flex flex-col flex-1">
               {post.categories?.[0] && (
                 <span className="text-blush-500 text-xs font-medium uppercase tracking-wider">
                   {post.categories[0].title}
@@ -83,7 +83,7 @@ export default function BlogGrid({ posts }: Props) {
                   {post.excerpt}
                 </p>
               )}
-              <div className="mt-4 flex items-center gap-4 text-charcoal-500 text-sm">
+              <div className="mt-auto pt-4 flex items-center gap-4 text-charcoal-500 text-sm">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-3.5 h-3.5" />
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {

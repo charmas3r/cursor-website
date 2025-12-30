@@ -13,9 +13,7 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Enable CDN for faster reads in production
-  // Set to false if you want to ensure fresh data
-  // useCdn: process.env.NODE_ENV === "production",
+  useCdn: false, // Disabled for fresh data - set to true for production
 });
 
 // Image URL builder
@@ -85,7 +83,7 @@ export const blogCategoriesQuery = `*[_type == "category"] | order(title asc) {
   description
 }`;
 
-export const featuredPostsQuery = `*[_type == "post" && featured == true] | order(publishedAt desc) [0...3] {
+export const featuredPostsQuery = `*[_type == "post" && featured == true] | order(publishedAt desc) [0...4] {
   _id,
   title,
   slug,
@@ -143,5 +141,104 @@ export async function getSiteAsset(key: string) {
 
 export async function getSiteAssetsByCategory(category: string) {
   return client.fetch(siteAssetsByCategoryQuery, { category });
+}
+
+// Couple Portfolio queries
+export const couplesQuery = `*[_type == "couple"] | order(weddingDate desc) {
+  _id,
+  names,
+  slug,
+  tagline,
+  venue,
+  venueUrl,
+  location,
+  displayDate,
+  weddingDate,
+  heroImage,
+  featured,
+  guestCount,
+  style,
+  colors,
+  review,
+  vendors,
+  highlights,
+  galleryImages
+}`;
+
+export const featuredCouplesQuery = `*[_type == "couple" && featured == true] | order(weddingDate desc) {
+  _id,
+  names,
+  slug,
+  tagline,
+  venue,
+  venueUrl,
+  location,
+  displayDate,
+  weddingDate,
+  heroImage,
+  featured,
+  guestCount,
+  style,
+  colors,
+  review,
+  vendors,
+  highlights,
+  galleryImages
+}`;
+
+export const nonFeaturedCouplesQuery = `*[_type == "couple" && featured != true] | order(weddingDate desc) {
+  _id,
+  names,
+  slug,
+  tagline,
+  venue,
+  venueUrl,
+  location,
+  displayDate,
+  weddingDate,
+  heroImage,
+  featured,
+  guestCount,
+  style,
+  colors,
+  review
+}`;
+
+export const coupleBySlugQuery = `*[_type == "couple" && slug.current == $slug][0] {
+  _id,
+  names,
+  slug,
+  tagline,
+  venue,
+  venueUrl,
+  location,
+  displayDate,
+  weddingDate,
+  heroImage,
+  featured,
+  guestCount,
+  style,
+  colors,
+  review,
+  vendors,
+  highlights,
+  galleryImages
+}`;
+
+// Couple Portfolio functions
+export async function getCouples() {
+  return client.fetch(couplesQuery);
+}
+
+export async function getFeaturedCouples() {
+  return client.fetch(featuredCouplesQuery);
+}
+
+export async function getNonFeaturedCouples() {
+  return client.fetch(nonFeaturedCouplesQuery);
+}
+
+export async function getCoupleBySlug(slug: string) {
+  return client.fetch(coupleBySlugQuery, { slug });
 }
 

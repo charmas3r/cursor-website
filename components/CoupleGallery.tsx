@@ -21,10 +21,11 @@ import {
   Sparkles,
   Quote,
 } from "lucide-react";
-import { type CoupleData } from "@/data/couples";
+import { urlFor } from "@/lib/sanity";
+import type { Couple, SanityImage } from "@/types/sanity";
 
 interface Props {
-  couple: CoupleData;
+  couple: Couple;
 }
 
 export default function CoupleGallery({ couple }: Props) {
@@ -64,6 +65,25 @@ export default function CoupleGallery({ couple }: Props) {
     );
   };
 
+  // Helper function to get image URL from Sanity image
+  const getImageUrl = (image: SanityImage, width?: number, height?: number) => {
+    let builder = urlFor(image);
+    if (width) builder = builder.width(width);
+    if (height) builder = builder.height(height);
+    return builder.url();
+  };
+
+  // Format the wedding date for display
+  const formatWeddingDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
     <main className="relative">
       <Navigation />
@@ -72,14 +92,16 @@ export default function CoupleGallery({ couple }: Props) {
       <section ref={heroRef} className="relative min-h-[85vh] flex items-end overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <Image
-            src={couple.heroImage}
-            alt={`${couple.names} wedding at ${couple.venue}`}
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
+          {couple.heroImage && (
+            <Image
+              src={getImageUrl(couple.heroImage, 1920, 1080)}
+              alt={couple.heroImage.alt || `${couple.names} wedding at ${couple.venue}`}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent" />
         </div>
 
@@ -112,7 +134,7 @@ export default function CoupleGallery({ couple }: Props) {
             {/* Date Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm mb-6">
               <Calendar className="w-4 h-4" />
-              {couple.weddingDate}
+              {formatWeddingDate(couple.weddingDate)}
             </div>
 
             {/* Names */}
@@ -169,7 +191,7 @@ export default function CoupleGallery({ couple }: Props) {
       </section>
 
       {/* Couple's Review Section */}
-      {couple.review && (
+      {couple.review && couple.review.text && (
         <section ref={reviewRef} className="py-20 lg:py-28 bg-cream-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -185,7 +207,7 @@ export default function CoupleGallery({ couple }: Props) {
 
               {/* Star Rating */}
               <div className="flex justify-center gap-1 mb-8">
-                {Array.from({ length: couple.review.rating }).map((_, i) => (
+                {Array.from({ length: couple.review.rating || 5 }).map((_, i) => (
                   <Star
                     key={i}
                     className="w-6 h-6 text-blush-500 fill-blush-500"
@@ -398,8 +420,8 @@ export default function CoupleGallery({ couple }: Props) {
                   }`}
                 >
                   <Image
-                    src={image}
-                    alt={`${couple.names} wedding photo ${index + 1}`}
+                    src={getImageUrl(image, 800, index % 5 === 0 ? 1000 : 500)}
+                    alt={image.alt || `${couple.names} wedding photo ${index + 1}`}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -500,8 +522,8 @@ export default function CoupleGallery({ couple }: Props) {
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={couple.galleryImages[currentImageIndex]}
-                alt={`${couple.names} wedding photo ${currentImageIndex + 1}`}
+                src={getImageUrl(couple.galleryImages[currentImageIndex], 1920, 1080)}
+                alt={couple.galleryImages[currentImageIndex].alt || `${couple.names} wedding photo ${currentImageIndex + 1}`}
                 fill
                 sizes="100vw"
                 className="object-contain"
@@ -521,4 +543,3 @@ export default function CoupleGallery({ couple }: Props) {
     </main>
   );
 }
-

@@ -25,9 +25,9 @@ export default async function BlogPage() {
     hasError = true;
   }
 
-  // If no featured posts, use the first 3 posts
+  // If no featured posts, use the first 4 posts
   if (featuredPosts.length === 0 && posts.length > 0) {
-    featuredPosts = posts.slice(0, 3);
+    featuredPosts = posts.slice(0, 4);
   }
 
   const remainingPosts = posts.filter(
@@ -101,12 +101,12 @@ export default async function BlogPage() {
             </div>
 
             {/* Featured Grid */}
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-8 items-stretch">
               {/* Main Featured Post */}
               {featuredPosts[0] && (
                 <Link
                   href={`/blog/${featuredPosts[0].slug.current}`}
-                  className="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 lg:row-span-2"
+                  className="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 h-full"
                 >
                   <div className="relative h-[400px] lg:h-full min-h-[500px]">
                     {featuredPosts[0].mainImage ? (
@@ -161,15 +161,15 @@ export default async function BlogPage() {
               )}
 
               {/* Secondary Featured Posts */}
-              <div className="flex flex-col gap-8">
-                {featuredPosts.slice(1, 3).map((post) => (
+              <div className="flex flex-col justify-between h-full gap-4">
+                {featuredPosts.slice(1, 4).map((post) => (
                   <Link
                     key={post._id}
                     href={`/blog/${post.slug.current}`}
-                    className="group relative block rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 bg-white"
+                    className="group relative flex-1 block rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 bg-white"
                   >
-                    <div className="flex flex-col sm:flex-row">
-                      <div className="relative h-48 sm:h-auto sm:w-2/5 flex-shrink-0">
+                    <div className="flex flex-col sm:flex-row h-full">
+                      <div className="relative h-40 sm:h-auto sm:w-2/5 flex-shrink-0">
                         {post.mainImage ? (
                           <Image
                             src={urlFor(post.mainImage).width(400).height(300).url()}
