@@ -76,15 +76,15 @@ const featureCards = [
     ),
     title: "What We Do",
     shortDescription:
-      "Full-service planning, day-of coordination, and everything in between—we've got you covered.",
+      "Full-service planning, wedding management, and everything in between—we've got you covered.",
     modalTitle: "Comprehensive Wedding Services",
     modalDescription:
       "Whether you need someone to handle every detail or just want support on the big day, we offer flexible services designed to meet you where you are in your planning journey.",
     highlights: [
       "Full-service planning from engagement to honeymoon",
-      "Day-of coordination for DIY couples",
+      "Wedding management for DIY couples",
       "Design & styling to bring your vision to life",
-      "Destination weddings & intimate elopements",
+      "Destination weddings",
     ],
     image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
     cta: { label: "View Our Packages", href: "/packages" },
@@ -121,27 +121,45 @@ const featureCards = [
 // Quick packages overview for the packages modal
 const packagesOverview = [
   {
-    name: "Elopement",
-    price: "$1,200",
-    description: "Intimate ceremonies for 2-20 guests",
-    popular: false,
-  },
-  {
-    name: "Day-Of Coordination",
-    price: "$1,800",
-    description: "Professional execution on your big day",
-    popular: false,
+    name: "Wedding Management",
+    price: "$3,500",
+    description: "Sweet Heart Package - Complete wedding management",
+    popular: true,
   },
   {
     name: "Partial Planning",
-    price: "$3,500",
-    description: "Guidance with key planning milestones",
+    price: "$6,500",
+    description: "Premier Package - Guided support with key planning milestones",
     popular: true,
   },
   {
     name: "Full Service",
-    price: "$5,500+",
-    description: "Complete planning from start to finish",
+    price: "$11,000+",
+    description: "Ever After Package - Complete planning from start to finish",
+    popular: false,
+  },
+  {
+    name: "Destination Weddings",
+    price: "$8,000+",
+    description: "Complete destination wedding coordination",
+    popular: false,
+  },
+  {
+    name: "Design & Styling",
+    price: "$2,500+",
+    description: "Professional design consultation and styling",
+    popular: false,
+  },
+  {
+    name: "Wellness Package",
+    price: "$3,000",
+    description: "4-month holistic program with Azadi Healing",
+    popular: false,
+  },
+  {
+    name: "Custom Package",
+    price: null,
+    description: "Bespoke experiences for unique visions",
     popular: false,
   },
 ];
@@ -253,9 +271,9 @@ export default function Hero(): JSX.Element {
               className="lg:pt-8"
             >
               <p className="text-lg sm:text-xl text-charcoal-700 leading-relaxed max-w-md">
-                Our expert planners simplify the process, so you can focus on 
-                enjoying your big day. From venue selection to day-of coordination, 
-                we handle every detail.
+              Our expert planners simplify the process, so you can focus
+               on enjoying your big day. From Wedding Management to Full 
+               Wedding Weekend Planning, we handle every detail.
               </p>
 
               {/* Stats */}
@@ -493,9 +511,9 @@ export default function Hero(): JSX.Element {
                         </div>
                         <div className="text-right">
                           <p className="text-xl sm:text-2xl font-serif font-bold text-charcoal-900">
-                            {pkg.price}
+                            {pkg.price || "Let's Talk"}
                           </p>
-                          <p className="text-xs text-charcoal-500">starting</p>
+                          {pkg.price && <p className="text-xs text-charcoal-500">starting</p>}
                         </div>
                       </div>
                     </div>

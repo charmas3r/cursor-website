@@ -49,7 +49,7 @@ const teamMembers = [
     role: "Senior Coordinator",
     image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974",
     bio: "Jessica brings meticulous attention to detail and a calm presence that ensures every wedding day runs flawlessly.",
-    specialties: ["Day-of Coordination", "Timeline Management"],
+    specialties: ["Wedding Management", "Timeline Management"],
   },
   {
     name: "Amanda Rivera",

@@ -5,14 +5,14 @@ const SITE_URL = "https://weddingagencysandiego.com";
 export const metadata: Metadata = {
   title: "Wedding Planning Packages & Pricing | San Diego Wedding Planner",
   description:
-    "Explore our wedding planning packages from $2,500. Day-of coordination, partial planning, and full-service luxury options. Transparent pricing, exceptional value. San Diego's top-rated wedding agency.",
+    "Explore our wedding planning packages from $3,500. Wedding management, partial planning, and full-service luxury options. Transparent pricing, exceptional value. San Diego's top-rated wedding agency.",
   keywords: [
     "wedding planning packages San Diego",
     "wedding planner pricing",
-    "day-of coordination cost",
+    "wedding management cost",
     "full service wedding planning",
     "San Diego wedding coordinator prices",
-    "elopement packages",
+    "wedding coordination packages",
     "destination wedding planner cost",
     "wedding planning services pricing",
     "affordable wedding planner San Diego",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Wedding Planning Packages & Pricing | Wedding Agency San Diego",
     description:
-      "Wedding packages from $2,500. Day-of coordination, partial planning & full-service luxury options with transparent pricing.",
+      "Wedding packages from $3,500. Wedding management, partial planning & full-service luxury options with transparent pricing.",
     url: `${SITE_URL}/packages`,
     images: [
       {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wedding Planning Packages & Pricing | San Diego",
     description:
-      "Wedding packages from $2,500. Day-of coordination, partial planning & full-service options.",
+      "Wedding packages from $3,500. Wedding management, partial planning & full-service options.",
     images: ["/og-packages.jpg"],
   },
   alternates: {
@@ -65,7 +65,7 @@ export default function PackagesLayout({
       },
     },
     description:
-      "Professional wedding planning services in San Diego. From intimate elopements to luxury full-service planning.",
+      "Professional wedding planning services in San Diego. From wedding management to luxury full-service planning.",
     areaServed: {
       "@type": "GeoCircle",
       geoMidpoint: {
@@ -83,26 +83,9 @@ export default function PackagesLayout({
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Intimate Elopement Package",
+            name: "Wedding Management Package",
             description:
-              "Perfect for couples seeking an intimate celebration with ceremony planning, venue scouting, and day-of coordination.",
-          },
-          price: "2500",
-          priceCurrency: "USD",
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            price: "2500",
-            priceCurrency: "USD",
-            valueAddedTaxIncluded: false,
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Day-of Coordination Package",
-            description:
-              "Professional execution of your planned wedding including vendor management, timeline creation, and up to 10 hours coverage.",
+              "Sweet Heart Package - Professional wedding management including vendor coordination, timeline creation, and up to 12 hours coverage.",
           },
           price: "3500",
           priceCurrency: "USD",
@@ -117,9 +100,9 @@ export default function PackagesLayout({
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Partial Planning Package",
+            name: "Partial Planning - Premier Package",
             description:
-              "Guided wedding planning support with vendor recommendations, design development, and comprehensive day-of coordination.",
+              "Premier Package with guided wedding planning support, personalized vendor recommendations, design development, and comprehensive wedding management.",
           },
           price: "6500",
           priceCurrency: "USD",
@@ -134,17 +117,77 @@ export default function PackagesLayout({
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Full Service Luxury Package",
+            name: "Full Service - Ever After Package",
             description:
-              "Complete wedding planning from engagement to honeymoon including vendor sourcing, design, and full coordination.",
+              "Complete wedding planning from engagement to honeymoon including vendor sourcing, design, rehearsal dinner management, and full coordination.",
           },
-          price: "12000",
+          price: "11000",
           priceCurrency: "USD",
           priceSpecification: {
             "@type": "PriceSpecification",
-            price: "12000",
+            price: "11000",
             priceCurrency: "USD",
             valueAddedTaxIncluded: false,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Destination Weddings Package",
+            description:
+              "Complete destination wedding planning including venue scouting, local vendor management, guest travel coordination, and on-site coordination.",
+          },
+          price: "8000",
+          priceCurrency: "USD",
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            price: "8000",
+            priceCurrency: "USD",
+            valueAddedTaxIncluded: false,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Design & Styling Package",
+            description:
+              "Professional wedding design including mood boarding, color palette development, floral coordination, and day-of styling setup.",
+          },
+          price: "2500",
+          priceCurrency: "USD",
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            price: "2500",
+            priceCurrency: "USD",
+            valueAddedTaxIncluded: false,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Wellness Package with Azadi Healing",
+            description:
+              "4-month holistic wellness program in partnership with Azadi Healing. Includes personalized meal plans, exercise plans for every body type, reiki sessions, sound healing journeys, guided meditations, and mental health support.",
+          },
+          price: "3000",
+          priceCurrency: "USD",
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            price: "3000",
+            priceCurrency: "USD",
+            valueAddedTaxIncluded: false,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Custom Package",
+            description:
+              "Bespoke wedding experiences tailored to your unique vision, cultural traditions, and personal style.",
           },
         },
       ],
@@ -160,15 +203,15 @@ export default function PackagesLayout({
         name: "When should I book my wedding planner?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We recommend booking 12-18 months before your wedding for Full Service planning, 6-9 months for Partial Planning, and 2-3 months for Day-of Coordination. Popular dates book quickly, so earlier is always better!",
+          text: "We recommend booking 12-18 months before your wedding for Full Service planning, 6-9 months for Partial Planning, and 2-3 months for Wedding Management. Popular dates book quickly, so earlier is always better!",
         },
       },
       {
         "@type": "Question",
-        name: "What's the difference between Day-of and Full Service?",
+        name: "What's the difference between Wedding Management and Full Service?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Day-of Coordination focuses on executing your already-planned wedding, stepping in during the final weeks. Full Service Planning means we're with you from engagement to 'I do,' handling every detail including vendor selection, design, and complete coordination.",
+          text: "Wedding Management (our Sweet Heart Package) focuses on executing your already-planned wedding with comprehensive coordination. Full Service Planning means we're with you from engagement to 'I do,' handling every detail including vendor selection, design, and complete coordination.",
         },
       },
       {

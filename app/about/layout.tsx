@@ -61,7 +61,7 @@ export default function AboutLayout({
               "@type": "LocalBusiness",
               name: "Wedding Agency San Diego",
               description:
-                "Premier wedding planning and coordination services in San Diego, California. Full-service planning, day-of coordination, and custom wedding experiences.",
+                "Premier wedding planning and coordination services in San Diego, California. Full-service planning, wedding management, and custom wedding experiences.",
               foundingDate: "2009",
               numberOfEmployees: {
                 "@type": "QuantitativeValue",

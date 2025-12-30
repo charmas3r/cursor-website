@@ -7,7 +7,7 @@ import { Heart } from "lucide-react";
 const footerLinks = {
   services: [
     { label: "Full Service Planning", href: "/packages#full-service" },
-    { label: "Day-of Coordination", href: "/packages#day-of" },
+    { label: "Wedding Management", href: "/packages#wedding-management" },
     { label: "Design & Styling", href: "/packages" },
     { label: "Destination Weddings", href: "/packages" },
   ],

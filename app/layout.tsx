@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Wedding Agency San Diego",
   },
   description:
-    "San Diego's premier wedding planning agency. We specialize in full-service planning, day-of coordination, and destination weddings. 500+ weddings planned with 15+ years of experience.",
+    "San Diego's premier wedding planning agency. We specialize in full-service planning, wedding management, and destination weddings. 500+ weddings planned with 15+ years of experience.",
   keywords: [
     "wedding planner San Diego",
     "wedding coordinator San Diego",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wedding Agency San Diego | Your Happily Ever After Starts Here",
     description:
-      "San Diego's premier wedding planning agency. Full-service planning, day-of coordination & destination weddings.",
+      "San Diego's premier wedding planning agency. Full-service planning, wedding management & destination weddings.",
     images: ["/og-image.jpg"],
     creator: "@weddingagencysd",
   },
@@ -80,7 +80,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     description:
-      "San Diego's premier wedding planning agency specializing in full-service planning, day-of coordination, and destination weddings.",
+      "San Diego's premier wedding planning agency specializing in full-service planning, wedding management, and destination weddings.",
     url: SITE_URL,
     telephone: "(619) 555-0123",
     email: "hello@wding.com",

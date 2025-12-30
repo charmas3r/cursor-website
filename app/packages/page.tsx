@@ -18,46 +18,18 @@ import {
   Gem,
   Phone,
   ChevronDown,
+  Palette,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Main pricing packages
 const packages = [
   {
-    id: "elopement",
-    name: "Intimate Elopement",
-    tagline: "For the romantics",
+    id: "wedding-management",
+    name: "Wedding Management",
+    tagline: "Sweet Heart Package",
     description:
-      "Perfect for couples seeking an intimate celebration. We handle the essential details so you can focus on each other.",
-    price: "2,500",
-    priceNote: "Starting at",
-    icon: Heart,
-    badge: null,
-    popular: false,
-    bestValue: false,
-    features: [
-      "Ceremony planning & coordination",
-      "Venue scouting (up to 3 locations)",
-      "Officiant recommendations",
-      "Photography referrals",
-      "Day-of timeline creation",
-      "2-hour coordination on wedding day",
-      "Emergency kit & support",
-    ],
-    notIncluded: [
-      "Reception planning",
-      "Full vendor management",
-      "Rehearsal coordination",
-    ],
-    idealFor: "Couples wanting a simple, intimate ceremony with minimal planning stress.",
-    image: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=2070",
-  },
-  {
-    id: "day-of",
-    name: "Day-of Coordination",
-    tagline: "You plan, we execute",
-    description:
-      "Already planned your dream wedding? We'll step in to ensure flawless execution while you enjoy every moment.",
+      "Our signature package for couples who want comprehensive wedding management and peace of mind on their special day.",
     price: "3,500",
     priceNote: "Starting at",
     icon: Calendar,
@@ -65,28 +37,28 @@ const packages = [
     popular: false,
     bestValue: true,
     features: [
+      "Personalized wedding planning checklist",
+      "Access to our preferred vendor list",
+      "Attend menu tasting",
       "Unlimited email communication",
-      "2 planning meetings (virtual or in-person)",
       "Vendor confirmation & management",
       "Detailed timeline creation",
       "Ceremony rehearsal coordination",
-      "Up to 10 hours day-of coverage",
+      "Up to 12 hours of coverage",
       "Setup & breakdown oversight",
-      "Emergency kit & problem solving",
-      "1 lead coordinator + 1 assistant",
     ],
     notIncluded: [
       "Vendor sourcing & negotiations",
       "Budget management",
       "Design services",
     ],
-    idealFor: "DIY couples who want professional execution without full planning services.",
+    idealFor: "Couples wanting professional wedding management and a stress-free celebration.",
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2098",
   },
   {
     id: "partial",
     name: "Partial Planning",
-    tagline: "Guided support",
+    tagline: "Premier Package",
     description:
       "The perfect balance of guidance and independence. We help with key decisions while you maintain creative control.",
     price: "6,500",
@@ -96,16 +68,13 @@ const packages = [
     popular: true,
     bestValue: false,
     features: [
-      "Everything in Day-of Coordination",
+      "Everything in Wedding Management",
       "Unlimited phone & email support",
       "Monthly planning meetings",
-      "Vendor recommendations & introductions",
+      "Personalized vendor recommendations & introductions",
       "Contract review assistance",
       "Budget tracking tools",
       "Design concept development",
-      "Guest management guidance",
-      "Up to 12 hours day-of coverage",
-      "1 lead coordinator + 2 assistants",
     ],
     notIncluded: [
       "Full vendor negotiations",
@@ -116,11 +85,11 @@ const packages = [
   },
   {
     id: "full-service",
-    name: "Full Service Luxury",
-    tagline: "Complete peace of mind",
+    name: "Full Service",
+    tagline: "Ever After Package",
     description:
       "Our signature experience. From engagement to honeymoon, we handle every detail with unparalleled attention and care.",
-    price: "12,000",
+    price: "11,000",
     priceNote: "Starting at",
     icon: Crown,
     badge: null,
@@ -128,32 +97,131 @@ const packages = [
     bestValue: false,
     features: [
       "Everything in Partial Planning",
-      "Dedicated planning team",
+      "Rehearsal dinner management",
       "Complete vendor sourcing & negotiation",
       "Full budget management",
       "Custom design & styling",
       "Floral & décor coordination",
       "Stationery design guidance",
-      "Guest accommodation management",
-      "Welcome party planning",
-      "Rehearsal dinner coordination",
-      "Up to 14 hours day-of coverage",
-      "1 lead + 3 assistants on wedding day",
-      "Post-wedding wrap-up services",
+      "Room block assistance",
     ],
     notIncluded: [],
     idealFor: "Couples seeking a stress-free, luxury planning experience from start to finish.",
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
   },
+  {
+    id: "destination",
+    name: "Destination Weddings",
+    tagline: "Love knows no borders",
+    description:
+      "Dream of saying 'I do' in a breathtaking location? We handle all the complexities of planning from afar.",
+    price: "8,000",
+    priceNote: "Starting at",
+    icon: MapPin,
+    badge: null,
+    popular: false,
+    bestValue: false,
+    features: [
+      "Destination scouting & selection",
+      "Local vendor sourcing & management",
+      "Guest travel coordination",
+      "Welcome event planning",
+      "Site visits & inspections",
+      "Legal requirements guidance",
+      "Multi-day itinerary creation",
+      "On-site coordination",
+    ],
+    notIncluded: [],
+    idealFor: "Couples dreaming of a wedding away from home.",
+    image: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=2070",
+  },
+  {
+    id: "design-styling",
+    name: "Design & Styling",
+    tagline: "Bring your vision to life",
+    description:
+      "Transform your wedding aesthetic with our expert design team. From concept to execution, we create stunning visuals.",
+    price: "2,500",
+    priceNote: "Starting at",
+    icon: Palette,
+    badge: null,
+    popular: false,
+    bestValue: false,
+    features: [
+      "Design consultation & mood boarding",
+      "Color palette development",
+      "Budget allocations",
+      "Floral concept & vendor coordination",
+      "Tablescape & centerpiece design",
+      "Ceremony backdrop styling",
+      "Stationery design direction",
+      "Day-of styling setup",
+      "Rentals coordination",
+    ],
+    notIncluded: [],
+    idealFor: "Couples who want a cohesive, professionally designed wedding aesthetic.",
+    image: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?q=80&w=2070",
+  },
+  {
+    id: "wellness",
+    name: "Wellness Package",
+    tagline: "4-month program with Azadi Healing",
+    description:
+      "Prepare for your big day feeling your best. In partnership with Azadi Healing, our holistic wellness program supports your physical and mental health.",
+    price: "3,000",
+    priceNote: "Starting at",
+    icon: Heart,
+    badge: "New",
+    popular: false,
+    bestValue: false,
+    features: [
+      "Personalized meal plans",
+      "Exercise plans for every body type & capability",
+      "Monthly check-ins for stress management",
+      "Reiki sessions",
+      "Sound healing journeys",
+      "Guided meditations",
+      "Mental health support through planning",
+    ],
+    notIncluded: [],
+    idealFor: "Couples wanting to feel their best physically and mentally on their wedding day.",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070",
+    partnerLink: "https://azadihealing.com/about-me-%26-azadi",
+    partnerName: "Azadi Healing",
+  },
+  {
+    id: "custom",
+    name: "Custom Package",
+    tagline: "Your vision, your way",
+    description:
+      "Every love story is unique. We create bespoke wedding experiences tailored to your personality, culture, and dreams.",
+    price: null,
+    priceNote: "Let's talk",
+    icon: Sparkles,
+    badge: null,
+    popular: false,
+    bestValue: false,
+    features: [
+      "Fully customized planning approach",
+      "Cultural ceremony incorporation",
+      "Unique venue sourcing",
+      "Themed event design",
+      "Personalized guest experiences",
+      "Custom timeline & pacing",
+      "Specialty vendor coordination",
+      "Bespoke detail creation",
+    ],
+    notIncluded: [],
+    idealFor: "Couples with a unique vision, cultural traditions, or non-traditional celebrations.",
+    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=2187",
+  },
 ];
 
 // Add-on services
 const addOns = [
-  { name: "Destination Wedding Coordination", price: "2,500+", description: "Additional support for out-of-town celebrations" },
   { name: "Welcome Party Planning", price: "1,500+", description: "Rehearsal dinners, welcome drinks, farewell brunches" },
-  { name: "Design & Styling Package", price: "2,000+", description: "Complete aesthetic vision and execution" },
   { name: "RSVP & Guest Management", price: "800+", description: "Full guest list coordination and communication" },
-  { name: "Additional Coordinator (Day-of)", price: "350", description: "Per coordinator for larger events" },
+  { name: "Additional Coordinator", price: "350", description: "Per coordinator for larger events" },
   { name: "Extended Hours", price: "150/hr", description: "Additional coverage beyond package limits" },
 ];
 
@@ -161,11 +229,11 @@ const addOns = [
 const faqs = [
   {
     question: "When should I book my wedding planner?",
-    answer: "We recommend booking 12-18 months before your wedding for Full Service planning, 6-9 months for Partial Planning, and 2-3 months for Day-of Coordination. Popular dates book quickly, so earlier is always better!",
+    answer: "We recommend booking 12-18 months before your wedding for Full Service planning, 6-9 months for Partial Planning, and 2-3 months for Wedding Management. Popular dates book quickly, so earlier is always better!",
   },
   {
-    question: "What's the difference between Day-of and Full Service?",
-    answer: "Day-of Coordination focuses on executing your already-planned wedding, stepping in during the final weeks. Full Service Planning means we're with you from engagement to 'I do,' handling every detail including vendor selection, design, and complete coordination.",
+    question: "What's the difference between Wedding Management and Full Service?",
+    answer: "Wedding Management (our Sweet Heart Package) focuses on executing your already-planned wedding with comprehensive coordination. Full Service Planning means we're with you from engagement to 'I do,' handling every detail including vendor selection, design, and complete coordination.",
   },
   {
     question: "Do you offer payment plans?",
@@ -330,7 +398,8 @@ export default function PackagesPage(): JSX.Element {
                   "relative flex flex-col rounded-3xl overflow-hidden transition-all duration-500",
                   pkg.popular
                     ? "bg-charcoal-900 text-white shadow-2xl scale-[1.02] xl:scale-105"
-                    : "bg-cream-50 hover:shadow-xl"
+                    : "bg-cream-50 hover:shadow-xl",
+                  pkg.id === "custom" && "md:col-span-2"
                 )}
               >
                 {/* Badge */}
@@ -399,7 +468,7 @@ export default function PackagesPage(): JSX.Element {
                           pkg.popular ? "text-white" : "text-charcoal-900"
                         )}
                       >
-                        ${pkg.price}
+                        {pkg.price ? `$${pkg.price}` : "Contact Us"}
                       </span>
                     </div>
                   </div>
@@ -474,6 +543,22 @@ export default function PackagesPage(): JSX.Element {
                   )}
                 >
                   <span className="font-semibold">Ideal for:</span> {pkg.idealFor}
+                  {pkg.partnerLink && pkg.partnerName && (
+                    <div className="mt-2">
+                      <span className="font-semibold">In partnership with:</span>{" "}
+                      <a
+                        href={pkg.partnerLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          "underline hover:no-underline",
+                          pkg.popular ? "text-blush-400 hover:text-blush-300" : "text-blush-600 hover:text-blush-500"
+                        )}
+                      >
+                        {pkg.partnerName}
+                      </a>
+                    </div>
+                  )}
                 </div>
               </motion.article>
             ))}
