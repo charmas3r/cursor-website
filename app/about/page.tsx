@@ -41,7 +41,7 @@ const teamMembers = [
     name: "Maria Santos",
     role: "Founder & Lead Planner",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961",
-    bio: "With 15+ years in the industry, Maria founded Wedding Agency San Diego with a vision to create stress-free, magical celebrations.",
+    bio: "With 20+ years in hospitality and events, Maria founded Wedding Agency San Diego with a vision to create stress-free, magical celebrations.",
     specialties: ["Full Service Planning", "Luxury Weddings"],
   },
   {
@@ -119,8 +119,8 @@ const milestones = [
   },
   {
     year: "2025",
-    title: "500+ Weddings",
-    description: "Crossed 500 weddings and won Best of Weddings again.",
+    title: "150+ Weddings",
+    description: "Celebrated 150+ weddings and won Best of Weddings again.",
   },
 ];
 
@@ -172,16 +172,15 @@ export default function AboutPage(): JSX.Element {
                 <span className="text-blush-300">Become Reality</span>
               </h1>
               <p className="mt-6 text-lg sm:text-xl text-cream-100/90 leading-relaxed max-w-2xl">
-                For over 15 years, we&apos;ve been crafting unforgettable weddings in San Diego. 
-                Our passionate team turns your vision into a celebration that&apos;s uniquely, 
-                beautifully yours.
+                With over 20 years in hospitality and events, I bring a unique perspective to wedding planning.
+                From working in hotels and venues to hands-on service, I&apos;ve experienced weddings from every angle—and now I bring that expertise to your celebration.
               </p>
 
               {/* Quick Stats */}
               <div className="mt-10 flex flex-wrap gap-8">
                 {[
-                  { value: "500+", label: "Weddings" },
-                  { value: "15+", label: "Years" },
+                  { value: "150+", label: "Weddings" },
+                  { value: "20+", label: "Years in Hospitality" },
                   { value: "2×", label: "Award Winner" },
                 ].map((stat) => (
                   <div key={stat.label}>

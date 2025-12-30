@@ -103,7 +103,7 @@ export default function Vision(): JSX.Element {
                 },
                 {
                   title: "Local Expertise",
-                  description: "15+ years of relationships with San Diego's finest vendors.",
+                  description: "20+ years in hospitality building relationships with San Diego's finest vendors.",
                 },
                 {
                   title: "Stress-Free Process",

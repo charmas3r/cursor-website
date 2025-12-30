@@ -58,7 +58,7 @@ export default async function PortfolioPage() {
           <div className="flex flex-wrap justify-center gap-8 text-charcoal-600">
             <div className="flex items-center gap-2">
               <Star className="w-5 h-5 text-blush-500 fill-blush-500" aria-hidden="true" />
-              <span className="font-medium">500+ Weddings</span>
+              <span className="font-medium">150+ Weddings</span>
             </div>
             <div className="flex items-center gap-2">
               <Heart className="w-5 h-5 text-blush-500 fill-blush-500" aria-hidden="true" />
@@ -66,7 +66,7 @@ export default async function PortfolioPage() {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5 text-blush-500" aria-hidden="true" />
-              <span className="font-medium">15+ Years Experience</span>
+              <span className="font-medium">20+ Years in Hospitality</span>
             </div>
           </div>
         </div>

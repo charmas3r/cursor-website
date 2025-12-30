@@ -103,15 +103,15 @@ const featureCards = [
     ),
     title: "Why Choose Us",
     shortDescription:
-      "500+ weddings, 15+ years experience, and a 2× Best of Weddings winner. Your day is in expert hands.",
+      "150+ weddings, 20+ years in hospitality & events, and a 2× Best of Weddings winner. Your day is in expert hands.",
     modalTitle: "Experience You Can Trust",
     modalDescription:
-      "With over 15 years of experience and 500+ weddings under our belt, we've seen it all—and planned it all. Our track record speaks for itself, but it's the relationships we build with our couples that truly set us apart.",
+      "With over 20 years in hospitality and events—from hotels and venues to hands-on service and planning—I've experienced weddings from every angle. This unique perspective means I understand what it takes to create a seamless celebration.",
     highlights: [
-      "500+ weddings successfully planned",
-      "15+ years of industry experience",
+      "150+ weddings successfully planned",
+      "20+ years in hospitality & events",
       "2× Best of Weddings winner (The Knot)",
-      "50+ trusted vendor partnerships",
+      "Experience on every side of events",
     ],
     image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070",
     cta: { label: "See Our Work", href: "/portfolio" },
@@ -280,7 +280,7 @@ export default function Hero(): JSX.Element {
               <div className="mt-8 flex items-center gap-6 sm:gap-8">
                 <div>
                   <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900">
-                    500+
+                    150+
                   </p>
                   <p className="text-xs sm:text-sm text-charcoal-600 mt-1">
                     Weddings Planned
@@ -289,10 +289,10 @@ export default function Hero(): JSX.Element {
                 <div className="w-px h-10 sm:h-12 bg-charcoal-300" />
                 <div>
                   <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900">
-                    15+
+                    20+
                   </p>
                   <p className="text-xs sm:text-sm text-charcoal-600 mt-1">
-                    Years Experience
+                    Years in Hospitality
                   </p>
                 </div>
                 <div className="w-px h-10 sm:h-12 bg-charcoal-300" />
