@@ -618,7 +618,7 @@ export default function PackagesPage(): JSX.Element {
                 </div>
                 <div className="text-right flex-shrink-0">
                   <span className="text-lg font-serif font-bold text-blush-600">
-                    ${addon.price}
+                    {/^\d/.test(addon.price) ? `$${addon.price}` : addon.price}
                   </span>
                 </div>
               </motion.div>
