@@ -485,7 +485,7 @@ export default function PackagesPage(): JSX.Element {
 
                   {/* Features */}
                   <ul className="space-y-2 mb-6 flex-1">
-                    {pkg.features.slice(0, 7).map((feature) => (
+                    {pkg.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
                         <Check
                           className={cn(
@@ -504,16 +504,6 @@ export default function PackagesPage(): JSX.Element {
                         </span>
                       </li>
                     ))}
-                    {pkg.features.length > 7 && (
-                      <li
-                        className={cn(
-                          "text-sm font-medium",
-                          pkg.popular ? "text-blush-300" : "text-blush-500"
-                        )}
-                      >
-                        + {pkg.features.length - 7} more included
-                      </li>
-                    )}
                   </ul>
 
                   {/* CTA Button */}
