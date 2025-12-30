@@ -155,6 +155,7 @@ const packagesOverview = [
     price: "$3,000",
     description: "4-month holistic program with Azadi Healing",
     popular: false,
+    featured: true,
   },
   {
     name: "Custom Package",
@@ -492,12 +493,19 @@ export default function Hero(): JSX.Element {
                       className={`relative p-4 sm:p-5 rounded-2xl border-2 transition-all ${
                         pkg.popular
                           ? "border-blush-400 bg-blush-50"
+                          : pkg.featured
+                          ? "border-sage-400 bg-sage-50"
                           : "border-cream-200 bg-cream-50 hover:border-cream-300"
                       }`}
                     >
                       {pkg.popular && (
                         <span className="absolute -top-3 left-4 px-3 py-1 bg-blush-500 text-white text-xs font-medium rounded-full">
                           Most Popular
+                        </span>
+                      )}
+                      {pkg.featured && !pkg.popular && (
+                        <span className="absolute -top-3 left-4 px-3 py-1 bg-sage-500 text-white text-xs font-medium rounded-full">
+                          Featured
                         </span>
                       )}
                       <div className="flex items-center justify-between">
