@@ -74,23 +74,23 @@ export default function Vision(): JSX.Element {
             </span>
 
             <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-white leading-tight">
-              Where Every Detail
+              Intention, Balance
               <br />
-              <span className="text-blush-400">Tells Your Story</span>
+              <span className="text-blush-400">& Care</span>
             </h2>
 
             <div className="mt-8 space-y-6">
               <p className="text-lg text-charcoal-300 leading-relaxed">
-                We believe your wedding should be as unique as your love story. 
-                Unlike traditional planners who rely on templates, we take the time 
-                to understand what makes your relationship special.
+                We exist to plan extraordinary weddings with intention, balance, and 
+                care—supporting your mental and physical well-being while delivering 
+                seamless execution and uncompromising excellence from start to finish.
               </p>
 
               <p className="text-charcoal-400 leading-relaxed">
                 From the rolling hills of Temecula wine country to the sun-kissed 
                 shores of La Jolla, we transform Southern California&apos;s most 
-                breathtaking venues into deeply personal celebrations. Every flower, 
-                every note of music, every moment is curated to reflect who you are.
+                breathtaking venues into deeply personal celebrations. Every detail 
+                is curated with care, so you can be fully present for your big day.
               </p>
             </div>
 
@@ -98,20 +98,20 @@ export default function Vision(): JSX.Element {
             <div className="mt-10 grid sm:grid-cols-2 gap-6">
               {[
                 {
-                  title: "Personalized Approach",
-                  description: "No two weddings are alike—we design experiences tailored to your vision.",
+                  title: "Intentional Planning",
+                  description: "Every decision made with purpose, creating celebrations that truly reflect you.",
                 },
                 {
-                  title: "Local Expertise",
-                  description: "20+ years in hospitality building relationships with San Diego's finest vendors.",
+                  title: "Wellness-Focused",
+                  description: "Supporting your mental and physical well-being throughout the planning journey.",
                 },
                 {
-                  title: "Stress-Free Process",
-                  description: "From planning to execution, we handle every detail.",
+                  title: "Seamless Execution",
+                  description: "20+ years in hospitality means flawless coordination on your big day.",
                 },
                 {
-                  title: "Lasting Memories",
-                  description: "Creating moments your guests will talk about for years.",
+                  title: "Uncompromising Excellence",
+                  description: "From the smallest detail to the grandest moment—nothing less than exceptional.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -140,7 +140,7 @@ export default function Vision(): JSX.Element {
               className="mt-10 pt-8 border-t border-charcoal-700"
             >
               <blockquote className="text-lg sm:text-xl font-serif italic text-charcoal-300">
-                &ldquo;Every love story deserves its own chapter.&rdquo;
+                &ldquo;Your wedding should feel as good as it looks.&rdquo;
               </blockquote>
               <p className="mt-3 text-sm text-blush-400 font-medium">
                 — Our Promise to You

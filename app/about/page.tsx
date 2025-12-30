@@ -41,7 +41,7 @@ const teamMembers = [
     name: "Maria Santos",
     role: "Founder & Lead Planner",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961",
-    bio: "With 20+ years in hospitality and events, Maria founded Wedding Agency San Diego with a vision to create stress-free, magical celebrations.",
+    bio: "With 20+ years in hospitality and events, I founded Wedding Agency San Diego to plan extraordinary weddings with intention, balance, and care.",
     specialties: ["Full Service Planning", "Luxury Weddings"],
   },
   {
@@ -71,56 +71,51 @@ const teamMembers = [
 const values = [
   {
     icon: Heart,
-    title: "Passion",
+    title: "Intention",
     description:
-      "We pour our hearts into every wedding, treating each celebration as if it were our own.",
+      "Every decision is made with purpose—creating celebrations that truly reflect who you are.",
   },
   {
     icon: Sparkles,
     title: "Excellence",
     description:
-      "From the grandest details to the smallest touches, we pursue perfection in everything we do.",
+      "Uncompromising quality from the smallest detail to the grandest moment. Nothing less than exceptional.",
   },
   {
     icon: Users,
-    title: "Partnership",
+    title: "Balance & Care",
     description:
-      "We become an extension of your family, supporting you through every step of the journey.",
+      "Supporting your mental and physical well-being throughout the planning journey and beyond.",
   },
   {
     icon: Star,
-    title: "Creativity",
+    title: "Seamless Execution",
     description:
-      "Every love story is unique, and we craft bespoke experiences that reflect your personality.",
+      "20+ years in hospitality means flawless coordination so you can be fully present on your day.",
   },
 ];
 
 // Timeline/Milestones
 const milestones = [
   {
-    year: "2009",
-    title: "The Beginning",
-    description: "Founded with a dream to create unforgettable San Diego weddings.",
+    year: "2003",
+    title: "Hospitality Roots",
+    description: "Began my journey in hospitality—hotels, venues, service, and events.",
   },
   {
-    year: "2014",
-    title: "100 Weddings",
-    description: "Celebrated our 100th wedding, a beachfront ceremony at sunset.",
-  },
-  {
-    year: "2019",
-    title: "Team Expansion",
-    description: "Grew to a team of 8 dedicated wedding professionals.",
+    year: "2023",
+    title: "Wedding Agency Founded",
+    description: "Launched Wedding Agency San Diego with a mission to plan weddings with intention and care.",
   },
   {
     year: "2024",
     title: "Best of Weddings",
-    description: "Won The Knot's Best of Weddings award for excellence.",
+    description: "Won The Knot's Best of Weddings award for excellence in our first year.",
   },
   {
     year: "2025",
-    title: "150+ Weddings",
-    description: "Celebrated 150+ weddings and won Best of Weddings again.",
+    title: "Growing & Thriving",
+    description: "150+ weddings planned and won Best of Weddings again.",
   },
 ];
 
@@ -172,8 +167,9 @@ export default function AboutPage(): JSX.Element {
                 <span className="text-blush-300">Become Reality</span>
               </h1>
               <p className="mt-6 text-lg sm:text-xl text-cream-100/90 leading-relaxed max-w-2xl">
-                With over 20 years in hospitality and events, I bring a unique perspective to wedding planning.
-                From working in hotels and venues to hands-on service, I&apos;ve experienced weddings from every angle—and now I bring that expertise to your celebration.
+                We exist to plan extraordinary weddings with intention, balance, and care—supporting 
+                your mental and physical well-being while delivering seamless execution and 
+                uncompromising excellence from start to finish.
               </p>
 
               {/* Quick Stats */}
@@ -240,11 +236,11 @@ export default function AboutPage(): JSX.Element {
                 >
                   <Quote className="w-8 h-8 text-blush-400 mb-3" />
                   <p className="text-sm italic leading-relaxed">
-                    &quot;Every wedding is a chance to create magic. We don&apos;t just plan events—we 
-                    craft memories that last a lifetime.&quot;
+                    &quot;Your wedding should feel as good as it looks. We handle the stress so 
+                    you can be fully present for your celebration.&quot;
                   </p>
                   <p className="mt-4 text-blush-300 text-sm font-medium">
-                    — Maria Santos, Founder
+                    — Founder
                   </p>
                 </motion.div>
               </motion.div>
@@ -265,22 +261,21 @@ export default function AboutPage(): JSX.Element {
                 </h2>
                 <div className="mt-6 space-y-4 text-charcoal-600 leading-relaxed">
                   <p>
-                    Wedding Agency San Diego was born from a simple belief: every couple 
-                    deserves a wedding that feels effortlessly magical. Founded in 2009 by 
-                    Maria Santos, we&apos;ve grown from a one-woman operation into San Diego&apos;s 
-                    most trusted wedding planning team.
+                    Wedding Agency San Diego was founded in 2023 with a clear mission: to plan 
+                    extraordinary weddings with intention, balance, and care. After 20+ years 
+                    working in hospitality—from hotels and venues to hands-on service—I&apos;ve 
+                    experienced weddings from every angle.
                   </p>
                   <p>
-                    What sets us apart? We listen. We understand that your wedding isn&apos;t 
-                    just another event—it&apos;s the beginning of your forever. That&apos;s why we 
-                    take the time to truly know you, your story, and your dreams before 
-                    bringing them to life.
+                    What sets us apart? We believe your wedding should feel as good as it looks. 
+                    That means supporting your mental and physical well-being throughout the 
+                    planning journey, not just delivering a beautiful event. We handle the stress 
+                    so you can be fully present.
                   </p>
                   <p>
-                    From intimate beach elopements to grand ballroom celebrations, we&apos;ve 
-                    orchestrated over 500 weddings across Southern California. Each one 
-                    unique. Each one unforgettable. Each one crafted with the same passion 
-                    as the first.
+                    With seamless execution and uncompromising excellence from start to finish, 
+                    we&apos;ve already planned 150+ weddings across Southern California. Each one 
+                    intentional. Each one balanced. Each one crafted with genuine care.
                   </p>
                 </div>
 
