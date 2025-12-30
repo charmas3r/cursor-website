@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Heart, Calendar, MapPin, ArrowRight, Star } from "lucide-react";
 
-import { couples, getFeaturedCouples, type CoupleData } from "@/data/couples";
+import { couples, getFeaturedCouples } from "@/data/couples";
 
 const featuredCouples = getFeaturedCouples();
 const allCouples = couples.filter((c) => !c.featured);

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowRight, Heart, Sparkles } from "lucide-react";
+import { Calendar, Clock, Heart, Sparkles } from "lucide-react";
 import { getBlogPosts, getFeaturedPosts, urlFor } from "@/lib/sanity";
 import type { BlogPost } from "@/types/sanity";
 import BlogGrid from "@/components/BlogGrid";

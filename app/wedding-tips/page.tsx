@@ -11,7 +11,6 @@ import {
   Calendar,
   DollarSign,
   Users,
-  Heart,
   Clock,
   Sparkles,
   ArrowRight,
