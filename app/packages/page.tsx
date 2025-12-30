@@ -171,9 +171,9 @@ const packages = [
     price: "3,000",
     priceNote: "Starting at",
     icon: Heart,
-    badge: "New",
+    badge: "Featured",
     popular: false,
-    bestValue: false,
+    bestValue: true,
     features: [
       "Personalized meal plans",
       "Exercise plans for every body type & capability",
@@ -381,7 +381,7 @@ export default function PackagesPage(): JSX.Element {
               Wedding Planning Packages
             </h2>
             <p className="mt-6 text-lg text-charcoal-600 leading-relaxed">
-              From intimate elopements to grand celebrations, we have the perfect
+              From destination dreams to grand celebrations, we have the perfect
               package for your love story.
             </p>
           </motion.div>
