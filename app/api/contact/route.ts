@@ -3,8 +3,6 @@ import { Resend } from "resend";
 import { render } from "@react-email/components";
 import ContactConfirmationEmail from "@/emails/ContactConfirmation";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface ContactFormData {
   name: string;
   email: string;
@@ -16,6 +14,18 @@ interface ContactFormData {
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if API key is configured first
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not configured");
+      return NextResponse.json(
+        { error: "Email service is not configured" },
+        { status: 500 }
+      );
+    }
+
+    // Initialize Resend client inside the handler (not at module level)
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const body: ContactFormData = await request.json();
     const { name, email, phone, date, venue, message } = body;
 
@@ -24,15 +34,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Name and email are required" },
         { status: 400 }
-      );
-    }
-
-    // Check if API key is configured
-    if (!process.env.RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is not configured");
-      return NextResponse.json(
-        { error: "Email service is not configured" },
-        { status: 500 }
       );
     }
 
