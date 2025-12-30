@@ -108,7 +108,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5",
-      reviewCount: "500",
+      reviewCount: "150",
     },
     areaServed: {
       "@type": "GeoCircle",

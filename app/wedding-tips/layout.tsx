@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Wedding Tips & Advice | Wedding Agency San Diego",
     description:
-      "Expert wedding planning tips and advice from 20+ years in hospitality and events, planning 100+ weddings in Southern California.",
+      "Expert wedding planning tips and advice from 20+ years in hospitality and events, planning 150+ weddings in Southern California.",
     url: `${SITE_URL}/wedding-tips`,
     type: "website",
     images: [

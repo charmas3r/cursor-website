@@ -103,12 +103,12 @@ const featureCards = [
     ),
     title: "Why Choose Us",
     shortDescription:
-      "100+ weddings, 20+ years in hospitality & events, and a 2× Best of Weddings winner. Your day is in expert hands.",
+      "150+ weddings, 20+ years in hospitality & events, and a 2× Best of Weddings winner. Your day is in expert hands.",
     modalTitle: "Experience You Can Trust",
     modalDescription:
       "With over 20 years in hospitality and events—from hotels and venues to hands-on service and planning—I've experienced weddings from every angle. This unique perspective means I understand what it takes to create a seamless celebration.",
     highlights: [
-      "100+ weddings successfully planned",
+      "150+ weddings successfully planned",
       "20+ years in hospitality & events",
       "2× Best of Weddings winner (The Knot)",
       "Experience on every side of events",
@@ -280,7 +280,7 @@ export default function Hero(): JSX.Element {
               <div className="mt-8 flex items-center gap-6 sm:gap-8">
                 <div>
                   <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900">
-                    100+
+                    150+
                   </p>
                   <p className="text-xs sm:text-sm text-charcoal-600 mt-1">
                     Weddings Planned

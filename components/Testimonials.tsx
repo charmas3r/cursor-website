@@ -115,7 +115,7 @@ export default function Testimonials(): JSX.Element {
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
         >
           <span className="text-blush-500 text-xs sm:text-sm font-medium uppercase tracking-wider">
-            Trusted by 500+ Couples
+            Trusted by 150+ Couples
           </span>
           <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900 leading-tight">
             Love Notes from
@@ -239,7 +239,7 @@ export default function Testimonials(): JSX.Element {
             {/* Stats */}
             <div className="flex items-center gap-6 sm:gap-8">
               <div className="text-center">
-                <p className="text-3xl sm:text-4xl font-serif font-bold text-charcoal-900">500+</p>
+                <p className="text-3xl sm:text-4xl font-serif font-bold text-charcoal-900">150+</p>
                 <p className="text-xs text-charcoal-500 uppercase tracking-wide">Weddings</p>
               </div>
               <div className="w-px h-10 bg-amber-200" />

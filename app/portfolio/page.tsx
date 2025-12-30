@@ -58,7 +58,7 @@ export default async function PortfolioPage() {
           <div className="flex flex-wrap justify-center gap-8 text-charcoal-600">
             <div className="flex items-center gap-2">
               <Star className="w-5 h-5 text-blush-500 fill-blush-500" aria-hidden="true" />
-              <span className="font-medium">100+ Weddings</span>
+              <span className="font-medium">150+ Weddings</span>
             </div>
             <div className="flex items-center gap-2">
               <Heart className="w-5 h-5 text-blush-500 fill-blush-500" aria-hidden="true" />
