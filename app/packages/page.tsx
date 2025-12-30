@@ -219,10 +219,13 @@ const packages = [
 
 // Add-on services
 const addOns = [
-  { name: "Welcome Party Planning", price: "1,500+", description: "Rehearsal dinners, welcome drinks, farewell brunches" },
-  { name: "RSVP & Guest Management", price: "800+", description: "Full guest list coordination and communication" },
-  { name: "Additional Coordinator", price: "350", description: "Per coordinator for larger events" },
-  { name: "Extended Hours", price: "150/hr", description: "Additional coverage beyond package limits" },
+  { name: "Additional Event Management", price: "1,500+", description: "Rehearsal dinners, welcome drinks, farewell brunches" },
+  { name: "Additional Coordinator", price: "750", description: "Per coordinator for larger events" },
+  { name: "Extended Hours", price: "250/hr", description: "Additional coverage beyond package limits" },
+  { name: "Ceremony or Reception Only", price: "1,500+", description: "Starting price for ceremony or reception coverage only" },
+  { name: "Bridal Assistant", price: "700", description: "Dedicated support for the bride all day—steaming dresses, lunch runs, last-minute fixes" },
+  { name: "Setup or Breakdown Help", price: "Varies", description: "For DIY couples needing help with décor setup or end-of-night packing" },
+  { name: "Wellness Services", price: "Inquire", description: "Individual wellness services available—reiki, sound healing, guided meditation" },
 ];
 
 // FAQ items
