@@ -273,7 +273,7 @@ export default function WeddingTipsContent({
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-charcoal-600 leading-relaxed">
               From budgeting to the big day—expert insights from 20+ years in
-              hospitality and 150+ weddings to help you plan your perfect celebration.
+              hospitality and 100+ weddings to help you plan your perfect celebration.
             </p>
           </motion.div>
 

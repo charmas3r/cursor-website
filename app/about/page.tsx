@@ -98,24 +98,29 @@ const values = [
 // Timeline/Milestones
 const milestones = [
   {
-    year: "2003",
-    title: "Hospitality Roots",
-    description: "Began my journey in hospitality—hotels, venues, service, and events.",
+    year: "Feb 2023",
+    title: "The Beginning",
+    description: "Wedding Agency San Diego was founded with a mission to plan weddings with intention and care.",
   },
   {
-    year: "2023",
-    title: "Wedding Agency Founded",
-    description: "Launched Wedding Agency San Diego with a mission to plan weddings with intention and care.",
-  },
-  {
-    year: "2024",
+    year: "Jan 2024",
     title: "Best of Weddings",
-    description: "Won The Knot's Best of Weddings award for excellence in our first year.",
+    description: "Won The Knot's Best of Weddings award for the first time—more to come!",
   },
   {
-    year: "2025",
-    title: "Growing & Thriving",
-    description: "150+ weddings planned and won Best of Weddings again.",
+    year: "Mar 2024",
+    title: "First Destination Wedding",
+    description: "Planned and executed our first destination wedding adventure.",
+  },
+  {
+    year: "Jul 2025",
+    title: "5th Preferred Vendor List",
+    description: "Added to our 5th venue preferred vendor list—trusted by top San Diego venues.",
+  },
+  {
+    year: "Nov 2025",
+    title: "100th Wedding",
+    description: "Celebrated a major milestone—our 100th wedding!",
   },
 ];
 
@@ -175,7 +180,7 @@ export default function AboutPage(): JSX.Element {
               {/* Quick Stats */}
               <div className="mt-10 flex flex-wrap gap-8">
                 {[
-                  { value: "150+", label: "Weddings" },
+                  { value: "100+", label: "Weddings" },
                   { value: "20+", label: "Years in Hospitality" },
                   { value: "2×", label: "Award Winner" },
                 ].map((stat) => (
@@ -274,7 +279,7 @@ export default function AboutPage(): JSX.Element {
                   </p>
                   <p>
                     With seamless execution and uncompromising excellence from start to finish, 
-                    we&apos;ve already planned 150+ weddings across Southern California. Each one 
+                    we&apos;ve already planned 100+ weddings across Southern California. Each one 
                     intentional. Each one balanced. Each one crafted with genuine care.
                   </p>
                 </div>

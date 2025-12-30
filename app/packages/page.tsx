@@ -347,7 +347,7 @@ export default function PackagesPage(): JSX.Element {
           <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16 text-charcoal-600">
             <div className="flex items-center gap-2">
               <Star className="w-5 h-5 text-blush-500 fill-blush-500" aria-hidden="true" />
-              <span className="font-medium">150+ Weddings</span>
+              <span className="font-medium">100+ Weddings</span>
             </div>
             <div className="flex items-center gap-2">
               <Heart className="w-5 h-5 text-blush-500 fill-blush-500" aria-hidden="true" />

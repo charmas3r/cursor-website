@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Wedding Agency San Diego",
   },
   description:
-    "San Diego's premier wedding planning agency. We specialize in full-service planning, wedding management, and destination weddings. 150+ weddings planned with 20+ years in hospitality & events.",
+    "San Diego's premier wedding planning agency. We specialize in full-service planning, wedding management, and destination weddings. 100+ weddings planned with 20+ years in hospitality & events.",
   keywords: [
     "wedding planner San Diego",
     "wedding coordinator San Diego",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Wedding Agency San Diego | Your Happily Ever After Starts Here",
     description:
-      "San Diego's premier wedding planning agency with 150+ weddings planned and 20+ years in hospitality & events crafting unforgettable celebrations.",
+      "San Diego's premier wedding planning agency with 100+ weddings planned and 20+ years in hospitality & events crafting unforgettable celebrations.",
     images: [
       {
         url: "/og-image.jpg",
