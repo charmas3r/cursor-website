@@ -118,10 +118,18 @@ export default defineType({
       description: 'Their testimonial about working with you',
       fields: [
         {
+          name: 'excerpt',
+          title: 'Review Excerpt',
+          type: 'text',
+          rows: 2,
+          description: 'Short version shown on portfolio page (1-2 sentences)',
+        },
+        {
           name: 'text',
-          title: 'Review Text',
+          title: 'Full Review',
           type: 'text',
           rows: 4,
+          description: 'Complete testimonial shown on testimonials page',
         },
         {
           name: 'rating',

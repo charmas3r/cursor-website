@@ -205,7 +205,7 @@ export default function CoupleGallery({ couple }: Props) {
       </section>
 
       {/* Couple's Review Section */}
-      {couple.review && couple.review.text && (
+      {couple.review && (couple.review.excerpt || couple.review.text) && (
         <section ref={reviewRef} className="py-20 lg:py-28 bg-cream-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -229,9 +229,9 @@ export default function CoupleGallery({ couple }: Props) {
                 ))}
               </div>
 
-              {/* Review Text */}
+              {/* Review Excerpt (or full text as fallback) */}
               <blockquote className="text-xl sm:text-2xl md:text-3xl font-serif text-charcoal-800 leading-relaxed italic mb-8">
-                &ldquo;{couple.review.text}&rdquo;
+                &ldquo;{couple.review.excerpt || couple.review.text}&rdquo;
               </blockquote>
 
               {/* Attribution */}

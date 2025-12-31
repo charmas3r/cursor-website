@@ -88,6 +88,7 @@ export interface Vendor {
 }
 
 export interface CoupleReview {
+  excerpt?: string;
   text: string;
   rating: number;
   featured?: boolean;
