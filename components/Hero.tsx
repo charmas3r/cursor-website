@@ -60,7 +60,7 @@ const featureCards = [
       "Stress-free experience from start to finish",
     ],
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
-    cta: { label: "Meet Our Team", href: "/about#team" },
+    cta: { label: "Meet Our Team", href: "/about" },
   },
   {
     id: "what-we-do",

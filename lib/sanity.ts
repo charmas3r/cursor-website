@@ -243,7 +243,7 @@ export async function getCoupleBySlug(slug: string) {
 }
 
 // Testimonial queries (from couples with reviews)
-export const couplesWithReviewsQuery = `*[_type == "couple" && defined(review.text)] | order(review.featured desc, weddingDate desc) {
+export const couplesWithReviewsQuery = `*[_type == "couple" && (defined(review.text) || defined(review.excerpt))] | order(review.featured desc, weddingDate desc) {
   _id,
   names,
   slug,
@@ -252,7 +252,7 @@ export const couplesWithReviewsQuery = `*[_type == "couple" && defined(review.te
   review
 }`;
 
-export const featuredReviewsQuery = `*[_type == "couple" && defined(review.text) && review.featured == true] | order(weddingDate desc) [0...6] {
+export const featuredReviewsQuery = `*[_type == "couple" && (defined(review.text) || defined(review.excerpt)) && review.featured == true] | order(weddingDate desc) [0...6] {
   _id,
   names,
   slug,
