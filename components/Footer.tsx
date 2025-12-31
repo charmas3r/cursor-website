@@ -13,19 +13,15 @@ const footerLinks = {
   ],
   company: [
     { label: "About Us", href: "/about" },
-    { label: "Our Team", href: "/about#team" },   // Links to "The Dreammakers" section
+    { label: "Our Team", href: "/about#team" },
     { label: "Portfolio", href: "/portfolio" },
-    { label: "Testimonials", href: "/portfolio" },
+    { label: "Testimonials", href: "/testimonials" },
   ],
   resources: [
     { label: "Blog", href: "/blog" },
     { label: "Wedding Tips", href: "/wedding-tips" },
     { label: "Vendor Directory", href: "/#packages" },
     { label: "FAQs", href: "/packages#faq" },
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "/privacy" },  // Future page
-    { label: "Terms of Service", href: "/terms" },  // Future page
   ],
 };
 
@@ -160,8 +156,8 @@ export default function Footer(): JSX.Element {
       {/* Bottom Bar */}
       <div className="border-t border-charcoal-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-charcoal-500 text-sm flex flex-wrap items-center justify-center md:justify-start gap-x-1">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+            <p className="text-charcoal-500 text-sm flex flex-wrap items-center justify-center gap-x-1">
               <span>© {new Date().getFullYear()} Wedding Agency San Diego.</span>
               <span className="inline-flex items-center gap-1">
                 Made with
@@ -169,18 +165,6 @@ export default function Footer(): JSX.Element {
                 by <Link href="https://www.linkedin.com/in/evan-smith-93bb43154/" className="text-blush-500 hover:text-blush-600 transition-colors duration-300">E.S.</Link>
               </span>
             </p>
-
-            <div className="flex gap-6">
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-charcoal-500 hover:text-white transition-colors duration-300 text-sm"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </div>

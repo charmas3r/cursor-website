@@ -730,13 +730,13 @@ export default function PackagesPage(): JSX.Element {
                   Schedule Free Consultation
                 </Button>
               </Link>
-              <a href="tel:+16195550123">
+              <a href="tel:+17602167427">
                 <Button
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto text-base px-8 bg-transparent border-white text-white hover:bg-white hover:text-charcoal-900"
                 >
-                  Call (619) 555-0123
+                  Call +1 (760) 216-7427
                 </Button>
               </a>
             </div>

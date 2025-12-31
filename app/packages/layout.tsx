@@ -61,7 +61,7 @@ export default function PackagesLayout({
       "@type": "LocalBusiness",
       name: "Wedding Agency San Diego",
       url: SITE_URL,
-      telephone: "(619) 555-0123",
+      telephone: "+1 (760) 216-7427",
       address: {
         "@type": "PostalAddress",
         addressLocality: "San Diego",

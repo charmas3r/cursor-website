@@ -83,7 +83,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     description:
       "San Diego's premier wedding planning agency specializing in full-service planning, wedding management, and destination weddings.",
     url: SITE_URL,
-    telephone: "(619) 555-0123",
+    telephone: "+1 (760) 216-7427",
     email: "hello@wding.com",
     address: {
       "@type": "PostalAddress",

@@ -242,3 +242,66 @@ export async function getCoupleBySlug(slug: string) {
   return client.fetch(coupleBySlugQuery, { slug });
 }
 
+// Testimonial queries
+export const testimonialsQuery = `*[_type == "testimonial"] | order(featured desc, weddingDate desc) {
+  _id,
+  names,
+  slug,
+  venue,
+  weddingDate,
+  rating,
+  text,
+  image,
+  featured,
+  theKnotUrl,
+  source,
+  serviceType,
+  highlights,
+  order
+}`;
+
+export const featuredTestimonialsQuery = `*[_type == "testimonial" && featured == true] | order(order asc, weddingDate desc) [0...6] {
+  _id,
+  names,
+  slug,
+  venue,
+  weddingDate,
+  rating,
+  text,
+  image,
+  featured,
+  theKnotUrl,
+  source,
+  serviceType,
+  highlights
+}`;
+
+export const testimonialBySlugQuery = `*[_type == "testimonial" && slug.current == $slug][0] {
+  _id,
+  names,
+  slug,
+  venue,
+  weddingDate,
+  rating,
+  text,
+  image,
+  featured,
+  theKnotUrl,
+  source,
+  serviceType,
+  highlights
+}`;
+
+// Testimonial fetch functions
+export async function getTestimonials() {
+  return client.fetch(testimonialsQuery);
+}
+
+export async function getFeaturedTestimonials() {
+  return client.fetch(featuredTestimonialsQuery);
+}
+
+export async function getTestimonialBySlug(slug: string) {
+  return client.fetch(testimonialBySlugQuery, { slug });
+}
+

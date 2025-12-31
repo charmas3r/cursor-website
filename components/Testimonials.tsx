@@ -1,59 +1,79 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { Star, Quote, ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { Star, Quote, ExternalLink, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { urlFor } from "@/lib/sanity";
+import type { Testimonial } from "@/types/sanity";
 
-// Reviews based on Wedding Agency San Diego testimonials
-const reviews = [
+// Fallback reviews for when Sanity is empty
+const fallbackReviews: Testimonial[] = [
   {
-    id: 1,
+    _id: "1",
     names: "Sarah & Michael",
+    slug: { _type: "slug", current: "sarah-michael" },
     venue: "Hotel del Coronado",
     rating: 5,
     text: "Wedding Agency San Diego made our dream wedding a reality! From the first consultation to our magical day at the Del, every detail was handled with such care and professionalism. We couldn't have asked for a better team.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200",
+    image: {
+      _type: "image",
+      asset: { _type: "reference", _ref: "" },
+    },
     featured: true,
   },
   {
-    id: 2,
+    _id: "2",
     names: "Jennifer & David",
+    slug: { _type: "slug", current: "jennifer-david" },
     venue: "Rancho Valencia Resort",
     rating: 5,
     text: "Absolutely incredible experience! The attention to detail was beyond anything we expected. Our guests are still talking about how beautiful and seamless everything was.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200",
-    featured: false,
+    featured: true,
   },
   {
-    id: 3,
+    _id: "3",
     names: "Amanda & Chris",
+    slug: { _type: "slug", current: "amanda-chris" },
     venue: "The Lodge at Torrey Pines",
     rating: 5,
     text: "From vendor coordination to day-of execution, everything was flawless. They turned our vision into something even more beautiful than we imagined. Worth every penny!",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200",
-    featured: false,
+    featured: true,
   },
   {
-    id: 4,
+    _id: "4",
     names: "Emily & James",
+    slug: { _type: "slug", current: "emily-james" },
     venue: "Sunset Cliffs",
     rating: 5,
     text: "Our intimate beach ceremony was pure magic. The team handled everything so we could just be present and enjoy our special moment. Highly recommend!",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
-    featured: false,
+    featured: true,
   },
   {
-    id: 5,
+    _id: "5",
     names: "Rachel & Tom",
+    slug: { _type: "slug", current: "rachel-tom" },
     venue: "Bernardo Winery",
     rating: 5,
     text: "Professional, creative, and genuinely caring. They made the planning process enjoyable and stress-free. Our vineyard wedding exceeded all expectations!",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200",
-    featured: false,
+    featured: true,
   },
 ];
+
+// Fallback images for reviews without Sanity images
+const fallbackImages = [
+  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200",
+];
+
+interface TestimonialsProps {
+  initialTestimonials?: Testimonial[];
+}
 
 const containerVariants = {
   hidden: {},
@@ -93,12 +113,34 @@ function StarRating({ rating }: { rating: number }): JSX.Element {
   );
 }
 
-export default function Testimonials(): JSX.Element {
+// Helper to check if image is valid
+const isValidImage = (image?: Testimonial["image"]) => {
+  return image?.asset && (image.asset._ref || image.asset._id);
+};
+
+// Get image URL with fallback
+const getImageUrl = (testimonial: Testimonial, index: number): string => {
+  if (isValidImage(testimonial.image)) {
+    return urlFor(testimonial.image!).width(200).height(200).url();
+  }
+  return fallbackImages[index % fallbackImages.length];
+};
+
+export default function Testimonials({ initialTestimonials }: TestimonialsProps): JSX.Element {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [reviews, setReviews] = useState<Testimonial[]>(initialTestimonials || fallbackReviews);
 
-  const featuredReview = reviews.find((r) => r.featured);
-  const otherReviews = reviews.filter((r) => !r.featured);
+  // If no initial testimonials provided, use fallback
+  useEffect(() => {
+    if (!initialTestimonials || initialTestimonials.length === 0) {
+      setReviews(fallbackReviews);
+    }
+  }, [initialTestimonials]);
+
+  // Get first featured review and other reviews
+  const featuredReview = reviews.find((r) => r.featured) || reviews[0];
+  const otherReviews = reviews.filter((r) => r._id !== featuredReview?._id).slice(0, 4);
 
   return (
     <section
@@ -157,7 +199,7 @@ export default function Testimonials(): JSX.Element {
                   <div className="mt-8 flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-blush-400">
                       <Image
-                        src={featuredReview.image}
+                        src={getImageUrl(featuredReview, 0)}
                         alt={featuredReview.names}
                         width={56}
                         height={56}
@@ -187,7 +229,7 @@ export default function Testimonials(): JSX.Element {
           >
             {otherReviews.map((review, index) => (
               <motion.article
-                key={review.id}
+                key={review._id}
                 variants={itemVariants}
                 className={cn(
                   "group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-500",
@@ -202,7 +244,7 @@ export default function Testimonials(): JSX.Element {
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full overflow-hidden border border-cream-200">
                         <Image
-                          src={review.image}
+                          src={getImageUrl(review, index + 1)}
                           alt={review.names}
                           width={40}
                           height={40}
@@ -256,20 +298,28 @@ export default function Testimonials(): JSX.Element {
 
             <div className="hidden sm:block w-px h-12 bg-amber-200" />
 
-            {/* CTA */}
-            <a
-              href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-charcoal-900 text-white rounded-xl font-medium hover:bg-charcoal-800 transition-colors group"
-            >
-              Read All Reviews on The Knot
-              <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-            </a>
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-charcoal-900 text-white rounded-xl font-medium hover:bg-charcoal-800 transition-colors group"
+              >
+                Read Reviews on The Knot
+                <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+              </a>
+              <Link
+                href="/testimonials"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-charcoal-900 rounded-xl font-medium hover:bg-cream-50 transition-colors border border-charcoal-200 group"
+              >
+                View All Reviews
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
-

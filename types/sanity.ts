@@ -113,3 +113,24 @@ export interface Couple {
   galleryImages: SanityImage[];
 }
 
+// Testimonial types
+export type ReviewSource = 'theknot' | 'weddingwire' | 'google' | 'direct';
+export type ServiceType = 'full-service' | 'partial' | 'management' | 'destination' | 'design';
+
+export interface Testimonial {
+  _id: string;
+  names: string;
+  slug: SanitySlug;
+  venue: string;
+  weddingDate?: string;
+  rating: number;
+  text: string;
+  image?: SanityImage;
+  featured: boolean;
+  theKnotUrl?: string;
+  source?: ReviewSource;
+  serviceType?: ServiceType;
+  highlights?: string[];
+  order?: number;
+}
+

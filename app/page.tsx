@@ -7,15 +7,22 @@ import About from "@/components/About";
 import Gallery from "@/components/Gallery";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { getFeaturedTestimonials } from "@/lib/sanity";
+import type { Testimonial } from "@/types/sanity";
 
-export default function HomePage(): JSX.Element {
+export const revalidate = 60;
+
+export default async function HomePage(): Promise<JSX.Element> {
+  // Fetch featured testimonials from Sanity
+  const testimonials: Testimonial[] = await getFeaturedTestimonials();
+
   return (
     <main className="relative">
       <Navigation />
       <Hero />
       <Vision />
       <Services />
-      <Testimonials />
+      <Testimonials initialTestimonials={testimonials} />
       <About />
       <Gallery />
       <Contact />
