@@ -42,6 +42,28 @@ export default function CoupleGallery({ couple }: Props) {
   const detailsInView = useInView(detailsRef, { once: true, margin: "-100px" });
   const galleryInView = useInView(galleryRef, { once: true, margin: "-100px" });
 
+  // Helper function to check if a Sanity image has a valid asset reference
+  const isValidImage = (image: SanityImage | null | undefined): boolean => {
+    if (!image) return false;
+    // Check if the image has an asset reference (either asset._ref or asset._id)
+    return !!(image.asset && (image.asset._ref || image.asset._id));
+  };
+
+  // Helper function to get image URL from Sanity image
+  const getImageUrl = (image: SanityImage, width?: number, height?: number) => {
+    if (!isValidImage(image)) {
+      // Return a placeholder or fallback image
+      return "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800";
+    }
+    let builder = urlFor(image);
+    if (width) builder = builder.width(width);
+    if (height) builder = builder.height(height);
+    return builder.url();
+  };
+
+  // Filter gallery images to only include valid ones
+  const validGalleryImages = couple.galleryImages?.filter(isValidImage) || [];
+
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
     setLightboxOpen(true);
@@ -55,22 +77,14 @@ export default function CoupleGallery({ couple }: Props) {
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === couple.galleryImages.length - 1 ? 0 : prev + 1
+      prev === validGalleryImages.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === 0 ? couple.galleryImages.length - 1 : prev - 1
+      prev === 0 ? validGalleryImages.length - 1 : prev - 1
     );
-  };
-
-  // Helper function to get image URL from Sanity image
-  const getImageUrl = (image: SanityImage, width?: number, height?: number) => {
-    let builder = urlFor(image);
-    if (width) builder = builder.width(width);
-    if (height) builder = builder.height(height);
-    return builder.url();
   };
 
   // Format the wedding date for display
@@ -403,7 +417,7 @@ export default function CoupleGallery({ couple }: Props) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
           >
-            {couple.galleryImages.map((image, index) => (
+            {validGalleryImages.map((image, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -512,28 +526,30 @@ export default function CoupleGallery({ couple }: Props) {
             </button>
 
             {/* Image */}
-            <motion.div
-              key={currentImageIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-full h-full max-w-6xl max-h-[85vh] mx-4 sm:mx-8"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={getImageUrl(couple.galleryImages[currentImageIndex], 1920, 1080)}
-                alt={couple.galleryImages[currentImageIndex].alt || `${couple.names} wedding photo ${currentImageIndex + 1}`}
-                fill
-                sizes="100vw"
-                className="object-contain"
-                priority
-              />
-            </motion.div>
+            {validGalleryImages[currentImageIndex] && (
+              <motion.div
+                key={currentImageIndex}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="relative w-full h-full max-w-6xl max-h-[85vh] mx-4 sm:mx-8"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src={getImageUrl(validGalleryImages[currentImageIndex], 1920, 1080)}
+                  alt={validGalleryImages[currentImageIndex].alt || `${couple.names} wedding photo ${currentImageIndex + 1}`}
+                  fill
+                  sizes="100vw"
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
+            )}
 
             {/* Image Counter */}
             <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-white/10 text-white text-sm">
-              {currentImageIndex + 1} / {couple.galleryImages.length}
+              {currentImageIndex + 1} / {validGalleryImages.length}
             </div>
           </motion.div>
         )}
