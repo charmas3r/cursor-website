@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { Star, Quote, ExternalLink, MapPin, Calendar } from "lucide-react";
+import { Star, Quote, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { urlFor } from "@/lib/sanity";
 import type { Testimonial } from "@/types/sanity";
 
 interface TestimonialsGridProps {
@@ -50,47 +48,46 @@ function StarRating({ rating }: { rating: number }): JSX.Element {
   );
 }
 
-function getSourceLabel(source?: string): string {
-  switch (source) {
-    case "theknot":
-      return "The Knot";
-    case "weddingwire":
-      return "WeddingWire";
-    case "google":
-      return "Google";
-    default:
-      return "";
+// Generate initials from name
+function getInitials(name: string): string {
+  const parts = name.split(/[&,]/);
+  if (parts.length >= 2) {
+    return parts.map(p => p.trim().charAt(0).toUpperCase()).join("");
   }
+  const words = name.trim().split(" ");
+  if (words.length >= 2) {
+    return words.slice(0, 2).map(w => w.charAt(0).toUpperCase()).join("");
+  }
+  return name.slice(0, 2).toUpperCase();
 }
 
-function getServiceLabel(serviceType?: string): string {
-  switch (serviceType) {
-    case "full-service":
-      return "Full Service Planning";
-    case "partial":
-      return "Partial Planning";
-    case "management":
-      return "Wedding Management";
-    case "destination":
-      return "Destination Wedding";
-    case "design":
-      return "Design & Styling";
-    default:
-      return "";
-  }
+// Generate consistent color based on name
+function getAvatarColor(name: string): string {
+  const colors = [
+    "from-blush-400 to-blush-500",
+    "from-sage-400 to-sage-500",
+    "from-amber-400 to-amber-500",
+    "from-rose-400 to-rose-500",
+    "from-violet-400 to-violet-500",
+    "from-teal-400 to-teal-500",
+  ];
+  const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return colors[hash % colors.length];
 }
 
-// Helper to check if image is valid
-const isValidImage = (image?: Testimonial["image"]) => {
-  return image?.asset && (image.asset._ref || image.asset._id);
-};
+// Format date
+function formatDate(dateString: string): string {
+  return new Date(dateString).toLocaleDateString("en-US", { 
+    month: "long", 
+    year: "numeric" 
+  });
+}
 
 export default function TestimonialsGrid({
   testimonials,
   featured = false,
 }: TestimonialsGridProps): JSX.Element {
   if (featured && testimonials.length > 0) {
-    // Featured layout: First one large, rest in grid
     const [firstTestimonial, ...restTestimonials] = testimonials;
 
     return (
@@ -119,43 +116,21 @@ export default function TestimonialsGrid({
 
               <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
                 <div className="flex items-center gap-4">
-                  {isValidImage(firstTestimonial.image) ? (
-                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-blush-400">
-                      <Image
-                        src={urlFor(firstTestimonial.image!).width(128).height(128).url()}
-                        alt={firstTestimonial.names}
-                        width={64}
-                        height={64}
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blush-400 to-blush-500 flex items-center justify-center text-white text-xl font-serif">
-                      {firstTestimonial.names.charAt(0)}
-                    </div>
-                  )}
+                  <div className={cn(
+                    "w-16 h-16 rounded-full flex items-center justify-center text-white text-xl font-serif font-semibold bg-gradient-to-br",
+                    getAvatarColor(firstTestimonial.name)
+                  )}>
+                    {getInitials(firstTestimonial.name)}
+                  </div>
                   <div>
                     <p className="font-serif font-semibold text-white text-lg">
-                      {firstTestimonial.names}
+                      {firstTestimonial.name}
                     </p>
-                    <p className="text-sm text-charcoal-400 flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      {firstTestimonial.venue}
+                    <p className="text-sm text-charcoal-400">
+                      {formatDate(firstTestimonial.date)}
                     </p>
                   </div>
                 </div>
-
-                {firstTestimonial.theKnotUrl && (
-                  <a
-                    href={firstTestimonial.theKnotUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-blush-400 hover:text-blush-300 transition-colors"
-                  >
-                    View on The Knot
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                )}
               </div>
             </div>
           </div>
@@ -194,9 +169,6 @@ export default function TestimonialsGrid({
 }
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }): JSX.Element {
-  const sourceLabel = getSourceLabel(testimonial.source);
-  const serviceLabel = getServiceLabel(testimonial.serviceType);
-
   return (
     <motion.article
       variants={itemVariants}
@@ -209,28 +181,18 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }): JSX.Ele
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-4">
           <div className="flex items-center gap-3">
-            {isValidImage(testimonial.image) ? (
-              <div className="w-12 h-12 rounded-full overflow-hidden border border-cream-200">
-                <Image
-                  src={urlFor(testimonial.image!).width(96).height(96).url()}
-                  alt={testimonial.names}
-                  width={48}
-                  height={48}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-            ) : (
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blush-300 to-blush-400 flex items-center justify-center text-white font-serif">
-                {testimonial.names.charAt(0)}
-              </div>
-            )}
+            <div className={cn(
+              "w-12 h-12 rounded-full flex items-center justify-center text-white text-sm font-serif font-semibold bg-gradient-to-br",
+              getAvatarColor(testimonial.name)
+            )}>
+              {getInitials(testimonial.name)}
+            </div>
             <div>
               <p className="font-serif font-semibold text-charcoal-900">
-                {testimonial.names}
+                {testimonial.name}
               </p>
-              <p className="text-xs text-charcoal-500 flex items-center gap-1">
-                <MapPin className="w-3 h-3" />
-                {testimonial.venue}
+              <p className="text-xs text-charcoal-500">
+                {formatDate(testimonial.date)}
               </p>
             </div>
           </div>
@@ -241,50 +203,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }): JSX.Ele
         <blockquote className="text-charcoal-600 text-sm leading-relaxed flex-1">
           &ldquo;{testimonial.text}&rdquo;
         </blockquote>
-
-        {/* Footer */}
-        <div className="mt-4 pt-4 border-t border-cream-100 flex items-center justify-between gap-2 flex-wrap">
-          <div className="flex items-center gap-2">
-            {serviceLabel && (
-              <span className="inline-flex px-2 py-1 bg-sage-100 text-sage-700 text-xs rounded-full">
-                {serviceLabel}
-              </span>
-            )}
-            {sourceLabel && (
-              <span className="text-xs text-charcoal-400">
-                via {sourceLabel}
-              </span>
-            )}
-          </div>
-          
-          {testimonial.theKnotUrl && (
-            <a
-              href={testimonial.theKnotUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-blush-500 hover:text-blush-600 transition-colors"
-            >
-              Read full review
-              <ExternalLink className="w-3 h-3" />
-            </a>
-          )}
-        </div>
-
-        {/* Highlights */}
-        {testimonial.highlights && testimonial.highlights.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1">
-            {testimonial.highlights.slice(0, 3).map((highlight, index) => (
-              <span
-                key={index}
-                className="inline-flex px-2 py-0.5 bg-cream-100 text-charcoal-600 text-xs rounded"
-              >
-                {highlight}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
     </motion.article>
   );
 }
-

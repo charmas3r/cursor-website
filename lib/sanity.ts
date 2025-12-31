@@ -243,53 +243,22 @@ export async function getCoupleBySlug(slug: string) {
 }
 
 // Testimonial queries
-export const testimonialsQuery = `*[_type == "testimonial"] | order(featured desc, weddingDate desc) {
+export const testimonialsQuery = `*[_type == "testimonial"] | order(featured desc, date desc) {
   _id,
-  names,
-  slug,
-  venue,
-  weddingDate,
-  rating,
+  name,
   text,
-  image,
-  featured,
-  theKnotUrl,
-  source,
-  serviceType,
-  highlights,
-  order
+  rating,
+  date,
+  featured
 }`;
 
-export const featuredTestimonialsQuery = `*[_type == "testimonial" && featured == true] | order(order asc, weddingDate desc) [0...6] {
+export const featuredTestimonialsQuery = `*[_type == "testimonial" && featured == true] | order(date desc) [0...6] {
   _id,
-  names,
-  slug,
-  venue,
-  weddingDate,
-  rating,
+  name,
   text,
-  image,
-  featured,
-  theKnotUrl,
-  source,
-  serviceType,
-  highlights
-}`;
-
-export const testimonialBySlugQuery = `*[_type == "testimonial" && slug.current == $slug][0] {
-  _id,
-  names,
-  slug,
-  venue,
-  weddingDate,
   rating,
-  text,
-  image,
-  featured,
-  theKnotUrl,
-  source,
-  serviceType,
-  highlights
+  date,
+  featured
 }`;
 
 // Testimonial fetch functions
@@ -299,9 +268,5 @@ export async function getTestimonials() {
 
 export async function getFeaturedTestimonials() {
   return client.fetch(featuredTestimonialsQuery);
-}
-
-export async function getTestimonialBySlug(slug: string) {
-  return client.fetch(testimonialBySlugQuery, { slug });
 }
 

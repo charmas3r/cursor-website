@@ -3,7 +3,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, type FormEvent, type ChangeEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Mail, Clock, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+import { Phone, Mail, Clock, CheckCircle, Loader2, AlertCircle } from "lucide-react";
 
 // Social media icons as SVG components
 const SocialIcon = ({ name }: { name: string }): JSX.Element => {
@@ -46,19 +46,16 @@ type FormStatus = "idle" | "loading" | "success" | "error";
 
 const contactInfo = [
   {
-    icon: MapPin,
-    label: "Visit Us",
-    value: "123 Wedding Lane, San Diego, CA 92101",
-  },
-  {
     icon: Phone,
     label: "Call Us",
-    value: "(619) 555-0123",
+    value: "+1 (760) 216-7427",
+    href: "tel:+17602167427",
   },
   {
     icon: Mail,
     label: "Email Us",
-    value: "hello@weddingagencysandiego.com",
+    value: "nicole@weddingagencysandiego.com",
+    href: "mailto:nicole@weddingagencysandiego.com",
   },
   {
     icon: Clock,
@@ -162,23 +159,41 @@ export default function Contact(): JSX.Element {
 
             {/* Contact Info */}
             <div className="mt-8 sm:mt-10 space-y-4 sm:space-y-6">
-              {contactInfo.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="flex items-start gap-3 sm:gap-4"
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-blush-500" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-charcoal-500">{item.label}</p>
-                    <p className="text-charcoal-900 font-medium">{item.value}</p>
-                  </div>
-                </motion.div>
-              ))}
+              {contactInfo.map((item, index) => {
+                const content = (
+                  <>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-blush-500" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-charcoal-500">{item.label}</p>
+                      <p className="text-charcoal-900 font-medium">{item.value}</p>
+                    </div>
+                  </>
+                );
+
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  >
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="flex items-start gap-3 sm:gap-4 group hover:opacity-80 transition-opacity"
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        {content}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Let's Get Social */}
@@ -334,7 +349,7 @@ export default function Contact(): JSX.Element {
                             onChange={handleChange}
                             disabled={status === "loading"}
                             className="w-full px-4 py-3 rounded-xl border border-cream-300 focus:border-blush-400 focus:ring-2 focus:ring-blush-100 outline-none transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                            placeholder="(619) 555-0123"
+                            placeholder="+1 (760) 216-7427"
                           />
                         </div>
                         <div>

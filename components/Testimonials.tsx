@@ -2,73 +2,53 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Star, Quote, ExternalLink, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { urlFor } from "@/lib/sanity";
 import type { Testimonial } from "@/types/sanity";
 
 // Fallback reviews for when Sanity is empty
 const fallbackReviews: Testimonial[] = [
   {
     _id: "1",
-    names: "Sarah & Michael",
-    slug: { _type: "slug", current: "sarah-michael" },
-    venue: "Hotel del Coronado",
+    name: "Sarah & Michael",
     rating: 5,
     text: "Wedding Agency San Diego made our dream wedding a reality! From the first consultation to our magical day at the Del, every detail was handled with such care and professionalism. We couldn't have asked for a better team.",
-    image: {
-      _type: "image",
-      asset: { _type: "reference", _ref: "" },
-    },
+    date: "2024-10-15",
     featured: true,
   },
   {
     _id: "2",
-    names: "Jennifer & David",
-    slug: { _type: "slug", current: "jennifer-david" },
-    venue: "Rancho Valencia Resort",
+    name: "Jennifer & David",
     rating: 5,
     text: "Absolutely incredible experience! The attention to detail was beyond anything we expected. Our guests are still talking about how beautiful and seamless everything was.",
+    date: "2024-09-20",
     featured: true,
   },
   {
     _id: "3",
-    names: "Amanda & Chris",
-    slug: { _type: "slug", current: "amanda-chris" },
-    venue: "The Lodge at Torrey Pines",
+    name: "Amanda & Chris",
     rating: 5,
     text: "From vendor coordination to day-of execution, everything was flawless. They turned our vision into something even more beautiful than we imagined. Worth every penny!",
+    date: "2024-08-12",
     featured: true,
   },
   {
     _id: "4",
-    names: "Emily & James",
-    slug: { _type: "slug", current: "emily-james" },
-    venue: "Sunset Cliffs",
+    name: "Emily & James",
     rating: 5,
     text: "Our intimate beach ceremony was pure magic. The team handled everything so we could just be present and enjoy our special moment. Highly recommend!",
+    date: "2024-07-28",
     featured: true,
   },
   {
     _id: "5",
-    names: "Rachel & Tom",
-    slug: { _type: "slug", current: "rachel-tom" },
-    venue: "Bernardo Winery",
+    name: "Rachel & Tom",
     rating: 5,
     text: "Professional, creative, and genuinely caring. They made the planning process enjoyable and stress-free. Our vineyard wedding exceeded all expectations!",
+    date: "2024-06-15",
     featured: true,
   },
-];
-
-// Fallback images for reviews without Sanity images
-const fallbackImages = [
-  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200",
 ];
 
 interface TestimonialsProps {
@@ -113,18 +93,34 @@ function StarRating({ rating }: { rating: number }): JSX.Element {
   );
 }
 
-// Helper to check if image is valid
-const isValidImage = (image?: Testimonial["image"]) => {
-  return image?.asset && (image.asset._ref || image.asset._id);
-};
-
-// Get image URL with fallback
-const getImageUrl = (testimonial: Testimonial, index: number): string => {
-  if (isValidImage(testimonial.image)) {
-    return urlFor(testimonial.image!).width(200).height(200).url();
+// Generate initials from name
+function getInitials(name: string): string {
+  const parts = name.split(/[&,]/);
+  if (parts.length >= 2) {
+    // For couples like "Sarah & Michael", get first letter of each
+    return parts.map(p => p.trim().charAt(0).toUpperCase()).join("");
   }
-  return fallbackImages[index % fallbackImages.length];
-};
+  // For single names, get first two letters or first letter of first two words
+  const words = name.trim().split(" ");
+  if (words.length >= 2) {
+    return words.slice(0, 2).map(w => w.charAt(0).toUpperCase()).join("");
+  }
+  return name.slice(0, 2).toUpperCase();
+}
+
+// Generate consistent color based on name
+function getAvatarColor(name: string): string {
+  const colors = [
+    "from-blush-400 to-blush-500",
+    "from-sage-400 to-sage-500",
+    "from-amber-400 to-amber-500",
+    "from-rose-400 to-rose-500",
+    "from-violet-400 to-violet-500",
+    "from-teal-400 to-teal-500",
+  ];
+  const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return colors[hash % colors.length];
+}
 
 export default function Testimonials({ initialTestimonials }: TestimonialsProps): JSX.Element {
   const ref = useRef(null);
@@ -197,21 +193,18 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
                   </blockquote>
 
                   <div className="mt-8 flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-blush-400">
-                      <Image
-                        src={getImageUrl(featuredReview, 0)}
-                        alt={featuredReview.names}
-                        width={56}
-                        height={56}
-                        className="object-cover w-full h-full"
-                      />
+                    <div className={cn(
+                      "w-14 h-14 rounded-full flex items-center justify-center text-white text-lg font-serif font-semibold bg-gradient-to-br",
+                      getAvatarColor(featuredReview.name)
+                    )}>
+                      {getInitials(featuredReview.name)}
                     </div>
                     <div>
                       <p className="font-serif font-semibold text-white">
-                        {featuredReview.names}
+                        {featuredReview.name}
                       </p>
                       <p className="text-sm text-charcoal-400">
-                        {featuredReview.venue}
+                        {new Date(featuredReview.date).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
                       </p>
                     </div>
                   </div>
@@ -242,20 +235,19 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
                 <div className="relative">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full overflow-hidden border border-cream-200">
-                        <Image
-                          src={getImageUrl(review, index + 1)}
-                          alt={review.names}
-                          width={40}
-                          height={40}
-                          className="object-cover w-full h-full"
-                        />
+                      <div className={cn(
+                        "w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-serif font-semibold bg-gradient-to-br",
+                        getAvatarColor(review.name)
+                      )}>
+                        {getInitials(review.name)}
                       </div>
                       <div>
                         <p className="font-serif font-semibold text-charcoal-900 text-sm">
-                          {review.names}
+                          {review.name}
                         </p>
-                        <p className="text-xs text-charcoal-500">{review.venue}</p>
+                        <p className="text-xs text-charcoal-500">
+                          {new Date(review.date).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                        </p>
                       </div>
                     </div>
                     <StarRating rating={review.rating} />

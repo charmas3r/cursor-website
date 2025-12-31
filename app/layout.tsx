@@ -84,20 +84,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
       "San Diego's premier wedding planning agency specializing in full-service planning, wedding management, and destination weddings.",
     url: SITE_URL,
     telephone: "+1 (760) 216-7427",
-    email: "hello@wding.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "123 Wedding Lane",
-      addressLocality: "San Diego",
-      addressRegion: "CA",
-      postalCode: "92101",
-      addressCountry: "US",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 32.7157,
-      longitude: -117.1611,
-    },
+    email: "nicole@weddingagencysandiego.com",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

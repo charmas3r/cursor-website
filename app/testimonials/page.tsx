@@ -1,4 +1,4 @@
-import { getTestimonials, urlFor } from "@/lib/sanity";
+import { getTestimonials } from "@/lib/sanity";
 import type { Testimonial } from "@/types/sanity";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -11,63 +11,51 @@ export const revalidate = 60;
 const fallbackTestimonials: Testimonial[] = [
   {
     _id: "1",
-    names: "Sarah & Michael",
-    slug: { _type: "slug", current: "sarah-michael" },
-    venue: "Hotel del Coronado",
+    name: "Sarah & Michael",
     rating: 5,
     text: "Wedding Agency San Diego made our dream wedding a reality! From the first consultation to our magical day at the Del, every detail was handled with such care and professionalism. We couldn't have asked for a better team.",
+    date: "2024-10-15",
     featured: true,
-    source: "theknot",
   },
   {
     _id: "2",
-    names: "Jennifer & David",
-    slug: { _type: "slug", current: "jennifer-david" },
-    venue: "Rancho Valencia Resort",
+    name: "Jennifer & David",
     rating: 5,
     text: "Absolutely incredible experience! The attention to detail was beyond anything we expected. Our guests are still talking about how beautiful and seamless everything was.",
+    date: "2024-09-20",
     featured: true,
-    source: "theknot",
   },
   {
     _id: "3",
-    names: "Amanda & Chris",
-    slug: { _type: "slug", current: "amanda-chris" },
-    venue: "The Lodge at Torrey Pines",
+    name: "Amanda & Chris",
     rating: 5,
     text: "From vendor coordination to day-of execution, everything was flawless. They turned our vision into something even more beautiful than we imagined. Worth every penny!",
+    date: "2024-08-12",
     featured: true,
-    source: "theknot",
   },
   {
     _id: "4",
-    names: "Emily & James",
-    slug: { _type: "slug", current: "emily-james" },
-    venue: "Sunset Cliffs",
+    name: "Emily & James",
     rating: 5,
     text: "Our intimate beach ceremony was pure magic. The team handled everything so we could just be present and enjoy our special moment. Highly recommend!",
+    date: "2024-07-28",
     featured: true,
-    source: "theknot",
   },
   {
     _id: "5",
-    names: "Rachel & Tom",
-    slug: { _type: "slug", current: "rachel-tom" },
-    venue: "Bernardo Winery",
+    name: "Rachel & Tom",
     rating: 5,
     text: "Professional, creative, and genuinely caring. They made the planning process enjoyable and stress-free. Our vineyard wedding exceeded all expectations!",
+    date: "2024-06-15",
     featured: true,
-    source: "theknot",
   },
   {
     _id: "6",
-    names: "Lisa & Mark",
-    slug: { _type: "slug", current: "lisa-mark" },
-    venue: "The Prado at Balboa Park",
+    name: "Lisa & Mark",
     rating: 5,
     text: "We were so impressed by how organized and thoughtful the entire team was. They anticipated every need and made our day absolutely perfect. Can't recommend them enough!",
+    date: "2024-05-10",
     featured: true,
-    source: "theknot",
   },
 ];
 
@@ -224,4 +212,3 @@ export default async function TestimonialsPage() {
     </>
   );
 }
-

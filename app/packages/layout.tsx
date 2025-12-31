@@ -62,12 +62,6 @@ export default function PackagesLayout({
       name: "Wedding Agency San Diego",
       url: SITE_URL,
       telephone: "+1 (760) 216-7427",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "San Diego",
-        addressRegion: "CA",
-        addressCountry: "US",
-      },
     },
     description:
       "Professional wedding planning services in San Diego. From wedding management to luxury full-service planning.",
