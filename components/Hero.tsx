@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { X, ArrowRight, DollarSign, Sparkles, Heart, Users } from "lucide-react";
+import { X, ArrowRight, DollarSign, Sparkles, Heart, Users, ChevronDown, Play } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -168,189 +168,275 @@ const packagesOverview = [
 export default function Hero(): JSX.Element {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const [showPackagesModal, setShowPackagesModal] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const videoOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const cardsOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
 
   const activeCard = featureCards.find((c) => c.id === selectedCard);
 
   return (
-    <section className="relative overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
-          alt="Romantic wedding couple walking through golden sunset fields in Southern California"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-        />
-        {/* Overlay gradients for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-cream-50/95 via-cream-50/80 to-cream-50/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 via-transparent to-transparent" />
-      </div>
+    <>
+      {/* Cinematic Video Hero */}
+      <section ref={heroRef} className="relative h-screen overflow-hidden">
+        {/* Video Background */}
+        <motion.div 
+          className="absolute inset-0"
+          style={{ opacity: videoOpacity }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            poster="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
+          >
+            <source 
+              src="https://res.cloudinary.com/dnwh2jmpm/video/upload/q_auto,f_auto/v1767160073/Short_Highlights_1_aze1gy.mp4" 
+              type="video/mp4" 
+            />
+          </video>
+          {/* Cinematic overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal-900/40 via-charcoal-900/20 to-charcoal-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/30 via-transparent to-charcoal-900/30" />
+        </motion.div>
 
-      {/* Content */}
-      <div className="relative flex flex-col">
-        {/* Main Content Area */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-            {/* Left Content */}
-            <div>
-              <motion.h1
-                custom={0.2}
-                initial="hidden"
-                animate="visible"
-                variants={fadeInUp}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-charcoal-900 leading-[1.05] tracking-tight"
+        {/* Main Content - Centered */}
+        <motion.div 
+          className="relative h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8"
+          style={{ opacity: contentOpacity }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="max-w-4xl"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-medium text-white leading-[1.05] tracking-tight drop-shadow-2xl"
+            >
+              Overwhelmed by
+              <br />
+              <span className="text-blush-300">Wedding Planning</span>?
+            </motion.h1>
+
+            {/* Brand Phrase */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.2, delay: 1.2 }}
+              className="mt-6 sm:mt-8 text-xl sm:text-2xl md:text-3xl font-serif italic text-white/90"
+            >
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.3 }}
+                className="inline-block"
               >
-                Overwhelmed by
-                <br />
-                <span className="text-blush-500">Wedding Planning</span>?
-              </motion.h1>
-
-              {/* Brand Phrase */}
-              <motion.p
+                We&apos;ll be your something
+              </motion.span>{" "}
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                transition={{ duration: 1, delay: 1.8, ease: [0.25, 0.4, 0.25, 1] }}
+                className="inline-block text-[#7CB9E8] not-italic font-medium"
+              >
+                blue
+              </motion.span>
+              <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1.2, delay: 1.2, ease: "easeOut" }}
-                className="mt-6 text-xl sm:text-2xl font-serif italic text-charcoal-500"
+                transition={{ duration: 0.4, delay: 2.2 }}
+                className="inline-block text-[#7CB9E8] not-italic font-medium"
               >
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1.3 }}
-                  className="inline-block"
-                >
-                  We&apos;ll be your something
-                </motion.span>{" "}
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                  transition={{ duration: 1, delay: 1.8, ease: [0.25, 0.4, 0.25, 1] }}
-                  className="inline-block text-[#5B9BD5] not-italic font-medium"
-                >
-                  blue
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4, delay: 2.2 }}
-                  className="inline-block text-[#5B9BD5] not-italic font-medium"
-                >
-                  .
-                </motion.span>
-              </motion.p>
+                .
+              </motion.span>
+            </motion.p>
 
-              <motion.div
-                custom={0.5}
-                initial="hidden"
-                animate="visible"
-                variants={fadeInUp}
-                className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4"
-              >
-                <Link href="/#contact">
-                  <Button size="lg" className="w-full sm:w-auto">
-                    Start Planning
-                  </Button>
-                </Link>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto bg-white/80 backdrop-blur-sm"
-                  onClick={() => setShowPackagesModal(true)}
-                >
-                  View Packages
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 2.5 }}
+              className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Link href="/#contact">
+                <Button size="lg" className="w-full sm:w-auto text-base px-8 py-6 bg-white text-charcoal-900 hover:bg-cream-100">
+                  Start Planning
                 </Button>
-              </motion.div>
-            </div>
-
-            {/* Right Content */}
-            <motion.div
-              custom={0.4}
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              className="lg:pt-8"
-            >
-              <p className="text-lg sm:text-xl text-charcoal-700 leading-relaxed max-w-md">
-              Our expert planners simplify the process, so you can focus
-               on enjoying your big day. From Wedding Management to Full 
-               Wedding Weekend Planning, we handle every detail.
-              </p>
-
-              {/* Stats */}
-              <div className="mt-8 flex items-center gap-6 sm:gap-8">
-                <div>
-                  <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900">
-                    100+
-                  </p>
-                  <p className="text-xs sm:text-sm text-charcoal-600 mt-1">
-                    Weddings Planned
-                  </p>
-                </div>
-                <div className="w-px h-10 sm:h-12 bg-charcoal-300" />
-                <div>
-                  <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900">
-                    20+
-                  </p>
-                  <p className="text-xs sm:text-sm text-charcoal-600 mt-1">
-                    Years in Hospitality
-                  </p>
-                </div>
-                <div className="w-px h-10 sm:h-12 bg-charcoal-300" />
-                <a
-                  href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group"
-                >
-                  <p className="text-3xl sm:text-4xl font-serif font-semibold text-charcoal-900 group-hover:text-blush-500 transition-colors">
-                    2×
-                  </p>
-                  <p className="text-xs sm:text-sm text-charcoal-600 mt-1 group-hover:text-blush-500 transition-colors">
-                    Award Winner
-                  </p>
-                </a>
-              </div>
+              </Link>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto text-base px-8 py-6 bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20"
+                onClick={() => setShowPackagesModal(true)}
+              >
+                View Packages
+              </Button>
             </motion.div>
-          </div>
-        </div>
 
-        {/* Feature Cards - Bottom */}
-        <div className="relative mt-8 sm:mt-12 pb-8 sm:pb-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Stats - Desktop Only */}
             <motion.div
-              initial="hidden"
-              animate="visible"
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 3 }}
+              className="hidden md:flex items-center justify-center gap-8 mt-12"
             >
+              <div className="text-center">
+                <p className="text-3xl lg:text-4xl font-serif font-semibold text-white">100+</p>
+                <p className="text-sm text-white/70 mt-1">Weddings</p>
+              </div>
+              <div className="w-px h-10 bg-white/30" />
+              <div className="text-center">
+                <p className="text-3xl lg:text-4xl font-serif font-semibold text-white">20+</p>
+                <p className="text-sm text-white/70 mt-1">Years Experience</p>
+              </div>
+              <div className="w-px h-10 bg-white/30" />
+              <a
+                href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center group"
+              >
+                <p className="text-3xl lg:text-4xl font-serif font-semibold text-white group-hover:text-blush-300 transition-colors">2×</p>
+                <p className="text-sm text-white/70 mt-1 group-hover:text-blush-300 transition-colors">Award Winner</p>
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 3.5, duration: 1 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="flex flex-col items-center gap-2 text-white/60"
+            >
+              <span className="text-xs uppercase tracking-widest">Scroll</span>
+              <ChevronDown className="w-5 h-5" />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Glass Feature Cards - Desktop Only, positioned at bottom */}
+        <motion.div 
+          className="absolute bottom-0 left-0 right-0 hidden lg:block"
+          style={{ opacity: cardsOpacity }}
+        >
+          <div className="max-w-7xl mx-auto px-8 pb-8">
+            <div className="grid grid-cols-3 gap-6">
               {featureCards.map((card, index) => (
                 <motion.button
                   key={card.id}
-                  custom={0.6 + index * 0.15}
-                  variants={scaleIn}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 3 + index * 0.15 }}
                   onClick={() => setSelectedCard(card.id)}
-                  className="text-left bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group border border-white/50 cursor-pointer"
+                  className="text-left bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-500 group cursor-pointer"
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-lg sm:text-xl font-semibold text-charcoal-900 font-serif">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-lg font-semibold text-white font-serif">
                       {card.title}
                     </h3>
-                    <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300 text-blush-300">
                       {card.icon}
                     </div>
                   </div>
-                  <p className="text-sm text-charcoal-600 leading-relaxed">
+                  <p className="text-sm text-white/70 leading-relaxed line-clamp-2">
                     {card.shortDescription}
                   </p>
-                  <div className="mt-4 flex items-center gap-2 text-blush-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-3 flex items-center gap-2 text-blush-300 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                     Learn more <ArrowRight className="w-4 h-4" />
                   </div>
                 </motion.button>
               ))}
-            </motion.div>
+            </div>
           </div>
+        </motion.div>
+      </section>
+
+      {/* Mobile Feature Cards - Separate Section */}
+      <section className="lg:hidden bg-cream-50 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal-900">
+              Why Choose Us
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {featureCards.map((card, index) => (
+              <motion.button
+                key={card.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setSelectedCard(card.id)}
+                className="text-left bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+              >
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-lg font-semibold text-charcoal-900 font-serif">
+                    {card.title}
+                  </h3>
+                  <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                    {card.icon}
+                  </div>
+                </div>
+                <p className="text-sm text-charcoal-600 leading-relaxed">
+                  {card.shortDescription}
+                </p>
+                <div className="mt-3 flex items-center gap-2 text-blush-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more <ArrowRight className="w-4 h-4" />
+                </div>
+              </motion.button>
+            ))}
+          </div>
+          
+          {/* Mobile Stats */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center justify-center gap-6 mt-10 pt-8 border-t border-cream-200"
+          >
+            <div className="text-center">
+              <p className="text-2xl font-serif font-semibold text-charcoal-900">100+</p>
+              <p className="text-xs text-charcoal-600 mt-1">Weddings</p>
+            </div>
+            <div className="w-px h-8 bg-charcoal-300" />
+            <div className="text-center">
+              <p className="text-2xl font-serif font-semibold text-charcoal-900">20+</p>
+              <p className="text-xs text-charcoal-600 mt-1">Years</p>
+            </div>
+            <div className="w-px h-8 bg-charcoal-300" />
+            <div className="text-center">
+              <p className="text-2xl font-serif font-semibold text-charcoal-900">2×</p>
+              <p className="text-xs text-charcoal-600 mt-1">Awards</p>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
       {/* Learn More Modal */}
       <AnimatePresence>
@@ -558,6 +644,6 @@ export default function Hero(): JSX.Element {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </>
   );
 }
