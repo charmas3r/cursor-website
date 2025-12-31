@@ -186,7 +186,7 @@ export const featuredCouplesQuery = `*[_type == "couple" && featured == true] | 
   galleryImages
 }`;
 
-export const nonFeaturedCouplesQuery = `*[_type == "couple" && featured != true] | order(weddingDate desc) {
+export const nonFeaturedCouplesQuery = `*[_type == "couple" && (featured == false || !defined(featured))] | order(weddingDate desc) {
   _id,
   names,
   slug,
