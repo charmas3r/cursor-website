@@ -1,27 +1,11 @@
 "use client";
 
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { X, ArrowRight, DollarSign, Sparkles, Heart, Users, ChevronDown } from "lucide-react";
-
-// Cloudinary video URLs with different quality levels
-const VIDEO_SOURCES = {
-  // High quality for desktop (1080p)
-  desktop: {
-    webm: "https://res.cloudinary.com/dnwh2jmpm/video/upload/q_auto:good,f_webm,w_1920/v1767160073/Short_Highlights_1_aze1gy",
-    mp4: "https://res.cloudinary.com/dnwh2jmpm/video/upload/q_auto:good,f_mp4,w_1920/v1767160073/Short_Highlights_1_aze1gy",
-  },
-  // Lower quality for mobile (720p, more compressed)
-  mobile: {
-    webm: "https://res.cloudinary.com/dnwh2jmpm/video/upload/q_auto:eco,f_webm,w_720/v1767160073/Short_Highlights_1_aze1gy",
-    mp4: "https://res.cloudinary.com/dnwh2jmpm/video/upload/q_auto:eco,f_mp4,w_720/v1767160073/Short_Highlights_1_aze1gy",
-  },
-};
-
-const POSTER_IMAGE = "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070";
+import { X, ArrowRight, DollarSign, Sparkles, Heart, Users, ChevronDown, Play } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -184,38 +168,7 @@ const packagesOverview = [
 export default function Hero(): JSX.Element {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const [showPackagesModal, setShowPackagesModal] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  
-  // Detect device and preferences
-  useEffect(() => {
-    // Check for mobile device
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    
-    // Check for reduced motion preference
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(motionQuery.matches);
-    const handleMotionChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    motionQuery.addEventListener("change", handleMotionChange);
-    
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-      motionQuery.removeEventListener("change", handleMotionChange);
-    };
-  }, []);
-
-  // Handle video load event
-  const handleVideoLoaded = () => {
-    setVideoLoaded(true);
-  };
-
-  // Get appropriate video sources based on device
-  const videoSources = isMobile ? VIDEO_SOURCES.mobile : VIDEO_SOURCES.desktop;
   
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -237,52 +190,19 @@ export default function Hero(): JSX.Element {
           className="absolute inset-0"
           style={{ opacity: videoOpacity }}
         >
-          {/* Poster image shown while video loads */}
-          <div 
-            className={`absolute inset-0 transition-opacity duration-1000 ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
-            aria-hidden="true"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            poster="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
           >
-            <Image
-              src={POSTER_IMAGE}
-              alt=""
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
+            <source 
+              src="https://res.cloudinary.com/dnwh2jmpm/video/upload/q_auto,f_auto/v1767160073/Short_Highlights_1_aze1gy.mp4" 
+              type="video/mp4" 
             />
-          </div>
-
-          {/* Video - only plays if user hasn't requested reduced motion */}
-          {!prefersReducedMotion ? (
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              onLoadedData={handleVideoLoaded}
-              onCanPlayThrough={handleVideoLoaded}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-              poster={POSTER_IMAGE}
-            >
-              {/* WebM for Chrome, Firefox, Edge (better compression) */}
-              <source src={videoSources.webm} type="video/webm" />
-              {/* MP4 for Safari and fallback */}
-              <source src={videoSources.mp4} type="video/mp4" />
-            </video>
-          ) : (
-            /* Static image for users who prefer reduced motion */
-            <Image
-              src={POSTER_IMAGE}
-              alt="Romantic wedding couple"
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
-          )}
-
+          </video>
           {/* Cinematic overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal-900/40 via-charcoal-900/20 to-charcoal-900/70" />
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/30 via-transparent to-charcoal-900/30" />
