@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_URL = "https://weddingagencysandiego.com";
+const OG_IMAGE = "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&h=630&fit=crop";
 
 export const metadata: Metadata = {
   title: "Wedding Planning Packages & Pricing | San Diego Wedding Planner",
@@ -22,9 +23,12 @@ export const metadata: Metadata = {
     description:
       "Wedding packages from $3,500. Wedding management, partial planning & full-service luxury options with transparent pricing.",
     url: `${SITE_URL}/packages`,
+    siteName: "Wedding Agency San Diego",
+    locale: "en_US",
+    type: "website",
     images: [
       {
-        url: "/og-packages.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Wedding Agency San Diego - Planning Packages & Pricing",
@@ -36,7 +40,7 @@ export const metadata: Metadata = {
     title: "Wedding Planning Packages & Pricing | San Diego",
     description:
       "Wedding packages from $3,500. Wedding management, partial planning & full-service options.",
-    images: ["/og-packages.jpg"],
+    images: [OG_IMAGE],
   },
   alternates: {
     canonical: `${SITE_URL}/packages`,
@@ -52,6 +56,7 @@ export default function PackagesLayout({
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Wedding Planning Services",
+    image: OG_IMAGE,
     provider: {
       "@type": "LocalBusiness",
       name: "Wedding Agency San Diego",

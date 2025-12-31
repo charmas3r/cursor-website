@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_URL = "https://weddingagencysandiego.com";
+const OG_IMAGE = "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1200&h=630&fit=crop";
 
 export const metadata: Metadata = {
   title: "Wedding Portfolio | San Diego Wedding Photography & Planning",
@@ -21,9 +22,12 @@ export const metadata: Metadata = {
     description:
       "Explore 100+ stunning weddings we've planned across San Diego. Beach ceremonies, vineyard celebrations, and more.",
     url: `${SITE_URL}/portfolio`,
+    siteName: "Wedding Agency San Diego",
+    locale: "en_US",
+    type: "website",
     images: [
       {
-        url: "/og-portfolio.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Wedding Agency San Diego Portfolio - Beautiful Wedding Photography",
@@ -35,7 +39,7 @@ export const metadata: Metadata = {
     title: "Wedding Portfolio | Wedding Agency San Diego",
     description:
       "Explore 100+ stunning weddings we've planned across San Diego.",
-    images: ["/og-portfolio.jpg"],
+    images: [OG_IMAGE],
   },
   alternates: {
     canonical: `${SITE_URL}/portfolio`,
@@ -54,6 +58,7 @@ export default function PortfolioLayout({
     description:
       "Browse our portfolio of 100+ beautiful San Diego weddings featuring beach ceremonies, vineyard celebrations, and luxury events.",
     url: `${SITE_URL}/portfolio`,
+    image: OG_IMAGE,
     isPartOf: {
       "@type": "WebSite",
       name: "Wedding Agency San Diego",

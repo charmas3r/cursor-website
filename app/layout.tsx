@@ -3,6 +3,7 @@ import "./globals.css";
 
 const SITE_URL = "https://weddingagencysandiego.com";
 const SITE_NAME = "Wedding Agency San Diego";
+const OG_IMAGE = "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&h=630&fit=crop";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
       "San Diego's premier wedding planning agency with 100+ weddings planned and 20+ years in hospitality & events crafting unforgettable celebrations.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Wedding Agency San Diego - Creating Unforgettable Weddings",
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
     title: "Wedding Agency San Diego | Your Happily Ever After Starts Here",
     description:
       "San Diego's premier wedding planning agency. Full-service planning, wedding management & destination weddings.",
-    images: ["/og-image.jpg"],
+    images: [OG_IMAGE],
     creator: "@weddingagencysd",
   },
   alternates: {
@@ -103,7 +104,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
       opens: "09:00",
       closes: "18:00",
     },
-    image: `${SITE_URL}/og-image.jpg`,
+    image: OG_IMAGE,
     priceRange: "$$$",
     aggregateRating: {
       "@type": "AggregateRating",

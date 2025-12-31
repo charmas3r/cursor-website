@@ -1,5 +1,8 @@
 import { Metadata } from "next";
 
+const SITE_URL = "https://weddingagencysandiego.com";
+const OG_IMAGE = "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&h=630&fit=crop";
+
 export const metadata: Metadata = {
   title: "Wedding Blog | Tips, Inspiration & Real Weddings",
   description:
@@ -21,18 +24,27 @@ export const metadata: Metadata = {
     description:
       "Expert wedding planning tips, real wedding features, and inspiration from San Diego's premier wedding planners.",
     type: "website",
-    url: "https://weddingagencysandiego.com/blog",
+    url: `${SITE_URL}/blog`,
     siteName: "Wedding Agency San Diego",
     locale: "en_US",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Wedding Agency San Diego Blog - Tips & Inspiration",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Wedding Blog | Wedding Agency San Diego",
     description:
       "Expert wedding planning tips, real wedding features, and inspiration from San Diego's premier wedding planners.",
+    images: [OG_IMAGE],
   },
   alternates: {
-    canonical: "https://weddingagencysandiego.com/blog",
+    canonical: `${SITE_URL}/blog`,
   },
 };
 
@@ -48,14 +60,15 @@ export default function BlogLayout({
     name: "Wedding Agency San Diego Blog",
     description:
       "Expert wedding planning tips, real wedding features, and inspiration from San Diego's premier wedding planners.",
-    url: "https://weddingagencysandiego.com/blog",
+    url: `${SITE_URL}/blog`,
+    image: OG_IMAGE,
     publisher: {
       "@type": "Organization",
       name: "Wedding Agency San Diego",
-      url: "https://weddingagencysandiego.com",
+      url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: "https://weddingagencysandiego.com/logo.png",
+        url: `${SITE_URL}/logo.png`,
       },
     },
     inLanguage: "en-US",
