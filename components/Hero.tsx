@@ -121,6 +121,13 @@ const featureCards = [
 // Quick packages overview for the packages modal
 const packagesOverview = [
   {
+    name: "Wellness Package",
+    price: "$3,000",
+    description: "4-month holistic program with Azadi Healing",
+    popular: false,
+    featured: true,
+  },
+  {
     name: "Wedding Management",
     price: "$3,500",
     description: "Sweet Heart Package - Complete wedding management",
@@ -149,13 +156,6 @@ const packagesOverview = [
     price: "$2,500+",
     description: "Professional design consultation and styling",
     popular: false,
-  },
-  {
-    name: "Wellness Package",
-    price: "$3,000",
-    description: "4-month holistic program with Azadi Healing",
-    popular: false,
-    featured: true,
   },
   {
     name: "Custom Package",

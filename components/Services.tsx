@@ -19,6 +19,32 @@ import Image from "next/image";
 
 const services = [
   {
+    id: "wellness",
+    icon: Heart,
+    title: "Wellness Package",
+    description:
+      "Prepare for your big day feeling your best. In partnership with Azadi Healing, our 4-month holistic program supports your physical and mental health.",
+    features: ["Meal Plans", "Fitness Routines", "Mental Wellness"],
+    fullDescription:
+      "Your wedding day should be the best you've ever felt. In partnership with Azadi Healing, our 4-month wellness program helps you manage the mental stress of planning while supporting your physical health with personalized plans.",
+    extendedFeatures: [
+      "Personalized meal plans",
+      "Exercise plans for every body type & capability",
+      "Monthly check-ins for stress management",
+      "Reiki sessions",
+      "Sound healing journeys",
+      "Guided meditations",
+      "Mental health support through planning",
+    ],
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070",
+    priceRange: "$$",
+    startingAt: "Starting at $3,000",
+    idealFor: "Couples wanting to feel their best on their wedding day",
+    partnerLink: "https://azadihealing.com/about-me-%26-azadi",
+    partnerName: "Azadi Healing",
+    featured: true,
+  },
+  {
     id: "full-service",
     icon: Heart,
     title: "Full Service Planning",
@@ -139,32 +165,6 @@ const services = [
     priceRange: "Custom",
     startingAt: "Pricing varies",
     idealFor: "Couples with a unique vision or cultural traditions",
-  },
-  {
-    id: "wellness",
-    icon: Heart,
-    title: "Wellness Package",
-    description:
-      "Prepare for your big day feeling your best. In partnership with Azadi Healing, our 4-month holistic program supports your physical and mental health.",
-    features: ["Meal Plans", "Fitness Routines", "Mental Wellness"],
-    fullDescription:
-      "Your wedding day should be the best you've ever felt. In partnership with Azadi Healing, our 4-month wellness program helps you manage the mental stress of planning while supporting your physical health with personalized plans.",
-    extendedFeatures: [
-      "Personalized meal plans",
-      "Exercise plans for every body type & capability",
-      "Monthly check-ins for stress management",
-      "Reiki sessions",
-      "Sound healing journeys",
-      "Guided meditations",
-      "Mental health support through planning",
-    ],
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070",
-    priceRange: "$$",
-    startingAt: "Starting at $3,000",
-    idealFor: "Couples wanting to feel their best on their wedding day",
-    partnerLink: "https://azadihealing.com/about-me-%26-azadi",
-    partnerName: "Azadi Healing",
-    featured: true,
   },
 ];
 
