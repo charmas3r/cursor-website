@@ -115,6 +115,7 @@ export default defineType({
       name: 'review',
       title: 'Couple Review',
       type: 'object',
+      description: 'Their testimonial about working with you',
       fields: [
         {
           name: 'text',
@@ -128,6 +129,13 @@ export default defineType({
           type: 'number',
           validation: (Rule) => Rule.min(1).max(5),
           initialValue: 5,
+        },
+        {
+          name: 'featured',
+          title: 'Feature this Review',
+          type: 'boolean',
+          description: 'Show on homepage testimonials section (top 6 will be shown)',
+          initialValue: false,
         },
       ],
     }),

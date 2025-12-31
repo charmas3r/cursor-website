@@ -7,14 +7,14 @@ import About from "@/components/About";
 import Gallery from "@/components/Gallery";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { getFeaturedTestimonials } from "@/lib/sanity";
-import type { Testimonial } from "@/types/sanity";
+import { getFeaturedReviews } from "@/lib/sanity";
+import type { CoupleTestimonial } from "@/types/sanity";
 
 export const revalidate = 60;
 
 export default async function HomePage(): Promise<JSX.Element> {
-  // Fetch featured testimonials from Sanity
-  const testimonials: Testimonial[] = await getFeaturedTestimonials();
+  // Fetch featured reviews from couples in Sanity
+  const testimonials: CoupleTestimonial[] = await getFeaturedReviews();
 
   return (
     <main className="relative">

@@ -90,6 +90,7 @@ export interface Vendor {
 export interface CoupleReview {
   text: string;
   rating: number;
+  featured?: boolean;
 }
 
 export interface Couple {
@@ -113,13 +114,13 @@ export interface Couple {
   galleryImages: SanityImage[];
 }
 
-// Testimonial types
-export interface Testimonial {
+// Testimonial type - derived from couples with reviews
+export interface CoupleTestimonial {
   _id: string;
-  name: string;
-  text: string;
-  rating: number;
-  date: string;
-  featured: boolean;
+  names: string;
+  slug: SanitySlug;
+  venue: string;
+  weddingDate: string;
+  review: CoupleReview;
 }
 

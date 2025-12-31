@@ -242,31 +242,31 @@ export async function getCoupleBySlug(slug: string) {
   return client.fetch(coupleBySlugQuery, { slug });
 }
 
-// Testimonial queries
-export const testimonialsQuery = `*[_type == "testimonial"] | order(featured desc, date desc) {
+// Testimonial queries (from couples with reviews)
+export const couplesWithReviewsQuery = `*[_type == "couple" && defined(review.text)] | order(review.featured desc, weddingDate desc) {
   _id,
-  name,
-  text,
-  rating,
-  date,
-  featured
+  names,
+  slug,
+  venue,
+  weddingDate,
+  review
 }`;
 
-export const featuredTestimonialsQuery = `*[_type == "testimonial" && featured == true] | order(date desc) [0...6] {
+export const featuredReviewsQuery = `*[_type == "couple" && defined(review.text) && review.featured == true] | order(weddingDate desc) [0...6] {
   _id,
-  name,
-  text,
-  rating,
-  date,
-  featured
+  names,
+  slug,
+  venue,
+  weddingDate,
+  review
 }`;
 
-// Testimonial fetch functions
-export async function getTestimonials() {
-  return client.fetch(testimonialsQuery);
+// Testimonial fetch functions (from couples)
+export async function getCouplesWithReviews() {
+  return client.fetch(couplesWithReviewsQuery);
 }
 
-export async function getFeaturedTestimonials() {
-  return client.fetch(featuredTestimonialsQuery);
+export async function getFeaturedReviews() {
+  return client.fetch(featuredReviewsQuery);
 }
 

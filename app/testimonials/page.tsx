@@ -1,5 +1,5 @@
-import { getTestimonials } from "@/lib/sanity";
-import type { Testimonial } from "@/types/sanity";
+import { getCouplesWithReviews } from "@/lib/sanity";
+import type { CoupleTestimonial } from "@/types/sanity";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TestimonialsGrid from "@/components/TestimonialsGrid";
@@ -8,71 +8,99 @@ import { Star, ExternalLink, Award, Heart, Users } from "lucide-react";
 export const revalidate = 60;
 
 // Fallback testimonials for when Sanity is empty
-const fallbackTestimonials: Testimonial[] = [
+const fallbackTestimonials: CoupleTestimonial[] = [
   {
     _id: "1",
-    name: "Sarah & Michael",
-    rating: 5,
-    text: "Wedding Agency San Diego made our dream wedding a reality! From the first consultation to our magical day at the Del, every detail was handled with such care and professionalism. We couldn't have asked for a better team.",
-    date: "2024-10-15",
-    featured: true,
+    names: "Sarah & Michael",
+    slug: { _type: "slug", current: "sarah-michael" },
+    venue: "Hotel del Coronado",
+    weddingDate: "2024-10-15",
+    review: {
+      text: "Wedding Agency San Diego made our dream wedding a reality! From the first consultation to our magical day at the Del, every detail was handled with such care and professionalism. We couldn't have asked for a better team.",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "2",
-    name: "Jennifer & David",
-    rating: 5,
-    text: "Absolutely incredible experience! The attention to detail was beyond anything we expected. Our guests are still talking about how beautiful and seamless everything was.",
-    date: "2024-09-20",
-    featured: true,
+    names: "Jennifer & David",
+    slug: { _type: "slug", current: "jennifer-david" },
+    venue: "Rancho Valencia Resort",
+    weddingDate: "2024-09-20",
+    review: {
+      text: "Absolutely incredible experience! The attention to detail was beyond anything we expected. Our guests are still talking about how beautiful and seamless everything was.",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "3",
-    name: "Amanda & Chris",
-    rating: 5,
-    text: "From vendor coordination to day-of execution, everything was flawless. They turned our vision into something even more beautiful than we imagined. Worth every penny!",
-    date: "2024-08-12",
-    featured: true,
+    names: "Amanda & Chris",
+    slug: { _type: "slug", current: "amanda-chris" },
+    venue: "The Lodge at Torrey Pines",
+    weddingDate: "2024-08-12",
+    review: {
+      text: "From vendor coordination to day-of execution, everything was flawless. They turned our vision into something even more beautiful than we imagined. Worth every penny!",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "4",
-    name: "Emily & James",
-    rating: 5,
-    text: "Our intimate beach ceremony was pure magic. The team handled everything so we could just be present and enjoy our special moment. Highly recommend!",
-    date: "2024-07-28",
-    featured: true,
+    names: "Emily & James",
+    slug: { _type: "slug", current: "emily-james" },
+    venue: "Sunset Cliffs",
+    weddingDate: "2024-07-28",
+    review: {
+      text: "Our intimate beach ceremony was pure magic. The team handled everything so we could just be present and enjoy our special moment. Highly recommend!",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "5",
-    name: "Rachel & Tom",
-    rating: 5,
-    text: "Professional, creative, and genuinely caring. They made the planning process enjoyable and stress-free. Our vineyard wedding exceeded all expectations!",
-    date: "2024-06-15",
-    featured: true,
+    names: "Rachel & Tom",
+    slug: { _type: "slug", current: "rachel-tom" },
+    venue: "Bernardo Winery",
+    weddingDate: "2024-06-15",
+    review: {
+      text: "Professional, creative, and genuinely caring. They made the planning process enjoyable and stress-free. Our vineyard wedding exceeded all expectations!",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "6",
-    name: "Lisa & Mark",
-    rating: 5,
-    text: "We were so impressed by how organized and thoughtful the entire team was. They anticipated every need and made our day absolutely perfect. Can't recommend them enough!",
-    date: "2024-05-10",
-    featured: true,
+    names: "Lisa & Mark",
+    slug: { _type: "slug", current: "lisa-mark" },
+    venue: "The Prado at Balboa Park",
+    weddingDate: "2024-05-10",
+    review: {
+      text: "We were so impressed by how organized and thoughtful the entire team was. They anticipated every need and made our day absolutely perfect. Can't recommend them enough!",
+      rating: 5,
+      featured: true,
+    },
   },
 ];
 
 export default async function TestimonialsPage() {
-  let testimonials: Testimonial[] = await getTestimonials();
+  let testimonials: CoupleTestimonial[] = await getCouplesWithReviews();
   
   // Use fallback if no testimonials from Sanity
   if (!testimonials || testimonials.length === 0) {
     testimonials = fallbackTestimonials;
   }
 
-  const featuredTestimonials = testimonials.filter((t) => t.featured);
-  const otherTestimonials = testimonials.filter((t) => !t.featured);
+  // Filter to only include couples with reviews
+  const couplesWithReviews = testimonials.filter((t) => t.review?.text);
+  const featuredTestimonials = couplesWithReviews.filter((t) => t.review?.featured);
+  const otherTestimonials = couplesWithReviews.filter((t) => !t.review?.featured);
 
   // Calculate stats
-  const totalReviews = testimonials.length;
-  const averageRating = testimonials.reduce((acc, t) => acc + t.rating, 0) / totalReviews;
+  const totalReviews = couplesWithReviews.length;
+  const averageRating = totalReviews > 0 
+    ? couplesWithReviews.reduce((acc, t) => acc + (t.review?.rating || 5), 0) / totalReviews 
+    : 5;
 
   return (
     <>
@@ -174,6 +202,11 @@ export default async function TestimonialsPage() {
                 </h2>
                 <TestimonialsGrid testimonials={otherTestimonials} />
               </div>
+            )}
+
+            {/* Show all if no featured */}
+            {featuredTestimonials.length === 0 && otherTestimonials.length === 0 && couplesWithReviews.length > 0 && (
+              <TestimonialsGrid testimonials={couplesWithReviews} featured />
             )}
           </div>
         </section>

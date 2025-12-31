@@ -3,56 +3,76 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
-import { Star, Quote, ExternalLink, ArrowRight } from "lucide-react";
+import { Star, Quote, ExternalLink, ArrowRight, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Testimonial } from "@/types/sanity";
+import type { CoupleTestimonial } from "@/types/sanity";
 
 // Fallback reviews for when Sanity is empty
-const fallbackReviews: Testimonial[] = [
+const fallbackReviews: CoupleTestimonial[] = [
   {
     _id: "1",
-    name: "Sarah & Michael",
-    rating: 5,
-    text: "Wedding Agency San Diego made our dream wedding a reality! From the first consultation to our magical day at the Del, every detail was handled with such care and professionalism. We couldn't have asked for a better team.",
-    date: "2024-10-15",
-    featured: true,
+    names: "Sarah & Michael",
+    slug: { _type: "slug", current: "sarah-michael" },
+    venue: "Hotel del Coronado",
+    weddingDate: "2024-10-15",
+    review: {
+      text: "Wedding Agency San Diego made our dream wedding a reality! From the first consultation to our magical day at the Del, every detail was handled with such care and professionalism. We couldn't have asked for a better team.",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "2",
-    name: "Jennifer & David",
-    rating: 5,
-    text: "Absolutely incredible experience! The attention to detail was beyond anything we expected. Our guests are still talking about how beautiful and seamless everything was.",
-    date: "2024-09-20",
-    featured: true,
+    names: "Jennifer & David",
+    slug: { _type: "slug", current: "jennifer-david" },
+    venue: "Rancho Valencia Resort",
+    weddingDate: "2024-09-20",
+    review: {
+      text: "Absolutely incredible experience! The attention to detail was beyond anything we expected. Our guests are still talking about how beautiful and seamless everything was.",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "3",
-    name: "Amanda & Chris",
-    rating: 5,
-    text: "From vendor coordination to day-of execution, everything was flawless. They turned our vision into something even more beautiful than we imagined. Worth every penny!",
-    date: "2024-08-12",
-    featured: true,
+    names: "Amanda & Chris",
+    slug: { _type: "slug", current: "amanda-chris" },
+    venue: "The Lodge at Torrey Pines",
+    weddingDate: "2024-08-12",
+    review: {
+      text: "From vendor coordination to day-of execution, everything was flawless. They turned our vision into something even more beautiful than we imagined. Worth every penny!",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "4",
-    name: "Emily & James",
-    rating: 5,
-    text: "Our intimate beach ceremony was pure magic. The team handled everything so we could just be present and enjoy our special moment. Highly recommend!",
-    date: "2024-07-28",
-    featured: true,
+    names: "Emily & James",
+    slug: { _type: "slug", current: "emily-james" },
+    venue: "Sunset Cliffs",
+    weddingDate: "2024-07-28",
+    review: {
+      text: "Our intimate beach ceremony was pure magic. The team handled everything so we could just be present and enjoy our special moment. Highly recommend!",
+      rating: 5,
+      featured: true,
+    },
   },
   {
     _id: "5",
-    name: "Rachel & Tom",
-    rating: 5,
-    text: "Professional, creative, and genuinely caring. They made the planning process enjoyable and stress-free. Our vineyard wedding exceeded all expectations!",
-    date: "2024-06-15",
-    featured: true,
+    names: "Rachel & Tom",
+    slug: { _type: "slug", current: "rachel-tom" },
+    venue: "Bernardo Winery",
+    weddingDate: "2024-06-15",
+    review: {
+      text: "Professional, creative, and genuinely caring. They made the planning process enjoyable and stress-free. Our vineyard wedding exceeded all expectations!",
+      rating: 5,
+      featured: true,
+    },
   },
 ];
 
 interface TestimonialsProps {
-  initialTestimonials?: Testimonial[];
+  initialTestimonials?: CoupleTestimonial[];
 }
 
 const containerVariants = {
@@ -97,10 +117,8 @@ function StarRating({ rating }: { rating: number }): JSX.Element {
 function getInitials(name: string): string {
   const parts = name.split(/[&,]/);
   if (parts.length >= 2) {
-    // For couples like "Sarah & Michael", get first letter of each
     return parts.map(p => p.trim().charAt(0).toUpperCase()).join("");
   }
-  // For single names, get first two letters or first letter of first two words
   const words = name.trim().split(" ");
   if (words.length >= 2) {
     return words.slice(0, 2).map(w => w.charAt(0).toUpperCase()).join("");
@@ -125,7 +143,7 @@ function getAvatarColor(name: string): string {
 export default function Testimonials({ initialTestimonials }: TestimonialsProps): JSX.Element {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [reviews, setReviews] = useState<Testimonial[]>(initialTestimonials || fallbackReviews);
+  const [reviews, setReviews] = useState<CoupleTestimonial[]>(initialTestimonials || fallbackReviews);
 
   // If no initial testimonials provided, use fallback
   useEffect(() => {
@@ -135,7 +153,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
   }, [initialTestimonials]);
 
   // Get first featured review and other reviews
-  const featuredReview = reviews.find((r) => r.featured) || reviews[0];
+  const featuredReview = reviews.find((r) => r.review?.featured) || reviews[0];
   const otherReviews = reviews.filter((r) => r._id !== featuredReview?._id).slice(0, 4);
 
   return (
@@ -169,7 +187,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           {/* Featured Review - Large Card */}
-          {featuredReview && (
+          {featuredReview && featuredReview.review && (
             <motion.article
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -186,25 +204,26 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
 
                 {/* Content */}
                 <div className="relative">
-                  <StarRating rating={featuredReview.rating} />
+                  <StarRating rating={featuredReview.review.rating} />
 
                   <blockquote className="mt-6 text-xl sm:text-2xl font-serif text-white leading-relaxed">
-                    &ldquo;{featuredReview.text}&rdquo;
+                    &ldquo;{featuredReview.review.text}&rdquo;
                   </blockquote>
 
                   <div className="mt-8 flex items-center gap-4">
                     <div className={cn(
                       "w-14 h-14 rounded-full flex items-center justify-center text-white text-lg font-serif font-semibold bg-gradient-to-br",
-                      getAvatarColor(featuredReview.name)
+                      getAvatarColor(featuredReview.names)
                     )}>
-                      {getInitials(featuredReview.name)}
+                      {getInitials(featuredReview.names)}
                     </div>
                     <div>
                       <p className="font-serif font-semibold text-white">
-                        {featuredReview.name}
+                        {featuredReview.names}
                       </p>
-                      <p className="text-sm text-charcoal-400">
-                        {new Date(featuredReview.date).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                      <p className="text-sm text-charcoal-400 flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />
+                        {featuredReview.venue}
                       </p>
                     </div>
                   </div>
@@ -220,9 +239,9 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
             animate={isInView ? "visible" : "hidden"}
             className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
           >
-            {otherReviews.map((review, index) => (
+            {otherReviews.map((couple, index) => couple.review && (
               <motion.article
-                key={review._id}
+                key={couple._id}
                 variants={itemVariants}
                 className={cn(
                   "group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-500",
@@ -237,24 +256,25 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
                     <div className="flex items-center gap-3">
                       <div className={cn(
                         "w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-serif font-semibold bg-gradient-to-br",
-                        getAvatarColor(review.name)
+                        getAvatarColor(couple.names)
                       )}>
-                        {getInitials(review.name)}
+                        {getInitials(couple.names)}
                       </div>
                       <div>
                         <p className="font-serif font-semibold text-charcoal-900 text-sm">
-                          {review.name}
+                          {couple.names}
                         </p>
-                        <p className="text-xs text-charcoal-500">
-                          {new Date(review.date).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                        <p className="text-xs text-charcoal-500 flex items-center gap-1">
+                          <MapPin className="w-3 h-3" />
+                          {couple.venue}
                         </p>
                       </div>
                     </div>
-                    <StarRating rating={review.rating} />
+                    <StarRating rating={couple.review.rating} />
                   </div>
 
                   <blockquote className="text-charcoal-600 text-sm leading-relaxed">
-                    &ldquo;{review.text}&rdquo;
+                    &ldquo;{couple.review.text}&rdquo;
                   </blockquote>
                 </div>
               </motion.article>
