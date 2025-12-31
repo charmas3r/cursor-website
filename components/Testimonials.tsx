@@ -207,7 +207,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
                   <StarRating rating={featuredReview.review.rating} />
 
                   <blockquote className="mt-6 text-xl sm:text-2xl font-serif text-white leading-relaxed">
-                    &ldquo;{featuredReview.review.text}&rdquo;
+                    &ldquo;{featuredReview.review.excerpt || featuredReview.review.text}&rdquo;
                   </blockquote>
 
                   <div className="mt-8 flex items-center gap-4">
@@ -274,7 +274,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
                   </div>
 
                   <blockquote className="text-charcoal-600 text-sm leading-relaxed">
-                    &ldquo;{couple.review.text}&rdquo;
+                    &ldquo;{couple.review.excerpt || couple.review.text}&rdquo;
                   </blockquote>
                 </div>
               </motion.article>
