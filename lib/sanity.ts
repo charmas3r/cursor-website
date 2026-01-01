@@ -270,3 +270,17 @@ export async function getFeaturedReviews() {
   return client.fetch(featuredReviewsQuery);
 }
 
+// Vendor directory query - get all couples with their vendors
+export const couplesWithVendorsQuery = `*[_type == "couple" && defined(vendors) && length(vendors) > 0] | order(weddingDate desc) {
+  _id,
+  names,
+  slug,
+  venue,
+  weddingDate,
+  vendors
+}`;
+
+export async function getCouplesWithVendors() {
+  return client.fetch(couplesWithVendorsQuery);
+}
+

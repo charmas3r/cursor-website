@@ -20,7 +20,7 @@ const footerLinks = {
   resources: [
     { label: "Blog", href: "/blog" },
     { label: "Wedding Tips", href: "/wedding-tips" },
-    { label: "Vendor Directory", href: "/#packages" },
+    { label: "Vendor Directory", href: "/vendors" },
     { label: "FAQs", href: "/packages#faq" },
   ],
 };

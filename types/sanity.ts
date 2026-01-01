@@ -125,3 +125,25 @@ export interface CoupleTestimonial {
   review: CoupleReview;
 }
 
+// Couple with vendors - for vendor directory
+export interface CoupleWithVendors {
+  _id: string;
+  names: string;
+  slug: SanitySlug;
+  venue: string;
+  weddingDate: string;
+  vendors: Vendor[];
+}
+
+// Aggregated vendor for directory display
+export interface AggregatedVendor {
+  name: string;
+  role: string;
+  url?: string;
+  weddings: Array<{
+    names: string;
+    slug: string;
+    venue: string;
+  }>;
+}
+
