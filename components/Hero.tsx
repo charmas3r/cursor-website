@@ -224,15 +224,15 @@ export default function Hero(): JSX.Element {
           style={{ opacity: contentOpacity }}
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 1, delay: 0.5 }}
             className="max-w-4xl"
           >
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 1, delay: 0.3 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-medium text-white leading-[1.05] tracking-tight drop-shadow-2xl"
             >
               Overwhelmed by
@@ -244,21 +244,21 @@ export default function Hero(): JSX.Element {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 1.2, delay: 1.2 }}
               className="mt-6 sm:mt-8 text-xl sm:text-2xl md:text-3xl font-serif italic text-white/90"
             >
               <motion.span
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+                transition={{ duration: 0.8, delay: 1.3 }}
                 className="inline-block"
               >
                 We&apos;ll be your something
               </motion.span>{" "}
               <motion.span
-                initial={{ opacity: 0, scale: 0.9, filter: "blur(4px)" }}
+                initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                transition={{ duration: 0.6, delay: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+                transition={{ duration: 1, delay: 1.8, ease: [0.25, 0.4, 0.25, 1] }}
                 className="inline-block text-[#7CB9E8] not-italic font-medium"
               >
                 blue
@@ -266,7 +266,7 @@ export default function Hero(): JSX.Element {
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 1.0 }}
+                transition={{ duration: 0.4, delay: 2.2 }}
                 className="inline-block text-[#7CB9E8] not-italic font-medium"
               >
                 .
@@ -275,9 +275,9 @@ export default function Hero(): JSX.Element {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.1 }}
+              transition={{ duration: 0.8, delay: 2.5 }}
               className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Link href="/#contact">
@@ -299,7 +299,7 @@ export default function Hero(): JSX.Element {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.3 }}
+              transition={{ duration: 1, delay: 3 }}
               className="hidden md:flex items-center justify-center gap-8 mt-12"
             >
               <div className="text-center">
@@ -328,7 +328,7 @@ export default function Hero(): JSX.Element {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.6 }}
+            transition={{ delay: 3.5, duration: 1 }}
             className="absolute bottom-8 left-1/2 -translate-x-1/2"
           >
             <motion.div
@@ -352,9 +352,9 @@ export default function Hero(): JSX.Element {
               {featureCards.map((card, index) => (
                 <motion.button
                   key={card.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 1.5 + index * 0.1 }}
+                  transition={{ duration: 0.6, delay: 3 + index * 0.15 }}
                   onClick={() => setSelectedCard(card.id)}
                   className="text-left bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-500 group cursor-pointer"
                 >
