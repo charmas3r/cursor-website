@@ -185,20 +185,29 @@ export default function Hero(): JSX.Element {
     <>
       {/* Cinematic Video Hero */}
       <section ref={heroRef} className="relative h-screen overflow-hidden">
-        {/* Video Background */}
+        {/* Optimized Hero Background Image - LCP Element */}
+        <Image
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format"
+          alt="Wedding celebration background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          quality={75}
+        />
+        
+        {/* Video Background - loads on top after initial paint */}
         <motion.div 
           className="absolute inset-0"
           style={{ opacity: videoOpacity }}
         >
-          {/* Hero video with optimized loading for LCP */}
           <video
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="none"
             className="absolute inset-0 w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
           >
             <source 
               src="https://res.cloudinary.com/dnwh2jmpm/video/upload/q_auto,f_auto/v1767160073/Short_Highlights_1_aze1gy.mp4" 
