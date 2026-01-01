@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_URL = "https://weddingagencysandiego.com";
-const OG_IMAGE = "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&h=630&fit=crop";
+const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238922/processed-F6C355EA-4876-41AF-A491-FC3A51C2C1AF_raelqt.webp";
 
 export const metadata: Metadata = {
   title: "Wedding Planning Packages & Pricing | San Diego Wedding Planner",
