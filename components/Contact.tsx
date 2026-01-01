@@ -349,7 +349,7 @@ export default function Contact(): JSX.Element {
                             onChange={handleChange}
                             disabled={status === "loading"}
                             className="w-full px-4 py-3 rounded-xl border border-cream-300 focus:border-blush-400 focus:ring-2 focus:ring-blush-100 outline-none transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                            placeholder="+1 (760) 216-7427"
+                            placeholder="(555) 123-4567"
                           />
                         </div>
                         <div>

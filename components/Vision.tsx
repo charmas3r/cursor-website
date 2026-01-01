@@ -32,7 +32,7 @@ export default function Vision(): JSX.Element {
               {/* Main Image */}
               <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069"
+                  src="https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238915/554_aylmim.webp"
                   alt="Intimate wedding ceremony moment"
                   fill
                   className="object-cover"

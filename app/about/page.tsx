@@ -38,32 +38,11 @@ const staggerContainer = {
 // Team members data
 const teamMembers = [
   {
-    name: "Maria Santos",
+    name: "Nicole Shadoan",
     role: "Founder & Lead Planner",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961",
-    bio: "With 20+ years in hospitality and events, I founded Wedding Agency San Diego to plan extraordinary weddings with intention, balance, and care.",
-    specialties: ["Full Service Planning", "Luxury Weddings"],
-  },
-  {
-    name: "Jessica Chen",
-    role: "Senior Coordinator",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974",
-    bio: "Jessica brings meticulous attention to detail and a calm presence that ensures every wedding day runs flawlessly.",
-    specialties: ["Wedding Management", "Timeline Management"],
-  },
-  {
-    name: "Amanda Rivera",
-    role: "Design Director",
-    image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1974",
-    bio: "Amanda's eye for aesthetics transforms venues into breathtaking spaces that reflect each couple's unique story.",
-    specialties: ["Floral Design", "Tablescapes"],
-  },
-  {
-    name: "David Kim",
-    role: "Operations Manager",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070",
-    bio: "David orchestrates the behind-the-scenes magic, coordinating vendors and logistics with precision.",
-    specialties: ["Vendor Relations", "Logistics"],
+    image: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767240361/Nicole_-_Wedding_Agency_San_Diego-7_sjryxd.webp",
+    bio: "With 20+ years in hospitality and events, I founded Wedding Agency San Diego to plan extraordinary weddings with intention, balance, and care. Your wedding should feel as good as it looks.",
+    specialties: ["Full Service Planning", "Wedding Management", "Destination Weddings"],
   },
 ];
 
@@ -119,8 +98,8 @@ const milestones = [
   },
   {
     year: "Nov 2025",
-    title: "150th Wedding",
-    description: "Celebrated a major milestone—our 150th wedding!",
+    title: "100th Wedding",
+    description: "Celebrated a major milestone—our 100th wedding!",
   },
 ];
 
@@ -225,7 +204,7 @@ export default function AboutPage(): JSX.Element {
               >
                 <div className="relative h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
+                    src="https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238922/processed-F6C355EA-4876-41AF-A491-FC3A51C2C1AF_raelqt.webp"
                     alt="Beautiful wedding celebration"
                     fill
                     className="object-cover"
@@ -245,7 +224,7 @@ export default function AboutPage(): JSX.Element {
                     you can be fully present for your celebration.&quot;
                   </p>
                   <p className="mt-4 text-blush-300 text-sm font-medium">
-                    — Founder
+                    — Nicole Shadoan, Founder
                   </p>
                 </motion.div>
               </motion.div>

@@ -30,7 +30,7 @@ export default function About(): JSX.Element {
             {/* Main Image */}
             <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069"
+                src="https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238917/KSP_EMEZIETEASER42_r7wmom.webp"
                 alt="Wedding planning team at work"
                 fill
                 className="object-cover"
