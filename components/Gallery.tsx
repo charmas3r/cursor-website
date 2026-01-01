@@ -121,9 +121,9 @@ export default function Gallery(): JSX.Element {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16"
           >
             <span className="text-blush-500 text-xs sm:text-sm font-medium uppercase tracking-wider">
@@ -189,9 +189,9 @@ export default function Gallery(): JSX.Element {
 
           {/* View More */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-12 text-center"
           >
             <a 

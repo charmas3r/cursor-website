@@ -198,9 +198,9 @@ export default function Contact(): JSX.Element {
 
             {/* Let's Get Social */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.8 }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.6 }}
               className="mt-8"
             >
               <p className="text-sm text-charcoal-500 mb-4">Let&apos;s Get Social</p>

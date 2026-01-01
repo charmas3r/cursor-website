@@ -85,12 +85,11 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: [0.25, 0.4, 0.25, 1],
     },
   },
@@ -165,9 +164,9 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
         >
           <span className="text-blush-500 text-xs sm:text-sm font-medium uppercase tracking-wider">
@@ -284,9 +283,9 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
 
         {/* Bottom CTA - The Knot Link */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12 sm:mt-16 text-center"
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 p-6 sm:p-8 bg-gradient-to-r from-amber-50 via-cream-50 to-amber-50 rounded-2xl border border-amber-100">
