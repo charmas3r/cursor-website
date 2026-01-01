@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { X, ArrowRight, DollarSign, Sparkles, Heart, Users, ChevronDown, Play } from "lucide-react";
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 10 },
+  hidden: { opacity: 0, y: 40 },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
@@ -214,13 +214,13 @@ export default function Hero(): JSX.Element {
           style={{ opacity: contentOpacity }}
         >
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
             className="max-w-4xl"
           >
             <motion.h1
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-medium text-white leading-[1.05] tracking-tight drop-shadow-2xl"
@@ -238,7 +238,7 @@ export default function Hero(): JSX.Element {
               className="mt-6 sm:mt-8 text-xl sm:text-2xl md:text-3xl font-serif italic text-white/90"
             >
               <motion.span
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.3 }}
                 className="inline-block"
@@ -265,7 +265,7 @@ export default function Hero(): JSX.Element {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 2.5 }}
               className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center"
@@ -342,7 +342,7 @@ export default function Hero(): JSX.Element {
               {featureCards.map((card, index) => (
                 <motion.button
                   key={card.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 3 + index * 0.15 }}
                   onClick={() => setSelectedCard(card.id)}
@@ -373,7 +373,7 @@ export default function Hero(): JSX.Element {
       <section className="lg:hidden bg-cream-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
@@ -387,7 +387,7 @@ export default function Hero(): JSX.Element {
             {featureCards.map((card, index) => (
               <motion.button
                 key={card.id}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -449,7 +449,7 @@ export default function Hero(): JSX.Element {
             onClick={() => setSelectedCard(null)}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
@@ -542,7 +542,7 @@ export default function Hero(): JSX.Element {
             onClick={() => setShowPackagesModal(false)}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}

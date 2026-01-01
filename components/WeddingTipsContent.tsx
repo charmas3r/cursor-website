@@ -212,7 +212,7 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -257,7 +257,7 @@ export default function WeddingTipsContent({
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
@@ -307,7 +307,7 @@ export default function WeddingTipsContent({
       <section ref={categoriesRef} className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={categoriesInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
@@ -351,7 +351,7 @@ export default function WeddingTipsContent({
           {activeCategoryData && (
             <motion.div
               key={activeCategory}
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               className="grid md:grid-cols-2 gap-6"
@@ -390,7 +390,7 @@ export default function WeddingTipsContent({
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={articlesInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
             className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12"
