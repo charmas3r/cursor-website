@@ -43,9 +43,9 @@ export default function Vision(): JSX.Element {
 
               {/* Floating accent image */}
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
                 className="absolute -bottom-8 -right-8 lg:-right-16 w-40 sm:w-48 lg:w-56 h-32 sm:h-40 lg:h-44 rounded-2xl overflow-hidden shadow-xl border-4 border-charcoal-900"
               >
                 <Image
@@ -116,9 +116,9 @@ export default function Vision(): JSX.Element {
               ].map((item, index) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="group"
                 >
                   <h3 className="text-white font-serif font-medium flex items-center gap-2">

@@ -372,19 +372,25 @@ export default function Hero(): JSX.Element {
       {/* Mobile Feature Cards - Separate Section */}
       <section className="lg:hidden bg-cream-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
             <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal-900">
               Why Choose Us
             </h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {featureCards.map((card, index) => (
               <motion.button
                 key={card.id}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => setSelectedCard(card.id)}
                 className="text-left bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
               >

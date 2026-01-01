@@ -39,9 +39,9 @@ export default function About(): JSX.Element {
 
             {/* Floating Card */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg sm:shadow-xl max-w-[180px] sm:max-w-[240px]"
             >
               <p className="text-4xl font-serif font-semibold text-charcoal-900">
@@ -89,9 +89,9 @@ export default function About(): JSX.Element {
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-sm"
                 >
                   <p className="text-2xl sm:text-3xl font-serif font-semibold text-charcoal-900">
@@ -103,9 +103,9 @@ export default function About(): JSX.Element {
             </div>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.4, delay: 0.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.7 }}
               className="mt-8 sm:mt-10"
             >
               <Button size="lg" className="w-full sm:w-auto">
