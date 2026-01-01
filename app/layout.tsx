@@ -8,7 +8,7 @@ const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238922/
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Wedding Agency San Diego | Your Happily Ever After Starts Here",
+    default: "Wedding Agency San Diego",
     template: "%s | Wedding Agency San Diego",
   },
   description:
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Wedding Agency San Diego | Your Happily Ever After Starts Here",
+    title: "Wedding Agency San Diego",
     description:
       "San Diego's premier wedding planning agency with 100+ weddings planned and 20+ years in hospitality & events crafting unforgettable celebrations.",
     images: [
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wedding Agency San Diego | Your Happily Ever After Starts Here",
+    title: "Wedding Agency San Diego",
     description:
       "San Diego's premier wedding planning agency. Full-service planning, wedding management & destination weddings.",
     images: [OG_IMAGE],
