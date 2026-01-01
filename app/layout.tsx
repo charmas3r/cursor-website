@@ -19,7 +19,7 @@ const playfairDisplay = Playfair_Display({
 
 const SITE_URL = "https://weddingagencysandiego.com";
 const SITE_NAME = "Wedding Agency San Diego";
-const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238922/processed-F6C355EA-4876-41AF-A491-FC3A51C2C1AF_raelqt.webp";
+const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767246459/2025.11.21_-_Jessica_Ian_-_Twin_Oaks_Golf_Course-847_websize_rqud58.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
