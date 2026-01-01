@@ -187,13 +187,12 @@ export default function Hero(): JSX.Element {
       <section ref={heroRef} className="relative h-screen overflow-hidden">
         {/* Optimized Hero Background Image - LCP Element */}
         <Image
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format"
-          alt="Wedding celebration background"
+          src="https://res.cloudinary.com/dvdrv4i4x/image/upload/q_auto,f_auto/v1767246459/2025.11.21_-_Jessica_Ian_-_Twin_Oaks_Golf_Course-847_websize_rqud58.jpg"
+          alt="Wedding celebration at Twin Oaks Golf Course"
           fill
           priority
           sizes="100vw"
           className="object-cover"
-          quality={75}
         />
         
         {/* Video Background - loads on top after initial paint */}
