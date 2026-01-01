@@ -117,7 +117,7 @@ export default async function PortfolioPage() {
             </div>
 
             {/* Featured Grid - Large Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 lg:grid-rows-[350px_350px]">
               {featuredCouples.map((couple, index) => (
                 <article
                   key={couple._id}
@@ -125,10 +125,10 @@ export default async function PortfolioPage() {
                     index === 0 ? "lg:col-span-2 lg:row-span-2" : ""
                   }`}
                 >
-                  <Link href={`/portfolio/${couple.slug.current}`} className="block">
+                  <Link href={`/portfolio/${couple.slug.current}`} className="block h-full">
                     <div
-                      className={`relative ${
-                        index === 0 ? "h-[400px] lg:h-[600px]" : "h-[350px]"
+                      className={`relative h-full ${
+                        index === 0 ? "min-h-[400px]" : "min-h-[350px]"
                       }`}
                     >
                       {couple.heroImage ? (
