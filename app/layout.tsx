@@ -1,5 +1,21 @@
 import type { Metadata } from "next";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
+
+// Self-hosted fonts via next/font - eliminates render-blocking requests
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700"],
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+});
 
 const SITE_URL = "https://weddingagencysandiego.com";
 const SITE_NAME = "Wedding Agency San Diego";
@@ -122,14 +138,21 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${dmSans.variable} ${playfairDisplay.variable}`}>
       <head>
+        {/* Preload hero video poster for faster LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
+          fetchPriority="high"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen overflow-x-hidden">{children}</body>
+      <body className="min-h-screen overflow-x-hidden font-sans">{children}</body>
     </html>
   );
 }

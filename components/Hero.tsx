@@ -190,11 +190,13 @@ export default function Hero(): JSX.Element {
           className="absolute inset-0"
           style={{ opacity: videoOpacity }}
         >
+          {/* Hero video with optimized loading for LCP */}
           <video
             autoPlay
             muted
             loop
             playsInline
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover"
             poster="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070"
           >
