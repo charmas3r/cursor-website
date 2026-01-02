@@ -26,10 +26,10 @@ import { cn } from "@/lib/utils";
 const packages = [
   {
     id: "wellness",
-    name: "Wellness Package",
-    tagline: "4-month program with Azadi Healing",
+    name: "Feel Your Best, In Your Dress",
+    tagline: "16 week holistic breathwork program with Azadi Healing",
     description:
-      "Prepare for your big day feeling your best. In partnership with Azadi Healing, our holistic wellness program supports your physical and mental health.",
+      "Prepare for your big day feeling your best. In partnership with Azadi Healing, our holistic wellness program supports your physical and mental health throughout your wedding planning journey.",
     price: "3,000",
     priceNote: "Starting at",
     icon: Heart,
@@ -47,7 +47,7 @@ const packages = [
     ],
     notIncluded: [],
     idealFor: "Couples wanting to feel their best physically and mentally on their wedding day.",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070",
+    image: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767319708/wellness_mvytye.webp",
     partnerLink: "https://azadihealing.com/about-me-%26-azadi",
     partnerName: "Azadi Healing",
   },

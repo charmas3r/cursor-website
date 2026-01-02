@@ -112,7 +112,7 @@ export default async function PortfolioPage() {
                 Recent Highlights
               </h2>
               <p className="mt-6 text-lg text-charcoal-600 leading-relaxed">
-                Discover some of our most breathtaking weddings from this past year.
+                Discover some of our most breathtaking weddings.
               </p>
             </div>
 

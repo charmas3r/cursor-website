@@ -20,6 +20,7 @@ import {
   ExternalLink,
   Users,
   Award,
+  ImageIcon,
 } from "lucide-react";
 import type { AggregatedVendor } from "@/types/sanity";
 
@@ -35,11 +36,12 @@ function getCategoryIcon(category: string) {
   const icons: Record<string, typeof Camera> = {
     Photography: Camera,
     Videography: Video,
+    "Photo Booth Rentals": ImageIcon,
     Florals: Flower2,
     Catering: UtensilsCrossed,
     "Cake & Desserts": Cake,
     "Music & Entertainment": Music,
-    "Hair & Makeup": Sparkles,
+    "Beauty Team": Sparkles,
     "Bridal Attire": Shirt,
     "Groom Attire": Shirt,
     Venues: Building2,

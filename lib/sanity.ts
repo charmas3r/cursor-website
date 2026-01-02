@@ -284,3 +284,16 @@ export async function getCouplesWithVendors() {
   return client.fetch(couplesWithVendorsQuery);
 }
 
+// Preferred venues query - get couples where we are a preferred vendor at the venue
+export const preferredVenuesQuery = `*[_type == "couple" && preferredVenueVendor == true] | order(weddingDate desc) {
+  _id,
+  venue,
+  venueUrl,
+  location,
+  heroImage
+}`;
+
+export async function getPreferredVenues() {
+  return client.fetch(preferredVenuesQuery);
+}
+

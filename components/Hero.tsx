@@ -111,7 +111,7 @@ const featureCards = [
       "100+ weddings successfully planned",
       "20+ years in hospitality & events",
       "2× The Knot Best of Weddings winner",
-      "WeddingWire Couples' Choice Award",
+      "1× WeddingWire Couples' Choice Award",
     ],
     image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070",
     cta: { label: "See Our Work", href: "/portfolio" },
@@ -121,7 +121,7 @@ const featureCards = [
 // Quick packages overview for the packages modal
 const packagesOverview = [
   {
-    name: "Wellness Package",
+    name: "Feel Your Best, In Your Dress",
     price: "$3,000",
     description: "16 week holistic breathwork program with Azadi Healing",
     popular: false,
@@ -209,7 +209,7 @@ export default function Hero(): JSX.Element {
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source 
-              src="https://res.cloudinary.com/dnwh2jmpm/video/upload/q_auto,f_auto/v1767160073/Short_Highlights_1_aze1gy.mp4" 
+              src="https://res.cloudinary.com/dvdrv4i4x/video/upload/v1767238757/main-highlights_d26wyt.mp4" 
               type="video/mp4" 
             />
           </video>

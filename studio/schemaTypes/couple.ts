@@ -48,6 +48,13 @@ export default defineType({
       description: 'Link to the venue website',
     }),
     defineField({
+      name: 'preferredVenueVendor',
+      title: 'Preferred Venue Vendor',
+      type: 'boolean',
+      description: 'Check this if Wedding Agency San Diego is a preferred vendor at this venue',
+      initialValue: false,
+    }),
+    defineField({
       name: 'location',
       title: 'Location',
       type: 'string',

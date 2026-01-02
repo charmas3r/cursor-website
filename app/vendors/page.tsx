@@ -1,10 +1,22 @@
-import { getCouplesWithVendors } from "@/lib/sanity";
+import { getCouplesWithVendors, getPreferredVenues } from "@/lib/sanity";
 import type { CoupleWithVendors, AggregatedVendor } from "@/types/sanity";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import VendorDirectory from "@/components/VendorDirectory";
+import PreferredVenues from "@/components/PreferredVenues";
 
 export const revalidate = 60;
+
+// Clean up role names for display
+function cleanRoleName(role: string): string {
+  // Remove "Ceremony" from florist roles
+  let cleaned = role.replace(/ceremony\s*/i, "").trim();
+  // Capitalize first letter if needed
+  if (cleaned.length > 0) {
+    cleaned = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+  }
+  return cleaned || role;
+}
 
 // Helper function to aggregate vendors from all couples
 function aggregateVendors(couples: CoupleWithVendors[]): AggregatedVendor[] {
@@ -33,7 +45,7 @@ function aggregateVendors(couples: CoupleWithVendors[]): AggregatedVendor[] {
         // Create new vendor entry
         vendorMap.set(key, {
           name: vendor.name,
-          role: vendor.role,
+          role: cleanRoleName(vendor.role),
           url: vendor.url,
           weddings: [
             {
@@ -75,13 +87,15 @@ function groupVendorsByRole(vendors: AggregatedVendor[]): Record<string, Aggrega
 function normalizeRole(role: string): string {
   const roleLower = role.toLowerCase();
 
+  // Photo booth must be checked before photography to catch "photo booth"
+  if (roleLower.includes("booth")) return "Photo Booth Rentals";
   if (roleLower.includes("photo")) return "Photography";
   if (roleLower.includes("video") || roleLower.includes("film")) return "Videography";
   if (roleLower.includes("flor") || roleLower.includes("flower")) return "Florals";
   if (roleLower.includes("cater") || roleLower.includes("food")) return "Catering";
   if (roleLower.includes("cake") || roleLower.includes("dessert") || roleLower.includes("bakery")) return "Cake & Desserts";
   if (roleLower.includes("dj") || roleLower.includes("music") || roleLower.includes("band")) return "Music & Entertainment";
-  if (roleLower.includes("hair") || roleLower.includes("makeup") || roleLower.includes("beauty")) return "Hair & Makeup";
+  if (roleLower.includes("hair") || roleLower.includes("makeup") || roleLower.includes("beauty") || roleLower.includes("glam")) return "Beauty Team";
   if (roleLower.includes("dress") || roleLower.includes("bridal") || roleLower.includes("gown")) return "Bridal Attire";
   if (roleLower.includes("suit") || roleLower.includes("tux") || roleLower.includes("groom")) return "Groom Attire";
   if (roleLower.includes("venue")) return "Venues";
@@ -99,11 +113,12 @@ function normalizeRole(role: string): string {
 const categoryOrder = [
   "Photography",
   "Videography",
+  "Photo Booth Rentals",
   "Florals",
   "Catering",
   "Cake & Desserts",
   "Music & Entertainment",
-  "Hair & Makeup",
+  "Beauty Team",
   "Bridal Attire",
   "Groom Attire",
   "Venues",
@@ -115,8 +130,13 @@ const categoryOrder = [
 ];
 
 export default async function VendorsPage() {
-  const couples: CoupleWithVendors[] = await getCouplesWithVendors();
-  const aggregatedVendors = aggregateVendors(couples);
+  const [couples, preferredVenuesData] = await Promise.all([
+    getCouplesWithVendors(),
+    getPreferredVenues(),
+  ]);
+  
+  const typedCouples = couples as CoupleWithVendors[];
+  const aggregatedVendors = aggregateVendors(typedCouples);
   const groupedVendors = groupVendorsByRole(aggregatedVendors);
 
   // Sort categories
@@ -130,11 +150,12 @@ export default async function VendorsPage() {
   });
 
   const totalVendors = aggregatedVendors.length;
-  const totalWeddings = couples.length;
+  const totalWeddings = typedCouples.length;
 
   return (
     <main className="relative">
       <Navigation />
+      <PreferredVenues venues={preferredVenuesData as Parameters<typeof PreferredVenues>[0]["venues"]} />
       <VendorDirectory
         groupedVendors={groupedVendors}
         sortedCategories={sortedCategories}

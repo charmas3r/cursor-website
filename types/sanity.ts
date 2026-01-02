@@ -101,6 +101,7 @@ export interface Couple {
   tagline: string;
   venue: string;
   venueUrl?: string;
+  preferredVenueVendor?: boolean;
   location: string;
   displayDate: string;
   weddingDate: string;
@@ -145,5 +146,14 @@ export interface AggregatedVendor {
     slug: string;
     venue: string;
   }>;
+}
+
+// Preferred venue for display
+export interface PreferredVenue {
+  venue: string;
+  venueUrl?: string;
+  location: string;
+  weddingCount: number;
+  heroImage?: SanityImage;
 }
 

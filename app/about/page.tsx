@@ -349,54 +349,134 @@ export default function AboutPage(): JSX.Element {
               </p>
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate={teamInView ? "visible" : "hidden"}
-              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
-            >
-              {teamMembers.map((member) => (
+            {/* Nicole's Feature Section - Image Left, Bio Right */}
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+              {/* Nicole's Image - Left Side */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={teamInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+                className="relative lg:sticky lg:top-8"
+              >
+                <div className="relative h-[450px] sm:h-[550px] lg:h-[650px] rounded-3xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767240361/Nicole_-_Wedding_Agency_San_Diego-7_sjryxd.webp"
+                    alt="Nicole Shadoan - Founder & CEO of Wedding Agency San Diego"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 via-transparent to-transparent" />
+                </div>
+
+                {/* Floating Award Card */}
                 <motion.div
-                  key={member.name}
-                  variants={fadeInUp}
-                  className="group"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={teamInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-white rounded-2xl p-4 sm:p-5 shadow-xl"
                 >
-                  <div className="relative h-80 rounded-3xl overflow-hidden mb-6">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    {/* Hover overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                      <p className="text-white text-sm leading-relaxed">
-                        {member.bio}
-                      </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-blush-100 flex items-center justify-center">
+                      <Sparkles className="w-6 h-6 text-blush-500" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-serif font-semibold text-charcoal-900">3</p>
+                      <p className="text-sm text-charcoal-600">Industry Awards</p>
                     </div>
                   </div>
-                  <h3 className="text-xl font-serif font-semibold text-charcoal-900">
-                    {member.name}
+                </motion.div>
+
+                {/* Decorative elements */}
+                <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-blush-200/30 blur-2xl" />
+              </motion.div>
+
+              {/* Nicole's Bio - Right Side */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={teamInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
+                className="space-y-6"
+              >
+                {/* Name & Title */}
+                <div>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-charcoal-900">
+                    Nicole
                   </h3>
-                  <p className="text-blush-500 text-sm font-medium mt-1">
-                    {member.role}
+                  <p className="text-blush-500 font-medium mt-1">Founder & CEO</p>
+                </div>
+
+                {/* Bio Content */}
+                <div className="space-y-4 text-charcoal-600 leading-relaxed">
+                  <p>
+                    Nicole is a California native and the founder and CEO of Wedding Agency San Diego. 
+                    She earned a bachelor&apos;s degree with an emphasis on tourism and event planning and 
+                    has a proven, successful career in fine dining and special events. Prior to founding 
+                    the Wedding Agency, Nicole honed her craft as the Director of Events at the Lakehouse 
+                    Resort and as manager of the restaurant, &ldquo;Morada&rdquo; at the historic Inn at Rancho Santa Fe.
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {member.specialties.map((specialty) => (
+                  <p>
+                    She provides an unmatched level of dedicated service to hundreds of couples that 
+                    proves as the bedrock for their remarkable weddings.
+                  </p>
+                  <p>
+                    Since founding Wedding Agency San Diego in 2023, Nicole has received three unique 
+                    industry awards; 2× &ldquo;Best of Weddings&rdquo; on The Knot and 1× &ldquo;Couples Choice&rdquo; on Wedding Wire.
+                  </p>
+                  <p>
+                    Nicole&apos;s own wedding at a private estate atop Paint Mountain in Elfin Forest was 
+                    the event that sparked the original idea for Wedding Agency San Diego. The wedding 
+                    was marked by an incredible sunset, a double rainbow, and a general atmosphere of 
+                    love and celebration. Today, Nicole aims to provide others with the same level of 
+                    joy and gratification she and her husband felt on their wedding day and the same 
+                    level of guidance and support they received from their planner, Kristin, who retired in 2022.
+                  </p>
+                  <p>
+                    Her own journey with spiritual, physical, mental, and emotional health is reflected 
+                    in everything that she does; most notably in the level of care she provides to her couples.
+                  </p>
+                </div>
+
+                {/* Hobbies */}
+                <div className="bg-cream-50 rounded-2xl p-5 sm:p-6">
+                  <p className="text-sm text-charcoal-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-blush-400" />
+                    Personal Interests
+                  </p>
+                  <p className="text-charcoal-600 text-sm leading-relaxed">
+                    CrossFit, hiking with her dog, camping, rock climbing, meditation, and 
+                    watching her husband compete in Brazilian Jiu Jitsu tournaments.
+                  </p>
+                </div>
+
+                {/* Awards */}
+                <div className="flex flex-wrap gap-3">
+                  <div className="inline-flex items-center gap-2 bg-blush-50 text-blush-700 px-4 py-2 rounded-full text-sm font-medium">
+                    <Award className="w-4 h-4" />
+                    2× Best of Weddings - The Knot
+                  </div>
+                  <div className="inline-flex items-center gap-2 bg-blush-50 text-blush-700 px-4 py-2 rounded-full text-sm font-medium">
+                    <Award className="w-4 h-4" />
+                    1× Couples Choice - Wedding Wire
+                  </div>
+                </div>
+
+                {/* Specialties */}
+                <div className="pt-4 border-t border-cream-200">
+                  <p className="text-sm text-charcoal-500 uppercase tracking-wider mb-3">Specialties</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Full Service Planning", "Wedding Management", "Destination Weddings"].map((specialty) => (
                       <span
                         key={specialty}
-                        className="px-3 py-1 bg-cream-100 rounded-full text-xs text-charcoal-600"
+                        className="px-4 py-2 bg-charcoal-900 text-white rounded-full text-sm font-medium"
                       >
                         {specialty}
                       </span>
                     ))}
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
