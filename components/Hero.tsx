@@ -147,7 +147,7 @@ const packagesOverview = [
   },
   {
     name: "Destination Weddings",
-    price: "$8,000+",
+    price: "$14,000+",
     description: "Complete destination wedding coordination",
     popular: false,
   },

@@ -142,7 +142,7 @@ const packages = [
     tagline: "Love knows no borders",
     description:
       "Dream of saying 'I do' in a breathtaking location? We handle all the complexities of planning from afar.",
-    price: "8,000",
+    price: "14,000",
     priceNote: "Starting at",
     icon: MapPin,
     badge: null,
