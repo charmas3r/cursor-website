@@ -59,7 +59,7 @@ const featureCards = [
       "Dedicated planner as your single point of contact",
       "Stress-free experience from start to finish",
     ],
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
+    image: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767313094/untitled-8_z0rsnf.webp",
     cta: { label: "Meet Our Team", href: "/about" },
   },
   {
