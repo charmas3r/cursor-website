@@ -18,6 +18,18 @@ function cleanRoleName(role: string): string {
   return cleaned || role;
 }
 
+// Normalize vendor name for deduplication
+function normalizeVendorName(name: string): string {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, ' ')  // Normalize multiple spaces to single space
+    .replace(/['']/g, "'") // Normalize smart quotes
+    .replace(/[""]/g, '"') // Normalize smart double quotes
+    .replace(/[^\w\s'-]/g, '') // Remove special characters except common ones
+    .trim();
+}
+
 // Helper function to aggregate vendors from all couples
 function aggregateVendors(couples: CoupleWithVendors[]): AggregatedVendor[] {
   const vendorMap = new Map<string, AggregatedVendor>();
@@ -27,7 +39,7 @@ function aggregateVendors(couples: CoupleWithVendors[]): AggregatedVendor[] {
 
     couple.vendors.forEach((vendor) => {
       // Create a unique key based on vendor name (normalized)
-      const key = vendor.name.toLowerCase().trim();
+      const key = normalizeVendorName(vendor.name);
 
       if (vendorMap.has(key)) {
         // Add this wedding to existing vendor
