@@ -327,3 +327,4 @@ In your Sanity project settings, add your production domain to the CORS origins:
 - `https://weddingagencysandiego.com` (production)
 - `https://your-vercel-domain.vercel.app` (staging)
 
+

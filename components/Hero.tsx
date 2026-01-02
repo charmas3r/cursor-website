@@ -86,7 +86,7 @@ const featureCards = [
       "Design & styling to bring your vision to life",
       "Destination weddings",
     ],
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
+    image: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238916/193A3369-2_whxoym.webp",
     cta: { label: "View Our Packages", href: "/packages" },
   },
   {
@@ -103,15 +103,15 @@ const featureCards = [
     ),
     title: "Why Choose Us",
     shortDescription:
-      "100+ weddings, 20+ years in hospitality & events, and a 2× Best of Weddings winner. Your day is in expert hands.",
+      "100+ weddings, 20+ years in hospitality & events, and multi-award winning. Your day is in expert hands.",
     modalTitle: "Experience You Can Trust",
     modalDescription:
       "With over 20 years in hospitality and events—from hotels and venues to hands-on service and planning—I've experienced weddings from every angle. This unique perspective means I understand what it takes to create a seamless celebration.",
     highlights: [
       "100+ weddings successfully planned",
       "20+ years in hospitality & events",
-      "2× Best of Weddings winner (The Knot)",
-      "Experience on every side of events",
+      "2× The Knot Best of Weddings winner",
+      "WeddingWire Couples' Choice Award",
     ],
     image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070",
     cta: { label: "See Our Work", href: "/portfolio" },
@@ -312,15 +312,10 @@ export default function Hero(): JSX.Element {
                 <p className="text-sm text-white/70 mt-1">Years Experience</p>
               </div>
               <div className="w-px h-10 bg-white/30" />
-              <a
-                href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-center group"
-              >
-                <p className="text-3xl lg:text-4xl font-serif font-semibold text-white group-hover:text-blush-300 transition-colors">2×</p>
-                <p className="text-sm text-white/70 mt-1 group-hover:text-blush-300 transition-colors">Award Winner</p>
-              </a>
+              <div className="text-center">
+                <p className="text-3xl lg:text-4xl font-serif font-semibold text-white">3×</p>
+                <p className="text-sm text-white/70 mt-1">Award Winner</p>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -441,7 +436,7 @@ export default function Hero(): JSX.Element {
             </div>
             <div className="w-px h-8 bg-charcoal-300" />
             <div className="text-center">
-              <p className="text-2xl font-serif font-semibold text-charcoal-900">2×</p>
+              <p className="text-2xl font-serif font-semibold text-charcoal-900">3×</p>
               <p className="text-xs text-charcoal-600 mt-1">Awards</p>
             </div>
           </motion.div>

@@ -125,6 +125,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     },
     sameAs: [
       "https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439",
+      "https://www.weddingwire.com/biz/wedding-agency-san-diego-san-diego/a1b2c3d4",
       "https://www.instagram.com/weddingagencysd",
       "https://www.facebook.com/weddingagencysd",
     ],
@@ -133,6 +134,11 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
         "@type": "Award",
         name: "The Knot Best of Weddings 2025",
         description: "2× Winner - Recognized as a top wedding vendor on The Knot",
+      },
+      {
+        "@type": "Award",
+        name: "WeddingWire Couples' Choice Award 2025",
+        description: "Recognized for excellence in quality, service, responsiveness, and professionalism",
       },
     ],
   };

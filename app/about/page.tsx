@@ -161,7 +161,7 @@ export default function AboutPage(): JSX.Element {
                 {[
                   { value: "100+", label: "Weddings" },
                   { value: "20+", label: "Years in Hospitality" },
-                  { value: "2×", label: "Award Winner" },
+                  { value: "3×", label: "Award Winner" },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="text-3xl sm:text-4xl font-serif font-semibold text-white">
@@ -476,38 +476,51 @@ export default function AboutPage(): JSX.Element {
                   Award-Winning Excellence
                 </h2>
                 <p className="mt-6 text-lg text-charcoal-600 leading-relaxed">
-                  We&apos;re honored to be recognized by The Knot as a &quot;Best of Weddings&quot; 
-                  winner for two consecutive years. This award is a testament to the 
+                  We&apos;re honored to be recognized by both The Knot and WeddingWire for 
+                  our excellence in wedding planning. These awards are a testament to the 
                   trust our couples place in us and the dedication of our entire team.
                 </p>
-                <a
-                  href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 text-blush-600 font-medium hover:text-blush-700 transition-colors"
-                >
-                  <Award className="w-5 h-5" />
-                  View our profile on The Knot
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-              <div className="grid grid-cols-2 gap-6">
-                {[
-                  { year: "2025", title: "Best of Weddings" },
-                  { year: "2024", title: "Best of Weddings" },
-                ].map((award) => (
-                  <div
-                    key={award.year}
-                    className="bg-white rounded-3xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow"
+                <div className="mt-6 flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blush-600 font-medium hover:text-blush-700 transition-colors"
                   >
-                    <div className="w-16 h-16 mx-auto rounded-full bg-blush-100 flex items-center justify-center mb-4">
-                      <Award className="w-8 h-8 text-blush-500" />
+                    <Award className="w-5 h-5" />
+                    The Knot Profile
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://www.weddingwire.com/vendors/couples-choice-awards"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blush-600 font-medium hover:text-blush-700 transition-colors"
+                  >
+                    <Award className="w-5 h-5" />
+                    WeddingWire Profile
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                {[
+                  { year: "2025", title: "Best of Weddings", source: "The Knot" },
+                  { year: "2024", title: "Best of Weddings", source: "The Knot" },
+                  { year: "2025", title: "Couples' Choice", source: "WeddingWire" },
+                ].map((award, index) => (
+                  <div
+                    key={`${award.source}-${award.year}-${index}`}
+                    className="bg-white rounded-3xl p-6 lg:p-8 text-center shadow-sm hover:shadow-lg transition-shadow"
+                  >
+                    <div className="w-14 h-14 lg:w-16 lg:h-16 mx-auto rounded-full bg-blush-100 flex items-center justify-center mb-4">
+                      <Award className="w-7 h-7 lg:w-8 lg:h-8 text-blush-500" />
                     </div>
-                    <p className="text-2xl font-serif font-bold text-charcoal-900">
+                    <p className="text-xl lg:text-2xl font-serif font-bold text-charcoal-900">
                       {award.year}
                     </p>
                     <p className="text-sm text-charcoal-600 mt-1">{award.title}</p>
-                    <p className="text-xs text-blush-500 mt-2">The Knot</p>
+                    <p className="text-xs text-blush-500 mt-2">{award.source}</p>
                   </div>
                 ))}
               </div>

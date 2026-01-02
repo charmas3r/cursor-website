@@ -362,3 +362,4 @@ This gives you a hosted studio at `your-project.sanity.studio`
 - [Sanity Docs](https://www.sanity.io/docs)
 - [Sanity Slack Community](https://slack.sanity.io/)
 
+
