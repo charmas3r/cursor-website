@@ -335,6 +335,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
                 href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => umami.track("link_click_external_theknot", { location: "testimonials" })}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-charcoal-900 text-white rounded-xl font-medium hover:bg-charcoal-800 transition-colors group"
               >
                 Read Reviews on The Knot
@@ -342,6 +343,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
               </a>
               <Link
                 href="/testimonials"
+                onClick={() => umami.track("cta_click_view_all_reviews", { location: "testimonials" })}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-charcoal-900 rounded-xl font-medium hover:bg-cream-50 transition-colors border border-charcoal-200 group"
               >
                 View All Reviews

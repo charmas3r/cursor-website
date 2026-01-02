@@ -150,6 +150,12 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Umami Analytics */}
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="af27b8e4-ea30-4d46-b060-1f195a3ffe71"
+        />
       </head>
       <body className="min-h-screen overflow-x-hidden font-sans">{children}</body>
     </html>

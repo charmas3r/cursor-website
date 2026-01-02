@@ -327,12 +327,12 @@ export default function PackagesPage(): JSX.Element {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="#packages">
+              <Link href="#packages" onClick={() => umami.track("cta_click_view_packages", { location: "packages_hero" })}>
                 <Button size="lg" className="text-base px-8">
                   View Packages
                 </Button>
               </Link>
-              <Link href="/#contact">
+              <Link href="/#contact" onClick={() => umami.track("cta_click_free_consultation", { location: "packages_hero" })}>
                 <Button variant="outline" size="lg" className="text-base px-8">
                   Free Consultation
                 </Button>
@@ -511,7 +511,7 @@ export default function PackagesPage(): JSX.Element {
                   </ul>
 
                   {/* CTA Button */}
-                  <Link href="/#contact" className="mt-auto">
+                  <Link href="/#contact" className="mt-auto" onClick={() => umami.track("cta_click_get_started", { package: pkg.id, location: "packages_grid" })}>
                     <Button
                       className={cn(
                         "w-full",
@@ -544,6 +544,7 @@ export default function PackagesPage(): JSX.Element {
                         href={pkg.partnerLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => umami.track("link_click_external_partner", { partner: pkg.partnerName })}
                         className={cn(
                           "underline hover:no-underline",
                           pkg.popular ? "text-blush-400 hover:text-blush-300" : "text-blush-600 hover:text-blush-500"
@@ -658,7 +659,10 @@ export default function PackagesPage(): JSX.Element {
                 className="bg-cream-50 rounded-2xl overflow-hidden"
               >
                 <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  onClick={() => {
+                    setOpenFaq(openFaq === index ? null : index);
+                    umami.track(openFaq === index ? "toggle_collapse_faq" : "toggle_expand_faq", { question: faq.question });
+                  }}
                   className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-cream-100 transition-colors"
                   aria-expanded={openFaq === index}
                 >
@@ -726,12 +730,12 @@ export default function PackagesPage(): JSX.Element {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/#contact">
+              <Link href="/#contact" onClick={() => umami.track("cta_click_schedule_consultation", { location: "packages_cta" })}>
                 <Button size="lg" className="w-full sm:w-auto text-base px-8">
                   Schedule Free Consultation
                 </Button>
               </Link>
-              <a href="tel:+17602167427">
+              <a href="tel:+17602167427" onClick={() => umami.track("link_click_contact_phone", { location: "packages_cta" })}>
                 <Button
                   variant="outline"
                   size="lg"

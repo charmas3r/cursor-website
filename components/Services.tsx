@@ -251,7 +251,10 @@ export default function Services(): JSX.Element {
             <motion.button
               key={service.title}
               variants={isMobile ? mobileItemVariants : itemVariants}
-              onClick={() => setSelectedService(service.id)}
+              onClick={() => {
+                setSelectedService(service.id);
+                umami.track("modal_open_service", { service: service.id });
+              }}
               className={`group relative text-left rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer ${
                 service.featured
                   ? "bg-sage-50 ring-2 ring-sage-300"
@@ -325,7 +328,7 @@ export default function Services(): JSX.Element {
           transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.8 }}
           className="mt-10 sm:mt-12 lg:mt-16 text-center"
         >
-          <Link href="/packages">
+          <Link href="/packages" onClick={() => umami.track("cta_click_view_all_packages", { location: "services_section" })}>
             <Button size="lg" className="w-full sm:w-auto">
               View All Packages
             </Button>
@@ -353,7 +356,10 @@ export default function Services(): JSX.Element {
             >
               {/* Close button */}
               <button
-                onClick={() => setSelectedService(null)}
+                onClick={() => {
+                  setSelectedService(null);
+                  umami.track("modal_close_service");
+                }}
                 className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg hover:bg-white transition-colors"
               >
                 <X className="w-5 h-5 text-charcoal-700" />
@@ -425,13 +431,13 @@ export default function Services(): JSX.Element {
 
                   {/* CTA */}
                   <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                    <Link href="/packages" className="flex-1">
+                    <Link href="/packages" className="flex-1" onClick={() => umami.track("cta_click_view_full_pricing", { service: activeService.id })}>
                       <Button size="lg" className="w-full">
                         View Full Pricing
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>
-                    <Link href="/#contact" className="flex-1">
+                    <Link href="/#contact" className="flex-1" onClick={() => umami.track("cta_click_get_free_quote", { service: activeService.id })}>
                       <Button variant="outline" size="lg" className="w-full">
                         Get a Free Quote
                       </Button>

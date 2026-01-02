@@ -126,7 +126,7 @@ export default function CoupleGallery({ couple }: Props) {
           transition={{ delay: 0.5 }}
           className="absolute top-24 left-4 sm:left-8 z-10"
         >
-          <Link href="/portfolio">
+          <Link href="/portfolio" onClick={() => umami.track("nav_click_back_to_portfolio", { from_wedding: couple.names })}>
             <Button
               variant="outline"
               size="sm"
@@ -411,7 +411,10 @@ export default function CoupleGallery({ couple }: Props) {
                 className={`relative cursor-pointer group overflow-hidden rounded-2xl ${
                   index % 5 === 0 ? "row-span-2" : ""
                 }`}
-                onClick={() => openLightbox(index)}
+                onClick={() => {
+                  openLightbox(index);
+                  umami.track("btn_click_gallery_image", { wedding: couple.names, image_index: index });
+                }}
               >
                 <div
                   className={`relative ${
@@ -471,10 +474,10 @@ export default function CoupleGallery({ couple }: Props) {
               and attention to detail you see here.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/#contact">
+              <Link href="/#contact" onClick={() => umami.track("cta_click_schedule_consultation", { location: "couple_gallery_cta", wedding: couple.names })}>
                 <Button size="lg">Schedule Consultation</Button>
               </Link>
-              <Link href="/portfolio">
+              <Link href="/portfolio" onClick={() => umami.track("cta_click_view_more_weddings", { from_wedding: couple.names })}>
                 <Button variant="outline" size="lg">
                   View More Weddings
                 </Button>

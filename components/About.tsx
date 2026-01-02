@@ -109,7 +109,7 @@ export default function About(): JSX.Element {
               transition={{ duration: 0.5, delay: 0.7 }}
               className="mt-8 sm:mt-10"
             >
-              <Link href="/about#team">
+              <Link href="/about#team" onClick={() => umami.track("cta_click_meet_our_team", { location: "about_section" })}>
                 <Button size="lg" className="w-full sm:w-auto">
                   Meet Our Team
                 </Button>

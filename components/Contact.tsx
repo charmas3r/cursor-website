@@ -91,6 +91,7 @@ export default function Contact(): JSX.Element {
     e.preventDefault();
     setStatus("loading");
     setErrorMessage("");
+    umami.track("form_submit_contact", { source: "contact_section" });
 
     try {
       const response = await fetch("/api/contact", {
@@ -108,6 +109,7 @@ export default function Contact(): JSX.Element {
       }
 
       setStatus("success");
+      umami.track("form_success_contact");
       // Reset form after success
       setFormData({
         name: "",
@@ -122,6 +124,7 @@ export default function Contact(): JSX.Element {
       setErrorMessage(
         error instanceof Error ? error.message : "Failed to send message"
       );
+      umami.track("form_error_contact", { error: error instanceof Error ? error.message : "unknown" });
     }
   };
 
@@ -182,6 +185,7 @@ export default function Contact(): JSX.Element {
                     {item.href ? (
                       <a
                         href={item.href}
+                        onClick={() => umami.track(`link_click_contact_${item.label.toLowerCase().replace(/\s+/g, "_")}`)}
                         className="flex items-start gap-3 sm:gap-4 group hover:opacity-80 transition-opacity"
                       >
                         {content}
@@ -211,6 +215,7 @@ export default function Contact(): JSX.Element {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => umami.track(`link_click_social_${social.label.toLowerCase()}`, { location: "contact" })}
                     className="group relative w-11 h-11 rounded-full bg-white shadow-sm flex items-center justify-center text-charcoal-500 hover:text-white hover:bg-gradient-to-br hover:from-blush-500 hover:to-blush-600 hover:shadow-lg hover:shadow-blush-200 transition-all duration-300 hover:scale-110"
                     aria-label={`Follow us on ${social.label}`}
                   >

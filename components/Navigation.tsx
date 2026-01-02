@@ -60,6 +60,7 @@ export default function Navigation(): JSX.Element {
           {/* Logo */}
           <Link
             href="/"
+            onClick={() => umami.track("nav_click_logo")}
             className="font-serif font-bold text-charcoal-900 tracking-tight"
           >
             <span className="text-lg sm:text-xl">Wedding Agency</span>
@@ -74,6 +75,7 @@ export default function Navigation(): JSX.Element {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={() => umami.track(`nav_click_${link.label.toLowerCase().replace(/\s+/g, "_")}`)}
                 className="text-sm font-medium text-charcoal-700 hover:text-charcoal-900 transition-colors relative group"
               >
                 {link.label}
@@ -84,7 +86,10 @@ export default function Navigation(): JSX.Element {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+              umami.track(isMobileMenuOpen ? "nav_close_mobile_menu" : "nav_open_mobile_menu");
+            }}
             className="md:hidden p-2 -mr-2 hover:bg-cream-100 rounded-lg transition-colors"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
@@ -118,7 +123,10 @@ export default function Navigation(): JSX.Element {
                 >
                   <Link
                     href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      umami.track(`nav_click_mobile_${link.label.toLowerCase().replace(/\s+/g, "_")}`);
+                    }}
                     className="block text-lg font-medium text-charcoal-700 hover:text-charcoal-900 hover:bg-cream-50 py-3 px-4 rounded-xl transition-colors"
                   >
                     {link.label}
@@ -132,7 +140,10 @@ export default function Navigation(): JSX.Element {
                 transition={{ delay: 0.3 }}
                 className="pt-4"
               >
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/#contact" onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  umami.track("cta_click_get_started", { location: "mobile_nav" });
+                }}>
                   <Button className="w-full" size="lg">
                     Get Started
                   </Button>

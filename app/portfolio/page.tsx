@@ -86,7 +86,7 @@ export default async function PortfolioPage() {
                 We&apos;re working on bringing you beautiful wedding stories.
                 Check back soon!
               </p>
-              <Link href="/#contact">
+              <Link href="/#contact" data-umami-event="cta_click_get_in_touch" data-umami-event-location="portfolio_empty">
                 <Button>Get in Touch</Button>
               </Link>
             </div>
@@ -119,7 +119,7 @@ export default async function PortfolioPage() {
                     index === 0 ? "lg:col-span-2 lg:row-span-2" : ""
                   }`}
                 >
-                  <Link href={`/portfolio/${couple.slug.current}`} className="block h-full">
+                  <Link href={`/portfolio/${couple.slug.current}`} data-umami-event="link_click_portfolio_featured" data-umami-event-wedding={couple.names} className="block h-full">
                     <div
                       className={`relative h-full ${
                         index === 0 ? "min-h-[400px]" : "min-h-[350px]"
@@ -211,7 +211,7 @@ export default async function PortfolioPage() {
                   key={couple._id}
                   className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500"
                 >
-                  <Link href={`/portfolio/${couple.slug.current}`} className="block">
+                  <Link href={`/portfolio/${couple.slug.current}`} data-umami-event="link_click_portfolio_wedding" data-umami-event-wedding={couple.names} className="block">
                     <div className="relative h-[280px] overflow-hidden">
                       {couple.heroImage ? (
                         <Image
@@ -268,7 +268,7 @@ export default async function PortfolioPage() {
                 We&apos;re working on sharing our beautiful wedding portfolios.
                 Check back soon to see our amazing couples!
               </p>
-              <Link href="/#contact">
+              <Link href="/#contact" data-umami-event="cta_click_get_in_touch" data-umami-event-location="portfolio_coming_soon">
                 <Button>Get in Touch</Button>
               </Link>
             </div>
@@ -305,12 +305,12 @@ export default async function PortfolioPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/#contact">
+            <Link href="/#contact" data-umami-event="cta_click_schedule_consultation" data-umami-event-location="portfolio_cta">
               <Button size="lg" className="w-full sm:w-auto text-base px-8">
                 Schedule Consultation
               </Button>
             </Link>
-            <Link href="/#packages">
+            <Link href="/#packages" data-umami-event="cta_click_view_packages" data-umami-event-location="portfolio_cta">
               <Button
                 variant="outline"
                 size="lg"

@@ -249,13 +249,13 @@ export default function AboutPage(): JSX.Element {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link href="/portfolio">
+                  <Link href="/portfolio" onClick={() => umami.track("cta_click_see_our_work", { location: "about_team" })}>
                     <Button size="lg">
                       See Our Work
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
-                  <Link href="/#contact">
+                  <Link href="/#contact" onClick={() => umami.track("cta_click_get_in_touch", { location: "about_team" })}>
                     <Button variant="outline" size="lg">
                       Get in Touch
                     </Button>
@@ -550,6 +550,7 @@ export default function AboutPage(): JSX.Element {
                     href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => umami.track("link_click_external_theknot", { location: "about_awards" })}
                     className="inline-flex items-center gap-2 text-blush-600 font-medium hover:text-blush-700 transition-colors"
                   >
                     <Award className="w-5 h-5" />
@@ -560,6 +561,7 @@ export default function AboutPage(): JSX.Element {
                     href="https://www.weddingwire.com/vendors/couples-choice-awards"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => umami.track("link_click_external_weddingwire", { location: "about_awards" })}
                     className="inline-flex items-center gap-2 text-blush-600 font-medium hover:text-blush-700 transition-colors"
                   >
                     <Award className="w-5 h-5" />
@@ -611,13 +613,13 @@ export default function AboutPage(): JSX.Element {
                 with our team and take the first step toward your dream wedding.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/#contact">
+                <Link href="/#contact" onClick={() => umami.track("cta_click_book_consultation", { location: "about_cta" })}>
                   <Button size="lg">
                     Book a Consultation
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
-                <Link href="/packages">
+                <Link href="/packages" onClick={() => umami.track("cta_click_view_packages", { location: "about_cta" })}>
                   <Button variant="outline" size="lg">
                     View Our Packages
                   </Button>

@@ -170,6 +170,8 @@ export default async function TestimonialsPage() {
                 href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-umami-event="link_click_external_theknot"
+                data-umami-event-location="testimonials_header"
                 className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-amber-50 to-cream-50 rounded-full border border-amber-200 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
               >
                 <span className="text-sm font-medium text-charcoal-700">
@@ -224,6 +226,8 @@ export default async function TestimonialsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/#contact"
+                data-umami-event="cta_click_get_started"
+                data-umami-event-location="testimonials_cta"
                 className="inline-flex items-center justify-center px-8 py-4 bg-blush-500 text-white rounded-full font-medium hover:bg-blush-600 transition-colors"
               >
                 Get Started
@@ -232,6 +236,8 @@ export default async function TestimonialsPage() {
                 href="https://www.theknot.com/marketplace/wedding-agency-san-diego-san-diego-ca-2069439"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-umami-event="link_click_external_theknot"
+                data-umami-event-location="testimonials_cta"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-white border border-white/30 rounded-full font-medium hover:bg-white/10 transition-colors"
               >
                 Read More on The Knot

@@ -63,6 +63,7 @@ export default function Footer(): JSX.Element {
           <div className="col-span-1 sm:col-span-2">
             <Link
               href="/"
+              onClick={() => umami.track("nav_click_footer_logo")}
               className="text-xl sm:text-2xl font-serif font-bold tracking-tight"
             >
               Wedding Agency
@@ -81,6 +82,7 @@ export default function Footer(): JSX.Element {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => umami.track(`link_click_social_${social.label.toLowerCase()}`, { location: "footer" })}
                   className="group relative w-11 h-11 rounded-full bg-charcoal-800/80 flex items-center justify-center text-charcoal-300 hover:text-white hover:bg-gradient-to-br hover:from-blush-500 hover:to-blush-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blush-500/25"
                   aria-label={`Follow us on ${social.label}`}
                 >
@@ -103,6 +105,7 @@ export default function Footer(): JSX.Element {
                 <li key={link.label}>
                   <Link
                     href={link.href}
+                    onClick={() => umami.track(`nav_click_footer_${link.label.toLowerCase().replace(/\s+/g, "_")}`)}
                     className="text-charcoal-400 hover:text-white transition-colors duration-300 text-sm"
                   >
                     {link.label}
@@ -122,6 +125,7 @@ export default function Footer(): JSX.Element {
                 <li key={link.label}>
                   <Link
                     href={link.href}
+                    onClick={() => umami.track(`nav_click_footer_${link.label.toLowerCase().replace(/\s+/g, "_")}`)}
                     className="text-charcoal-400 hover:text-white transition-colors duration-300 text-sm"
                   >
                     {link.label}
@@ -141,6 +145,7 @@ export default function Footer(): JSX.Element {
                 <li key={link.label}>
                   <Link
                     href={link.href}
+                    onClick={() => umami.track(`nav_click_footer_${link.label.toLowerCase().replace(/\s+/g, "_")}`)}
                     className="text-charcoal-400 hover:text-white transition-colors duration-300 text-sm"
                   >
                     {link.label}

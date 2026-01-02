@@ -201,6 +201,7 @@ export default function VendorDirectory({
           </p>
           <Link
             href="/#contact"
+            onClick={() => umami.track("cta_click_get_in_touch", { location: "vendor_network_cta" })}
             className="inline-flex items-center gap-2 px-8 py-4 bg-charcoal-900 text-white rounded-xl font-medium hover:bg-charcoal-800 transition-colors"
           >
             Get in Touch
@@ -226,6 +227,7 @@ function VendorCard({ vendor }: { vendor: AggregatedVendor }): JSX.Element {
             href={vendor.url}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => umami.track("link_click_vendor_website", { vendor: vendor.name })}
             className="flex-shrink-0 w-10 h-10 rounded-xl bg-white flex items-center justify-center text-charcoal-400 hover:text-blush-500 hover:bg-blush-50 transition-colors"
             aria-label={`Visit ${vendor.name}'s website`}
           >
@@ -244,6 +246,7 @@ function VendorCard({ vendor }: { vendor: AggregatedVendor }): JSX.Element {
             <Link
               key={wedding.slug}
               href={`/portfolio/${wedding.slug}`}
+              onClick={() => umami.track("link_click_vendor_wedding", { vendor: vendor.name, wedding: wedding.names })}
               className="text-xs px-2 py-1 rounded-full bg-white text-charcoal-600 hover:text-blush-600 hover:bg-blush-50 transition-colors"
             >
               {wedding.names}

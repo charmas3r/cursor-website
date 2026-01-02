@@ -79,7 +79,7 @@ export default async function BlogPage() {
                 We&apos;re working on bringing you beautiful wedding inspiration and
                 expert planning tips. Check back soon!
               </p>
-              <Link href="/#contact">
+              <Link href="/#contact" data-umami-event="cta_click_get_in_touch" data-umami-event-location="blog_empty">
                 <Button>Get in Touch</Button>
               </Link>
             </div>
@@ -106,6 +106,8 @@ export default async function BlogPage() {
               {featuredPosts[0] && (
                 <Link
                   href={`/blog/${featuredPosts[0].slug.current}`}
+                  data-umami-event="link_click_blog_featured"
+                  data-umami-event-post={featuredPosts[0].title}
                   className="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 h-full"
                 >
                   <div className="relative h-[400px] lg:h-full min-h-[500px]">
@@ -166,6 +168,8 @@ export default async function BlogPage() {
                   <Link
                     key={post._id}
                     href={`/blog/${post.slug.current}`}
+                    data-umami-event="link_click_blog_post"
+                    data-umami-event-post={post.title}
                     className="group relative flex-1 block rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 bg-white"
                   >
                     <div className="flex flex-col sm:flex-row h-full">
@@ -247,7 +251,7 @@ export default async function BlogPage() {
                 We&apos;re crafting beautiful wedding stories and expert tips just for
                 you. Subscribe to be the first to know when we publish!
               </p>
-              <Link href="/#contact">
+              <Link href="/#contact" data-umami-event="cta_click_get_notified" data-umami-event-location="blog_coming_soon">
                 <Button>Get Notified</Button>
               </Link>
             </div>
@@ -269,12 +273,12 @@ export default async function BlogPage() {
             Schedule a complimentary consultation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/#contact">
+            <Link href="/#contact" data-umami-event="cta_click_schedule_consultation" data-umami-event-location="blog_cta">
               <Button size="lg" className="bg-blush-500 hover:bg-blush-600">
                 Schedule Consultation
               </Button>
             </Link>
-            <Link href="/packages">
+            <Link href="/packages" data-umami-event="cta_click_view_packages" data-umami-event-location="blog_cta">
               <Button
                 variant="outline"
                 size="lg"

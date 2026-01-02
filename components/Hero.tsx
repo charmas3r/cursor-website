@@ -295,7 +295,7 @@ export default function Hero(): JSX.Element {
               transition={{ duration: 0.8, delay: 2.5 }}
               className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Link href="/#contact">
+              <Link href="/#contact" onClick={() => umami.track("cta_click_start_planning", { location: "hero" })}>
                 <Button size="lg" className="w-full sm:w-auto text-base px-8 py-6 bg-white text-charcoal-900 hover:bg-cream-100">
                   Start Planning
                 </Button>
@@ -304,7 +304,10 @@ export default function Hero(): JSX.Element {
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto text-base px-8 py-6 bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20"
-                onClick={() => setShowPackagesModal(true)}
+                onClick={() => {
+                  setShowPackagesModal(true);
+                  umami.track("modal_open_packages", { location: "hero" });
+                }}
               >
                 View Packages
               </Button>
@@ -365,7 +368,10 @@ export default function Hero(): JSX.Element {
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 3 + index * 0.15 }}
-                  onClick={() => setSelectedCard(card.id)}
+                  onClick={() => {
+                    setSelectedCard(card.id);
+                    umami.track("modal_open_feature_card", { card: card.id, location: "hero_desktop" });
+                  }}
                   className="text-left bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-500 group cursor-pointer"
                 >
                   <div className="flex justify-between items-start mb-3">
@@ -411,7 +417,10 @@ export default function Hero(): JSX.Element {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: isMobile ? 0 : 0.5, delay: isMobile ? 0 : index * 0.1 }}
-                onClick={() => setSelectedCard(card.id)}
+                onClick={() => {
+                  setSelectedCard(card.id);
+                  umami.track("modal_open_feature_card", { card: card.id, location: "hero_mobile" });
+                }}
                 className="text-left bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-3">
@@ -478,7 +487,10 @@ export default function Hero(): JSX.Element {
             >
               {/* Close button */}
               <button
-                onClick={() => setSelectedCard(null)}
+                onClick={() => {
+                  setSelectedCard(null);
+                  umami.track("modal_close_feature_card");
+                }}
                 className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg hover:bg-white transition-colors"
               >
                 <X className="w-5 h-5 text-charcoal-700" />
@@ -532,13 +544,13 @@ export default function Hero(): JSX.Element {
 
                   {/* CTA */}
                   <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                    <Link href={activeCard.cta.href} className="flex-1">
+                    <Link href={activeCard.cta.href} className="flex-1" onClick={() => umami.track("cta_click_feature_card_cta", { card: activeCard.id, cta: activeCard.cta.label })}>
                       <Button size="lg" className="w-full">
                         {activeCard.cta.label}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>
-                    <Link href="/#contact" className="flex-1">
+                    <Link href="/#contact" className="flex-1" onClick={() => umami.track("cta_click_get_in_touch", { source: "feature_card_modal" })}>
                       <Button variant="outline" size="lg" className="w-full">
                         Get in Touch
                       </Button>
@@ -571,7 +583,10 @@ export default function Hero(): JSX.Element {
             >
               {/* Close button */}
               <button
-                onClick={() => setShowPackagesModal(false)}
+                onClick={() => {
+                  setShowPackagesModal(false);
+                  umami.track("modal_close_packages");
+                }}
                 className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-cream-100 flex items-center justify-center hover:bg-cream-200 transition-colors"
               >
                 <X className="w-5 h-5 text-charcoal-700" />
@@ -624,6 +639,7 @@ export default function Hero(): JSX.Element {
                           </p>
                           <Link
                             href="/packages"
+                            onClick={() => umami.track("link_click_view_package_details", { package: pkg.name })}
                             className="inline-flex items-center gap-1 text-xs text-blush-500 hover:text-blush-600 font-medium mt-2"
                           >
                             View Package Details
@@ -643,13 +659,13 @@ export default function Hero(): JSX.Element {
 
                 {/* Footer CTA */}
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                  <Link href="/packages" className="flex-1">
+                  <Link href="/packages" className="flex-1" onClick={() => umami.track("cta_click_view_all_details", { source: "packages_modal" })}>
                     <Button size="lg" className="w-full">
                       View All Details
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
-                  <Link href="/#contact" className="flex-1">
+                  <Link href="/#contact" className="flex-1" onClick={() => umami.track("cta_click_request_custom_quote", { source: "packages_modal" })}>
                     <Button variant="outline" size="lg" className="w-full">
                       Request Custom Quote
                     </Button>
