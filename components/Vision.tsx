@@ -49,8 +49,8 @@ export default function Vision(): JSX.Element {
                 className="absolute -bottom-8 -right-8 lg:-right-16 w-40 sm:w-48 lg:w-56 h-32 sm:h-40 lg:h-44 rounded-2xl overflow-hidden shadow-xl border-4 border-charcoal-900"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070"
-                  alt="Beautiful wedding floral arrangement"
+                  src="https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767312186/4W9A4312_txzsad.webp"
+                  alt="Beautiful wedding moment"
                   fill
                   className="object-cover"
                   sizes="250px"
