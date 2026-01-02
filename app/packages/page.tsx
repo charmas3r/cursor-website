@@ -27,9 +27,9 @@ const packages = [
   {
     id: "wellness",
     name: "Feel Your Best, In Your Dress",
-    tagline: "16 week holistic breathwork program with Azadi Healing",
+    tagline: "Wellness Package",
     description:
-      "Wellness Package: Prepare for your big day feeling your best. In partnership with Azadi Healing, our holistic wellness program supports your physical and mental health throughout your wedding planning journey.",
+      "Wellness Package - This 16 week program helps you feel your best, mentally and physically, on your wedding day. Partnered with Azadi Healing.",
     price: "3,000",
     priceNote: "Starting at",
     icon: Heart,
@@ -44,6 +44,7 @@ const packages = [
       "Sound healing journeys",
       "Guided meditations",
       "Mental health support through planning",
+      "Breathwork sessions",
     ],
     notIncluded: [],
     idealFor: "Couples wanting to feel their best physically and mentally on their wedding day.",

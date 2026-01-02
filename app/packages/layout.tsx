@@ -169,7 +169,7 @@ export default function PackagesLayout({
             "@type": "Service",
             name: "Wellness Package with Azadi Healing",
             description:
-              "4-month holistic wellness program in partnership with Azadi Healing. Includes personalized meal plans, exercise plans for every body type, reiki sessions, sound healing journeys, guided meditations, and mental health support.",
+              "16 week holistic wellness program in partnership with Azadi Healing. Includes personalized meal plans, exercise plans for every body type, reiki sessions, sound healing journeys, guided meditations, and mental health support.",
           },
           price: "3000",
           priceCurrency: "USD",
