@@ -59,7 +59,7 @@ const featureCards = [
       "Dedicated planner as your single point of contact",
       "Stress-free experience from start to finish",
     ],
-    image: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767313094/untitled-8_z0rsnf.webp",
+    image: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767314958/Jessica_Kevin_s_Wedding_by_PKA_Photography-23_rxgczi.webp",
     cta: { label: "Meet Our Team", href: "/about" },
   },
   {
