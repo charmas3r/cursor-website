@@ -7,6 +7,20 @@ import { Star, Quote, ExternalLink, ArrowRight, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { CoupleTestimonial } from "@/types/sanity";
 
+// Hook to detect mobile screens
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  return isMobile;
+}
+
 // Fallback reviews for when Sanity is empty
 const fallbackReviews: CoupleTestimonial[] = [
   {
@@ -144,6 +158,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [reviews, setReviews] = useState<CoupleTestimonial[]>(initialTestimonials || fallbackReviews);
+  const isMobile = useIsMobile();
 
   // If no initial testimonials provided, use fallback
   useEffect(() => {
@@ -155,6 +170,10 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
   // Get first featured review and other reviews
   const featuredReview = reviews.find((r) => r.review?.featured) || reviews[0];
   const otherReviews = reviews.filter((r) => r._id !== featuredReview?._id).slice(0, 4);
+  
+  // Disable animation on mobile
+  const mobileContainerVariants = { hidden: {}, visible: {} };
+  const mobileItemVariants = { hidden: { opacity: 1, y: 0 }, visible: { opacity: 1, y: 0 } };
 
   return (
     <section
@@ -165,9 +184,9 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: isMobile ? 0 : 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
         >
           <span className="text-blush-500 text-xs sm:text-sm font-medium uppercase tracking-wider">
@@ -189,9 +208,9 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
           {/* Featured Review - Large Card */}
           {featuredReview && featuredReview.review && (
             <motion.article
-              initial={{ opacity: 0, x: -50 }}
+              initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.3 }}
               className="lg:col-span-5 relative"
             >
               <div className="relative h-full bg-charcoal-900 rounded-3xl p-8 sm:p-10 overflow-hidden">
@@ -234,7 +253,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
 
           {/* Other Reviews - Stacked Cards */}
           <motion.div
-            variants={containerVariants}
+            variants={isMobile ? mobileContainerVariants : containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
@@ -242,7 +261,7 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
             {otherReviews.map((couple, index) => couple.review && (
               <motion.article
                 key={couple._id}
-                variants={itemVariants}
+                variants={isMobile ? mobileItemVariants : itemVariants}
                 className={cn(
                   "group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-500",
                   index === 0 && "sm:col-span-2"
@@ -284,9 +303,9 @@ export default function Testimonials({ initialTestimonials }: TestimonialsProps)
 
         {/* Bottom CTA - The Knot Link */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.8 }}
           className="mt-12 sm:mt-16 text-center"
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 p-6 sm:p-8 bg-gradient-to-r from-amber-50 via-cream-50 to-amber-50 rounded-2xl border border-amber-100">
