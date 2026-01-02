@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Heart,
@@ -16,6 +16,20 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+
+// Hook to detect mobile screens
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  return isMobile;
+}
 
 const services = [
   {
@@ -194,17 +208,22 @@ export default function Services(): JSX.Element {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const isMobile = useIsMobile();
 
   const activeService = services.find((s) => s.id === selectedService);
+  
+  // Disable animation on mobile - cards appear immediately
+  const mobileContainerVariants = { hidden: {}, visible: {} };
+  const mobileItemVariants = { hidden: { opacity: 1, y: 0 }, visible: { opacity: 1, y: 0 } };
 
   return (
     <section id="packages" className="py-16 sm:py-20 lg:py-32 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: isMobile ? 0 : 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20"
         >
           <span className="text-blush-500 text-xs sm:text-sm font-medium uppercase tracking-wider">
@@ -223,7 +242,7 @@ export default function Services(): JSX.Element {
 
         {/* Services Grid */}
         <motion.div
-          variants={containerVariants}
+          variants={isMobile ? mobileContainerVariants : containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
@@ -231,7 +250,7 @@ export default function Services(): JSX.Element {
           {services.map((service) => (
             <motion.button
               key={service.title}
-              variants={itemVariants}
+              variants={isMobile ? mobileItemVariants : itemVariants}
               onClick={() => setSelectedService(service.id)}
               className={`group relative text-left rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-white hover:shadow-xl transition-all duration-500 cursor-pointer ${
                 service.featured
@@ -301,9 +320,9 @@ export default function Services(): JSX.Element {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.8 }}
           className="mt-10 sm:mt-12 lg:mt-16 text-center"
         >
           <Link href="/packages">

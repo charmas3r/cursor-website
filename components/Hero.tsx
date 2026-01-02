@@ -1,11 +1,25 @@
 "use client";
 
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight, DollarSign, Sparkles, Heart, Users, ChevronDown, Play } from "lucide-react";
+
+// Hook to detect mobile screens
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  return isMobile;
+}
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -169,6 +183,7 @@ export default function Hero(): JSX.Element {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const [showPackagesModal, setShowPackagesModal] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
   
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -378,10 +393,10 @@ export default function Hero(): JSX.Element {
       <section className="lg:hidden bg-cream-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: isMobile ? 0 : 0.6 }}
             className="text-center mb-8"
           >
             <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal-900">
@@ -392,10 +407,10 @@ export default function Hero(): JSX.Element {
             {featureCards.map((card, index) => (
               <motion.button
                 key={card.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: isMobile ? 0 : 0.5, delay: isMobile ? 0 : index * 0.1 }}
                 onClick={() => setSelectedCard(card.id)}
                 className="text-left bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
               >
@@ -419,10 +434,10 @@ export default function Hero(): JSX.Element {
           
           {/* Mobile Stats */}
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.3 }}
             className="flex items-center justify-center gap-6 mt-10 pt-8 border-t border-cream-200"
           >
             <div className="text-center">
