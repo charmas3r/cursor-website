@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const stats = [
@@ -108,9 +109,11 @@ export default function About(): JSX.Element {
               transition={{ duration: 0.5, delay: 0.7 }}
               className="mt-8 sm:mt-10"
             >
-              <Button size="lg" className="w-full sm:w-auto">
-                Meet Our Team
-              </Button>
+              <Link href="/about#team">
+                <Button size="lg" className="w-full sm:w-auto">
+                  Meet Our Team
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
