@@ -123,7 +123,7 @@ const packagesOverview = [
   {
     name: "Wellness Package",
     price: "$3,000",
-    description: "4-month holistic program with Azadi Healing",
+    description: "16 week holistic breathwork program with Azadi Healing",
     popular: false,
     featured: true,
   },

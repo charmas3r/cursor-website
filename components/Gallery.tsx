@@ -67,7 +67,7 @@ const galleryImages = [
     sizes: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
   },
   {
-    src: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238915/KSP_EMEZIETEASER15_cqs7ub.webp",
+    src: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767312190/4W9A7188_ijoab0.webp",
     alt: "San Diego wedding memories",
     span: "col-span-1 row-span-1",
     sizes: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
