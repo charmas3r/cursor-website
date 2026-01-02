@@ -144,9 +144,9 @@ export default function ContactConfirmationEmail({
               Wedding Agency <span style={logoAccent}>San Diego</span>
             </Text>
             <Text style={footerText}>
-              123 Wedding Lane, San Diego, CA 92101
+              San Diego, CA
               <br />
-              +1 (760) 216-7427 • nicole@weddingagencysandiego.com
+              +1 (760) 216-7427
             </Text>
             <Section style={socialLinks}>
               <Link href="#" style={socialLink}>Instagram</Link>
