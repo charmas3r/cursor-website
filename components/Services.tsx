@@ -23,7 +23,7 @@ const services = [
     icon: Heart,
     title: "Feel Your Best, In Your Dress",
     description:
-      "Prepare for your big day feeling your best. In partnership with Azadi Healing, our 16-week holistic program supports your physical and mental health.",
+      "Wellness Package - Prepare for your big day feeling your best. In partnership with Azadi Healing, our 16-week holistic program supports your physical and mental health.",
     features: ["Meal Plans", "Fitness Routines", "Mental Wellness"],
     fullDescription:
       "Your wedding day should be the best you've ever felt. In partnership with Azadi Healing, our 4-month wellness program helps you manage the mental stress of planning while supporting your physical health with personalized plans.",

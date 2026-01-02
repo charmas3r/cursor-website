@@ -29,7 +29,7 @@ const packages = [
     name: "Feel Your Best, In Your Dress",
     tagline: "16 week holistic breathwork program with Azadi Healing",
     description:
-      "Prepare for your big day feeling your best. In partnership with Azadi Healing, our holistic wellness program supports your physical and mental health throughout your wedding planning journey.",
+      "Wellness Package: Prepare for your big day feeling your best. In partnership with Azadi Healing, our holistic wellness program supports your physical and mental health throughout your wedding planning journey.",
     price: "3,000",
     priceNote: "Starting at",
     icon: Heart,
