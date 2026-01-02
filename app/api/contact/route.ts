@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to the customer
     const { error: customerEmailError } = await resend.emails.send({
-      from: "Wedding Agency San Diego <onboarding@resend.dev>", // Use resend.dev for testing
+      from: "Wedding Agency San Diego <hello@updates.weddingagencysandiego.com>",
       to: email,
       subject: "Thank You for Contacting Wedding Agency San Diego! 💕",
       html: emailHtml,
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
     // Send notification email to the business (optional - don't fail if this doesn't work)
     try {
       await resend.emails.send({
-        from: "Wedding Agency San Diego <onboarding@resend.dev>",
+        from: "Wedding Agency San Diego <hello@updates.weddingagencysandiego.com>",
         to: "nicole@weddingagencysandiego.com", // Business notification email
         replyTo: email,
         subject: `New Wedding Inquiry from ${name}`,
