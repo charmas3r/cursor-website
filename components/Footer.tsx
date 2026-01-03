@@ -25,7 +25,7 @@ const footerLinks = {
   ],
 };
 
-// Social media icons as SVG components
+// Social media icons as SVG components (TEST COMMENT)
 const SocialIcon = ({ name }: { name: string }): JSX.Element => {
   const icons: Record<string, JSX.Element> = {
     Instagram: (
