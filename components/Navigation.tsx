@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -61,12 +62,21 @@ export default function Navigation(): JSX.Element {
           <Link
             href="/"
             onClick={() => umami.track("nav_click_logo")}
-            className="font-serif font-bold text-charcoal-900 tracking-tight"
+            className="flex items-center gap-2 font-serif font-bold text-charcoal-900 tracking-tight"
           >
-            <span className="text-lg sm:text-xl">Wedding Agency</span>
-            <span className="text-blush-500 text-base sm:text-lg ml-1">
-              San Diego
-            </span>
+            <Image
+              src="/favicon.png"
+              alt="Wedding Agency San Diego"
+              width={28}
+              height={28}
+              className="w-6 h-6 sm:w-7 sm:h-7"
+            />
+            <div>
+              <span className="text-lg sm:text-xl">Wedding Agency</span>
+              <span className="text-blush-500 text-base sm:text-lg ml-1">
+                San Diego
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

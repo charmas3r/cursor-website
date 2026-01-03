@@ -84,6 +84,11 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   category: "wedding planning",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 interface RootLayoutProps {
