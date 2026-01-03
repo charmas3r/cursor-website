@@ -337,7 +337,7 @@ export default function AboutPage(): JSX.Element {
             {/* Nicole's Feature Section - Image Left, Bio Right */}
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
               {/* Nicole's Image - Left Side */}
-              <motion.div
+            <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={teamInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
@@ -459,8 +459,8 @@ export default function AboutPage(): JSX.Element {
                       </span>
                     ))}
                   </div>
-                </div>
-              </motion.div>
+                  </div>
+                </motion.div>
             </div>
           </div>
         </section>

@@ -21,6 +21,7 @@ import {
   Users,
   Award,
   ImageIcon,
+  Film,
 } from "lucide-react";
 import type { AggregatedVendor } from "@/types/sanity";
 
@@ -185,6 +186,75 @@ export default function VendorDirectory({
               </p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Special Thanks Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-white to-cream-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            {/* Decorative elements */}
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-transparent via-blush-300 to-blush-400" />
+            
+            <div className="text-center mb-8">
+              <span className="text-blush-500 text-xs sm:text-sm font-medium uppercase tracking-wider">
+                Special Thanks
+              </span>
+              <h2 className="mt-3 text-2xl sm:text-3xl font-serif font-medium text-charcoal-900">
+                Behind the Scenes
+              </h2>
+            </div>
+
+            {/* Credit Card */}
+            <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-cream-200 max-w-2xl mx-auto">
+              <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                {/* Icon */}
+                <div className="flex-shrink-0">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blush-100 to-blush-200 flex items-center justify-center">
+                    <Film className="w-10 h-10 text-blush-600" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-grow text-center sm:text-left">
+                  <p className="text-xs text-charcoal-500 uppercase tracking-wider mb-2">
+                    Website Cover Video
+                  </p>
+                  <h3 className="text-xl sm:text-2xl font-serif font-semibold text-charcoal-900 mb-2">
+                    Jenni Summer Studios
+                  </h3>
+                  <p className="text-charcoal-600 text-sm leading-relaxed mb-4">
+                    The beautiful video that graces our homepage was captured by the incredibly 
+                    talented team at Jenni Summer Studios. Their artistry in wedding cinematography 
+                    brings love stories to life.
+                  </p>
+                  <a
+                    href="https://jennisummerstudios.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => umami.track("link_click_special_thanks", { vendor: "Jenni Summer Studios" })}
+                    className="inline-flex items-center gap-2 text-blush-600 hover:text-blush-700 font-medium text-sm transition-colors group"
+                  >
+                    Visit their website
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Decorative quote */}
+              <div className="mt-8 pt-6 border-t border-cream-200">
+                <p className="text-charcoal-500 text-sm italic text-center">
+                  &ldquo;Timeless Stories, Artfully Told.&rdquo;
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
