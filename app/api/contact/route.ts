@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
     try {
       await resend.emails.send({
         from: "Wedding Agency San Diego <hello@updates.weddingagencysandiego.com>",
-        to: "mrsshadoan@gmail.com", // Business notification email
+        to: "nicole@weddingagencysandiego.com", // Business notification email
         replyTo: email,
         subject: `New Wedding Inquiry from ${name}`,
         html: `
