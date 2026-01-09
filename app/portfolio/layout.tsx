@@ -79,39 +79,27 @@ export default function PortfolioLayout({
           "@type": "ListItem",
           position: 1,
           item: {
-            "@type": "Event",
-            name: "Zoe & Byron Wedding",
-            location: {
-              "@type": "Place",
-              name: "Rancho Valencia Resort",
-              address: "San Diego, CA",
-            },
+            "@type": "Article",
+            name: "Zoe & Byron Wedding at Rancho Valencia Resort",
+            url: `${SITE_URL}/portfolio/zoe-byron`,
           },
         },
         {
           "@type": "ListItem",
           position: 2,
           item: {
-            "@type": "Event",
-            name: "Ally & Tyler Wedding",
-            location: {
-              "@type": "Place",
-              name: "Hotel del Coronado",
-              address: "San Diego, CA",
-            },
+            "@type": "Article",
+            name: "Ally & Tyler Wedding at Hotel del Coronado",
+            url: `${SITE_URL}/portfolio/ally-tyler`,
           },
         },
         {
           "@type": "ListItem",
           position: 3,
           item: {
-            "@type": "Event",
-            name: "Catherine & Mitchell Wedding",
-            location: {
-              "@type": "Place",
-              name: "Bernardo Winery",
-              address: "San Diego, CA",
-            },
+            "@type": "Article",
+            name: "Catherine & Mitchell Wedding at Bernardo Winery",
+            url: `${SITE_URL}/portfolio/catherine-mitchell`,
           },
         },
       ],

@@ -101,6 +101,7 @@ export default async function CoupleLayout({ children, params }: Props) {
   const validGalleryImages = couple.galleryImages?.filter(isValidImage) || [];
 
   // JSON-LD structured data for better SEO
+  // Using Article schema (not Event) since these are past weddings displayed as portfolio content
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -118,27 +119,22 @@ export default async function CoupleLayout({ children, params }: Props) {
       name: "Wedding Agency San Diego",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}/favicon.png`,
       },
     },
     about: {
-      "@type": "Event",
+      "@type": "Thing",
       name: `${couple.names} Wedding`,
-      startDate: couple.weddingDate,
-      location: {
-        "@type": "Place",
-        name: couple.venue,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: couple.location.split(",")[0]?.trim(),
-          addressRegion: couple.location.split(",")[1]?.trim() || "CA",
-          addressCountry: "US",
-        },
-      },
-      organizer: {
-        "@type": "Organization",
-        name: "Wedding Agency San Diego",
-        url: SITE_URL,
+      description: `A beautiful wedding celebration at ${couple.venue} in ${couple.location}`,
+    },
+    contentLocation: {
+      "@type": "Place",
+      name: couple.venue,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: couple.location.split(",")[0]?.trim(),
+        addressRegion: couple.location.split(",")[1]?.trim() || "CA",
+        addressCountry: "US",
       },
     },
     mainEntity: {
