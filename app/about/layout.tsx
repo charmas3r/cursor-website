@@ -44,11 +44,14 @@ export const metadata: Metadata = {
   },
 };
 
+const SITE_URL = "https://weddingagencysandiego.com";
+
 export default function AboutLayout({
   children,
 }: {
   children: React.ReactNode;
 }): JSX.Element {
+  // Reference the main LocalBusiness by @id to avoid "multiple aggregate ratings" error
   return (
     <>
       <script
@@ -57,27 +60,10 @@ export default function AboutLayout({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "AboutPage",
+            name: "About Wedding Agency San Diego",
+            url: `${SITE_URL}/about`,
             mainEntity: {
-              "@type": "LocalBusiness",
-              name: "Wedding Agency San Diego",
-              description:
-                "Premier wedding planning and coordination services in San Diego, California. Full-service planning, wedding management, and custom wedding experiences.",
-              foundingDate: "2023",
-              numberOfEmployees: {
-                "@type": "QuantitativeValue",
-                value: 1,
-              },
-              award: [
-                "Best of Weddings 2025 - The Knot",
-                "Best of Weddings 2024 - The Knot",
-              ],
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "5.0",
-                reviewCount: "127",
-                bestRating: "5",
-                worstRating: "1",
-              },
+              "@id": `${SITE_URL}/#organization`,
             },
           }),
         }}

@@ -48,9 +48,7 @@ examples:
       git add .
       git commit -m "Add new feature"
       git push origin main
-    output: "Correctly configured git push"
-
-metadata:
+    output: "Correctly configured git push"metadata:
   priority: high
   version: 1.0
 </rule>

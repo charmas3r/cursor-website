@@ -51,6 +51,7 @@ export default function TestimonialsLayout({
 }: {
   children: React.ReactNode;
 }): JSX.Element {
+  // Reference the main LocalBusiness by @id to avoid "multiple aggregate ratings" error
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -65,15 +66,7 @@ export default function TestimonialsLayout({
       url: SITE_URL,
     },
     about: {
-      "@type": "LocalBusiness",
-      name: "Wedding Agency San Diego",
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        reviewCount: "100",
-        bestRating: "5",
-        worstRating: "1",
-      },
+      "@id": `${SITE_URL}/#organization`,
     },
   };
 

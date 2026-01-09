@@ -151,6 +151,7 @@ export default async function CoupleLayout({ children, params }: Props) {
   };
 
   // Add review schema if available
+  // Reference the main LocalBusiness by @id to avoid "multiple aggregate ratings" error
   const reviewJsonLd = couple.review
     ? {
         "@context": "https://schema.org",
@@ -166,9 +167,7 @@ export default async function CoupleLayout({ children, params }: Props) {
         },
         reviewBody: couple.review.text,
         itemReviewed: {
-          "@type": "LocalBusiness",
-          name: "Wedding Agency San Diego",
-          url: SITE_URL,
+          "@id": `${SITE_URL}/#organization`,
         },
       }
     : null;

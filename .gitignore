@@ -28,9 +28,7 @@ yarn-error.log*
 .idea
 .vscode
 *.swp
-*.swo
-
-# OS
+*.swo# OS
 .DS_Store
 Thumbs.db
 
