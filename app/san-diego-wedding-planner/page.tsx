@@ -379,7 +379,19 @@ export default function SanDiegoWeddingPlannerPage(): JSX.Element {
               <button
                 onClick={() => {
                   umami.track("cta_click_view_packages", { location: "sd_planner_hero" });
-                  document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" });
+                  // Use setTimeout to ensure scroll happens after any layout shifts
+                  setTimeout(() => {
+                    const element = document.getElementById("packages");
+                    if (element) {
+                      const navOffset = 120; // Account for fixed nav + banner
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.scrollY - navOffset;
+                      window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                      });
+                    }
+                  }, 100);
                 }}
                 className="w-full sm:w-auto"
               >

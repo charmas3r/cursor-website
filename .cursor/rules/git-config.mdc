@@ -38,9 +38,7 @@ actions:
       ### Important
       - Always verify the git config is set before committing
       - Use descriptive commit messages
-      - Push to the `main` branch
-
-examples:
+      - Push to the `main` branchexamples:
   - input: |
       # Committing changes
       git config user.name "charmas3r"
