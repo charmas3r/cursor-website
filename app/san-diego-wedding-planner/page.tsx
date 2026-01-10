@@ -376,9 +376,12 @@ export default function SanDiegoWeddingPlannerPage(): JSX.Element {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Link
-                href="#packages"
-                onClick={() => umami.track("cta_click_view_packages", { location: "sd_planner_hero" })}
+              <button
+                onClick={() => {
+                  umami.track("cta_click_view_packages", { location: "sd_planner_hero" });
+                  document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="w-full sm:w-auto"
               >
                 <Button
                   variant="outline"
@@ -387,7 +390,7 @@ export default function SanDiegoWeddingPlannerPage(): JSX.Element {
                 >
                   View Packages
                 </Button>
-              </Link>
+              </button>
             </motion.div>
 
             {/* Trust indicators */}
