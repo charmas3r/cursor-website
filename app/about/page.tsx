@@ -15,6 +15,7 @@ import {
   Star,
   ArrowRight,
   Quote,
+  Flower2,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -363,7 +364,7 @@ export default function AboutPage(): JSX.Element {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-full bg-blush-100 flex items-center justify-center">
-                      <Sparkles className="w-6 h-6 text-blush-500" />
+                      <Award className="w-6 h-6 text-blush-500" />
                     </div>
                     <div>
                       <p className="text-2xl font-serif font-semibold text-charcoal-900">3</p>
@@ -461,6 +462,131 @@ export default function AboutPage(): JSX.Element {
                   </div>
                   </div>
                 </motion.div>
+            </div>
+
+            {/* Divider */}
+            <div className="my-20 lg:my-28 flex items-center justify-center">
+              <div className="w-24 h-px bg-cream-300" />
+              <Heart className="w-6 h-6 text-blush-300 mx-4" />
+              <div className="w-24 h-px bg-cream-300" />
+            </div>
+
+            {/* Sherie's Feature Section - Bio Left, Image Right */}
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+              {/* Sherie's Bio - Left Side */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={teamInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.3 }}
+                className="space-y-6 order-2 lg:order-1"
+              >
+                {/* Name & Title */}
+                <div>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-charcoal-900">
+                    Sherie
+                  </h3>
+                  <p className="text-blush-500 font-medium mt-1">Lead Coordinator</p>
+                </div>
+
+                {/* Bio Content */}
+                <div className="space-y-4 text-charcoal-600 leading-relaxed">
+                  <p>
+                    Sherie is a California-based wedding coordinator, floral designer, and holistic 
+                    practitioner who brings a thoughtful, intuitive, and detail-oriented approach to 
+                    every celebration she supports. With a background that blends event coordination, 
+                    flower arranging, and holistic wellness, Sherie is known for creating experiences 
+                    that feel both beautifully organized and deeply meaningful.
+                  </p>
+                  <p>
+                    In addition to her work in weddings and events, Sherie is the founder of Azadi 
+                    Healing, a nonprofit organization dedicated to emotional, physical, and spiritual 
+                    well-being through trauma-informed, holistic practices. Her work in healing spaces 
+                    strongly informs her approach to wedding coordination, allowing her to remain calm 
+                    under pressure, attuned to the emotional flow of the day, and fully present for 
+                    couples during one of life&apos;s most significant milestones.
+                  </p>
+                  <p>
+                    Sherie has extensive experience in floral design, specializing in organic, intentional 
+                    arrangements that elevate the aesthetic of weddings while honoring each couple&apos;s 
+                    unique vision. Whether coordinating timelines behind the scenes, styling florals, or 
+                    offering grounding support on the wedding day, she provides steady and thoughtful 
+                    care from start to finish.
+                  </p>
+                  <p>
+                    Her ability to seamlessly blend logistics with heart-centered service makes her an 
+                    invaluable part of the Wedding Agency San Diego team. Sherie is passionate about 
+                    helping Nicole and the couples being celebrated feel supported, seen, and at ease, 
+                    so they can fully enjoy their celebration and the love surrounding them.
+                  </p>
+                </div>
+
+                {/* Hobbies */}
+                <div className="bg-cream-50 rounded-2xl p-5 sm:p-6">
+                  <p className="text-sm text-charcoal-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-blush-400" />
+                    Personal Interests
+                  </p>
+                  <p className="text-charcoal-600 text-sm leading-relaxed">
+                    Travel, sound healing, meditation, flower arranging, hiking, Jiu Jitsu, 
+                    creative design, and supporting community centered healing work.
+                  </p>
+                </div>
+
+                {/* Specialties */}
+                <div className="pt-4 border-t border-cream-200">
+                  <p className="text-sm text-charcoal-500 uppercase tracking-wider mb-3">Specialties</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Wedding Coordination", "Floral Design", "Holistic Wellness"].map((specialty) => (
+                      <span
+                        key={specialty}
+                        className="px-4 py-2 bg-charcoal-900 text-white rounded-full text-sm font-medium"
+                      >
+                        {specialty}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Sherie's Image - Right Side */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={teamInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.4 }}
+                className="relative order-1 lg:order-2"
+              >
+                <div className="relative h-[450px] sm:h-[550px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="https://res.cloudinary.com/dvdrv4i4x/image/upload/v1768022796/sherie-headshot_z2phko.jpg"
+                    alt="Sherie Honarvar - Lead Coordinator at Wedding Agency San Diego"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 via-transparent to-transparent" />
+                </div>
+
+                {/* Floating Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={teamInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-white rounded-2xl p-4 sm:p-5 shadow-xl"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-sage-100 flex items-center justify-center">
+                      <Flower2 className="w-6 h-6 text-sage-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-charcoal-900">Azadi Healing</p>
+                      <p className="text-xs text-charcoal-600">Founder & Practitioner</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Decorative elements */}
+                <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-sage-200/30 blur-2xl" />
+              </motion.div>
             </div>
           </div>
         </section>

@@ -1,9 +1,9 @@
-import { getCouplesWithVendors, getPreferredVenues } from "@/lib/sanity";
+import { getCouplesWithVendors } from "@/lib/sanity";
 import type { CoupleWithVendors, AggregatedVendor } from "@/types/sanity";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import VendorDirectory from "@/components/VendorDirectory";
-import PreferredVenues from "@/components/PreferredVenues";
+import Link from "next/link";
 
 export const revalidate = 60;
 
@@ -142,10 +142,7 @@ const categoryOrder = [
 ];
 
 export default async function VendorsPage() {
-  const [couples, preferredVenuesData] = await Promise.all([
-    getCouplesWithVendors(),
-    getPreferredVenues(),
-  ]);
+  const couples = await getCouplesWithVendors();
   
   const typedCouples = couples as CoupleWithVendors[];
   const aggregatedVendors = aggregateVendors(typedCouples);
@@ -167,7 +164,29 @@ export default async function VendorsPage() {
   return (
     <main className="relative">
       <Navigation />
-      <PreferredVenues venues={preferredVenuesData as Parameters<typeof PreferredVenues>[0]["venues"]} />
+      
+      {/* Preferred Venues Banner - Links to Services Page */}
+      <section className="bg-gradient-to-r from-blush-50 to-cream-50 py-8 border-b border-cream-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h2 className="text-lg font-serif font-semibold text-charcoal-900">
+                Looking for Preferred Venues?
+              </h2>
+              <p className="text-sm text-charcoal-600">
+                See the premier San Diego venues where we&apos;re trusted partners.
+              </p>
+            </div>
+            <Link
+              href="/san-diego-wedding-planner#venues"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-charcoal-900 text-white rounded-xl font-medium hover:bg-charcoal-800 transition-colors text-sm"
+            >
+              View Preferred Venues
+            </Link>
+          </div>
+        </div>
+      </section>
+      
       <VendorDirectory
         groupedVendors={groupedVendors}
         sortedCategories={sortedCategories}

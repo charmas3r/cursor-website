@@ -1,22 +1,23 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Meet the Wedding Agency San Diego Team",
+  title: "About Your San Diego Wedding Planner | Wedding Agency San Diego",
   description:
-    "Meet the passionate team behind Wedding Agency San Diego. With 20+ years in hospitality and events and 100+ weddings planned, discover why couples trust us to create their perfect day.",
+    "Meet Nicole, your San Diego wedding planner with 20+ years in hospitality and 100+ weddings planned. Discover why couples across Southern California trust Wedding Agency San Diego.",
   keywords: [
+    "San Diego wedding planner",
     "wedding planner San Diego",
-    "wedding planning team",
-    "San Diego wedding coordinators",
+    "San Diego wedding coordinator",
+    "wedding planning team San Diego",
+    "best wedding planner San Diego",
     "about Wedding Agency San Diego",
-    "wedding planner experience",
-    "meet our team",
-    "wedding planning experts",
+    "Nicole Shadoan wedding planner",
+    "Southern California wedding planner",
   ],
   openGraph: {
-    title: "About Us | Meet the Wedding Agency San Diego Team",
+    title: "About Your San Diego Wedding Planner | Wedding Agency San Diego",
     description:
-      "Meet the passionate team behind Wedding Agency San Diego. With 20+ years in hospitality and events and 100+ weddings planned, discover why couples trust us to create their perfect day.",
+      "Meet Nicole, your San Diego wedding planner with 20+ years in hospitality and 100+ weddings planned. Discover why couples across Southern California trust us.",
     type: "website",
     locale: "en_US",
     url: "https://weddingagencysandiego.com/about",
@@ -32,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Meet the Wedding Agency San Diego Team",
+    title: "About Your San Diego Wedding Planner | Wedding Agency San Diego",
     description:
-      "Meet the passionate team behind Wedding Agency San Diego. 20+ years in hospitality, 100+ weddings planned.",
+      "Meet Nicole, your San Diego wedding planner. 20+ years in hospitality, 100+ weddings planned across Southern California.",
     images: [
       "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
     ],

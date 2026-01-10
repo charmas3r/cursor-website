@@ -322,7 +322,7 @@ export default async function PortfolioPage() {
           </div>
 
           <p className="mt-8 text-white/60 text-sm">
-            Or call us directly: <span className="text-white font-medium">(619) 555-0123</span>
+            Or call us directly: <span className="text-white font-medium">(760) 216-7427</span>
           </p>
         </div>
       </section>

@@ -4,9 +4,9 @@ const SITE_URL = "https://weddingagencysandiego.com";
 const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238922/processed-F6C355EA-4876-41AF-A491-FC3A51C2C1AF_raelqt.webp";
 
 export const metadata: Metadata = {
-  title: "Testimonials | What Our Couples Say",
+  title: "San Diego Wedding Planner Reviews | 5-Star Testimonials",
   description:
-    "Read heartfelt reviews from over 100 happy couples. See why Wedding Agency San Diego is rated 5 stars on The Knot and trusted by couples across Southern California.",
+    "Read 100+ 5-star reviews from happy couples. See why Wedding Agency San Diego is the top-rated wedding planner in San Diego. Award-winning service, trusted across Southern California.",
   keywords: [
     "wedding planner reviews",
     "San Diego wedding planner testimonials",
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     "wedding agency reviews",
   ],
   openGraph: {
-    title: "Testimonials | Wedding Agency San Diego",
+    title: "San Diego Wedding Planner Reviews | 5-Star Testimonials",
     description:
-      "Read heartfelt reviews from over 100 happy couples. 5-star rated on The Knot.",
+      "Read 100+ 5-star reviews from happy San Diego couples. Top-rated wedding planner.",
     url: `${SITE_URL}/testimonials`,
     siteName: "Wedding Agency San Diego",
     locale: "en_US",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Testimonials | Wedding Agency San Diego",
+    title: "San Diego Wedding Planner Reviews | 5-Star Testimonials",
     description:
-      "Read heartfelt reviews from over 100 happy couples. 5-star rated on The Knot.",
+      "Read 100+ 5-star reviews from happy San Diego couples. Top-rated wedding planner.",
     images: [OG_IMAGE],
   },
   alternates: {

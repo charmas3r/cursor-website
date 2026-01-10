@@ -6,9 +6,9 @@ import { Heart } from "lucide-react";
 // Footer links - update hrefs when dedicated pages are created
 const footerLinks = {
   services: [
-    { label: "Full Service Planning", href: "/packages#full-service" },
+    { label: "San Diego Wedding Planner", href: "/san-diego-wedding-planner", featured: true },
+    { label: "La Jolla Wedding Planner", href: "/la-jolla-wedding-planner" },
     { label: "Wedding Management", href: "/packages#wedding-management" },
-    { label: "Design & Styling", href: "/packages" },
     { label: "Destination Weddings", href: "/packages" },
   ],
   company: [
@@ -106,7 +106,11 @@ export default function Footer(): JSX.Element {
                   <Link
                     href={link.href}
                     onClick={() => umami.track(`nav_click_footer_${link.label.toLowerCase().replace(/\s+/g, "_")}`)}
-                    className="text-charcoal-400 hover:text-white transition-colors duration-300 text-sm"
+                    className={
+                      "featured" in link && link.featured
+                        ? "text-blush-400 hover:text-blush-300 transition-colors duration-300 text-sm font-medium"
+                        : "text-charcoal-400 hover:text-white transition-colors duration-300 text-sm"
+                    }
                   >
                     {link.label}
                   </Link>
@@ -153,6 +157,31 @@ export default function Footer(): JSX.Element {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Contact / NAP */}
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              Contact
+            </h4>
+            <address className="not-italic space-y-3 text-sm text-charcoal-400">
+              <p className="font-medium text-white">Wedding Agency San Diego</p>
+              <p>San Diego, CA</p>
+              <a 
+                href="tel:+17602167427"
+                onClick={() => umami.track("link_click_contact_phone", { location: "footer" })}
+                className="block hover:text-white transition-colors duration-300"
+              >
+                (760) 216-7427
+              </a>
+              <a 
+                href="mailto:nicole@weddingagencysandiego.com"
+                onClick={() => umami.track("link_click_contact_email", { location: "footer" })}
+                className="block hover:text-white transition-colors duration-300"
+              >
+                nicole@weddingagencysandiego.com
+              </a>
+            </address>
           </div>
 
         </div>

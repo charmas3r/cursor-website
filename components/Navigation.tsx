@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 // e.g., change "/#about" to "/about" when the About page is created
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/san-diego-wedding-planner", label: "Services" }, // Top-funnel services page
   { href: "/about", label: "About Us" },        // Dedicated page
   { href: "/packages", label: "Packages" },     // Dedicated page
   { href: "/portfolio", label: "Portfolio" },   // Dedicated page
@@ -22,10 +23,17 @@ const navLinks = [
 export default function Navigation(): JSX.Element {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     const handleScroll = (): void => {
       setIsScrolled(window.scrollY > 50);
+      // Hide banner when scrolled
+      if (window.scrollY > 200) {
+        setShowBanner(false);
+      } else {
+        setShowBanner(true);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -44,18 +52,56 @@ export default function Navigation(): JSX.Element {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full",
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-3 md:py-4"
-          : "bg-transparent py-4 md:py-6"
-      )}
-    >
+    <>
+      {/* Booking Availability Banner */}
+      <AnimatePresence>
+        {showBanner && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 left-0 right-0 z-[60] bg-charcoal-900 text-white overflow-hidden"
+          >
+            <div className="py-2 text-center text-sm">
+              <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 sm:gap-3">
+                <span className="relative flex h-2 w-2 flex-shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blush-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blush-500" />
+                </span>
+                <span className="font-medium text-xs sm:text-sm">Now Booking 2026 & 2027</span>
+                <span className="hidden sm:inline text-white/40">—</span>
+                <span className="hidden sm:inline text-white/70 text-xs">Limited dates</span>
+                <Link 
+                  href="/#contact"
+                  onClick={() => umami.track("cta_click_booking_banner")}
+                  className="ml-1 sm:ml-2 inline-flex items-center gap-1 px-2 sm:px-3 py-1 bg-blush-500 hover:bg-blush-600 rounded-full text-white text-xs font-medium transition-colors"
+                >
+                  <span className="hidden xs:inline">Reserve Date</span>
+                  <span className="xs:hidden">Book</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main Navigation */}
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={cn(
+          "fixed left-0 right-0 z-50 transition-all duration-500 w-full",
+          showBanner ? "top-[36px]" : "top-0",
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-sm py-3 md:py-4"
+            : "bg-transparent py-4 md:py-6"
+        )}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
@@ -164,5 +210,6 @@ export default function Navigation(): JSX.Element {
         )}
       </AnimatePresence>
     </motion.header>
+    </>
   );
 }

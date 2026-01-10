@@ -14,6 +14,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
+      url: `${baseUrl}/san-diego-wedding-planner`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.95, // High priority - top funnel services page
+    },
+    {
+      url: `${baseUrl}/la-jolla-wedding-planner`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9, // Location-specific landing page
+    },
+    {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
