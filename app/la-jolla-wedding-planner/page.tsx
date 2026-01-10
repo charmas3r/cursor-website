@@ -225,7 +225,7 @@ export default function LaJollaWeddingPlannerPage(): JSX.Element {
                 Why Get Married in La Jolla?
               </h2>
               <p className="mt-6 text-lg text-charcoal-600">
-                Known as "The Jewel" of San Diego, La Jolla offers an unparalleled combination of natural beauty, luxury venues, and coastal charm.
+                Known as &ldquo;The Jewel&rdquo; of San Diego, La Jolla offers an unparalleled combination of natural beauty, luxury venues, and coastal charm.
               </p>
             </motion.div>
 
@@ -269,7 +269,7 @@ export default function LaJollaWeddingPlannerPage(): JSX.Element {
                 La Jolla Wedding Venues
               </h2>
               <p className="mt-6 text-lg text-charcoal-600">
-                We've planned weddings at La Jolla's most sought-after venues and know exactly how to bring your vision to life at each one.
+                We&apos;ve planned weddings at La Jolla&apos;s most sought-after venues and know exactly how to bring your vision to life at each one.
               </p>
             </motion.div>
 
@@ -317,7 +317,7 @@ export default function LaJollaWeddingPlannerPage(): JSX.Element {
               className="mt-12 text-center"
             >
               <p className="text-charcoal-600 mb-6">
-                Not sure which venue is right for you? We'll help you find the perfect match.
+                Not sure which venue is right for you? We&apos;ll help you find the perfect match.
               </p>
               <Link href="/#contact" onClick={() => umami.track("cta_click_venue_guidance", { location: "la_jolla_venues" })}>
                 <Button variant="outline" size="lg">
@@ -343,7 +343,7 @@ export default function LaJollaWeddingPlannerPage(): JSX.Element {
                   <span className="text-blush-300">Planning Services</span>
                 </h2>
                 <p className="mt-6 text-lg text-charcoal-300 leading-relaxed">
-                  Whether you're planning an intimate beach ceremony at La Jolla Cove or a grand celebration at The Lodge at Torrey Pines, we offer comprehensive planning services tailored to your vision.
+                  Whether you&apos;re planning an intimate beach ceremony at La Jolla Cove or a grand celebration at The Lodge at Torrey Pines, we offer comprehensive planning services tailored to your vision.
                 </p>
 
                 <div className="mt-8 space-y-4">
@@ -427,7 +427,7 @@ export default function LaJollaWeddingPlannerPage(): JSX.Element {
                 <span className="text-blush-500">La Jolla Wedding?</span>
               </h2>
               <p className="mt-6 text-lg text-charcoal-600 max-w-2xl mx-auto">
-                Let's discuss your vision for a beautiful La Jolla celebration. Schedule a complimentary consultation and discover how we can bring your coastal wedding dreams to life.
+                Let&apos;s discuss your vision for a beautiful La Jolla celebration. Schedule a complimentary consultation and discover how we can bring your coastal wedding dreams to life.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

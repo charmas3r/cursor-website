@@ -76,14 +76,6 @@ function getAvatarColor(name: string): string {
   return colors[hash % colors.length];
 }
 
-// Format date
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString("en-US", { 
-    month: "long", 
-    year: "numeric" 
-  });
-}
-
 export default function TestimonialsGrid({
   testimonials,
   featured = false,

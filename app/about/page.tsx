@@ -36,17 +36,6 @@ const staggerContainer = {
   },
 };
 
-// Team members data
-const teamMembers = [
-  {
-    name: "Nicole Shadoan",
-    role: "Founder & Lead Planner",
-    image: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767240361/Nicole_-_Wedding_Agency_San_Diego-7_sjryxd.webp",
-    bio: "With 20+ years in hospitality and events, I founded Wedding Agency San Diego to plan extraordinary weddings with intention, balance, and care. Your wedding should feel as good as it looks.",
-    specialties: ["Full Service Planning", "Wedding Management", "Destination Weddings"],
-  },
-];
-
 // Values data
 const values = [
   {

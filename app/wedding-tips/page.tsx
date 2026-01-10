@@ -17,12 +17,6 @@ async function getFeaturedPosts() {
 export default async function WeddingTipsPage() {
   const featuredPosts = await getFeaturedPosts();
 
-  // Helper to get image URL - passed to client component
-  const getImageUrl = (image: { asset: { _ref: string } } | undefined) => {
-    if (!image) return "";
-    return urlFor(image).width(800).height(600).url();
-  };
-
   // Serialize the image URLs for client component
   const postsWithImages = featuredPosts.map((post: {
     _id: string;

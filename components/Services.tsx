@@ -8,7 +8,6 @@ import {
   Calendar,
   Palette,
   MapPin,
-  Users,
   Sparkles,
   X,
   Check,

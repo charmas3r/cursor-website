@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { X, ArrowRight, DollarSign, Sparkles, Heart, Users, ChevronDown, Play, Star, Phone } from "lucide-react";
+import { X, ArrowRight, DollarSign, Sparkles, Heart, Users, ChevronDown, Star, Phone } from "lucide-react";
 
 // Hook to detect mobile screens
 function useIsMobile() {
@@ -20,32 +20,6 @@ function useIsMobile() {
   
   return isMobile;
 }
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      delay: delay,
-      ease: [0.25, 0.4, 0.25, 1],
-    },
-  }),
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1,
-      delay: delay,
-      ease: [0.25, 0.4, 0.25, 1],
-    },
-  }),
-};
 
 // Feature cards - exploratory content about the company
 const featureCards = [

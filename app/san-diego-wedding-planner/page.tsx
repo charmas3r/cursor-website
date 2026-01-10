@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
@@ -9,21 +9,16 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
   Heart,
-  Calendar,
   MapPin,
   Sparkles,
   Check,
   Star,
-  Crown,
   Award,
   Phone,
-  ChevronDown,
   ArrowRight,
-  Users,
   Clock,
   Building2,
   ExternalLink,
-  Play,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import VenueMap from "@/components/VenueMap";
@@ -448,7 +443,7 @@ export default function SanDiegoWeddingPlannerPage(): JSX.Element {
             animate={statsInView ? "visible" : "hidden"}
             className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
           >
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={itemVariants}
