@@ -376,24 +376,9 @@ export default function SanDiegoWeddingPlannerPage(): JSX.Element {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <button
-                onClick={() => {
-                  umami.track("cta_click_view_packages", { location: "sd_planner_hero" });
-                  // Use setTimeout to ensure scroll happens after any layout shifts
-                  setTimeout(() => {
-                    const element = document.getElementById("packages");
-                    if (element) {
-                      const navOffset = 120; // Account for fixed nav + banner
-                      const elementPosition = element.getBoundingClientRect().top;
-                      const offsetPosition = elementPosition + window.scrollY - navOffset;
-                      window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                      });
-                    }
-                  }, 100);
-                }}
-                className="w-full sm:w-auto"
+              <Link
+                href="/packages"
+                onClick={() => umami.track("cta_click_view_packages", { location: "sd_planner_hero" })}
               >
                 <Button
                   variant="outline"
@@ -402,7 +387,7 @@ export default function SanDiegoWeddingPlannerPage(): JSX.Element {
                 >
                   View Packages
                 </Button>
-              </button>
+              </Link>
             </motion.div>
 
             {/* Trust indicators */}
