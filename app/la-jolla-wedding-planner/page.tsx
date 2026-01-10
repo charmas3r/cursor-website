@@ -39,13 +39,6 @@ const laJollaVenues = [
     preferred: false,
   },
   {
-    name: "Scripps Seaside Forum",
-    type: "Oceanfront Venue",
-    description: "Panoramic Pacific views at UC San Diego's stunning venue",
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
-    preferred: false,
-  },
-  {
     name: "Martin Johnson House",
     type: "Historic Estate",
     description: "Intimate cliffside celebrations with breathtaking ocean views",
@@ -70,7 +63,7 @@ const whyLaJolla = [
   },
   {
     title: "World-Class Venues",
-    description: "Home to Estancia La Jolla, Scripps Seaside Forum, and other premier venues perfect for luxury celebrations.",
+    description: "Home to Estancia La Jolla, Martin Johnson House, and other premier venues perfect for luxury celebrations.",
     icon: Building2,
   },
   {
