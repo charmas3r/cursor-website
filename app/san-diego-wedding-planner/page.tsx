@@ -143,7 +143,6 @@ const venueLocations = [
   { name: "Twin Oaks Golf Course", lat: 33.2147, lng: -117.1056 },
   { name: "Rancho Valencia Resort", lat: 33.0089, lng: -117.2019 },
   { name: "Hotel del Coronado", lat: 32.6810, lng: -117.1780 },
-  { name: "The Lodge at Torrey Pines", lat: 32.9005, lng: -117.2467 },
   { name: "Bernardo Winery", lat: 33.0601, lng: -117.0661 },
   { name: "Estancia La Jolla", lat: 32.8598, lng: -117.2249 },
   { name: "Mount Palomar Winery", lat: 33.3547, lng: -117.0022 },
@@ -174,13 +173,6 @@ const preferredVenues = [
     weddingCount: 6,
     image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070",
     url: "https://hoteldel.com",
-  },
-  {
-    name: "The Lodge at Torrey Pines",
-    location: "La Jolla, CA",
-    weddingCount: 4,
-    image: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070",
-    url: "https://lodgetorreypines.com",
   },
   {
     name: "Estancia La Jolla",
