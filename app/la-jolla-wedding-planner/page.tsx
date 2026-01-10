@@ -25,13 +25,6 @@ import {
 // La Jolla venues
 const laJollaVenues = [
   {
-    name: "The Lodge at Torrey Pines",
-    type: "Luxury Resort",
-    description: "Craftsman-style elegance with ocean views and world-class service",
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2098",
-    preferred: true,
-  },
-  {
     name: "Estancia La Jolla",
     type: "Hacienda Estate",
     description: "Spanish colonial charm with lush gardens and romantic courtyards",
@@ -77,7 +70,7 @@ const whyLaJolla = [
   },
   {
     title: "World-Class Venues",
-    description: "Home to The Lodge at Torrey Pines, Estancia La Jolla, and other premier venues perfect for luxury celebrations.",
+    description: "Home to Estancia La Jolla, Scripps Seaside Forum, and other premier venues perfect for luxury celebrations.",
     icon: Building2,
   },
   {
@@ -153,7 +146,7 @@ export default function LaJollaWeddingPlannerPage(): JSX.Element {
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-cream-100/90 leading-relaxed max-w-2xl">
-                Your expert guide to planning the perfect La Jolla wedding. From oceanfront ceremonies at La Jolla Cove to elegant celebrations at The Lodge at Torrey Pines, we bring your coastal wedding dreams to life.
+                Your expert guide to planning the perfect La Jolla wedding. From oceanfront ceremonies at La Jolla Cove to elegant celebrations at Estancia La Jolla, we bring your coastal wedding dreams to life.
               </p>
 
               {/* Stats */}
@@ -343,7 +336,7 @@ export default function LaJollaWeddingPlannerPage(): JSX.Element {
                   <span className="text-blush-300">Planning Services</span>
                 </h2>
                 <p className="mt-6 text-lg text-charcoal-300 leading-relaxed">
-                  Whether you&apos;re planning an intimate beach ceremony at La Jolla Cove or a grand celebration at The Lodge at Torrey Pines, we offer comprehensive planning services tailored to your vision.
+                  Whether you&apos;re planning an intimate beach ceremony at La Jolla Cove or a grand celebration at Estancia La Jolla, we offer comprehensive planning services tailored to your vision.
                 </p>
 
                 <div className="mt-8 space-y-4">
