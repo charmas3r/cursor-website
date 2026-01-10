@@ -39,13 +39,6 @@ const laJollaVenues = [
     preferred: false,
   },
   {
-    name: "Martin Johnson House",
-    type: "Historic Estate",
-    description: "Intimate cliffside celebrations with breathtaking ocean views",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
-    preferred: false,
-  },
-  {
     name: "Cuvier Club",
     type: "Private Club",
     description: "Elegant oceanfront venue with panoramic La Jolla Cove views",
@@ -63,7 +56,7 @@ const whyLaJolla = [
   },
   {
     title: "World-Class Venues",
-    description: "Home to Estancia La Jolla, Martin Johnson House, and other premier venues perfect for luxury celebrations.",
+    description: "Home to Estancia La Jolla, Cuvier Club, and other premier venues perfect for luxury celebrations.",
     icon: Building2,
   },
   {
