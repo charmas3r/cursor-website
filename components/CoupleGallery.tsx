@@ -22,10 +22,33 @@ import {
   Quote,
 } from "lucide-react";
 import { urlFor } from "@/lib/sanity";
-import type { Couple, SanityImage } from "@/types/sanity";
+import type { Couple, SanityImage, VendorCategory } from "@/types/sanity";
 
 interface Props {
   couple: Couple;
+}
+
+// Helper to format vendor category for display
+function formatVendorCategory(category: VendorCategory | undefined): string {
+  if (!category) return "Vendor";
+  const categoryMap: Record<string, string> = {
+    "photography": "Photography",
+    "videography": "Videography",
+    "florals": "Florals",
+    "catering": "Catering",
+    "dj-music": "DJ / Music",
+    "band": "Band",
+    "hair-makeup": "Hair & Makeup",
+    "officiant": "Officiant",
+    "cake-desserts": "Cake & Desserts",
+    "rentals": "Rentals",
+    "lighting": "Lighting",
+    "transportation": "Transportation",
+    "invitations-stationery": "Invitations & Stationery",
+    "photo-booth": "Photo Booth",
+    "other": "Vendor",
+  };
+  return categoryMap[category] || "Vendor";
 }
 
 export default function CoupleGallery({ couple }: Props) {
@@ -321,16 +344,16 @@ export default function CoupleGallery({ couple }: Props) {
 
                 <ul className="space-y-4">
                   {couple.vendors.map((vendor, i) => (
-                    <li key={i} className="flex justify-between items-start">
+                    <li key={vendor._id || i} className="flex justify-between items-start">
                       <div>
-                        <p className="text-sm text-charcoal-500">{vendor.role}</p>
+                        <p className="text-sm text-charcoal-500">{formatVendorCategory(vendor.category)}</p>
                         <p className="font-medium text-charcoal-800">
                           {vendor.name}
                         </p>
                       </div>
-                      {vendor.url && (
+                      {vendor.website && (
                         <a
-                          href={vendor.url}
+                          href={vendor.website}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blush-500 hover:text-blush-600 transition-colors"
