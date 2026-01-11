@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { value: "50+", label: "Weddings Planned" },
+  { value: "100+", label: "Weddings Planned" },
   { value: "20+", label: "Years in Hospitality" },
   { value: "50+", label: "Vendor Partners" },
   { value: "100%", label: "Happy Couples" },

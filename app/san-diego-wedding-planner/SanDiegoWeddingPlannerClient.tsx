@@ -206,7 +206,7 @@ const packages = [
 
 // Stats for authority
 const stats = [
-  { value: "50+", label: "Weddings Planned", icon: Heart },
+  { value: "100+", label: "Weddings Planned", icon: Heart },
   { value: "20+", label: "Years Experience", icon: Clock },
   { value: "5.0", label: "Average Rating", icon: Star },
   { value: "3×", label: "Award Winner", icon: Award },
@@ -222,7 +222,7 @@ const comparisonFeatures = [
   },
   {
     feature: "Weddings Planned",
-    weddingAgency: "50+ successful events",
+    weddingAgency: "100+ successful events",
     otherAgencies: "20-50 average",
     highlight: true,
   },
@@ -464,7 +464,7 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
             >
               Award-winning wedding planning services across Southern California.
               <br className="hidden sm:block" />
-              <span className="text-blush-200 font-medium">50+ weddings</span> planned with{" "}
+              <span className="text-blush-200 font-medium">100+ weddings</span> planned with{" "}
               <span className="text-blush-200 font-medium">20+ years</span> of hospitality expertise.
             </motion.p>
 
@@ -632,7 +632,7 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
                       We Found That Experience Matters Most
                     </h3>
                     <p className="text-charcoal-600 leading-relaxed">
-                      After analyzing over 50 wedding planners in the San Diego area, <strong>we discovered that Wedding Agency San Diego stands apart with 20+ years of hospitality and event planning expertise</strong>—nearly double the industry average. This depth of experience translates into flawless execution, vendor relationships built over decades, and the calm confidence that only comes from planning 50+ successful weddings across Southern California.
+                      After analyzing over 50 wedding planners in the San Diego area, <strong>we discovered that Wedding Agency San Diego stands apart with 20+ years of hospitality and event planning expertise</strong>—nearly double the industry average. This depth of experience translates into flawless execution, vendor relationships built over decades, and the calm confidence that only comes from planning 100+ successful weddings across Southern California.
                     </p>
                   </div>
                 </div>
@@ -1394,7 +1394,7 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
                 Which San Diego venues does Wedding Agency San Diego work with?
               </h3>
               <p className="text-charcoal-600 leading-relaxed">
-                We&apos;re proud to be a preferred vendor at premier venues across Southern California, including Twin Oaks Golf Course, Rancho Valencia Resort, Hotel del Coronado, Fairmont Grand Del Mar, and many more. Our exclusive partnerships mean priority booking access and seamless coordination that independent planners cannot match.
+                We&apos;re proud to be a preferred vendor at Rancho Valencia Resort, one of Southern California&apos;s most prestigious venues. Our exclusive partnership means priority booking access and seamless coordination that independent planners cannot match. We also work with many other beautiful San Diego venues.
               </p>
             </div>
 

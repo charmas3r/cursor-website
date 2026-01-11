@@ -6,7 +6,7 @@ const PAGE_URL = `${SITE_URL}/san-diego-wedding-planner`;
 export const metadata: Metadata = {
   title: "San Diego Wedding Planner | #1 Award-Winning Wedding Planning Services",
   description:
-    "San Diego's premier award-winning wedding planner. Full-service wedding planning, coordination & design across Southern California. 50+ weddings, 20+ years experience. Free consultation.",
+    "San Diego's premier award-winning wedding planner. Full-service wedding planning, coordination & design across Southern California. 100+ weddings, 20+ years experience. Free consultation.",
   keywords: [
     "San Diego wedding planner",
     "wedding planner San Diego",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Wedding Agency San Diego",
     title: "San Diego Wedding Planner | Award-Winning Wedding Planning Services",
     description:
-      "San Diego's #1 award-winning wedding planner. Full-service planning, coordination & design. 50+ weddings planned with 20+ years experience. Book your free consultation.",
+      "San Diego's #1 award-winning wedding planner. Full-service planning, coordination & design. 100+ weddings planned with 20+ years experience. Book your free consultation.",
     images: [
       {
         url: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767246459/2025.11.21_-_Jessica_Ian_-_Twin_Oaks_Golf_Course-847_websize_rqud58.jpg",
@@ -68,7 +68,7 @@ export default function SanDiegoWeddingPlannerLayout({
     "@id": `${PAGE_URL}#service`,
     name: "San Diego Wedding Planner - Wedding Agency San Diego",
     description:
-      "Award-winning San Diego wedding planner offering full-service wedding planning, coordination, and design services across Southern California. Trusted by 50+ couples.",
+      "Award-winning San Diego wedding planner offering full-service wedding planning, coordination, and design services across Southern California. Trusted by 100+ couples.",
     url: PAGE_URL,
     telephone: "+1 (760) 216-7427",
     email: "nicole@weddingagencysandiego.com",
@@ -230,7 +230,7 @@ export default function SanDiegoWeddingPlannerLayout({
         name: "Which San Diego venues does Wedding Agency San Diego work with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We're proud to be a preferred vendor at premier venues across Southern California, including Twin Oaks Golf Course, Rancho Valencia Resort, Hotel del Coronado, Fairmont Grand Del Mar, and many more. Our exclusive partnerships mean priority booking access and seamless coordination.",
+          text: "We're proud to be a preferred vendor at Rancho Valencia Resort, one of Southern California's most prestigious venues. Our exclusive partnership means priority booking access and seamless coordination that independent planners cannot match. We also work with many other beautiful San Diego venues.",
         },
       },
       {

@@ -376,7 +376,7 @@ export default function PackagesPage(): JSX.Element {
             <div className="hidden sm:block w-px h-8 bg-charcoal-200" />
             <div className="flex items-center gap-2">
               <Heart className="w-5 h-5 text-blush-500 fill-blush-500" aria-hidden="true" />
-              <span className="font-medium">50+ Weddings</span>
+              <span className="font-medium">100+ Weddings</span>
             </div>
             <div className="hidden sm:block w-px h-8 bg-charcoal-200" />
             <div className="flex items-center gap-2">
