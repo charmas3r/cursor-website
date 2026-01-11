@@ -28,9 +28,7 @@ yarn-error.log*
 *.swp
 *.swo# OS
 .DS_Store
-Thumbs.db
-
-# Vercel
+Thumbs.db# Vercel
 .vercel
 
 # TypeScript
