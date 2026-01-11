@@ -6,7 +6,7 @@ const PAGE_URL = `${SITE_URL}/la-jolla-wedding-planner`;
 export const metadata: Metadata = {
   title: "La Jolla Wedding Planner | Award-Winning Wedding Planning Services",
   description:
-    "La Jolla's premier wedding planner. Award-winning planning services at The Lodge at Torrey Pines, Estancia La Jolla, La Jolla Cove & more. 100+ weddings, 20+ years experience. Free consultation.",
+    "La Jolla's premier wedding planner. Award-winning planning services at The Lodge at Torrey Pines, Estancia La Jolla, La Jolla Cove & more. 50+ weddings, 20+ years experience. Free consultation.",
   keywords: [
     "La Jolla wedding planner",
     "wedding planner La Jolla",

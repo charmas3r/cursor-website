@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 // e.g., change "/#about" to "/about" when the About page is created
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/san-diego-wedding-planner", label: "Services" }, // Top-funnel services page
+  { href: "/san-diego-wedding-planner", label: "Planning" }, // Top-funnel planning/services page
   { href: "/about", label: "About Us" },        // Dedicated page
   { href: "/packages", label: "Packages" },     // Dedicated page
   { href: "/portfolio", label: "Portfolio" },   // Dedicated page

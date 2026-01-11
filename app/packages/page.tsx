@@ -251,6 +251,11 @@ const faqs = [
     question: "Do you travel for destination weddings?",
     answer: "Yes! We love destination weddings. Travel fees apply based on location, and we have partnerships with vendors across California, Mexico, Hawaii, and beyond.",
   },
+  {
+    question: "Which venues do you work with in San Diego?",
+    answer: "We're a preferred vendor at 15+ premier venues across Southern California, including oceanfront resorts, wine country estates, and historic landmarks. Visit our San Diego Wedding Planner page for venue details and local expertise.",
+    hasLink: true,
+  },
 ];
 
 const containerVariants = {
@@ -371,7 +376,7 @@ export default function PackagesPage(): JSX.Element {
             <div className="hidden sm:block w-px h-8 bg-charcoal-200" />
             <div className="flex items-center gap-2">
               <Heart className="w-5 h-5 text-blush-500 fill-blush-500" aria-hidden="true" />
-              <span className="font-medium">100+ Weddings</span>
+              <span className="font-medium">50+ Weddings</span>
             </div>
             <div className="hidden sm:block w-px h-8 bg-charcoal-200" />
             <div className="flex items-center gap-2">
@@ -707,9 +712,18 @@ export default function PackagesPage(): JSX.Element {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <p className="px-6 pb-5 text-charcoal-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
+                  <div className="px-6 pb-5 text-charcoal-600 leading-relaxed">
+                    <p>{faq.answer}</p>
+                    {faq.hasLink && (
+                      <Link
+                        href="/san-diego-wedding-planner#venues"
+                        className="inline-flex items-center gap-1 mt-3 text-blush-500 font-medium hover:text-blush-600 underline underline-offset-2"
+                        onClick={() => umami.track("link_click_sd_venues_from_faq", { location: "packages_faq" })}
+                      >
+                        Explore San Diego venues →
+                      </Link>
+                    )}
+                  </div>
                 </motion.div>
               </motion.div>
             ))}

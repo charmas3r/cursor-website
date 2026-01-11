@@ -8,7 +8,6 @@ const footerLinks = {
   services: [
     { label: "San Diego Wedding Planner", href: "/san-diego-wedding-planner", featured: true },
     { label: "La Jolla Wedding Planner", href: "/la-jolla-wedding-planner" },
-    { label: "Wedding Management", href: "/packages#wedding-management" },
     { label: "Destination Weddings", href: "/packages" },
   ],
   company: [

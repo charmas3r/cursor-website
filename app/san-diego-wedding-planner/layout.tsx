@@ -6,7 +6,7 @@ const PAGE_URL = `${SITE_URL}/san-diego-wedding-planner`;
 export const metadata: Metadata = {
   title: "San Diego Wedding Planner | #1 Award-Winning Wedding Planning Services",
   description:
-    "San Diego's premier award-winning wedding planner. Full-service wedding planning, coordination & design across Southern California. 100+ weddings, 20+ years experience. Free consultation.",
+    "San Diego's premier award-winning wedding planner. Full-service wedding planning, coordination & design across Southern California. 50+ weddings, 20+ years experience. Free consultation.",
   keywords: [
     "San Diego wedding planner",
     "wedding planner San Diego",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Wedding Agency San Diego",
     title: "San Diego Wedding Planner | Award-Winning Wedding Planning Services",
     description:
-      "San Diego's #1 award-winning wedding planner. Full-service planning, coordination & design. 100+ weddings planned with 20+ years experience. Book your free consultation.",
+      "San Diego's #1 award-winning wedding planner. Full-service planning, coordination & design. 50+ weddings planned with 20+ years experience. Book your free consultation.",
     images: [
       {
         url: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767246459/2025.11.21_-_Jessica_Ian_-_Twin_Oaks_Golf_Course-847_websize_rqud58.jpg",
@@ -68,7 +68,7 @@ export default function SanDiegoWeddingPlannerLayout({
     "@id": `${PAGE_URL}#service`,
     name: "San Diego Wedding Planner - Wedding Agency San Diego",
     description:
-      "Award-winning San Diego wedding planner offering full-service wedding planning, coordination, and design services across Southern California. Trusted by 100+ couples.",
+      "Award-winning San Diego wedding planner offering full-service wedding planning, coordination, and design services across Southern California. Trusted by 50+ couples.",
     url: PAGE_URL,
     telephone: "+1 (760) 216-7427",
     email: "nicole@weddingagencysandiego.com",
@@ -76,6 +76,17 @@ export default function SanDiegoWeddingPlannerLayout({
       "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767246459/2025.11.21_-_Jessica_Ian_-_Twin_Oaks_Golf_Course-847_websize_rqud58.jpg",
     priceRange: "$$$",
     serviceType: "Wedding Planning",
+    knowsAbout: [
+      "Wedding Planning",
+      "Wedding Coordination",
+      "Event Design",
+      "Vendor Management",
+      "Wedding Day Management",
+      "Destination Weddings",
+      "Luxury Weddings",
+      "Beach Weddings San Diego",
+      "Vineyard Weddings Temecula",
+    ],
     areaServed: [
       {
         "@type": "City",
@@ -192,6 +203,61 @@ export default function SanDiegoWeddingPlannerLayout({
       "https://www.facebook.com/weddingagencysd",
     ],
     hasMap: "https://share.google/Pltvlw9njBabd209x",
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What makes Wedding Agency San Diego different from other wedding planners in the area?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Wedding Agency San Diego stands out with 20+ years of hospitality experience, a perfect 5.0-star rating across 50+ reviews, and preferred vendor status at 15+ premier venues. Unlike larger agencies, owner Nicole personally handles every wedding, ensuring the attention to detail and personalized care that San Diego couples deserve.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How much does a wedding planner cost in San Diego?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Wedding planner costs in San Diego typically range from $2,000 to $15,000+ depending on services. At Wedding Agency San Diego, Wedding Management starts at $3,500, Partial Planning at $6,500, and Full Service Planning at $11,000+.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which San Diego venues does Wedding Agency San Diego work with?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We're proud to be a preferred vendor at premier venues across Southern California, including Twin Oaks Golf Course, Rancho Valencia Resort, Hotel del Coronado, Fairmont Grand Del Mar, and many more. Our exclusive partnerships mean priority booking access and seamless coordination.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you plan destination weddings outside of San Diego?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! While we specialize in San Diego, La Jolla, Coronado, Del Mar, Carlsbad, and Temecula weddings, we also coordinate destination weddings throughout California and beyond.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How far in advance should I book a wedding planner in San Diego?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The best San Diego wedding planners book 12-18 months in advance, especially for peak wedding season (April-October). However, Wedding Agency San Diego can accommodate shorter timelines when available.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What's included in day-of wedding coordination?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Our Wedding Management package includes up to 12 hours of day-of coverage (compared to the industry standard of 6-8 hours), detailed timeline creation, vendor coordination, ceremony rehearsal direction, and emergency backup planning.",
+        },
+      },
+    ],
   };
 
   return (

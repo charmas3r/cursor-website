@@ -149,9 +149,9 @@ export const couplesQuery = `*[_type == "couple"] | order(weddingDate desc) {
   names,
   slug,
   tagline,
-  venue,
-  venueUrl,
-  location,
+  "venue": venue->name,
+  "venueUrl": venue->website,
+  "location": venue->location,
   displayDate,
   weddingDate,
   heroImage,
@@ -186,9 +186,9 @@ export const featuredCouplesQuery = `*[_type == "couple" && featured == true] | 
   names,
   slug,
   tagline,
-  venue,
-  venueUrl,
-  location,
+  "venue": venue->name,
+  "venueUrl": venue->website,
+  "location": venue->location,
   displayDate,
   weddingDate,
   heroImage,
@@ -217,9 +217,9 @@ export const nonFeaturedCouplesQuery = `*[_type == "couple" && (featured == fals
   names,
   slug,
   tagline,
-  venue,
-  venueUrl,
-  location,
+  "venue": venue->name,
+  "venueUrl": venue->website,
+  "location": venue->location,
   displayDate,
   weddingDate,
   heroImage,
@@ -235,9 +235,9 @@ export const coupleBySlugQuery = `*[_type == "couple" && slug.current == $slug][
   names,
   slug,
   tagline,
-  venue,
-  venueUrl,
-  location,
+  "venue": venue->name,
+  "venueUrl": venue->website,
+  "location": venue->location,
   displayDate,
   weddingDate,
   heroImage,
@@ -289,7 +289,7 @@ export const couplesWithReviewsQuery = `*[_type == "couple" && (defined(review.t
   _id,
   names,
   slug,
-  venue,
+  "venue": venue->name,
   weddingDate,
   review
 }`;
@@ -298,7 +298,7 @@ export const featuredReviewsQuery = `*[_type == "couple" && (defined(review.text
   _id,
   names,
   slug,
-  venue,
+  "venue": venue->name,
   weddingDate,
   review
 }`;
@@ -317,7 +317,7 @@ export const couplesWithVendorsQuery = `*[_type == "couple" && defined(vendors) 
   _id,
   names,
   slug,
-  venue,
+  "venue": venue->name,
   weddingDate,
   vendors[]->{
     _id,
@@ -394,16 +394,74 @@ export async function getFeaturedVendors() {
   return client.fetch(featuredVendorsQuery);
 }
 
-// Preferred venues query - get couples where we are a preferred vendor at the venue
-export const preferredVenuesQuery = `*[_type == "couple" && preferredVenueVendor == true] | order(weddingDate desc) {
+// Preferred venues query (legacy) - get couples where we are a preferred vendor at the venue
+export const legacyPreferredVenuesQuery = `*[_type == "couple" && preferredVenueVendor == true] | order(weddingDate desc) {
   _id,
-  venue,
-  venueUrl,
-  location,
+  "venue": venue->name,
+  "venueUrl": venue->website,
+  "location": venue->location,
   heroImage
+}`;
+
+// Preferred venues query - get venue documents where we are preferred vendor
+export const preferredVenuesQuery = `*[_type == "venue" && preferredVendor == true] | order(weddingCount desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image,
+  description,
+  preferredVendor,
+  weddingCount,
+  featured
+}`;
+
+// All venues query
+export const venuesQuery = `*[_type == "venue"] | order(name asc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image,
+  description,
+  coordinates,
+  preferredVendor,
+  weddingCount,
+  featured
 }`;
 
 export async function getPreferredVenues() {
   return client.fetch(preferredVenuesQuery);
+}
+
+export async function getVenues() {
+  return client.fetch(venuesQuery);
+}
+
+// La Jolla venues query - get venues in La Jolla region
+export const laJollaVenuesQuery = `*[_type == "venue" && region == "la-jolla"] | order(preferredVendor desc, weddingCount desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image,
+  description,
+  coordinates,
+  preferredVendor,
+  weddingCount,
+  featured
+}`;
+
+export async function getLaJollaVenues() {
+  return client.fetch(laJollaVenuesQuery);
 }
 

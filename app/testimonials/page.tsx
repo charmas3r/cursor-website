@@ -118,7 +118,7 @@ export default async function TestimonialsPage() {
             <div className="text-center max-w-4xl mx-auto">
               <span className="inline-flex items-center gap-2 text-blush-500 text-sm font-medium uppercase tracking-wider mb-4">
                 <Heart className="w-4 h-4 fill-blush-500" />
-                Trusted by 100+ Couples
+                Trusted by 50+ Couples
               </span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-charcoal-900 leading-tight">
                 Love Notes from
@@ -148,7 +148,7 @@ export default async function TestimonialsPage() {
                   <Users className="w-6 h-6 text-blush-500" />
                 </div>
                 <div>
-                  <p className="text-2xl font-serif font-bold text-charcoal-900">100+</p>
+                  <p className="text-2xl font-serif font-bold text-charcoal-900">50+</p>
                   <p className="text-xs text-charcoal-500 uppercase tracking-wide">Happy Couples</p>
                 </div>
               </div>

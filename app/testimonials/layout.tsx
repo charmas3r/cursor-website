@@ -6,7 +6,7 @@ const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238922/
 export const metadata: Metadata = {
   title: "San Diego Wedding Planner Reviews | 5-Star Testimonials",
   description:
-    "Read 100+ 5-star reviews from happy couples. See why Wedding Agency San Diego is the top-rated wedding planner in San Diego. Award-winning service, trusted across Southern California.",
+    "Read 50+ 5-star reviews from happy couples. See why Wedding Agency San Diego is the top-rated wedding planner in San Diego. Award-winning service, trusted across Southern California.",
   keywords: [
     "wedding planner reviews",
     "San Diego wedding planner testimonials",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "San Diego Wedding Planner Reviews | 5-Star Testimonials",
     description:
-      "Read 100+ 5-star reviews from happy San Diego couples. Top-rated wedding planner.",
+      "Read 50+ 5-star reviews from happy San Diego couples. Top-rated wedding planner.",
     url: `${SITE_URL}/testimonials`,
     siteName: "Wedding Agency San Diego",
     locale: "en_US",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "San Diego Wedding Planner Reviews | 5-Star Testimonials",
     description:
-      "Read 100+ 5-star reviews from happy San Diego couples. Top-rated wedding planner.",
+      "Read 50+ 5-star reviews from happy San Diego couples. Top-rated wedding planner.",
     images: [OG_IMAGE],
   },
   alternates: {

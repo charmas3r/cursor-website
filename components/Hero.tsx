@@ -91,12 +91,12 @@ const featureCards = [
     ),
     title: "Why Choose Us",
     shortDescription:
-      "100+ weddings, 20+ years in hospitality & events, and multi-award winning. Your day is in expert hands.",
+      "50+ weddings, 20+ years in hospitality & events, and multi-award winning. Your day is in expert hands.",
     modalTitle: "Experience You Can Trust",
     modalDescription:
       "With over 20 years in hospitality and events—from hotels and venues to hands-on service and planning—I've experienced weddings from every angle. This unique perspective means I understand what it takes to create a seamless celebration.",
     highlights: [
-      "100+ weddings successfully planned",
+      "50+ weddings successfully planned",
       "20+ years in hospitality & events",
       "2× The Knot Best of Weddings winner",
       "1× WeddingWire Couples' Choice Award",
@@ -316,7 +316,7 @@ export default function Hero(): JSX.Element {
               </a>
               <div className="w-px h-10 bg-white/30" />
               <div className="text-center">
-                <p className="text-3xl lg:text-4xl font-serif font-semibold text-white">100+</p>
+                <p className="text-3xl lg:text-4xl font-serif font-semibold text-white">50+</p>
                 <p className="text-sm text-white/70 mt-1">Weddings</p>
               </div>
               <div className="w-px h-10 bg-white/30" />
@@ -449,7 +449,7 @@ export default function Hero(): JSX.Element {
             className="flex items-center justify-center gap-6 mt-10 pt-8 border-t border-cream-200"
           >
             <div className="text-center">
-              <p className="text-2xl font-serif font-semibold text-charcoal-900">100+</p>
+              <p className="text-2xl font-serif font-semibold text-charcoal-900">50+</p>
               <p className="text-xs text-charcoal-600 mt-1">Weddings</p>
             </div>
             <div className="w-px h-8 bg-charcoal-300" />

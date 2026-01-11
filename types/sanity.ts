@@ -122,6 +122,50 @@ export interface LegacyVendor {
   url?: string;
 }
 
+// Venue document type
+export interface VenueDocument {
+  _id: string;
+  name: string;
+  slug: SanitySlug;
+  location: string;
+  region?: VenueRegion;
+  type?: VenueType;
+  website?: string;
+  image?: SanityImage;
+  description?: string;
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
+  preferredVendor: boolean;
+  weddingCount: number;
+  featured: boolean;
+}
+
+export type VenueRegion =
+  | "san-diego"
+  | "la-jolla"
+  | "coronado"
+  | "del-mar"
+  | "carlsbad"
+  | "rancho-santa-fe"
+  | "temecula"
+  | "fallbrook"
+  | "encinitas"
+  | "orange-county";
+
+export type VenueType =
+  | "golf-course"
+  | "resort"
+  | "winery"
+  | "estate"
+  | "beach"
+  | "garden"
+  | "hotel"
+  | "historic"
+  | "private-club"
+  | "other";
+
 // Couple Portfolio types - keeping for backwards compatibility
 export interface Vendor {
   role: string;

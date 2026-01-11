@@ -2,22 +2,17 @@
 
 import dynamic from "next/dynamic";
 
-// Venue location data
-const venueLocations = [
-  { name: "Twin Oaks Golf Course", location: "San Marcos", lat: 33.1283, lng: -117.1653 },
-  { name: "Rancho Valencia Resort", location: "Rancho Santa Fe", lat: 33.0089, lng: -117.2019 },
-  { name: "Hotel del Coronado", location: "Coronado", lat: 32.6810, lng: -117.1780 },
-  { name: "The Lodge at Torrey Pines", location: "La Jolla", lat: 32.9005, lng: -117.2467 },
-  { name: "Bernardo Winery", location: "San Diego", lat: 33.0601, lng: -117.0661 },
-  { name: "Estancia La Jolla", location: "La Jolla", lat: 32.8598, lng: -117.2249 },
-  { name: "Mount Palomar Winery", location: "Temecula", lat: 33.3547, lng: -117.0022 },
-  { name: "Fairmont Grand Del Mar", location: "San Diego", lat: 32.9419, lng: -117.2089 },
-  { name: "The Prado at Balboa Park", location: "San Diego", lat: 32.7316, lng: -117.1453 },
-  { name: "US Grant Hotel", location: "Downtown San Diego", lat: 32.7198, lng: -117.1628 },
-  { name: "La Jolla Cove", location: "La Jolla", lat: 32.8503, lng: -117.2731 },
-  { name: "Sunset Cliffs", location: "San Diego", lat: 32.7195, lng: -117.2547 },
-  { name: "Anza-Borrego Desert", location: "Anza-Borrego", lat: 33.2558, lng: -116.4017 },
-];
+// Venue data for map display
+export interface MapVenue {
+  name: string;
+  location: string;
+  lat: number;
+  lng: number;
+  preferred?: boolean;
+  imageUrl?: string;
+  weddingCount?: number;
+  website?: string;
+}
 
 // We need to dynamically import the map component to avoid SSR issues with Leaflet
 const MapComponent = dynamic(
@@ -34,15 +29,33 @@ const MapComponent = dynamic(
 
 interface VenueMapProps {
   className?: string;
+  venues: MapVenue[];
 }
 
-export default function VenueMap({ className }: VenueMapProps): JSX.Element {
+export default function VenueMap({ className, venues }: VenueMapProps): JSX.Element {
+  // Filter out venues without valid coordinates (check for actual number, not falsiness)
+  const validVenues = venues.filter(v => 
+    typeof v.lat === 'number' && 
+    typeof v.lng === 'number' && 
+    !isNaN(v.lat) && 
+    !isNaN(v.lng)
+  );
+  
+  if (validVenues.length === 0) {
+    return (
+      <div className={className}>
+        <div className="w-full h-full min-h-[400px] bg-charcoal-800 flex items-center justify-center">
+          <div className="text-white/60 text-sm">No venues with coordinates available</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={className}>
-      <MapComponent venues={venueLocations} />
+      <MapComponent venues={validVenues} />
     </div>
   );
 }
 
-export { venueLocations };
 export type { VenueMapProps };

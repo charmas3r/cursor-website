@@ -6,7 +6,7 @@ const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238922/
 export const metadata: Metadata = {
   title: "Wedding Portfolio | San Diego Wedding Photography & Planning",
   description:
-    "Browse our portfolio of 100+ beautiful San Diego weddings. From beachfront ceremonies to vineyard celebrations, see how Wedding Agency San Diego brings love stories to life.",
+    "Browse our portfolio of 50+ beautiful San Diego weddings. From beachfront ceremonies to vineyard celebrations, see how Wedding Agency San Diego brings love stories to life.",
   keywords: [
     "San Diego wedding portfolio",
     "wedding photography San Diego",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Wedding Portfolio | Wedding Agency San Diego",
     description:
-      "Explore 100+ stunning weddings we've planned across San Diego. Beach ceremonies, vineyard celebrations, and more.",
+      "Explore 50+ stunning weddings we've planned across San Diego. Beach ceremonies, vineyard celebrations, and more.",
     url: `${SITE_URL}/portfolio`,
     siteName: "Wedding Agency San Diego",
     locale: "en_US",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wedding Portfolio | Wedding Agency San Diego",
     description:
-      "Explore 100+ stunning weddings we've planned across San Diego.",
+      "Explore 50+ stunning weddings we've planned across San Diego.",
     images: [OG_IMAGE],
   },
   alternates: {
@@ -56,7 +56,7 @@ export default function PortfolioLayout({
     "@type": "CollectionPage",
     name: "Wedding Portfolio - Wedding Agency San Diego",
     description:
-      "Browse our portfolio of 100+ beautiful San Diego weddings featuring beach ceremonies, vineyard celebrations, and luxury events.",
+      "Browse our portfolio of 50+ beautiful San Diego weddings featuring beach ceremonies, vineyard celebrations, and luxury events.",
     url: `${SITE_URL}/portfolio`,
     image: OG_IMAGE,
     isPartOf: {
