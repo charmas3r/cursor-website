@@ -1,5 +1,5 @@
 import { getCouplesWithVendors } from "@/lib/sanity";
-import type { CoupleWithVendors, AggregatedVendor } from "@/types/sanity";
+import type { CoupleWithVendors, AggregatedVendor, VendorDocument, VendorCategory } from "@/types/sanity";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import VendorDirectory from "@/components/VendorDirectory";
@@ -7,15 +7,29 @@ import Link from "next/link";
 
 export const revalidate = 60;
 
-// Clean up role names for display
-function cleanRoleName(role: string): string {
-  // Remove "Ceremony" from florist roles
-  let cleaned = role.replace(/ceremony\s*/i, "").trim();
-  // Capitalize first letter if needed
-  if (cleaned.length > 0) {
-    cleaned = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
-  }
-  return cleaned || role;
+// Map category values to display names
+const CATEGORY_DISPLAY_NAMES: Record<VendorCategory, string> = {
+  "photography": "Photography",
+  "videography": "Videography",
+  "florals": "Florals",
+  "catering": "Catering",
+  "dj-music": "Music & Entertainment",
+  "band": "Music & Entertainment",
+  "hair-makeup": "Beauty Team",
+  "officiant": "Officiants",
+  "cake-desserts": "Cake & Desserts",
+  "rentals": "Rentals",
+  "lighting": "Decor & Lighting",
+  "transportation": "Transportation",
+  "invitations-stationery": "Stationery",
+  "photo-booth": "Photo Booth Rentals",
+  "other": "Other",
+};
+
+// Get display name for a vendor category
+function getCategoryDisplayName(category?: VendorCategory): string {
+  if (!category) return "Other";
+  return CATEGORY_DISPLAY_NAMES[category] || "Other";
 }
 
 // Normalize vendor name for deduplication
@@ -37,9 +51,11 @@ function aggregateVendors(couples: CoupleWithVendors[]): AggregatedVendor[] {
   couples.forEach((couple) => {
     if (!couple.vendors) return;
 
-    couple.vendors.forEach((vendor) => {
-      // Create a unique key based on vendor name (normalized)
-      const key = normalizeVendorName(vendor.name);
+    couple.vendors.forEach((vendor: VendorDocument) => {
+      if (!vendor || !vendor.name) return;
+      
+      // Create a unique key based on vendor ID or normalized name
+      const key = vendor._id || normalizeVendorName(vendor.name);
 
       if (vendorMap.has(key)) {
         // Add this wedding to existing vendor
@@ -49,16 +65,21 @@ function aggregateVendors(couples: CoupleWithVendors[]): AggregatedVendor[] {
           slug: couple.slug.current,
           venue: couple.venue,
         });
-        // Update URL if not set
-        if (!existing.url && vendor.url) {
-          existing.url = vendor.url;
-        }
       } else {
-        // Create new vendor entry
+        // Create new vendor entry from VendorDocument
         vendorMap.set(key, {
+          _id: vendor._id,
           name: vendor.name,
-          role: cleanRoleName(vendor.role),
-          url: vendor.url,
+          role: getCategoryDisplayName(vendor.category),
+          category: vendor.category,
+          url: vendor.website,
+          website: vendor.website,
+          instagram: vendor.instagram,
+          logo: vendor.logo,
+          description: vendor.description,
+          location: vendor.location,
+          preferred: vendor.preferred,
+          weddingCount: vendor.weddingCount,
           weddings: [
             {
               names: couple.names,
@@ -85,7 +106,8 @@ function groupVendorsByRole(vendors: AggregatedVendor[]): Record<string, Aggrega
   const groups: Record<string, AggregatedVendor[]> = {};
 
   vendors.forEach((vendor) => {
-    const role = normalizeRole(vendor.role);
+    // Use the role field directly (it's already the display name from getCategoryDisplayName)
+    const role = vendor.role || "Other";
     if (!groups[role]) {
       groups[role] = [];
     }
@@ -93,32 +115,6 @@ function groupVendorsByRole(vendors: AggregatedVendor[]): Record<string, Aggrega
   });
 
   return groups;
-}
-
-// Normalize vendor roles to consistent categories
-function normalizeRole(role: string): string {
-  const roleLower = role.toLowerCase();
-
-  // Photo booth must be checked before photography to catch "photo booth"
-  if (roleLower.includes("booth")) return "Photo Booth Rentals";
-  if (roleLower.includes("photo")) return "Photography";
-  if (roleLower.includes("video") || roleLower.includes("film")) return "Videography";
-  if (roleLower.includes("flor") || roleLower.includes("flower")) return "Florals";
-  if (roleLower.includes("cater") || roleLower.includes("food")) return "Catering";
-  if (roleLower.includes("cake") || roleLower.includes("dessert") || roleLower.includes("bakery")) return "Cake & Desserts";
-  if (roleLower.includes("dj") || roleLower.includes("music") || roleLower.includes("band")) return "Music & Entertainment";
-  if (roleLower.includes("hair") || roleLower.includes("makeup") || roleLower.includes("beauty") || roleLower.includes("glam")) return "Beauty Team";
-  if (roleLower.includes("dress") || roleLower.includes("bridal") || roleLower.includes("gown")) return "Bridal Attire";
-  if (roleLower.includes("suit") || roleLower.includes("tux") || roleLower.includes("groom")) return "Groom Attire";
-  if (roleLower.includes("venue")) return "Venues";
-  if (roleLower.includes("rental") || roleLower.includes("furniture")) return "Rentals";
-  if (roleLower.includes("station") || roleLower.includes("invit") || roleLower.includes("paper")) return "Stationery";
-  if (roleLower.includes("officiant") || roleLower.includes("minister")) return "Officiants";
-  if (roleLower.includes("transport") || roleLower.includes("limo") || roleLower.includes("car")) return "Transportation";
-  if (roleLower.includes("light") || roleLower.includes("decor") || roleLower.includes("design")) return "Decor & Lighting";
-
-  // Return original role with first letter capitalized
-  return role.charAt(0).toUpperCase() + role.slice(1);
 }
 
 // Define the order of categories

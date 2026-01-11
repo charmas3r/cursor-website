@@ -283,6 +283,9 @@ export default function VendorDirectory({
 }
 
 function VendorCard({ vendor }: { vendor: AggregatedVendor }): JSX.Element {
+  // Use website (new field) or url (legacy field)
+  const vendorUrl = vendor.website || vendor.url;
+  
   return (
     <div className="group bg-cream-50 rounded-2xl p-6 border border-cream-200 hover:border-blush-200 hover:shadow-lg transition-all duration-300">
       <div className="flex items-start justify-between gap-4 mb-4">
@@ -291,10 +294,15 @@ function VendorCard({ vendor }: { vendor: AggregatedVendor }): JSX.Element {
             {vendor.name}
           </h3>
           <p className="text-sm text-charcoal-500">{vendor.role}</p>
+          {vendor.preferred && (
+            <span className="inline-flex items-center gap-1 text-xs text-blush-600 font-medium mt-1">
+              <Award className="w-3 h-3" /> Preferred
+            </span>
+          )}
         </div>
-        {vendor.url && (
+        {vendorUrl && (
           <a
-            href={vendor.url}
+            href={vendorUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => umami.track("link_click_vendor_website", { vendor: vendor.name })}

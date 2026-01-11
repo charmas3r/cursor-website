@@ -80,7 +80,49 @@ export interface SiteAsset {
   description?: string;
 }
 
-// Couple Portfolio types
+// Vendor document type (standalone document)
+export interface VendorDocument {
+  _id: string;
+  name: string;
+  slug: SanitySlug;
+  category: VendorCategory;
+  website?: string;
+  instagram?: string;
+  email?: string;
+  phone?: string;
+  logo?: SanityImage;
+  description?: string;
+  location?: string;
+  preferred: boolean;
+  weddingCount: number;
+  featured: boolean;
+}
+
+export type VendorCategory =
+  | "photography"
+  | "videography"
+  | "florals"
+  | "catering"
+  | "dj-music"
+  | "band"
+  | "hair-makeup"
+  | "officiant"
+  | "cake-desserts"
+  | "rentals"
+  | "lighting"
+  | "transportation"
+  | "invitations-stationery"
+  | "photo-booth"
+  | "other";
+
+// Legacy vendor type (inline object, deprecated)
+export interface LegacyVendor {
+  role: string;
+  name: string;
+  url?: string;
+}
+
+// Couple Portfolio types - keeping for backwards compatibility
 export interface Vendor {
   role: string;
   name: string;
@@ -111,7 +153,8 @@ export interface Couple {
   style?: string;
   colors?: string[];
   review?: CoupleReview;
-  vendors?: Vendor[];
+  vendors?: VendorDocument[]; // Now references vendor documents
+  legacyVendors?: LegacyVendor[]; // Legacy inline vendors (deprecated)
   highlights?: string[];
   galleryImages: SanityImage[];
 }
@@ -133,14 +176,23 @@ export interface CoupleWithVendors {
   slug: SanitySlug;
   venue: string;
   weddingDate: string;
-  vendors: Vendor[];
+  vendors: VendorDocument[];
 }
 
-// Aggregated vendor for directory display
+// Aggregated vendor for directory display (works with both old and new formats)
 export interface AggregatedVendor {
+  _id?: string;
   name: string;
-  role: string;
+  role: string; // Category label for display
+  category?: VendorCategory; // New category field from vendor document
   url?: string;
+  website?: string;
+  instagram?: string;
+  logo?: SanityImage;
+  description?: string;
+  location?: string;
+  preferred?: boolean;
+  weddingCount?: number;
   weddings: Array<{
     names: string;
     slug: string;

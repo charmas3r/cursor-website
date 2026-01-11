@@ -160,7 +160,23 @@ export const couplesQuery = `*[_type == "couple"] | order(weddingDate desc) {
   style,
   colors,
   review,
-  vendors,
+  vendors[]->{
+    _id,
+    name,
+    slug,
+    category,
+    website,
+    instagram,
+    email,
+    phone,
+    logo,
+    description,
+    location,
+    preferred,
+    weddingCount,
+    featured
+  },
+  legacyVendors,
   highlights,
   galleryImages
 }`;
@@ -181,7 +197,17 @@ export const featuredCouplesQuery = `*[_type == "couple" && featured == true] | 
   style,
   colors,
   review,
-  vendors,
+  vendors[]->{
+    _id,
+    name,
+    slug,
+    category,
+    website,
+    instagram,
+    preferred,
+    weddingCount
+  },
+  legacyVendors,
   highlights,
   galleryImages
 }`;
@@ -220,7 +246,23 @@ export const coupleBySlugQuery = `*[_type == "couple" && slug.current == $slug][
   style,
   colors,
   review,
-  vendors,
+  vendors[]->{
+    _id,
+    name,
+    slug,
+    category,
+    website,
+    instagram,
+    email,
+    phone,
+    logo,
+    description,
+    location,
+    preferred,
+    weddingCount,
+    featured
+  },
+  legacyVendors,
   highlights,
   galleryImages
 }`;
@@ -277,11 +319,79 @@ export const couplesWithVendorsQuery = `*[_type == "couple" && defined(vendors) 
   slug,
   venue,
   weddingDate,
-  vendors
+  vendors[]->{
+    _id,
+    name,
+    slug,
+    category,
+    website,
+    instagram,
+    preferred,
+    weddingCount,
+    featured
+  }
+}`;
+
+// Get all vendor documents directly
+export const vendorsQuery = `*[_type == "vendor"] | order(name asc) {
+  _id,
+  name,
+  slug,
+  category,
+  website,
+  instagram,
+  email,
+  phone,
+  logo,
+  description,
+  location,
+  preferred,
+  weddingCount,
+  featured
+}`;
+
+export const preferredVendorsQuery = `*[_type == "vendor" && preferred == true] | order(weddingCount desc) {
+  _id,
+  name,
+  slug,
+  category,
+  website,
+  instagram,
+  logo,
+  description,
+  location,
+  weddingCount,
+  featured
+}`;
+
+export const featuredVendorsQuery = `*[_type == "vendor" && featured == true] | order(weddingCount desc) {
+  _id,
+  name,
+  slug,
+  category,
+  website,
+  instagram,
+  logo,
+  description,
+  location,
+  weddingCount
 }`;
 
 export async function getCouplesWithVendors() {
   return client.fetch(couplesWithVendorsQuery);
+}
+
+// Vendor fetch functions
+export async function getVendors() {
+  return client.fetch(vendorsQuery);
+}
+
+export async function getPreferredVendors() {
+  return client.fetch(preferredVendorsQuery);
+}
+
+export async function getFeaturedVendors() {
+  return client.fetch(featuredVendorsQuery);
 }
 
 // Preferred venues query - get couples where we are a preferred vendor at the venue
