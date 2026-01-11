@@ -111,7 +111,7 @@ export default function Navigation(): JSX.Element {
             className="flex items-center gap-2 font-serif font-bold text-charcoal-900 tracking-tight"
           >
             <Image
-              src="/favicon.png"
+              src="/favicon-96x96.png"
               alt="Wedding Agency San Diego"
               width={28}
               height={28}
