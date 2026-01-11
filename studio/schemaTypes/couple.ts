@@ -37,29 +37,40 @@ export default defineType({
     }),
     defineField({
       name: 'venue',
-      title: 'Venue Name',
-      type: 'string',
+      title: 'Venue',
+      type: 'reference',
+      to: [{type: 'venue'}],
+      description: 'Select the wedding venue',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'venueName',
+      title: 'Venue Name (Legacy)',
+      type: 'string',
+      description: 'Legacy field - use Venue reference instead',
+      hidden: true,
     }),
     defineField({
       name: 'venueUrl',
-      title: 'Venue URL',
+      title: 'Venue URL (Legacy)',
       type: 'url',
-      description: 'Link to the venue website',
+      description: 'Legacy field - venue URL is now on the Venue document',
+      hidden: true,
     }),
     defineField({
       name: 'preferredVenueVendor',
-      title: 'Preferred Venue Vendor',
+      title: 'Preferred Venue Vendor (Legacy)',
       type: 'boolean',
-      description: 'Check this if Wedding Agency San Diego is a preferred vendor at this venue',
+      description: 'Legacy field - preferred status is now on the Venue document',
       initialValue: false,
+      hidden: true,
     }),
     defineField({
       name: 'location',
-      title: 'Location',
+      title: 'Location (Legacy)',
       type: 'string',
-      description: 'e.g., "Rancho Santa Fe, CA"',
-      validation: (Rule) => Rule.required(),
+      description: 'Legacy field - location is now on the Venue document',
+      hidden: true,
     }),
     defineField({
       name: 'displayDate',
@@ -160,6 +171,19 @@ export default defineType({
       type: 'array',
       of: [
         {
+          type: 'reference',
+          to: [{type: 'vendor'}],
+        },
+      ],
+      description: 'Select vendors who worked on this wedding',
+    }),
+    defineField({
+      name: 'legacyVendors',
+      title: 'Vendors (Legacy)',
+      type: 'array',
+      hidden: true,
+      of: [
+        {
           type: 'object',
           fields: [
             {
@@ -245,15 +269,15 @@ export default defineType({
   preview: {
     select: {
       title: 'names',
-      subtitle: 'venue',
+      venueName: 'venue.name',
       media: 'heroImage',
       featured: 'featured',
     },
     prepare(selection) {
-      const {title, subtitle, media, featured} = selection
+      const {title, venueName, media, featured} = selection
       return {
         title: featured ? `⭐ ${title}` : title,
-        subtitle,
+        subtitle: venueName || 'No venue selected',
         media,
       }
     },
