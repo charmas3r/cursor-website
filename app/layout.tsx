@@ -86,11 +86,11 @@ export const metadata: Metadata = {
   category: "wedding planning",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.ico?v=2", sizes: "48x48" },
+      { url: "/favicon-96x96.png?v=2", sizes: "96x96", type: "image/png" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" },
     ],
   },
   manifest: "/site.webmanifest",
