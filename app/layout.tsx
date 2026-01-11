@@ -95,6 +95,11 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Wedding Agency SD",
+    statusBarStyle: "default",
+  },
 };
 
 interface RootLayoutProps {
