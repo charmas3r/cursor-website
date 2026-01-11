@@ -198,7 +198,7 @@ export default function Hero(): JSX.Element {
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source 
-              src="https://res.cloudinary.com/dvdrv4i4x/video/upload/v1767238757/main-highlights_d26wyt.mp4" 
+              src="https://res.cloudinary.com/dvdrv4i4x/video/upload/v1768097505/output-super-final_chlljs.mp4" 
               type="video/mp4" 
             />
           </video>
