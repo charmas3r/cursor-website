@@ -18,14 +18,14 @@ const playfairDisplay = Playfair_Display({
 });
 
 const SITE_URL = "https://weddingagencysandiego.com";
-const SITE_NAME = "Wedding Agency San Diego";
+const SITE_NAME = "San Diego Wedding Planner";
 const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767246459/2025.11.21_-_Jessica_Ian_-_Twin_Oaks_Golf_Course-847_websize_rqud58.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Wedding Agency San Diego",
-    template: "%s | Wedding Agency San Diego",
+    default: "San Diego Wedding Planner",
+    template: "%s | San Diego Wedding Planner",
   },
   description:
     "San Diego's premier wedding planning agency. We specialize in full-service planning, wedding management, and destination weddings. 100+ weddings planned with 20+ years in hospitality & events.",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Wedding Agency San Diego",
+    title: "San Diego Wedding Planner",
     description:
       "San Diego's premier wedding planning agency with 100+ weddings planned and 20+ years in hospitality & events crafting unforgettable celebrations.",
     images: [
@@ -68,13 +68,13 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Wedding Agency San Diego - Creating Unforgettable Weddings",
+        alt: "San Diego Wedding Planner - Creating Unforgettable Weddings",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wedding Agency San Diego",
+    title: "San Diego Wedding Planner",
     description:
       "San Diego's premier wedding planning agency. Full-service planning, wedding management & destination weddings.",
     images: [OG_IMAGE],
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   appleWebApp: {
     capable: true,
-    title: "Wedding Agency SD",
+    title: "SD Wedding Planner",
     statusBarStyle: "default",
   },
 };
