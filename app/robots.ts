@@ -8,7 +8,16 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/studio/'],
+        disallow: [
+          '/api/',
+          '/studio/',
+          // Block legacy URLs and query parameter variations
+          '/blog/f/',
+          '/*?blog=',
+          '/*?blogcategory=',
+          '/*?*blog=',
+          '/*?*blogcategory=',
+        ],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
