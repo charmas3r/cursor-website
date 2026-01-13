@@ -18,13 +18,7 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // www to non-www redirect
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.weddingagencysandiego.com" }],
-        destination: "https://weddingagencysandiego.com/:path*",
-        permanent: true,
-      },
+      // NOTE: www to non-www redirect is handled in Vercel domain settings
       // Legacy page redirects (from GoDaddy migration)
       {
         source: "/about-us",
