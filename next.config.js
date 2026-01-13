@@ -25,6 +25,23 @@ const nextConfig = {
         destination: "https://weddingagencysandiego.com/:path*",
         permanent: true,
       },
+      // Legacy page redirects (from GoDaddy migration)
+      {
+        source: "/about-us",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/#contact",
+        permanent: true,
+      },
+      // Legacy portfolio URL (URL-encoded & symbol)
+      {
+        source: "/wendy-%26-justin",
+        destination: "/portfolio/wendy-justin",
+        permanent: true,
+      },
       // Legacy blog URL redirects (from previous website)
       {
         source: "/blog/f/how-to-build-the-perfect-wedding-website",
@@ -39,6 +56,21 @@ const nextConfig = {
       {
         source: "/blog/f/rehearsal-dinner-planning-tips-a-wedding-planner-s-guide",
         destination: "/blog/rehearsal-dinner-planning-tips-a-wedding-planners-guide",
+        permanent: true,
+      },
+      {
+        source: "/blog/f/how-to-create-the-perfect-wedding-guest-list",
+        destination: "/blog/how-to-create-the-perfect-wedding-guest-list",
+        permanent: true,
+      },
+      {
+        source: "/blog/f/the-ultimate-brides-wedding-checklist-your-month-by-month-guide",
+        destination: "/blog/the-ultimate-brides-wedding-checklist-your-month-by-month-guide",
+        permanent: true,
+      },
+      {
+        source: "/blog/f/top-san-diego-wedding-venues-for-every-wedding-style",
+        destination: "/blog/top-san-diego-wedding-venues-for-every-wedding-style",
         permanent: true,
       },
       // Catch-all for any other legacy /blog/f/ URLs
