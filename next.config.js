@@ -92,6 +92,13 @@ const nextConfig = {
         destination: "/blog",
         permanent: true,
       },
+      // Strip query parameters from homepage
+      {
+        source: "/",
+        has: [{ type: "query", key: "blog" }],
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };
