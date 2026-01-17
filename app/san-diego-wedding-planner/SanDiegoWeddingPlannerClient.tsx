@@ -309,8 +309,9 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
       ? { lat: venue.coordinates.lat, lng: venue.coordinates.lng }
       : getCoordinatesForLocation(venue.location);
     
-    // Build image URL if venue has an image
-    const imageUrl = venue.image 
+    // Build image URL if venue has a valid image with asset reference
+    const hasValidImage = venue.image && venue.image.asset;
+    const imageUrl = hasValidImage && venue.image
       ? urlFor(venue.image).width(400).height(200).url()
       : undefined;
     
@@ -1093,74 +1094,80 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
               animate={venuesInView ? "visible" : "hidden"}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             >
-              {preferredVenues.map((venue) => (
-                <motion.div
-                  key={venue._id}
-                  variants={itemVariants}
-                  className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500"
-                >
-                  {/* Venue Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    {venue.image ? (
-                      <Image
-                        src={urlFor(venue.image).width(600).height(400).url()}
-                        alt={venue.image.alt || `Wedding at ${venue.name}`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-cream-200 flex items-center justify-center">
-                        <Building2 className="w-12 h-12 text-cream-400" />
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/60 via-transparent to-transparent" />
+              {preferredVenues.map((venue) => {
+                // Safely check if venue has a valid image with asset reference
+                const hasValidImage = venue.image && venue.image.asset;
+                const weddingCount = venue.weddingCount || 0;
+                
+                return (
+                  <motion.div
+                    key={venue._id}
+                    variants={itemVariants}
+                    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500"
+                  >
+                    {/* Venue Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      {hasValidImage && venue.image ? (
+                        <Image
+                          src={urlFor(venue.image).width(600).height(400).url()}
+                          alt={venue.image.alt || `Wedding at ${venue.name}`}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-cream-200 flex items-center justify-center">
+                          <Building2 className="w-12 h-12 text-cream-400" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/60 via-transparent to-transparent" />
 
-                    {/* Preferred Badge */}
-                    <div className="absolute top-4 left-4">
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full shadow-md">
-                        <Award className="w-3.5 h-3.5 text-blush-500" />
-                        <span className="text-xs font-semibold text-charcoal-800">Preferred Vendor</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <h3 className="text-xl font-serif font-semibold text-charcoal-900 group-hover:text-blush-600 transition-colors">
-                          {venue.name}
-                        </h3>
-                        <div className="flex items-center gap-1.5 mt-1.5 text-charcoal-500">
-                          <MapPin className="w-3.5 h-3.5" />
-                          <span className="text-sm">{venue.location}</span>
+                      {/* Preferred Badge */}
+                      <div className="absolute top-4 left-4">
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full shadow-md">
+                          <Award className="w-3.5 h-3.5 text-blush-500" />
+                          <span className="text-xs font-semibold text-charcoal-800">Preferred Vendor</span>
                         </div>
                       </div>
-                      {venue.website && (
-                        <a
-                          href={venue.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => umami.track("link_click_venue_external", { venue: venue.name })}
-                          className="flex-shrink-0 w-10 h-10 rounded-xl bg-cream-100 flex items-center justify-center text-charcoal-400 hover:text-blush-500 hover:bg-blush-50 transition-colors"
-                          aria-label={`Visit ${venue.name} website`}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      )}
                     </div>
 
-                    {/* Wedding count */}
-                    <div className="mt-4 pt-4 border-t border-cream-200">
-                      <p className="text-sm text-charcoal-600">
-                        <span className="font-semibold text-blush-500">{venue.weddingCount || 0}</span>
-                        {" "}wedding{venue.weddingCount !== 1 ? "s" : ""} planned at this venue
-                      </p>
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <h3 className="text-xl font-serif font-semibold text-charcoal-900 group-hover:text-blush-600 transition-colors">
+                            {venue.name}
+                          </h3>
+                          <div className="flex items-center gap-1.5 mt-1.5 text-charcoal-500">
+                            <MapPin className="w-3.5 h-3.5" />
+                            <span className="text-sm">{venue.location || "San Diego"}</span>
+                          </div>
+                        </div>
+                        {venue.website && (
+                          <a
+                            href={venue.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => umami.track("link_click_venue_external", { venue: venue.name })}
+                            className="flex-shrink-0 w-10 h-10 rounded-xl bg-cream-100 flex items-center justify-center text-charcoal-400 hover:text-blush-500 hover:bg-blush-50 transition-colors"
+                            aria-label={`Visit ${venue.name} website`}
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        )}
+                      </div>
+
+                      {/* Wedding count */}
+                      <div className="mt-4 pt-4 border-t border-cream-200">
+                        <p className="text-sm text-charcoal-600">
+                          <span className="font-semibold text-blush-500">{weddingCount}</span>
+                          {" "}wedding{weddingCount !== 1 ? "s" : ""} planned at this venue
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </motion.div>
           ) : (
             <div className="text-center py-12">

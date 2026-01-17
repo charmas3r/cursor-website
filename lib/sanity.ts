@@ -404,7 +404,8 @@ export const legacyPreferredVenuesQuery = `*[_type == "couple" && preferredVenue
 }`;
 
 // Preferred venues query - get venue documents where we are preferred vendor
-export const preferredVenuesQuery = `*[_type == "venue" && preferredVendor == true] | order(weddingCount desc) {
+// Using coalesce to handle undefined/null values for ordering
+export const preferredVenuesQuery = `*[_type == "venue" && preferredVendor == true] | order(coalesce(weddingCount, 0) desc, name asc) {
   _id,
   name,
   slug,
@@ -412,10 +413,14 @@ export const preferredVenuesQuery = `*[_type == "venue" && preferredVendor == tr
   region,
   type,
   website,
-  image,
+  image {
+    ...,
+    asset->
+  },
   description,
+  coordinates,
   preferredVendor,
-  weddingCount,
+  "weddingCount": coalesce(weddingCount, 0),
   featured
 }`;
 
@@ -428,11 +433,14 @@ export const venuesQuery = `*[_type == "venue"] | order(name asc) {
   region,
   type,
   website,
-  image,
+  image {
+    ...,
+    asset->
+  },
   description,
   coordinates,
   preferredVendor,
-  weddingCount,
+  "weddingCount": coalesce(weddingCount, 0),
   featured
 }`;
 
@@ -445,7 +453,7 @@ export async function getVenues() {
 }
 
 // La Jolla venues query - get venues in La Jolla region
-export const laJollaVenuesQuery = `*[_type == "venue" && region == "la-jolla"] | order(preferredVendor desc, weddingCount desc) {
+export const laJollaVenuesQuery = `*[_type == "venue" && region == "la-jolla"] | order(preferredVendor desc, coalesce(weddingCount, 0) desc) {
   _id,
   name,
   slug,
@@ -453,11 +461,14 @@ export const laJollaVenuesQuery = `*[_type == "venue" && region == "la-jolla"] |
   region,
   type,
   website,
-  image,
+  image {
+    ...,
+    asset->
+  },
   description,
   coordinates,
   preferredVendor,
-  weddingCount,
+  "weddingCount": coalesce(weddingCount, 0),
   featured
 }`;
 
