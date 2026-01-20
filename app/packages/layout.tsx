@@ -45,6 +45,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/packages`,
   },
+  icons: {
+    icon: '/favicon.ico', // Standard favicon
+    shortcut: '/favicon-96x96.png',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest'
 };
 
 export default function PackagesLayout({
