@@ -118,3 +118,8 @@
 .leaflet-control-zoom a:hover {
   background: rgba(50, 50, 50, 0.95) !important;
 }
+
+/* Hide reCAPTCHA badge - branding text shown in form instead */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

@@ -481,6 +481,29 @@ export default function Contact(): JSX.Element {
                           "Send Message"
                         )}
                       </Button>
+
+                      {/* reCAPTCHA branding (required when hiding badge) */}
+                      <p className="text-xs text-charcoal-400 text-center mt-4">
+                        This site is protected by reCAPTCHA and the Google{" "}
+                        <a
+                          href="https://policies.google.com/privacy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-charcoal-600 transition-colors"
+                        >
+                          Privacy Policy
+                        </a>{" "}
+                        and{" "}
+                        <a
+                          href="https://policies.google.com/terms"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-charcoal-600 transition-colors"
+                        >
+                          Terms of Service
+                        </a>{" "}
+                        apply.
+                      </p>
                     </div>
                   </motion.form>
                 )}
