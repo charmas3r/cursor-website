@@ -10,7 +10,21 @@ interface ContactFormData {
   date?: string;
   venue?: string;
   message?: string;
+  website?: string; // Honeypot field - should be empty
+  recaptchaToken?: string;
 }
+
+interface RecaptchaResponse {
+  success: boolean;
+  score?: number;
+  action?: string;
+  challenge_ts?: string;
+  hostname?: string;
+  "error-codes"?: string[];
+}
+
+// Minimum score threshold (0.0 - 1.0, higher = more likely human)
+const RECAPTCHA_SCORE_THRESHOLD = 0.5;
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,7 +41,70 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const body: ContactFormData = await request.json();
-    const { name, email, phone, date, venue, message } = body;
+    const { name, email, phone, date, venue, message, website, recaptchaToken } = body;
+
+    // Honeypot check - if the hidden field has a value, it's likely a bot
+    // Return fake success to not tip off the bot
+    if (website) {
+      console.log("Honeypot triggered - likely bot submission blocked");
+      return NextResponse.json(
+        { success: true, message: "Email sent successfully" },
+        { status: 200 }
+      );
+    }
+
+    // reCAPTCHA v3 verification
+    if (recaptchaToken && process.env.RECAPTCHA_SECRET_KEY) {
+      try {
+        const recaptchaResponse = await fetch(
+          "https://www.google.com/recaptcha/api/siteverify",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({
+              secret: process.env.RECAPTCHA_SECRET_KEY,
+              response: recaptchaToken,
+            }),
+          }
+        );
+
+        const recaptchaResult: RecaptchaResponse = await recaptchaResponse.json();
+
+        if (!recaptchaResult.success) {
+          console.log("reCAPTCHA verification failed:", recaptchaResult["error-codes"]);
+          return NextResponse.json(
+            { success: true, message: "Email sent successfully" },
+            { status: 200 }
+          );
+        }
+
+        if (recaptchaResult.score !== undefined && recaptchaResult.score < RECAPTCHA_SCORE_THRESHOLD) {
+          console.log(`reCAPTCHA score too low: ${recaptchaResult.score} (threshold: ${RECAPTCHA_SCORE_THRESHOLD})`);
+          return NextResponse.json(
+            { success: true, message: "Email sent successfully" },
+            { status: 200 }
+          );
+        }
+
+        // Verify the action matches what we expect
+        if (recaptchaResult.action !== "contact_form") {
+          console.log(`reCAPTCHA action mismatch: expected "contact_form", got "${recaptchaResult.action}"`);
+          return NextResponse.json(
+            { success: true, message: "Email sent successfully" },
+            { status: 200 }
+          );
+        }
+
+        console.log(`reCAPTCHA passed - score: ${recaptchaResult.score}`);
+      } catch (recaptchaError) {
+        console.error("reCAPTCHA verification error:", recaptchaError);
+        // Continue processing - don't block if reCAPTCHA service is down
+      }
+    } else if (!recaptchaToken) {
+      console.log("No reCAPTCHA token provided - relying on honeypot only");
+    }
 
     // Validate required fields
     if (!name || !email) {

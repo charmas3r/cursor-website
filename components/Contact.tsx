@@ -1,9 +1,23 @@
 "use client";
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState, type FormEvent, type ChangeEvent } from "react";
+import { useRef, useState, useEffect, type FormEvent, type ChangeEvent } from "react";
+import Script from "next/script";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, Clock, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+
+// reCAPTCHA v3 site key
+const RECAPTCHA_SITE_KEY = "6LewiVIsAAAAABITwKRuEf_PVOQNKMEMS98-8EjG";
+
+// Declare grecaptcha for TypeScript
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
 
 // Social media icons as SVG components
 const SocialIcon = ({ name }: { name: string }): JSX.Element => {
@@ -40,6 +54,7 @@ interface FormData {
   date: string;
   venue: string;
   message: string;
+  website: string; // Honeypot field - should remain empty
 }
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -75,10 +90,12 @@ export default function Contact(): JSX.Element {
     date: "",
     venue: "",
     message: "",
+    website: "", // Honeypot field - should remain empty
   });
 
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -94,12 +111,25 @@ export default function Contact(): JSX.Element {
     umami.track("form_submit_contact", { source: "contact_section" });
 
     try {
+      // Get reCAPTCHA token
+      let recaptchaToken = "";
+      if (recaptchaLoaded && window.grecaptcha) {
+        try {
+          recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {
+            action: "contact_form",
+          });
+        } catch (recaptchaError) {
+          console.error("reCAPTCHA error:", recaptchaError);
+          // Continue without token - honeypot is still active
+        }
+      }
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken }),
       });
 
       const data = await response.json();
@@ -118,6 +148,7 @@ export default function Contact(): JSX.Element {
         date: "",
         venue: "",
         message: "",
+        website: "",
       });
     } catch (error) {
       setStatus("error");
@@ -297,6 +328,27 @@ export default function Contact(): JSX.Element {
                     </AnimatePresence>
 
                     <div className="space-y-4 sm:space-y-5">
+                      {/* Honeypot field - hidden from humans, bots will fill it */}
+                      <div
+                        aria-hidden="true"
+                        style={{
+                          position: "absolute",
+                          left: "-9999px",
+                          top: "-9999px",
+                        }}
+                      >
+                        <label htmlFor="website">Website</label>
+                        <input
+                          type="text"
+                          id="website"
+                          name="website"
+                          value={formData.website}
+                          onChange={handleChange}
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                      </div>
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                         <div>
                           <label
@@ -437,6 +489,12 @@ export default function Contact(): JSX.Element {
           </motion.div>
         </div>
       </div>
+
+      {/* reCAPTCHA v3 Script */}
+      <Script
+        src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+        onLoad={() => setRecaptchaLoaded(true)}
+      />
     </section>
   );
 }

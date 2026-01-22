@@ -195,7 +195,7 @@ export default function Footer(): JSX.Element {
               <span className="inline-flex items-center gap-1">
                 Made with
                 <Heart className="w-4 h-4 text-blush-500 fill-blush-500" />
-                by <Link href="https://www.linkedin.com/in/evan-smith-93bb43154/" className="text-blush-500 hover:text-blush-600 transition-colors duration-300">E.S.</Link>
+                by <a href="https://www.lucidweb.studio/" target="_blank" rel="noopener noreferrer" className="text-blush-500 hover:text-blush-600 transition-colors duration-300">Lucid Web Studios</a>
               </span>
             </p>
           </div>
