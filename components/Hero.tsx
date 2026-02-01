@@ -98,8 +98,8 @@ const featureCards = [
     highlights: [
       "100+ weddings successfully planned",
       "20+ years in hospitality & events",
-      "2× The Knot Best of Weddings winner",
-      "1× WeddingWire Couples' Choice Award",
+      "3× The Knot Best of Weddings winner",
+      "2× WeddingWire Couples' Choice Award",
     ],
     image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070",
     cta: { label: "See Our Work", href: "/portfolio" },
@@ -198,7 +198,7 @@ export default function Hero(): JSX.Element {
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source 
-              src="https://res.cloudinary.com/dvdrv4i4x/video/upload/v1768097505/output-super-final_chlljs.mp4" 
+              src="https://kvzfg9md2wx7nolu.public.blob.vercel-storage.com/output-super-final_chlljs.mp4" 
               type="video/mp4" 
             />
           </video>
@@ -459,7 +459,7 @@ export default function Hero(): JSX.Element {
             </div>
             <div className="w-px h-8 bg-charcoal-300" />
             <div className="text-center">
-              <p className="text-2xl font-serif font-semibold text-charcoal-900">3×</p>
+              <p className="text-2xl font-serif font-semibold text-charcoal-900">5×</p>
               <p className="text-xs text-charcoal-600 mt-1">Awards</p>
             </div>
           </motion.div>

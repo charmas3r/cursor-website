@@ -476,3 +476,171 @@ export async function getLaJollaVenues() {
   return client.fetch(laJollaVenuesQuery);
 }
 
+// Del Mar venues query
+export const delMarVenuesQuery = `*[_type == "venue" && region == "del-mar"] | order(preferredVendor desc, coalesce(weddingCount, 0) desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image {
+    ...,
+    asset->
+  },
+  description,
+  coordinates,
+  preferredVendor,
+  "weddingCount": coalesce(weddingCount, 0),
+  featured
+}`;
+
+export async function getDelMarVenues() {
+  return client.fetch(delMarVenuesQuery);
+}
+
+// Rancho Santa Fe venues query
+export const ranchoSantaFeVenuesQuery = `*[_type == "venue" && region == "rancho-santa-fe"] | order(preferredVendor desc, coalesce(weddingCount, 0) desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image {
+    ...,
+    asset->
+  },
+  description,
+  coordinates,
+  preferredVendor,
+  "weddingCount": coalesce(weddingCount, 0),
+  featured
+}`;
+
+export async function getRanchoSantaFeVenues() {
+  return client.fetch(ranchoSantaFeVenuesQuery);
+}
+
+// Carlsbad venues query
+export const carlsbadVenuesQuery = `*[_type == "venue" && region == "carlsbad"] | order(preferredVendor desc, coalesce(weddingCount, 0) desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image {
+    ...,
+    asset->
+  },
+  description,
+  coordinates,
+  preferredVendor,
+  "weddingCount": coalesce(weddingCount, 0),
+  featured
+}`;
+
+export async function getCarlsbadVenues() {
+  return client.fetch(carlsbadVenuesQuery);
+}
+
+// Coronado venues query
+export const coronadoVenuesQuery = `*[_type == "venue" && region == "coronado"] | order(preferredVendor desc, coalesce(weddingCount, 0) desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image {
+    ...,
+    asset->
+  },
+  description,
+  coordinates,
+  preferredVendor,
+  "weddingCount": coalesce(weddingCount, 0),
+  featured
+}`;
+
+export async function getCoronadoVenues() {
+  return client.fetch(coronadoVenuesQuery);
+}
+
+// Encinitas venues query
+export const encinitasVenuesQuery = `*[_type == "venue" && region == "encinitas"] | order(preferredVendor desc, coalesce(weddingCount, 0) desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image {
+    ...,
+    asset->
+  },
+  description,
+  coordinates,
+  preferredVendor,
+  "weddingCount": coalesce(weddingCount, 0),
+  featured
+}`;
+
+export async function getEncinitasVenues() {
+  return client.fetch(encinitasVenuesQuery);
+}
+
+// Fallbrook venues query
+export const fallbrookVenuesQuery = `*[_type == "venue" && region == "fallbrook"] | order(preferredVendor desc, coalesce(weddingCount, 0) desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image {
+    ...,
+    asset->
+  },
+  description,
+  coordinates,
+  preferredVendor,
+  "weddingCount": coalesce(weddingCount, 0),
+  featured
+}`;
+
+export async function getFallbrookVenues() {
+  return client.fetch(fallbrookVenuesQuery);
+}
+
+// Temecula venues query
+export const temeculaVenuesQuery = `*[_type == "venue" && region == "temecula"] | order(preferredVendor desc, coalesce(weddingCount, 0) desc) {
+  _id,
+  name,
+  slug,
+  location,
+  region,
+  type,
+  website,
+  image {
+    ...,
+    asset->
+  },
+  description,
+  coordinates,
+  preferredVendor,
+  "weddingCount": coalesce(weddingCount, 0),
+  featured
+}`;
+
+export async function getTemeculaVenues() {
+  return client.fetch(temeculaVenuesQuery);
+}
+

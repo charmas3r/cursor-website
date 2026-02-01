@@ -91,6 +91,16 @@ const milestones = [
     title: "100th Wedding",
     description: "Celebrated a major milestone—our 100th wedding!",
   },
+  {
+    year: "Jan 2026",
+    title: "Best of Weddings 2026",
+    description: "Won The Knot's Best of Weddings award for the third consecutive year!",
+  },
+  {
+    year: "Jan 2026",
+    title: "Couples' Choice 2026",
+    description: "Earned WeddingWire's Couples' Choice Award for the second year in a row!",
+  },
 ];
 
 export default function AboutPage(): JSX.Element {
@@ -151,7 +161,7 @@ export default function AboutPage(): JSX.Element {
                 {[
                   { value: "100+", label: "Weddings" },
                   { value: "20+", label: "Years in Hospitality" },
-                  { value: "3×", label: "Award Winner" },
+                  { value: "5×", label: "Award Winner" },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="text-3xl sm:text-4xl font-serif font-semibold text-white">
@@ -356,7 +366,7 @@ export default function AboutPage(): JSX.Element {
                       <Award className="w-6 h-6 text-blush-500" />
                     </div>
                     <div>
-                      <p className="text-2xl font-serif font-semibold text-charcoal-900">3</p>
+                      <p className="text-2xl font-serif font-semibold text-charcoal-900">5</p>
                       <p className="text-sm text-charcoal-600">Industry Awards</p>
                     </div>
                   </div>
@@ -395,8 +405,8 @@ export default function AboutPage(): JSX.Element {
                     proves as the bedrock for their remarkable weddings.
                   </p>
                   <p>
-                    Since founding Wedding Agency San Diego in 2023, Nicole has received three unique 
-                    industry awards; 2× &ldquo;Best of Weddings&rdquo; on The Knot and 1× &ldquo;Couples Choice&rdquo; on Wedding Wire.
+                    Since founding Wedding Agency San Diego in 2023, Nicole has received five unique 
+                    industry awards; 3× &ldquo;Best of Weddings&rdquo; on The Knot and 2× &ldquo;Couples&apos; Choice&rdquo; on Wedding Wire.
                   </p>
                   <p>
                     Nicole&apos;s own wedding at a private estate atop Paint Mountain in Elfin Forest was 
@@ -428,11 +438,11 @@ export default function AboutPage(): JSX.Element {
                 <div className="flex flex-wrap gap-3">
                   <div className="inline-flex items-center gap-2 bg-blush-50 text-blush-700 px-4 py-2 rounded-full text-sm font-medium">
                     <Award className="w-4 h-4" />
-                    2× Best of Weddings - The Knot
+                    3× Best of Weddings - The Knot
                   </div>
                   <div className="inline-flex items-center gap-2 bg-blush-50 text-blush-700 px-4 py-2 rounded-full text-sm font-medium">
                     <Award className="w-4 h-4" />
-                    1× Couples Choice - Wedding Wire
+                    2× Couples&apos; Choice - Wedding Wire
                   </div>
                 </div>
 
@@ -687,8 +697,10 @@ export default function AboutPage(): JSX.Element {
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
                 {[
+                  { year: "2026", title: "Best of Weddings", source: "The Knot" },
                   { year: "2025", title: "Best of Weddings", source: "The Knot" },
                   { year: "2024", title: "Best of Weddings", source: "The Knot" },
+                  { year: "2026", title: "Couples' Choice", source: "WeddingWire" },
                   { year: "2025", title: "Couples' Choice", source: "WeddingWire" },
                 ].map((award, index) => (
                   <div

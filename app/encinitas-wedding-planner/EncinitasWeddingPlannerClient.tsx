@@ -21,35 +21,35 @@ import {
   Waves,
   Building2,
   Sun,
-  Plane,
+  Palmtree,
   ExternalLink,
 } from "lucide-react";
 
-interface LaJollaWeddingPlannerClientProps {
-  laJollaVenues: VenueDocument[];
+interface EncinitasWeddingPlannerClientProps {
+  encinitasVenues: VenueDocument[];
 }
 
-// Why La Jolla content
-const whyLaJolla = [
+// Why Encinitas content
+const whyEncinitas = [
   {
-    title: "Stunning Coastal Beauty",
-    description: "From dramatic sea cliffs to pristine beaches, La Jolla offers some of California's most breathtaking wedding backdrops.",
+    title: "Bohemian Beach Vibes",
+    description: "Encinitas embodies laid-back California surf culture with a uniquely artistic, bohemian atmosphere.",
     icon: Waves,
   },
   {
-    title: "World-Class Venues",
-    description: "Home to Estancia La Jolla, Cuvier Club, and other premier venues perfect for luxury celebrations.",
-    icon: Building2,
+    title: "San Diego Botanic Garden",
+    description: "37 acres of rare botanical collections create one of Southern California's most enchanting wedding settings.",
+    icon: Palmtree,
   },
   {
-    title: "Perfect Weather",
-    description: "With 260+ days of sunshine and mild temperatures year-round, La Jolla is ideal for outdoor ceremonies.",
+    title: "Stunning Sunsets",
+    description: "Swami's Beach and Moonlight Beach offer legendary Pacific sunsets as your ceremony backdrop.",
     icon: Sun,
   },
   {
-    title: "Accessible Location",
-    description: "Just 20 minutes from San Diego International Airport with excellent accommodations for destination guests.",
-    icon: Plane,
+    title: "Eclectic Charm",
+    description: "Leucadia's funky downtown and Cardiff's village offer unique character for memorable celebrations.",
+    icon: Building2,
   },
 ];
 
@@ -71,7 +71,7 @@ function formatVenueType(type: string | undefined): string {
   return typeMap[type] || "Venue";
 }
 
-export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWeddingPlannerClientProps): JSX.Element {
+export default function EncinitasWeddingPlannerClient({ encinitasVenues }: EncinitasWeddingPlannerClientProps): JSX.Element {
   const heroRef = useRef(null);
   const venuesRef = useRef(null);
   const whyRef = useRef(null);
@@ -94,8 +94,8 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
           {/* Background */}
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=2070"
-              alt="La Jolla Cove wedding ceremony at sunset"
+              src="https://images.unsplash.com/photo-1518882605630-8eb536f45fe5?q=80&w=2070"
+              alt="Encinitas botanical garden wedding venue"
               fill
               priority
               className="object-cover"
@@ -117,22 +117,22 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 <span>/</span>
                 <Link href="/san-diego-wedding-planner" className="hover:text-white transition-colors">San Diego</Link>
                 <span>/</span>
-                <span className="text-blush-300">La Jolla</span>
+                <span className="text-blush-300">Encinitas</span>
               </nav>
 
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-blush-500/20 backdrop-blur-sm rounded-full text-blush-200 text-sm font-medium mb-6">
                 <MapPin className="w-4 h-4" />
-                La Jolla, California
+                Encinitas, California
               </span>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-tight">
-                La Jolla
+                Encinitas
                 <br />
                 <span className="text-blush-300">Wedding Planner</span>
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-cream-100/90 leading-relaxed max-w-2xl">
-                Your expert guide to planning the perfect La Jolla wedding. From oceanfront ceremonies at La Jolla Cove to elegant celebrations at Estancia La Jolla, we bring your coastal wedding dreams to life.
+                Your expert guide to planning the perfect Encinitas wedding. From enchanting garden ceremonies at San Diego Botanic Garden to barefoot beach celebrations at Moonlight Beach, we create unforgettable bohemian experiences.
               </p>
 
               {/* Stats */}
@@ -142,8 +142,8 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                     <Heart className="w-6 h-6 text-blush-300" />
                   </div>
                   <div>
-                    <p className="text-2xl font-serif font-semibold text-white">25+</p>
-                    <p className="text-sm text-white/70">La Jolla Weddings</p>
+                    <p className="text-2xl font-serif font-semibold text-white">15+</p>
+                    <p className="text-sm text-white/70">Encinitas Weddings</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                     <Award className="w-6 h-6 text-blush-300" />
                   </div>
                   <div>
-                    <p className="text-2xl font-serif font-semibold text-white">5×</p>
+                    <p className="text-2xl font-serif font-semibold text-white">3×</p>
                     <p className="text-sm text-white/70">Award Winner</p>
                   </div>
                 </div>
@@ -168,19 +168,19 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
 
               {/* CTAs */}
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Link href="/#contact" onClick={() => umami.track("cta_click_consultation", { location: "la_jolla_hero" })}>
+                <Link href="/#contact" onClick={() => umami.track("cta_click_consultation", { location: "encinitas_hero" })}>
                   <Button size="lg" className="w-full sm:w-auto px-8">
                     Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href="/portfolio" onClick={() => umami.track("cta_click_portfolio", { location: "la_jolla_hero" })}>
+                <Link href="/portfolio" onClick={() => umami.track("cta_click_portfolio", { location: "encinitas_hero" })}>
                   <Button
                     variant="outline"
                     size="lg"
                     className="w-full sm:w-auto px-8 bg-white/10 border-white/30 text-white hover:bg-white/20"
                   >
-                    View La Jolla Weddings
+                    View Encinitas Weddings
                   </Button>
                 </Link>
               </div>
@@ -188,7 +188,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
           </div>
         </section>
 
-        {/* Why La Jolla Section */}
+        {/* Why Encinitas Section */}
         <section ref={whyRef} className="py-20 lg:py-28 bg-cream-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -201,15 +201,15 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 The Perfect Setting
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900">
-                Why Get Married in La Jolla?
+                Why Get Married in Encinitas?
               </h2>
               <p className="mt-6 text-lg text-charcoal-600">
-                Known as &ldquo;The Jewel&rdquo; of San Diego, La Jolla offers an unparalleled combination of natural beauty, luxury venues, and coastal charm.
+                Known for its bohemian spirit, world-class botanical gardens, and legendary surf beaches, Encinitas offers a uniquely California wedding experience for free-spirited couples.
               </p>
             </motion.div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {whyLaJolla.map((item, index) => (
+              {whyEncinitas.map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 30 }}
@@ -232,7 +232,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
           </div>
         </section>
 
-        {/* La Jolla Venues Section - Dynamic from Sanity */}
+        {/* Encinitas Venues Section - Dynamic from Sanity */}
         <section ref={venuesRef} className="py-20 lg:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -245,16 +245,16 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 Premier Locations
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900">
-                La Jolla Wedding Venues
+                Encinitas Wedding Venues
               </h2>
               <p className="mt-6 text-lg text-charcoal-600">
-                We&apos;ve planned weddings at La Jolla&apos;s most sought-after venues and know exactly how to bring your vision to life at each one.
+                We&apos;ve planned weddings at Encinitas&apos; most beautiful venues and know exactly how to bring your vision to life at each one.
               </p>
             </motion.div>
 
-            {laJollaVenues.length > 0 ? (
+            {encinitasVenues.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {laJollaVenues.map((venue, index) => (
+                {encinitasVenues.map((venue, index) => (
                   <motion.div
                     key={venue._id}
                     initial={{ opacity: 0, y: 30 }}
@@ -266,7 +266,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                       {venue.image?.asset ? (
                         <Image
                           src={urlFor(venue.image).width(600).height(400).url()}
-                          alt={venue.image.alt || `${venue.name} wedding venue in La Jolla`}
+                          alt={venue.image.alt || `${venue.name} wedding venue in Encinitas`}
                           fill
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -288,7 +288,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                           href={venue.website}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={() => umami.track("link_click_venue_external", { venue: venue.name, location: "la_jolla_venues" })}
+                          onClick={() => umami.track("link_click_venue_external", { venue: venue.name, location: "encinitas_venues" })}
                           className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-charcoal-600 hover:bg-white hover:text-blush-500 transition-colors"
                           aria-label={`Visit ${venue.name} website`}
                         >
@@ -321,7 +321,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
               <div className="text-center py-12">
                 <Building2 className="w-16 h-16 text-charcoal-300 mx-auto mb-4" />
                 <p className="text-charcoal-500 mb-4">
-                  La Jolla venues coming soon. Check back later!
+                  Encinitas venues coming soon. Check back later!
                 </p>
                 <Link href="/san-diego-wedding-planner">
                   <Button variant="outline">
@@ -340,7 +340,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
               <p className="text-charcoal-600 mb-6">
                 Not sure which venue is right for you? We&apos;ll help you find the perfect match.
               </p>
-              <Link href="/#contact" onClick={() => umami.track("cta_click_venue_guidance", { location: "la_jolla_venues" })}>
+              <Link href="/#contact" onClick={() => umami.track("cta_click_venue_guidance", { location: "encinitas_venues" })}>
                 <Button variant="outline" size="lg">
                   Get Venue Recommendations
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -359,22 +359,22 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                   Our Services
                 </span>
                 <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium leading-tight">
-                  La Jolla Wedding
+                  Encinitas Wedding
                   <br />
                   <span className="text-blush-300">Planning Services</span>
                 </h2>
                 <p className="mt-6 text-lg text-charcoal-300 leading-relaxed">
-                  Whether you&apos;re planning an intimate beach ceremony at La Jolla Cove or a grand celebration at Estancia La Jolla, we offer comprehensive planning services tailored to your vision.
+                  Whether you&apos;re planning a garden ceremony at San Diego Botanic Garden or a barefoot beach celebration at Moonlight Beach, we offer comprehensive planning services tailored to Encinitas&apos; bohemian spirit.
                 </p>
 
                 <div className="mt-8 space-y-4">
                   {[
                     "Full-service wedding planning & design",
                     "Day-of coordination & management",
-                    "Venue selection & contract negotiation",
-                    "Local vendor recommendations & coordination",
+                    "Garden venue coordination",
                     "Beach ceremony permits & logistics",
-                    "Destination guest coordination",
+                    "Bohemian design & styling",
+                    "Local vendor recommendations",
                   ].map((service) => (
                     <div key={service} className="flex items-center gap-3">
                       <div className="w-6 h-6 rounded-full bg-blush-500/20 flex items-center justify-center">
@@ -386,13 +386,13 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 </div>
 
                 <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                  <Link href="/packages" onClick={() => umami.track("cta_click_view_packages", { location: "la_jolla_services" })}>
+                  <Link href="/packages" onClick={() => umami.track("cta_click_view_packages", { location: "encinitas_services" })}>
                     <Button size="lg" className="w-full sm:w-auto">
                       View Packages
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
-                  <Link href="/san-diego-wedding-planner" onClick={() => umami.track("cta_click_all_services", { location: "la_jolla_services" })}>
+                  <Link href="/san-diego-wedding-planner" onClick={() => umami.track("cta_click_all_services", { location: "encinitas_services" })}>
                     <Button
                       variant="outline"
                       size="lg"
@@ -408,7 +408,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238916/193A3369-2_whxoym.webp"
-                    alt="La Jolla wedding ceremony planning"
+                    alt="Encinitas wedding ceremony planning"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -445,20 +445,20 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900">
                 Ready to Plan Your
                 <br />
-                <span className="text-blush-500">La Jolla Wedding?</span>
+                <span className="text-blush-500">Encinitas Wedding?</span>
               </h2>
               <p className="mt-6 text-lg text-charcoal-600 max-w-2xl mx-auto">
-                Let&apos;s discuss your vision for a beautiful La Jolla celebration. Schedule a complimentary consultation and discover how we can bring your coastal wedding dreams to life.
+                Let&apos;s discuss your vision for a beautiful Encinitas celebration. Schedule a complimentary consultation and discover how we can bring your bohemian wedding dreams to life.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/#contact" onClick={() => umami.track("cta_click_consultation_final", { location: "la_jolla_cta" })}>
+                <Link href="/#contact" onClick={() => umami.track("cta_click_consultation_final", { location: "encinitas_cta" })}>
                   <Button size="lg" className="w-full sm:w-auto px-10">
                     Schedule Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <a href="tel:+17602167427" onClick={() => umami.track("link_click_phone", { location: "la_jolla_cta" })}>
+                <a href="tel:+17602167427" onClick={() => umami.track("link_click_phone", { location: "encinitas_cta" })}>
                   <Button
                     variant="outline"
                     size="lg"
@@ -470,7 +470,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
               </div>
 
               <p className="mt-6 text-sm text-charcoal-500">
-                Serving La Jolla, San Diego, and all of Southern California
+                Serving Encinitas, San Diego, and all of Southern California
               </p>
             </motion.div>
           </div>

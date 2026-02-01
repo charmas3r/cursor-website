@@ -20,36 +20,36 @@ import {
   Phone,
   Waves,
   Building2,
-  Sun,
-  Plane,
+  Landmark,
+  Ship,
   ExternalLink,
 } from "lucide-react";
 
-interface LaJollaWeddingPlannerClientProps {
-  laJollaVenues: VenueDocument[];
+interface CoronadoWeddingPlannerClientProps {
+  coronadoVenues: VenueDocument[];
 }
 
-// Why La Jolla content
-const whyLaJolla = [
+// Why Coronado content
+const whyCoronado = [
   {
-    title: "Stunning Coastal Beauty",
-    description: "From dramatic sea cliffs to pristine beaches, La Jolla offers some of California's most breathtaking wedding backdrops.",
+    title: "Historic Hotel del Coronado",
+    description: "The iconic Victorian beachfront hotel has hosted royalty, presidents, and celebrities since 1888.",
+    icon: Landmark,
+  },
+  {
+    title: "Pristine Beach Setting",
+    description: "Coronado Beach is consistently ranked among America's best beaches with golden sand and perfect sunsets.",
     icon: Waves,
   },
   {
-    title: "World-Class Venues",
-    description: "Home to Estancia La Jolla, Cuvier Club, and other premier venues perfect for luxury celebrations.",
+    title: "Island Exclusivity",
+    description: "Connected by the stunning Coronado Bridge, the island offers a private resort atmosphere just minutes from downtown.",
+    icon: Ship,
+  },
+  {
+    title: "Timeless Elegance",
+    description: "From Victorian architecture to modern luxury resorts, Coronado blends historic charm with contemporary sophistication.",
     icon: Building2,
-  },
-  {
-    title: "Perfect Weather",
-    description: "With 260+ days of sunshine and mild temperatures year-round, La Jolla is ideal for outdoor ceremonies.",
-    icon: Sun,
-  },
-  {
-    title: "Accessible Location",
-    description: "Just 20 minutes from San Diego International Airport with excellent accommodations for destination guests.",
-    icon: Plane,
   },
 ];
 
@@ -71,7 +71,7 @@ function formatVenueType(type: string | undefined): string {
   return typeMap[type] || "Venue";
 }
 
-export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWeddingPlannerClientProps): JSX.Element {
+export default function CoronadoWeddingPlannerClient({ coronadoVenues }: CoronadoWeddingPlannerClientProps): JSX.Element {
   const heroRef = useRef(null);
   const venuesRef = useRef(null);
   const whyRef = useRef(null);
@@ -94,8 +94,8 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
           {/* Background */}
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=2070"
-              alt="La Jolla Cove wedding ceremony at sunset"
+              src="https://images.unsplash.com/photo-1600758208050-a22f17dc5f87?q=80&w=2070"
+              alt="Coronado Beach wedding ceremony at sunset"
               fill
               priority
               className="object-cover"
@@ -117,22 +117,22 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 <span>/</span>
                 <Link href="/san-diego-wedding-planner" className="hover:text-white transition-colors">San Diego</Link>
                 <span>/</span>
-                <span className="text-blush-300">La Jolla</span>
+                <span className="text-blush-300">Coronado</span>
               </nav>
 
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-blush-500/20 backdrop-blur-sm rounded-full text-blush-200 text-sm font-medium mb-6">
                 <MapPin className="w-4 h-4" />
-                La Jolla, California
+                Coronado Island, California
               </span>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-tight">
-                La Jolla
+                Coronado
                 <br />
                 <span className="text-blush-300">Wedding Planner</span>
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-cream-100/90 leading-relaxed max-w-2xl">
-                Your expert guide to planning the perfect La Jolla wedding. From oceanfront ceremonies at La Jolla Cove to elegant celebrations at Estancia La Jolla, we bring your coastal wedding dreams to life.
+                Your expert guide to planning the perfect Coronado wedding. From legendary celebrations at Hotel del Coronado to intimate beach ceremonies, we create unforgettable island experiences.
               </p>
 
               {/* Stats */}
@@ -142,8 +142,8 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                     <Heart className="w-6 h-6 text-blush-300" />
                   </div>
                   <div>
-                    <p className="text-2xl font-serif font-semibold text-white">25+</p>
-                    <p className="text-sm text-white/70">La Jolla Weddings</p>
+                    <p className="text-2xl font-serif font-semibold text-white">20+</p>
+                    <p className="text-sm text-white/70">Coronado Weddings</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                     <Award className="w-6 h-6 text-blush-300" />
                   </div>
                   <div>
-                    <p className="text-2xl font-serif font-semibold text-white">5×</p>
+                    <p className="text-2xl font-serif font-semibold text-white">3×</p>
                     <p className="text-sm text-white/70">Award Winner</p>
                   </div>
                 </div>
@@ -168,19 +168,19 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
 
               {/* CTAs */}
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Link href="/#contact" onClick={() => umami.track("cta_click_consultation", { location: "la_jolla_hero" })}>
+                <Link href="/#contact" onClick={() => umami.track("cta_click_consultation", { location: "coronado_hero" })}>
                   <Button size="lg" className="w-full sm:w-auto px-8">
                     Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href="/portfolio" onClick={() => umami.track("cta_click_portfolio", { location: "la_jolla_hero" })}>
+                <Link href="/portfolio" onClick={() => umami.track("cta_click_portfolio", { location: "coronado_hero" })}>
                   <Button
                     variant="outline"
                     size="lg"
                     className="w-full sm:w-auto px-8 bg-white/10 border-white/30 text-white hover:bg-white/20"
                   >
-                    View La Jolla Weddings
+                    View Coronado Weddings
                   </Button>
                 </Link>
               </div>
@@ -188,7 +188,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
           </div>
         </section>
 
-        {/* Why La Jolla Section */}
+        {/* Why Coronado Section */}
         <section ref={whyRef} className="py-20 lg:py-28 bg-cream-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -201,15 +201,15 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 The Perfect Setting
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900">
-                Why Get Married in La Jolla?
+                Why Get Married in Coronado?
               </h2>
               <p className="mt-6 text-lg text-charcoal-600">
-                Known as &ldquo;The Jewel&rdquo; of San Diego, La Jolla offers an unparalleled combination of natural beauty, luxury venues, and coastal charm.
+                Home to the legendary Hotel del Coronado and pristine beaches, Coronado Island offers a timeless blend of Victorian elegance and coastal beauty for your celebration.
               </p>
             </motion.div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {whyLaJolla.map((item, index) => (
+              {whyCoronado.map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 30 }}
@@ -232,7 +232,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
           </div>
         </section>
 
-        {/* La Jolla Venues Section - Dynamic from Sanity */}
+        {/* Coronado Venues Section - Dynamic from Sanity */}
         <section ref={venuesRef} className="py-20 lg:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -245,16 +245,16 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 Premier Locations
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900">
-                La Jolla Wedding Venues
+                Coronado Wedding Venues
               </h2>
               <p className="mt-6 text-lg text-charcoal-600">
-                We&apos;ve planned weddings at La Jolla&apos;s most sought-after venues and know exactly how to bring your vision to life at each one.
+                We&apos;ve planned weddings at Coronado&apos;s most iconic venues and know exactly how to bring your vision to life at each one.
               </p>
             </motion.div>
 
-            {laJollaVenues.length > 0 ? (
+            {coronadoVenues.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {laJollaVenues.map((venue, index) => (
+                {coronadoVenues.map((venue, index) => (
                   <motion.div
                     key={venue._id}
                     initial={{ opacity: 0, y: 30 }}
@@ -266,7 +266,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                       {venue.image?.asset ? (
                         <Image
                           src={urlFor(venue.image).width(600).height(400).url()}
-                          alt={venue.image.alt || `${venue.name} wedding venue in La Jolla`}
+                          alt={venue.image.alt || `${venue.name} wedding venue in Coronado`}
                           fill
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -288,7 +288,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                           href={venue.website}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={() => umami.track("link_click_venue_external", { venue: venue.name, location: "la_jolla_venues" })}
+                          onClick={() => umami.track("link_click_venue_external", { venue: venue.name, location: "coronado_venues" })}
                           className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-charcoal-600 hover:bg-white hover:text-blush-500 transition-colors"
                           aria-label={`Visit ${venue.name} website`}
                         >
@@ -321,7 +321,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
               <div className="text-center py-12">
                 <Building2 className="w-16 h-16 text-charcoal-300 mx-auto mb-4" />
                 <p className="text-charcoal-500 mb-4">
-                  La Jolla venues coming soon. Check back later!
+                  Coronado venues coming soon. Check back later!
                 </p>
                 <Link href="/san-diego-wedding-planner">
                   <Button variant="outline">
@@ -340,7 +340,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
               <p className="text-charcoal-600 mb-6">
                 Not sure which venue is right for you? We&apos;ll help you find the perfect match.
               </p>
-              <Link href="/#contact" onClick={() => umami.track("cta_click_venue_guidance", { location: "la_jolla_venues" })}>
+              <Link href="/#contact" onClick={() => umami.track("cta_click_venue_guidance", { location: "coronado_venues" })}>
                 <Button variant="outline" size="lg">
                   Get Venue Recommendations
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -359,21 +359,21 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                   Our Services
                 </span>
                 <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif font-medium leading-tight">
-                  La Jolla Wedding
+                  Coronado Wedding
                   <br />
                   <span className="text-blush-300">Planning Services</span>
                 </h2>
                 <p className="mt-6 text-lg text-charcoal-300 leading-relaxed">
-                  Whether you&apos;re planning an intimate beach ceremony at La Jolla Cove or a grand celebration at Estancia La Jolla, we offer comprehensive planning services tailored to your vision.
+                  Whether you&apos;re planning a grand celebration at Hotel del Coronado or an intimate beach ceremony, we offer comprehensive planning services tailored to Coronado&apos;s unique island charm.
                 </p>
 
                 <div className="mt-8 space-y-4">
                   {[
                     "Full-service wedding planning & design",
                     "Day-of coordination & management",
-                    "Venue selection & contract negotiation",
-                    "Local vendor recommendations & coordination",
+                    "Historic venue coordination",
                     "Beach ceremony permits & logistics",
+                    "Luxury vendor recommendations",
                     "Destination guest coordination",
                   ].map((service) => (
                     <div key={service} className="flex items-center gap-3">
@@ -386,13 +386,13 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 </div>
 
                 <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                  <Link href="/packages" onClick={() => umami.track("cta_click_view_packages", { location: "la_jolla_services" })}>
+                  <Link href="/packages" onClick={() => umami.track("cta_click_view_packages", { location: "coronado_services" })}>
                     <Button size="lg" className="w-full sm:w-auto">
                       View Packages
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
-                  <Link href="/san-diego-wedding-planner" onClick={() => umami.track("cta_click_all_services", { location: "la_jolla_services" })}>
+                  <Link href="/san-diego-wedding-planner" onClick={() => umami.track("cta_click_all_services", { location: "coronado_services" })}>
                     <Button
                       variant="outline"
                       size="lg"
@@ -408,7 +408,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
                 <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238916/193A3369-2_whxoym.webp"
-                    alt="La Jolla wedding ceremony planning"
+                    alt="Coronado wedding ceremony planning"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -445,20 +445,20 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal-900">
                 Ready to Plan Your
                 <br />
-                <span className="text-blush-500">La Jolla Wedding?</span>
+                <span className="text-blush-500">Coronado Wedding?</span>
               </h2>
               <p className="mt-6 text-lg text-charcoal-600 max-w-2xl mx-auto">
-                Let&apos;s discuss your vision for a beautiful La Jolla celebration. Schedule a complimentary consultation and discover how we can bring your coastal wedding dreams to life.
+                Let&apos;s discuss your vision for a beautiful Coronado celebration. Schedule a complimentary consultation and discover how we can bring your island wedding dreams to life.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/#contact" onClick={() => umami.track("cta_click_consultation_final", { location: "la_jolla_cta" })}>
+                <Link href="/#contact" onClick={() => umami.track("cta_click_consultation_final", { location: "coronado_cta" })}>
                   <Button size="lg" className="w-full sm:w-auto px-10">
                     Schedule Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <a href="tel:+17602167427" onClick={() => umami.track("link_click_phone", { location: "la_jolla_cta" })}>
+                <a href="tel:+17602167427" onClick={() => umami.track("link_click_phone", { location: "coronado_cta" })}>
                   <Button
                     variant="outline"
                     size="lg"
@@ -470,7 +470,7 @@ export default function LaJollaWeddingPlannerClient({ laJollaVenues }: LaJollaWe
               </div>
 
               <p className="mt-6 text-sm text-charcoal-500">
-                Serving La Jolla, San Diego, and all of Southern California
+                Serving Coronado, San Diego, and all of Southern California
               </p>
             </motion.div>
           </div>

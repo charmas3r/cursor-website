@@ -120,20 +120,23 @@ const serviceAreas = [
     venues: 12,
     featured: true,
     coordinates: { lat: 32.6859, lng: -117.1831 },
+    link: "/coronado-wedding-planner",
   },
   {
     name: "Del Mar",
     description: "Blufftop ocean ceremonies",
     venues: 10,
-    featured: false,
+    featured: true,
     coordinates: { lat: 32.9595, lng: -117.2653 },
+    link: "/del-mar-wedding-planner",
   },
   {
     name: "Carlsbad",
     description: "Flower fields & coastal resorts",
     venues: 14,
-    featured: false,
+    featured: true,
     coordinates: { lat: 33.1581, lng: -117.3506 },
+    link: "/carlsbad-wedding-planner",
   },
   {
     name: "Rancho Santa Fe",
@@ -141,6 +144,7 @@ const serviceAreas = [
     venues: 8,
     featured: true,
     coordinates: { lat: 33.0164, lng: -117.2028 },
+    link: "/rancho-santa-fe-wedding-planner",
   },
   {
     name: "Temecula",
@@ -148,6 +152,7 @@ const serviceAreas = [
     venues: 25,
     featured: true,
     coordinates: { lat: 33.4936, lng: -117.1484 },
+    link: "/temecula-wedding-planner",
   },
   {
     name: "Fallbrook",
@@ -155,6 +160,7 @@ const serviceAreas = [
     venues: 6,
     featured: false,
     coordinates: { lat: 33.3764, lng: -117.2511 },
+    link: "/fallbrook-wedding-planner",
   },
   {
     name: "Encinitas",
@@ -162,6 +168,7 @@ const serviceAreas = [
     venues: 8,
     featured: false,
     coordinates: { lat: 33.0369, lng: -117.2919 },
+    link: "/encinitas-wedding-planner",
   },
   {
     name: "Orange County",
@@ -209,7 +216,7 @@ const stats = [
   { value: "100+", label: "Weddings Planned", icon: Heart },
   { value: "20+", label: "Years Experience", icon: Clock },
   { value: "5.0", label: "Average Rating", icon: Star },
-  { value: "3×", label: "Award Winner", icon: Award },
+  { value: "5×", label: "Award Winner", icon: Award },
 ];
 
 // Comparison data for the chart
@@ -264,7 +271,7 @@ const comparisonFeatures = [
   },
   {
     feature: "Industry Awards",
-    weddingAgency: "The Knot Best of 2024 & 2025",
+    weddingAgency: "The Knot Best of 2024, 2025 & 2026",
     otherAgencies: "Limited recognition",
     highlight: true,
   },
@@ -310,10 +317,16 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
       : getCoordinatesForLocation(venue.location);
     
     // Build image URL if venue has a valid image with asset reference
-    const hasValidImage = venue.image && venue.image.asset;
-    const imageUrl = hasValidImage && venue.image
-      ? urlFor(venue.image).width(400).height(200).url()
-      : undefined;
+    // Check for asset._ref to ensure the image is properly referenced
+    const hasValidImage = venue.image?.asset?._ref || venue.image?.asset?._id;
+    let imageUrl: string | undefined;
+    try {
+      imageUrl = hasValidImage && venue.image
+        ? urlFor(venue.image).width(400).height(200).url()
+        : undefined;
+    } catch {
+      imageUrl = undefined;
+    }
     
     return {
       name: venue.name,
@@ -383,7 +396,7 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
                 <Award className="w-6 h-6 text-blush-600" />
               </div>
               <div>
-                <p className="text-xs text-charcoal-500 uppercase tracking-wider">2024 & 2025</p>
+                <p className="text-xs text-charcoal-500 uppercase tracking-wider">2024, 2025 & 2026</p>
                 <p className="font-serif font-semibold text-charcoal-900">The Knot Best of Weddings</p>
               </div>
             </div>
@@ -1096,7 +1109,7 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
             >
               {preferredVenues.map((venue) => {
                 // Safely check if venue has a valid image with asset reference
-                const hasValidImage = venue.image && venue.image.asset;
+                const hasValidImage = venue.image?.asset?._ref || venue.image?.asset?._id;
                 const weddingCount = venue.weddingCount || 0;
                 
                 return (
@@ -1493,11 +1506,11 @@ export default function SanDiegoWeddingPlannerClient({ preferredVenues, allVenue
             <div className="mt-12 flex flex-wrap items-center justify-center gap-6">
               <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
                 <Award className="w-4 h-4 text-blush-300" />
-                <span className="text-sm text-white/80">The Knot Best of Weddings 2024 & 2025</span>
+                <span className="text-sm text-white/80">The Knot Best of Weddings 2024, 2025 & 2026</span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
                 <Heart className="w-4 h-4 text-blush-300" />
-                <span className="text-sm text-white/80">WeddingWire Couples&apos; Choice</span>
+                <span className="text-sm text-white/80">WeddingWire Couples&apos; Choice 2025 & 2026</span>
               </div>
             </div>
           </motion.div>
