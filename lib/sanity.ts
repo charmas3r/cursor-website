@@ -643,4 +643,3 @@ export const temeculaVenuesQuery = `*[_type == "venue" && region == "temecula"] 
 export async function getTemeculaVenues() {
   return client.fetch(temeculaVenuesQuery);
 }
-

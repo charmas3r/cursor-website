@@ -107,7 +107,7 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
-  const jsonLd = {
+  const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${SITE_URL}/#organization`,
@@ -148,13 +148,75 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     award: [
       {
         "@type": "Award",
+        name: "The Knot Best of Weddings 2024",
+        description: "Recognized as a top wedding vendor on The Knot",
+      },
+      {
+        "@type": "Award",
         name: "The Knot Best of Weddings 2025",
-        description: "2× Winner - Recognized as a top wedding vendor on The Knot",
+        description: "Recognized as a top wedding vendor on The Knot",
+      },
+      {
+        "@type": "Award",
+        name: "The Knot Best of Weddings 2026",
+        description: "3× Winner - Recognized as a top wedding vendor on The Knot",
       },
       {
         "@type": "Award",
         name: "WeddingWire Couples' Choice Award 2025",
         description: "Recognized for excellence in quality, service, responsiveness, and professionalism",
+      },
+      {
+        "@type": "Award",
+        name: "WeddingWire Couples' Choice Award 2026",
+        description: "2× Winner - Recognized for excellence in quality, service, responsiveness, and professionalism",
+      },
+    ],
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How much does a wedding planner cost in San Diego?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Wedding planner costs in San Diego typically range from $2,000 to $15,000+ depending on services. At Wedding Agency San Diego, Wedding Management starts at $3,500, Partial Planning at $6,500, and Full Service Planning at $11,000+. These prices reflect the high level of personalized service and expertise provided.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What does a San Diego wedding planner do?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "A San Diego wedding planner handles all aspects of your wedding including vendor selection and management, budget tracking, timeline creation, design and styling, venue coordination, and day-of logistics. They leverage local relationships with venues like Rancho Valencia, Hotel del Coronado, and Temecula wineries to secure preferred pricing and availability.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "When should I hire a wedding planner in San Diego?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "For full-service planning, hire your San Diego wedding planner 12-18 months before your wedding date, especially for peak season (April-October). For partial planning, 8-10 months is ideal. Day-of coordination can be booked 3-6 months out, though earlier is better to ensure availability with top planners.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What areas does Wedding Agency San Diego serve?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We serve all of San Diego County including La Jolla, Coronado, Del Mar, Carlsbad, Encinitas, Rancho Santa Fe, and Fallbrook. We also plan weddings in Temecula wine country and throughout Southern California including Orange County.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is a wedding planner worth it in San Diego?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, a professional San Diego wedding planner saves you significant time and stress while often saving money through vendor relationships and avoiding costly mistakes. With 100+ weddings planned and preferred vendor status at top venues, Wedding Agency San Diego provides expertise that ensures your day runs flawlessly.",
+        },
       },
     ],
   };
@@ -164,7 +226,11 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
         {/* Umami Analytics */}
         <script

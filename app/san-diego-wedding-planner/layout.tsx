@@ -193,7 +193,9 @@ export default function SanDiegoWeddingPlannerLayout({
     award: [
       "The Knot Best of Weddings 2024",
       "The Knot Best of Weddings 2025",
+      "The Knot Best of Weddings 2026",
       "WeddingWire Couples' Choice Award 2025",
+      "WeddingWire Couples' Choice Award 2026",
     ],
     sameAs: [
       "https://share.google/Pltvlw9njBabd209x",
@@ -260,11 +262,38 @@ export default function SanDiegoWeddingPlannerLayout({
     ],
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "San Diego Wedding Planner",
+        item: PAGE_URL,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {children}
     </>

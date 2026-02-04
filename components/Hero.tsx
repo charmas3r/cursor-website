@@ -75,7 +75,7 @@ const featureCards = [
       "Destination weddings",
     ],
     image: "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767238916/193A3369-2_whxoym.webp",
-    cta: { label: "Explore Our Services", href: "/san-diego-wedding-planner" },
+    cta: { label: "San Diego Wedding Services", href: "/san-diego-wedding-planner" },
   },
   {
     id: "why-us",
@@ -222,11 +222,16 @@ export default function Hero(): JSX.Element {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-medium text-white leading-[1.05] tracking-tight drop-shadow-2xl"
+              className="font-serif font-medium text-white leading-[1.05] tracking-tight drop-shadow-2xl"
             >
-              Overwhelmed by
-              <br />
-              <span className="text-blush-300">Wedding Planning</span>?
+              <span className="block text-lg sm:text-xl md:text-2xl font-sans font-medium tracking-widest text-blush-200 uppercase mb-4">
+                San Diego Wedding Planner
+              </span>
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+                Overwhelmed by
+                <br />
+                <span className="text-blush-300">Wedding Planning</span>?
+              </span>
             </motion.h1>
 
             {/* Brand Phrase */}
@@ -271,7 +276,7 @@ export default function Hero(): JSX.Element {
             >
               <Link href="/san-diego-wedding-planner" onClick={() => umami.track("cta_click_explore_services", { location: "hero" })}>
                 <Button size="lg" className="w-full sm:w-auto text-base px-8 py-6 bg-white text-charcoal-900 hover:bg-cream-100">
-                  Explore Our Services
+                  San Diego Wedding Planning
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
