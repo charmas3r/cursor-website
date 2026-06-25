@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Self-hosted fonts via next/font - eliminates render-blocking requests
@@ -239,7 +240,10 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
           data-website-id="af27b8e4-ea30-4d46-b060-1f195a3ffe71"
         />
       </head>
-      <body className="min-h-screen overflow-x-hidden font-sans">{children}</body>
+      <body className="min-h-screen overflow-x-hidden font-sans">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
