@@ -17,7 +17,7 @@ const playfairDisplay = Playfair_Display({
   weight: ["400", "500", "600", "700"],
 });
 
-const SITE_URL = "https://weddingagencysandiego.com";
+const SITE_URL = "https://www.weddingagencysandiego.com";
 const SITE_NAME = "San Diego Wedding Planner";
 const OG_IMAGE = "https://res.cloudinary.com/dvdrv4i4x/image/upload/v1767246459/2025.11.21_-_Jessica_Ian_-_Twin_Oaks_Golf_Course-847_websize_rqud58.jpg";
 

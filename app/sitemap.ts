@@ -3,7 +3,7 @@ import { getBlogPosts, getCouples } from '@/lib/sanity';
 import type { BlogPost, Couple } from '@/types/sanity';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://weddingagencysandiego.com';
+  const baseUrl = 'https://www.weddingagencysandiego.com';
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.excerpt,
       type: "article",
-      url: `https://weddingagencysandiego.com/blog/${post.slug.current}`,
+      url: `https://www.weddingagencysandiego.com/blog/${post.slug.current}`,
       publishedTime: post.publishedAt,
       authors: post.author ? [post.author.name] : undefined,
       images: imageUrl
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: imageUrl ? [imageUrl] : undefined,
     },
     alternates: {
-      canonical: `https://weddingagencysandiego.com/blog/${post.slug.current}`,
+      canonical: `https://www.weddingagencysandiego.com/blog/${post.slug.current}`,
     },
   };
 }
@@ -114,19 +114,19 @@ export default async function BlogPostPage({ params }: Props) {
     publisher: {
       "@type": "Organization",
       name: "Wedding Agency San Diego",
-      url: "https://weddingagencysandiego.com",
+      url: "https://www.weddingagencysandiego.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://weddingagencysandiego.com/logo.png",
+        url: "https://www.weddingagencysandiego.com/logo.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://weddingagencysandiego.com/blog/${post.slug.current}`,
+      "@id": `https://www.weddingagencysandiego.com/blog/${post.slug.current}`,
     },
   };
 
-  const shareUrl = `https://weddingagencysandiego.com/blog/${post.slug.current}`;
+  const shareUrl = `https://www.weddingagencysandiego.com/blog/${post.slug.current}`;
 
   return (
     <>

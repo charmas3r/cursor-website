@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const SITE_URL = "https://weddingagencysandiego.com";
+const SITE_URL = "https://www.weddingagencysandiego.com";
 const PAGE_URL = `${SITE_URL}/san-diego-wedding-planner`;
 
 export const metadata: Metadata = {
