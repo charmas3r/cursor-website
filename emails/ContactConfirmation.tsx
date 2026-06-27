@@ -87,7 +87,7 @@ export default function ContactConfirmationEmail({
 
             {/* CTA Button */}
             <Section style={buttonContainer}>
-              <Link href="https://weddingagencysandiego.com/portfolio" style={button}>
+              <Link href="https://www.weddingagencysandiego.com/portfolio" style={button}>
                 View Our Portfolio
               </Link>
             </Section>

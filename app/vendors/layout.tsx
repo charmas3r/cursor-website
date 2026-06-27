@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description:
       "Discover our network of talented wedding vendors in San Diego.",
     type: "website",
-    url: "https://weddingagencysandiego.com/vendors",
+    url: "https://www.weddingagencysandiego.com/vendors",
     siteName: "Wedding Agency San Diego",
     locale: "en_US",
     images: [
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     images: [OG_IMAGE],
   },
   alternates: {
-    canonical: "https://weddingagencysandiego.com/vendors",
+    canonical: "https://www.weddingagencysandiego.com/vendors",
   },
 };
 
@@ -55,11 +55,11 @@ export default function VendorsLayout({
     name: "Wedding Agency San Diego Vendor Directory",
     description:
       "Discover our network of talented wedding vendors we trust and recommend for San Diego weddings.",
-    url: "https://weddingagencysandiego.com/vendors",
+    url: "https://www.weddingagencysandiego.com/vendors",
     isPartOf: {
       "@type": "WebSite",
       name: "Wedding Agency San Diego",
-      url: "https://weddingagencysandiego.com",
+      url: "https://www.weddingagencysandiego.com",
     },
   };
 

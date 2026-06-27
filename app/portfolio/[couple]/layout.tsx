@@ -3,7 +3,7 @@ import { getCoupleBySlug, getCouples, urlFor } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 import type { Couple } from "@/types/sanity";
 
-const SITE_URL = "https://weddingagencysandiego.com";
+const SITE_URL = "https://www.weddingagencysandiego.com";
 
 interface Props {
   params: Promise<{ couple: string }>;

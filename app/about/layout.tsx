@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       "Meet Nicole, your San Diego wedding planner with 20+ years in hospitality and 100+ weddings planned. Discover why couples across Southern California trust us.",
     type: "website",
     locale: "en_US",
-    url: "https://weddingagencysandiego.com/about",
+    url: "https://www.weddingagencysandiego.com/about",
     siteName: "Wedding Agency San Diego",
     images: [
       {
@@ -41,11 +41,11 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://weddingagencysandiego.com/about",
+    canonical: "https://www.weddingagencysandiego.com/about",
   },
 };
 
-const SITE_URL = "https://weddingagencysandiego.com";
+const SITE_URL = "https://www.weddingagencysandiego.com";
 
 export default function AboutLayout({
   children,
